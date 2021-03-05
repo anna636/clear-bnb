@@ -1,12 +1,13 @@
 const mongoose = global.mongoose;
 
+
+
 const User = mongoose.model("User", {
-  /*id: {
+  
+  fullName: {
     type: String,
-    required: true,
-    unique: true,
-  },*/
-  fullName: String,
+    unique:false
+  },
   email: {
     type: String,
     unique: true,
@@ -15,6 +16,7 @@ const User = mongoose.model("User", {
   password: {
     type: String,
     required: true,
+    unique:false
   },
 });
 
@@ -90,7 +92,7 @@ const AvailableDates = mongoose.model("AvailableDates", {
 });
 
 const Amenities = mongoose.model("Amenities", {
- /* id: {
+  /* id: {
     type: String,
     required: true,
     unique: true,
