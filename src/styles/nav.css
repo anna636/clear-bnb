@@ -1,0 +1,42 @@
+.logo {
+  background-color: red;
+}
+
+
+
+.menu {
+  margin-left: 10px;
+  background-color: blue;
+}
+
+nav > a {
+  text-decoration: none;
+  color: white;
+}
+
+nav > a:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.searchBar {
+  margin-left: 10px;
+}
+
+.searchBar input {
+  border-radius: 10px;
+  padding: 5px 10px;
+  width: 300px;
+  background-color: rgb(150, 181, 248);
+  border: none;
+  color: white;
+  text-decoration: none;
+  cursor: default;
+  border-radius: 10px;
+  font-size: medium;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.searchBar input:focus{
+  outline: none;
+}
