@@ -7,7 +7,8 @@ const Apartment = mongoose.model("Apartment", {
     unique: true,
   },
   userId: {
-    type: Number,
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
     required: true,
   },
   pricePerDay: {

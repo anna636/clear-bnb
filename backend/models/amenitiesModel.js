@@ -8,7 +8,8 @@ const Amenities = mongoose.model("Amenities", {
   },
 
   apartmentId: {
-    type: Number,
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Apartment',
     required: true,
   },
 

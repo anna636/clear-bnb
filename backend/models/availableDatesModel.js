@@ -7,7 +7,8 @@ const AvailableDates = mongoose.model("AvailableDates", {
     unique: true,
   },
   apartmentId: {
-    type: Number,
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Apartment",
     required: true,
   },
   availableStartDate: {

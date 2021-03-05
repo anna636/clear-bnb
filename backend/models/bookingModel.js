@@ -7,11 +7,13 @@ const Booking = mongoose.model("Booking", {
     unique: true,
   },
   userId: {
-    type: Number,
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
     required: true,
   },
   apartmentId: {
-    type: Number,
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Apartment",
     required: true,
   },
 
