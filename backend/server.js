@@ -1,7 +1,7 @@
 global.mongoose = require("mongoose");
 const express = require("express");
 const app = express();
-//const models = require("./models.js");
+const models = require("./models/models.js");
 
 
 app.use(express.json());
