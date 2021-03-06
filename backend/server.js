@@ -3,7 +3,6 @@ const express = require("express");
 const app = express();
 const models = require("./models/models.js");
 
-
 app.use(express.json());
 
 const atlasUrl =
@@ -18,29 +17,31 @@ global.mongoose.connect(atlasUrl, {
 //Getter for all models except for users
 app.get("/rest/:model", async (req, res) => {
   let model = models[req.params.model];
-  /*if (req.params.model === "users") {
+  if (req.params.model === "users") {
     res.json("No such request is found");
     return;
-  }*/
+  }
 
   let docs = await model.find();
   res.json(docs);
 });
 
-//Post for all models
+//Post for all models except for amenities
 app.post("/rest/:model", async (req, res) => {
   let model = models[req.params.model];
-
+ if (req.params.model === "amenities") {
+    res.json("No such request is found");
+    return;
+  }
   let doc = new model(req.body);
 
-  
   await doc.save();
 
   res.json(doc);
 });
 
 //Put for all models
-/*app.put("/rest/:model/:id", async (req, res) => {
+app.put("/rest/:model/:id", async (req, res) => {
   let model = models[req.params.model];
 
   let doc = await model.findById(req.params.id);
@@ -50,18 +51,14 @@ app.post("/rest/:model", async (req, res) => {
   await doc.save();
 
   res.json(doc);
-});*/
-
+})
 
 //Delete for all models
-/*app.delete("rest/:model/:id", async (req, res) => {
+app.delete("/rest/:model/:id", async (req, res) => {
   let model = models[req.params.model]
   let doc = await model.findByIdAndDelete(req.params.id)
   res.json(doc)
-})*/
-
-
-
+})
 
 //Put to update availableDates array in specific apartment
 /*app.put("/api/add-new-date-to-apartment/:id", async (req, res) => {
@@ -87,7 +84,4 @@ app.post("/rest/:model", async (req, res) => {
   res.json(apartment);
 });*/
 
-
 app.listen(3001, () => console.log("Server stated on port 3001"));
-
-

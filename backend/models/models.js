@@ -1,12 +1,9 @@
 const mongoose = global.mongoose;
 
-
-
 const User = mongoose.model("User", {
-  
   fullName: {
     type: String,
-    unique:false
+    unique: false,
   },
   email: {
     type: String,
@@ -16,17 +13,12 @@ const User = mongoose.model("User", {
   password: {
     type: String,
     required: true,
-    unique:false
+    unique: false,
   },
 });
 
 const Apartment = mongoose.model("Apartment", {
-  /*id: {
-    type: String,
-    required: true,
-    unique: true,
-  },*/
-  userId: {
+  ownerId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
     required: true,
@@ -41,14 +33,21 @@ const Apartment = mongoose.model("Apartment", {
     required: true,
   },
   region: String,
+
+  maxGuests: {
+    type: Number,
+    required: true,
+  },
+
+  amenities: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Amenities",
+    },
+  ],
 });
 
 const Booking = mongoose.model("Booking", {
-  /*id: {
-    type: String,
-    required: true,
-    unique: true,
-  },*/
   userId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
@@ -71,11 +70,6 @@ const Booking = mongoose.model("Booking", {
 });
 
 const AvailableDates = mongoose.model("AvailableDates", {
-  /*id: {
-    type: String,
-    required: true,
-    unique: true,
-  },*/
   apartmentId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Apartment",
@@ -92,12 +86,6 @@ const AvailableDates = mongoose.model("AvailableDates", {
 });
 
 const Amenities = mongoose.model("Amenities", {
-  /* id: {
-    type: String,
-    required: true,
-    unique: true,
-  },*/
-
   apartmentId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Apartment",
@@ -108,7 +96,8 @@ const Amenities = mongoose.model("Amenities", {
     type: String,
     required: true,
   },
-  description: String,
+
+  icon: String,
 });
 
 module.exports = {
