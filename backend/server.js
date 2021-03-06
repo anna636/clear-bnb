@@ -1,5 +1,6 @@
 global.mongoose = require("mongoose");
 const express = require("express");
+const { apartments } = require("./models/models.js");
 const app = express();
 const models = require("./models/models.js");
 
@@ -17,6 +18,11 @@ global.mongoose.connect(atlasUrl, {
 //Getter for all models except for users
 app.get("/rest/:model", async (req, res) => {
   let model = models[req.params.model];
+  if (req.params.model === "apartments") {
+    let docs = await model.find().populate('amenities').exec()
+    res.json(docs)
+    return;
+  }
   if (req.params.model === "users") {
     res.json("No such request is found");
     return;
@@ -40,6 +46,14 @@ app.post("/rest/:model", async (req, res) => {
   res.json(doc);
 });
 
+
+//Delete for all models
+app.delete("/rest/:model/:id", async (req, res) => {
+  let model = models[req.params.model]
+  let doc = await model.findByIdAndDelete(req.params.id)
+  res.json(doc)
+})
+
 //Put for all models
 app.put("/rest/:model/:id", async (req, res) => {
   let model = models[req.params.model];
@@ -53,35 +67,25 @@ app.put("/rest/:model/:id", async (req, res) => {
   res.json(doc);
 })
 
-//Delete for all models
-app.delete("/rest/:model/:id", async (req, res) => {
-  let model = models[req.params.model]
-  let doc = await model.findByIdAndDelete(req.params.id)
-  res.json(doc)
-})
-
-//Put to update availableDates array in specific apartment
-/*app.put("/api/add-new-date-to-apartment/:id", async (req, res) => {
-  //Selecting models
+//Add amenitie to already existing apartments by passing apartmentId and array of amenities ids
+app.put("/api/add-amenitie-to-apartment/:id", async (req, res) => {
+  
   let Apartment = models["apartments"];
-  let AvailableDates = models["availableDates"];
+  let Amenities = models["amenities"];
 
   let apartment = await Apartment.findById(req.body.apartmentId);
 
-  /*for (let availableDatesId of req.body.availableDatesIds) {
-    const newDates = await AvailableDates.findById(availableDatesId);
-    apartment.availableDates=[...newDates]
+  for (let amenitiesId of req.body.amenitiesIds) {
+    apartment.amenities.push(await Amenities.findById(amenitiesId))
   }
   
-  let availableDatesArr=[]
-
-  for (let availableDatesId of req.body.availableDatesIds) {
-    availableDatesArr.push(availableDatesId)
-  }
-  apartment.availableDates=[...availableDatesArr]
 
   await apartment.save();
   res.json(apartment);
-});*/
+});
+
+
+
+
 
 app.listen(3001, () => console.log("Server stated on port 3001"));
