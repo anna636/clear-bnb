@@ -1,6 +1,10 @@
+import {useState} from 'react'
 import '../css/Nav.css';
+import LoginModal from './Nav'
 
 export default function Nav() {
+  const [loginDisplay, setLoginDisplay] = useState(false);
+  
   return (
     <div className="nav">
       <img className="nav-logo"
@@ -22,13 +26,17 @@ export default function Nav() {
       <div className="nav-right">
         {/* <p>Logga in</p> */}
         <div className="flex-container">
-          <button className="login-btn">
+          <button className="login-btn"
+                  onClick={() => {
+                    setLoginDisplay(!loginDisplay)
+                  }}>
             <div className="login-btn-icons-container">
-              <i class="fas fa-bars"></i>
+              <i className="fas fa-bars"></i>
               <i className="far fa-user-circle"></i>
             </div>
           </button>
         </div>
+        {loginDisplay && <LoginModal />}
       </div>
     </div>
   )

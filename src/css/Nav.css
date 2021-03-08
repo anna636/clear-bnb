@@ -18,7 +18,7 @@ h3 {
   top: 0;
   /* background-color: white; */
   background-color: #f7f7f7;
-  z-index: 100;
+  z-index: 99;
   width: 100%;
   flex-wrap: wrap;
 }
@@ -109,10 +109,12 @@ h3 {
 .login-btn {
   padding: 5px 20px;
   border-radius: 999px;
-  border: 1px solid lightgray;
+  /* border: 1px solid lightgray; */
+  border: none;
   text-align: center;
   outline: none;
   cursor: pointer;
+  background-color: rgb(230, 230, 230);
 }
 
 .login-btn-icons-container {
@@ -128,6 +130,6 @@ h3 {
   margin-right: 1px;
 }
 
-.login-btn-icons-container:hover {
+.login-btn:hover {
   opacity: 0.5;
 }
