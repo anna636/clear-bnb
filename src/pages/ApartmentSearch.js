@@ -13,7 +13,8 @@ export default function ApartmentSearch() {
 
   return (
     <div className="apartment-search">
-      <ApartmentList apartments={apartments.filter((apartment) => apartment.city === city)} />
+      <h1>{city}</h1>
+      <ApartmentList apartments={homes.filter((apartment) => apartment.city === city)} />
     </div>
   )
 }
