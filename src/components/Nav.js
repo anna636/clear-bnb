@@ -9,12 +9,10 @@ export default function Nav() {
   const location = useRef()
 
   const searchLocation = async e => {
-    e.preventDefault()
+    e.preventDefault() 
 
-
-    console.log(location.current.value)  // Get what you type in search
-
-    history.push('/search/' + location.current.value)
+    let userCity = location.current.value.toLowerCase()
+    history.push('/search/' + userCity) // Search by city you type in search
   }
 
 
