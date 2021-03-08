@@ -10,7 +10,7 @@ export default function ApartmentSearch() {
 
   return (
     <div className="apartment-search">
-      <ApartmentList apartments={apartments} />
+      <ApartmentList apartments={apartments.filter((apartment) => apartment.city === "Skivarp")} />
     </div>
   )
 }

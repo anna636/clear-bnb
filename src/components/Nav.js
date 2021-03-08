@@ -5,18 +5,20 @@ export default function Nav() {
 
   const location = useRef()
 
-  const searchLocation = async e => { 
+
+
+  const searchLocation = async e => {
     e.preventDefault()
 
-
+    console.log(location.current.value)  // to get what you type in search bar
   }
 
 
   return (
     <div className="nav">
       <img className="nav-logo"
-           src="https://cdn.discordapp.com/attachments/815586944222363684/818141369045745706/logo_clearbnb01.jpg"
-           alt=""
+        src="https://cdn.discordapp.com/attachments/815586944222363684/818141369045745706/logo_clearbnb01.jpg"
+        alt=""
       />
       <div className="nav-center">
         <div className="nav-center-options">
