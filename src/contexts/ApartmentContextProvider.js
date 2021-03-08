@@ -1,6 +1,6 @@
 import { createContext, useState, useEffect } from "react";
 
-export const ApartmentContextProvider=createContext()
+export const ApartmentContext=createContext()
 
 export default function ApartmentContextProvider(props) {
 
@@ -9,16 +9,24 @@ export default function ApartmentContextProvider(props) {
    const fetchApartments = async () => {
      let res = await fetch("/rest/apartments");
      res = await res.json();
-     setRecipes(res);
+     setApartments(res);
    };
 
+  useEffect(() => {
+    
+    fetchApartments();
+  }, []);
 
+
+  const values = {
+    apartments
+  }
 
   return (
-    <div>
-      
-    </div>
-  )
+    <ApartmentContext.Provider value={values}>
+      {props.children}
+    </ApartmentContext.Provider>
+  );
 }
 
 
