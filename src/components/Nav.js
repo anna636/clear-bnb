@@ -1,16 +1,20 @@
 import '../css/Nav.css';
 import { useRef } from 'react'
+import { useHistory } from 'react-router-dom'
 
 export default function Nav() {
 
+  const history = useHistory()
+
   const location = useRef()
-
-
 
   const searchLocation = async e => {
     e.preventDefault()
 
-    console.log(location.current.value)  // to get what you type in search bar
+
+    console.log(location.current.value)  // Get what you type in search
+
+    history.push('/search/' + location.current.value)
   }
 
 
