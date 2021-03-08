@@ -7,7 +7,7 @@ import homes from '../components/homecomps/homestest.json';
 
 export default function ApartmentSearch() {
   const { city } = useParams()
-  const [apartments, setApartments] = useState([homes])  // To be changed to data from backend
+  const [apartments, setApartments] = useState([homes])  // To be changed to data from backend (with context?)
 
   console.log(city)
 
