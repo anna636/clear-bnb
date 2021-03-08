@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+h2, h4, button {
+  font-family: 'Poppins', sans-serif;
+}
+
+.banner {
+  /* background: url("https://bostadsrattsnytt.se/img/containers/main/img/17476103-lagenheter.jpg/87eec7199a229dd44681c3ca0d1a2e23.jpg") no-repeat center center fixed; */
+  background-image: url('../imgs/banner.jpg');
+  height: 50vh;
+  width: 100vw;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.banner-info {
+  background-color: black;
+  color: white;
+  width: 300px;
+  padding: 50px;
+  height: 100%;
+  text-align: left;
+}
+
+.banner-info > h4 {
+  margin-top: 40px;
+}
+
+.banner-info-btn {
+  font-weight: 900;
+  border: none;
+  border-radius: 15px;
+  padding: 4px 10px;
+  margin-top: 100px;
+  margin-left: 15px;
+}

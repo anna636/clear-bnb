@@ -1,0 +1,20 @@
+[
+  {
+    "region": "Skåne",
+    "city": "Malmö",
+    "img": "https://images.unsplash.com/photo-1613930136425-ebb34f8654cb?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80",
+    "subs": "2 sängar · 2 gäster · Centralt · kort hyresperiod endast",
+    "description": "En nyrenoveredad två som hyrs ut för folk i behov av bostad under kortare perioder. Läget är väldigt centralt i Malmö med nära till allt, såsom köpcentrum, tåg & buss och uteliv. Byggnaden lägenheten tillhör till har även en fin innergård som är perfekt för sommaren. Tvättstuga, grillplats, cykelstation och vind samt källare finns och får användas.",
+    "price": "370kr/natt",
+    "rating": "4,65/5"
+  },
+  {
+    "region": "Skåne",
+    "city": "Malmö",
+    "img": "https://images.unsplash.com/photo-1613930136425-ebb34f8654cb?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80",
+    "subs": "2 sängar · 2 gäster · Centralt · kort hyresperiod endast",
+    "description": "En nyrenoveredad två som hyrs ut för folk i behov av bostad under kortare perioder. Läget är väldigt centralt i Malmö med nära till allt, såsom köpcentrum, tåg & buss och uteliv. Byggnaden lägenheten tillhör till har även en fin innergård som är perfekt för sommaren. Tvättstuga, grillplats, cykelstation och vind samt källare finns och får användas.",
+    "price": "370kr/natt",
+    "rating": "4,65/5"
+  }
+]

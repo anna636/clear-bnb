@@ -1,0 +1,8 @@
+.break {
+  width: 80%;
+  height: 1px;
+  background-color: rgba(214, 211, 211, 0.5);
+  margin: 15px auto 0 auto;
+  position: relative;
+  top: 40px;
+}

@@ -1,0 +1,12 @@
+Homepage
+
+[Nav]
+[Router]
+  [Body]
+    [Banner]
+    [Destinations]
+    [Categories]
+    [Objects]
+  [Body]
+[Router]
+[Footer]
