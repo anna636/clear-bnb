@@ -1,6 +1,6 @@
 import '../css/Nav.css';
 import { useRef } from 'react'
-import { useHistory } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 
 export default function Nav() {
 

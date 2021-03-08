@@ -1,7 +1,5 @@
 const ApartmentList = ({ apartments }) => {
 
-  console.log(apartments[0].city)
-
   return (
     <div className="apartment-list">
       {apartments.map((apartment) => (

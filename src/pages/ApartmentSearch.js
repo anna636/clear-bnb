@@ -9,6 +9,7 @@ export default function ApartmentSearch() {
   const { city } = useParams()
   const [apartments, setApartments] = useState([homes])  // To be changed to data from backend
 
+  console.log(city)
 
   return (
     <div className="apartment-search">

@@ -17,14 +17,14 @@ export default function HomesHomepageDisplay() {
         <h6>{home.rating}</h6>
       </div> */}
       <img src={home.img}
-           alt=""
-           className="home-list-img"
+        alt=""
+        className="home-list-img"
       />
       <div className="home-attr">
         <h6>{home.rating}</h6>
         <div className="renter">
           <h6>{home.owner}</h6>
-          <i class="fas fa-user-circle"></i>
+          <i className="fas fa-user-circle"></i>
         </div>
         <div className="home-display-cards-info">
           <h4 className="inline">{home.type}</h4>
@@ -42,7 +42,7 @@ export default function HomesHomepageDisplay() {
       <div className="homes-display-top">
         <h1>Utforska boenden</h1>
         {/* <i class="fas fa-angle-right"></i> */}
-        <i class="far fa-arrow-alt-circle-right"></i>
+        <i className="far fa-arrow-alt-circle-right"></i>
       </div>
       <div className="homes-display-container">
         {homes.map(home => {

@@ -2,6 +2,7 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import './App.css';
 import Nav from './components/Nav'
+import ApartmentSearch from './pages/ApartmentSearch';
 import Home from './pages/Home.js'
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Nav />
         <Switch>
           <Route exact path="/" component={Home} />
+          <Route exact path="/search/:city" component={ApartmentSearch} />
           <Route path="*" component={page404} />
         </Switch>
       </Router>
