@@ -27,26 +27,39 @@ const Apartment = mongoose.model("Apartment", {
     type: Number,
     required: true,
   },
-
   city: {
     type: String,
     required: true,
   },
-  region: String,
-
+  region: {
+    type: String,
+    required: true,
+  },
+  description: {
+    type: String,
+    required: true,
+  },
   maxGuests: {
     type: Number,
     required: true,
   },
-
-  gallery: [],
-
+  gallery: [
+    {
+      type: String
+    }
+  ],
   amenities: [
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Amenities",
-    },
+    }
   ],
+  availableDates: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "AvailableDates",
+    }
+  ]
 });
 
 const Booking = mongoose.model("Booking", {
