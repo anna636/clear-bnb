@@ -39,6 +39,8 @@ const Apartment = mongoose.model("Apartment", {
     required: true,
   },
 
+  gallery: [],
+
   amenities: [
     {
       type: mongoose.Schema.Types.ObjectId,
