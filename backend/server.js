@@ -8,6 +8,7 @@ app.use(express.json());
 
 const atlasUrl =
   "mongodb+srv://admin:pass123!@cluster0.qob2h.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+  
 
   
 global.mongoose.connect(atlasUrl, {

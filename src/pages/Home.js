@@ -13,7 +13,7 @@ export default function Home() {
       <CategoryCards />
       <div className="break"></div>
       <HomesHomepageDisplay />
-      <div className="break"></div>
+      <div className="break lastbreak"></div>
     </div>
   )
 }
