@@ -20,8 +20,15 @@ export default function Nav() {
         </div>
       </div>
       <div className="nav-right">
-        <p>Logga in</p>
-        <i className="far fa-user-circle"></i>
+        {/* <p>Logga in</p> */}
+        <div className="flex-container">
+          <button className="login-btn">
+            <div className="login-btn-icons-container">
+              <i class="fas fa-bars"></i>
+              <i className="far fa-user-circle"></i>
+            </div>
+          </button>
+        </div>
       </div>
     </div>
   )

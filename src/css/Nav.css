@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
+* {
+  box-sizing: border-box;
+}
+
 h3 {
   font-family: 'Poppins', sans-serif;
   cursor: pointer;
@@ -92,6 +96,38 @@ h3 {
   font-size: 20px;
 }
 
-.nav-right > .fa-user-circle {
-  font-size: 35px;
+/* .flex-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} */
+
+.login-btn-icons-container > .fa-user-circle {
+  font-size: 30px;
+}
+
+.login-btn {
+  padding: 5px 20px;
+  border-radius: 999px;
+  border: 1px solid lightgray;
+  text-align: center;
+  outline: none;
+  cursor: pointer;
+}
+
+.login-btn-icons-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 40px;
+}
+
+.fa-bars {
+  font-size: 15px;
+  margin-left: 4px;
+  margin-right: 1px;
+}
+
+.login-btn-icons-container:hover {
+  opacity: 0.5;
 }
