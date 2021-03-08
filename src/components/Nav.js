@@ -1,6 +1,17 @@
 import '../css/Nav.css';
+import { useRef } from 'react'
 
 export default function Nav() {
+
+  const location = useRef()
+
+  const searchLocation = async e => { 
+    e.preventDefault()
+
+
+  }
+
+
   return (
     <div className="nav">
       <img className="nav-logo"
@@ -14,7 +25,9 @@ export default function Nav() {
           <h3>Kom igång</h3>
         </div>
         <div className="nav-center-searchbar">
-          <input type="text"/>
+          <form onSubmit={searchLocation}>
+            <input ref={location} required type="text" placeholder="Enter a location..." />
+          </form>
           <i className="fas fa-search"></i>
         </div>
       </div>
