@@ -1,6 +1,6 @@
 import {useState} from 'react'
 import '../css/Nav.css';
-import LoginModal from './Nav'
+import LoginModal from './LoginModal'
 
 export default function Nav() {
   const [loginDisplay, setLoginDisplay] = useState(false);
