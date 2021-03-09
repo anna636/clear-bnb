@@ -4,6 +4,7 @@ import './App.css';
 import Nav from './components/Nav'
 import ApartmentSearch from './pages/ApartmentSearch';
 import Home from './pages/Home.js'
+import Footer from './components/Footer'
 
 function App() {
 

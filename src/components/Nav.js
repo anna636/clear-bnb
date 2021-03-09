@@ -19,8 +19,9 @@ export default function Nav() {
   return (
     <div className="nav">
       <img className="nav-logo"
-        src="https://cdn.discordapp.com/attachments/815586944222363684/818141369045745706/logo_clearbnb01.jpg"
-        alt=""
+           /* src="https://cdn.discordapp.com/attachments/815586944222363684/818141369045745706/logo_clearbnb01.jpg" */
+           src="https://i.imgur.com/XsXTFPI.png"
+           alt=""
       />
       <div className="nav-center">
         <div className="nav-center-options">
