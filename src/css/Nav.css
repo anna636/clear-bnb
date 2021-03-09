@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
-
 h3 {
   font-family: 'Poppins', sans-serif;
   cursor: pointer;
@@ -8,12 +7,13 @@ h3 {
 
 .nav {
   display: grid;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: repeat(4, auto);
   background-color: #f7f7f7;
   width: 100%;
   padding-top: 10px;
   padding-bottom: 20px;
   margin: 0 auto;
+  box-sizing: border-box;
 
 }
 
@@ -79,7 +79,6 @@ h3 {
 .nav-right > p {
   font-size: 15px;
   font-family: 'Poppins', sans-serif;
-  padding-right: 10px;
 }
 
 .fa-search {
