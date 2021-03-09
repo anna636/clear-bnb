@@ -3,11 +3,12 @@ import '../css/Nav.css';
 export default function Nav() {
   return (
     <div className="nav">
-      <img className="nav-logo"
-           /* src="https://cdn.discordapp.com/attachments/815586944222363684/818141369045745706/logo_clearbnb01.jpg" */
-           src="https://i.imgur.com/XsXTFPI.png"
-           alt=""
-      />
+      <div className="nav-logo">
+        <img
+          src="https://i.imgur.com/XsXTFPI.png"
+          alt=""
+        />
+      </div>
       <div className="nav-center">
         <div className="nav-center-options">
           <h3>Boenden</h3>
@@ -15,7 +16,7 @@ export default function Nav() {
           <h3>Kom igång</h3>
         </div>
         <div className="nav-center-searchbar">
-          <input type="text"/>
+          <input type="text" placeholder="Start your search" />
           <i className="fas fa-search"></i>
         </div>
       </div>
