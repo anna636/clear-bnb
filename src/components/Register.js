@@ -1,30 +1,23 @@
 import "../css/Register.css";
 import React, { useState } from "react";
+import { useContext } from "react";
+import { UserContext } from "../contexts/UserContextProvider";
+import { useHistory } from "react-router-dom";
 
 export default function Register() {
- const addUser = async (user) => {
-   let res = await fetch("/rest/users", {
-     method: "POST",
-     headers: { "content-type": "application/json" },
-     body: JSON.stringify(user),
-   });
+  const history = useHistory();
 
-   res = await res.json();
-   user.id = res.id;
-
-   console.log(res);
- };
+  const { addUser } = useContext(UserContext);
 
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [dataIsMissing, setDataIsMissing] = useState(false);
-  const toggle = React.useCallback(() => setDataIsMissing(true));
+  const [dataIsMissing, setDataIsMissing] = useState(true);
+  const toggle = React.useCallback(() => setDataIsMissing(false));
 
-  function registerNewUser(e) {
+  async function registerNewUser(e) {
     e.preventDefault();
     if (fullName === "" || email === "" || password === "") {
-      toggle();
       console.log(dataIsMissing);
       console.log("no right data");
 
@@ -35,6 +28,7 @@ export default function Register() {
       return;
     }
 
+    toggle();
     setFullName("");
     setEmail("");
     setPassword("");
@@ -45,9 +39,8 @@ export default function Register() {
       password: password,
     };
 
-    console.log(newUser);
-
-    addUser(newUser)
+    await addUser(newUser);
+    // history.push(); 
   }
 
   return (
@@ -90,6 +83,8 @@ export default function Register() {
       <div className="register_button">
         <button onClick={registerNewUser}>Register</button>
       </div>
+
+      <div></div>
     </div>
   );
 }

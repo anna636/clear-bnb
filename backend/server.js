@@ -23,10 +23,10 @@ app.get("/rest/:model", async (req, res) => {
     res.json(docs)
     return;
   }
-  if (req.params.model === "users") {
+  /*if (req.params.model === "users") {
     res.json("No such request is found");
     return;
-  }
+  }*/
 
   let docs = await model.find();
   res.json(docs);
