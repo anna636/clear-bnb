@@ -20,7 +20,7 @@ global.mongoose.connect(atlasUrl, {
 app.get("/rest/:model", async (req, res) => {
   let model = models[req.params.model];
   if (req.params.model === "apartments") {
-    let docs = await model.find().populate('amenities').exec()
+    let docs = await model.find().populate(["amenities", "ownerId"]).exec();
     res.json(docs)
     return;
   }
@@ -37,7 +37,7 @@ app.get("/rest/:model", async (req, res) => {
 app.get("/rest/:model/:id", async (req, res) => {
   let model = models[req.params.model];
   if (req.params.model === "apartments") {
-    let doc = await model.findById(req.params.id).populate(['amenities', 'users']).exec()
+    let doc = await model.findById(req.params.id).populate(['amenities', 'ownerId']).exec()
      res.json(doc);
      return;
    }
