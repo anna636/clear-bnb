@@ -1,5 +1,12 @@
 .App {
   /* text-align: center; */
+ 
+}
+
+
+*, ::before, ::after{
+    margin: 0;
+  box-sizing: border-box;
 }
 
 .App-logo {
