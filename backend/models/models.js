@@ -4,6 +4,7 @@ const User = mongoose.model("User", {
   fullName: {
     type: String,
     unique: false,
+    required: true
   },
   email: {
     type: String,
@@ -13,7 +14,6 @@ const User = mongoose.model("User", {
   password: {
     type: String,
     required: true,
-    unique: false,
   },
 });
 

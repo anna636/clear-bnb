@@ -3,7 +3,6 @@ global.mongoose = require("mongoose");
 const express = require("express");
 const app = express();
 const models = require("./models/models.js");
-const { apartments } = require("./models/models.js");
 
 app.use(express.json());
 
@@ -38,9 +37,9 @@ app.get("/rest/:model/:id", async (req, res) => {
   let model = models[req.params.model];
   if (req.params.model === "apartments") {
     let doc = await model.findById(req.params.id).populate(['amenities', 'ownerId']).exec()
-     res.json(doc);
-     return;
-   }
+    res.json(doc);
+    return;
+  }
 
   let doc = await model.findById(req.params.id)
   res.json(doc);
