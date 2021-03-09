@@ -1,15 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
-* {
-  margin: 0;
-  box-sizing: border-box;
+.locations {
+  margin-top: 50px;
+  padding: 0 20px;
 }
 
-h1 {
+.locations  h1 {
   font-family: 'Poppins', sans-serif;
-  margin-left: 200px;
-  margin-top: 20px;
-
+  text-align: center;
 }
 
 .card > h3 {
@@ -18,21 +16,13 @@ h1 {
   left: 10px;
 }
 
-.locations {
-  margin-top: 60px;
-}
-
 .location-cards {
-  display: flex;  
-  gap: 4em;
-  justify-content: center;
-  align-items: center;
-  margin-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 20px;
 }
 
 .card {
-  width: 200px;
-  height: 200px;
   border-radius: 15px;
   border: 1px solid lightgray;
   overflow: hidden;
@@ -41,8 +31,8 @@ h1 {
 
 .location-img {
   border-radius: 15px;
-  width: 200px;
-  height: 200px;
+  width: 100%;
+  height: 100%;
   opacity: 0.8;
   transition: 0.2s ease;
 }
