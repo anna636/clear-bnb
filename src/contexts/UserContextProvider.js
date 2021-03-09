@@ -29,7 +29,7 @@ export default function UserContextProvider(props) {
     res = await res.json();
     user.id = res.id;
 
-    console.log(res);
+    console.log('The user object is being saved', res);
 
     // append a new recipe to the reactive recipes list.
     // and to trigger reactivity we have to replace

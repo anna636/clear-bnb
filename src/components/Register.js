@@ -1,4 +1,4 @@
-import "../css/Register.css";
+import "../css/RegisterAndLogin.css";
 import React, { useState } from "react";
 import { useContext } from "react";
 import { UserContext } from "../contexts/UserContextProvider";
@@ -7,18 +7,21 @@ import { useHistory } from "react-router-dom";
 export default function Register() {
   const history = useHistory();
 
-  const { addUser } = useContext(UserContext);
+  const { addUser } = useContext(UserContext); //Using context to add user
+ 
 
+  //Using state variables to make reactivve inputs
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [dataIsMissing, setDataIsMissing] = useState(true);
-  const toggle = React.useCallback(() => setDataIsMissing(false));
+ 
+
 
   async function registerNewUser(e) {
     e.preventDefault();
+    //If some input is empty register won't happen
     if (fullName === "" || email === "" || password === "") {
-      console.log(dataIsMissing);
+     
       console.log("no right data");
 
       setFullName("");
@@ -28,11 +31,12 @@ export default function Register() {
       return;
     }
 
-    toggle();
+ 
     setFullName("");
     setEmail("");
     setPassword("");
 
+    //Making new user document and posting it
     const newUser = {
       fullName: fullName,
       email: email,
@@ -43,9 +47,14 @@ export default function Register() {
     // history.push(); 
   }
 
+
+ 
+
   return (
     <div className="register">
-      <p className="registerText">Register new user</p>
+      <p className="registerText">
+        Register new user <span>✖</span>
+      </p>
       <div>
         <label>Full name</label>
         <input
