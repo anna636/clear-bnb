@@ -5,7 +5,7 @@ import { ApartmentContext } from '../contexts/ApartmentContextProvider'
 
 
 export default function ApartmentSearch() {
-  const { city } = useParams()  // Gets city from url
+  const { city } = useParams()  // Gets location from url
 
   const { apartments } = useContext(ApartmentContext)
 
@@ -13,7 +13,7 @@ export default function ApartmentSearch() {
   return (
     <div className="apartment-search">
       <h1>{capitalFirstLetter(city)}</h1>
-      <ApartmentList apartments={apartments.filter((apartment) => apartment.city.toLowerCase() === city)} />
+      <ApartmentList apartments={apartments.filter((apartment) => apartment.city.toLowerCase() === city || apartment.region.toLowerCase() === city)} />
     </div>
   )
 }
