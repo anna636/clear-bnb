@@ -4,7 +4,7 @@ export default function LoginModal(props) {
 
   return (
     <div className="login-modal">
-      <h1>POPUP MODAL!</h1>
+      <span>POPUP MODAL!</span>
     </div>
   )
 }
