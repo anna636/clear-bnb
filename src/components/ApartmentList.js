@@ -4,8 +4,8 @@ const ApartmentList = ({ apartments }) => {
     <div className="apartment-list">
       {apartments.map((apartment) => (
         <div className="apartment-preview" key={apartment.id}>
-          <img src={apartment.img} alt="" />
-          <h3>{apartment.type}</h3>
+          <img src={apartment.gallery[0]} alt="" />
+          <h3>{apartment.city}</h3>
           <p>{apartment.description}</p>
         </div>
       ))}
