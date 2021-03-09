@@ -18,7 +18,6 @@ function App() {
     <div className="App">
       <Nav />
       <Home />
-      <HouseDetails/>
       <Footer />
       <ApartmentContextProvider>
       <Router>
@@ -26,6 +25,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/search/:city" component={ApartmentSearch} />
+          <Route exact path="/details/:id" component={HouseDetails} />
           <Route path="*" component={page404} />
         </Switch>
         </Router>
