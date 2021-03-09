@@ -11,7 +11,7 @@ export default function HouseDetails(props) {
     return(
         <div>
         <h1>hejsan</h1>
-        <ApartmentList apartments={apartments.filter((apartment) => apartment.city.toLowerCase() === city)} />
+        
         </div>
     )
 }   
