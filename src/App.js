@@ -5,6 +5,7 @@ import Nav from './components/Nav'
 import ApartmentSearch from './pages/ApartmentSearch';
 import Home from './pages/Home.js'
 import Footer from './components/Footer'
+import ApartmentContextProvider from './contexts/ApartmentContextProvider';
 
 function App() {
 
@@ -14,6 +15,7 @@ function App() {
 
   return (
     <div className="App">
+      <ApartmentContextProvider>
       <Router>
         <Nav />
         <Switch>
@@ -21,7 +23,8 @@ function App() {
           <Route exact path="/search/:city" component={ApartmentSearch} />
           <Route path="*" component={page404} />
         </Switch>
-      </Router>
+        </Router>
+      </ApartmentContextProvider>
     </div>
   );
 }
