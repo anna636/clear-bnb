@@ -17,7 +17,6 @@ function App() {
         <header>
           <Nav />
         </header>
-
         <main>
           <Switch>
             <Route exact path="/" component={Home} />
