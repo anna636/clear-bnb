@@ -16,9 +16,6 @@ function App() {
 
   return (
     <div className="App">
-      <Nav />
-      <Home />
-      <Footer />
       <ApartmentContextProvider>
       <Router>
         <Nav />
