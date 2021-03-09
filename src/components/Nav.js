@@ -1,6 +1,21 @@
 import '../css/Nav.css';
+import { useRef } from 'react'
+import { Link, useHistory } from 'react-router-dom'
 
 export default function Nav() {
+
+  const history = useHistory()
+
+  const location = useRef()
+
+  const searchLocation = async e => {
+    e.preventDefault() 
+
+    let userCity = location.current.value.toLowerCase()
+    history.push('/search/' + userCity) // Search by city you type in search
+  }
+
+
   return (
     <div className="nav">
       <img className="nav-logo"
@@ -15,7 +30,9 @@ export default function Nav() {
           <h3>Kom igång</h3>
         </div>
         <div className="nav-center-searchbar">
-          <input type="text"/>
+          <form onSubmit={searchLocation}>
+            <input ref={location} required type="text" placeholder="Enter a location..." />
+          </form>
           <i className="fas fa-search"></i>
         </div>
       </div>

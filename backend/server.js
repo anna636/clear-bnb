@@ -1,6 +1,6 @@
+
 global.mongoose = require("mongoose");
 const express = require("express");
-const { apartments } = require("./models/models.js");
 const app = express();
 const models = require("./models/models.js");
 
@@ -19,7 +19,7 @@ global.mongoose.connect(atlasUrl, {
 app.get("/rest/:model", async (req, res) => {
   let model = models[req.params.model];
   if (req.params.model === "apartments") {
-    let docs = await model.find().populate('amenities').exec()
+    let docs = await model.find().populate(["amenities", "ownerId"]).exec();
     res.json(docs)
     return;
   }
@@ -35,11 +35,11 @@ app.get("/rest/:model", async (req, res) => {
 
 app.get("/rest/:model/:id", async (req, res) => {
   let model = models[req.params.model];
-   if (req.params.model === "apartments") {
-     let doc = await model.findById(req.params.id).populate('amenities').exec()
-     res.json(doc);
-     return;
-   }
+  if (req.params.model === "apartments") {
+    let doc = await model.findById(req.params.id).populate(['amenities', 'ownerId']).exec()
+    res.json(doc);
+    return;
+  }
 
   let doc = await model.findById(req.params.id)
   res.json(doc);
@@ -49,7 +49,7 @@ app.get("/rest/:model/:id", async (req, res) => {
 //Post for all models except for amenities
 app.post("/rest/:model", async (req, res) => {
   let model = models[req.params.model];
- if (req.params.model === "amenities") {
+  if (req.params.model === "amenities") {
     res.json("No such request is found");
     return;
   }
@@ -83,7 +83,7 @@ app.put("/rest/:model/:id", async (req, res) => {
 
 //Add amenitie to already existing apartments by passing apartmentId and array of amenities ids
 app.put("/api/add-amenitie-to-apartment/:id", async (req, res) => {
-  
+
   let Apartment = models["apartments"];
   let Amenities = models["amenities"];
 
@@ -92,14 +92,11 @@ app.put("/api/add-amenitie-to-apartment/:id", async (req, res) => {
   for (let amenitiesId of req.body.amenitiesIds) {
     apartment.amenities.push(await Amenities.findById(amenitiesId))
   }
-  
+
 
   await apartment.save();
   res.json(apartment);
 });
-
-
-
 
 
 app.listen(3001, () => console.log("Server stated on port 3001"));
