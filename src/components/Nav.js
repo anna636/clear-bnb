@@ -1,15 +1,19 @@
 import '../css/Nav.css';
-import { useRef } from 'react'
+import { useState, useRef } from 'react'
 import { Link, useHistory } from 'react-router-dom'
+import Calendar from './Calendar';
 
 export default function Nav() {
 
   const history = useHistory()
-
   const location = useRef()
+  const [showCalendar, setShowCalendar] = useState(false)
 
   const searchLocation = async e => {
-    e.preventDefault() 
+    e.preventDefault()
+    
+    // setShowCalendar(true)
+
 
     let userSearch = location.current.value.toLowerCase()
     history.push('/search/' + userSearch) // Search by city or region you type in search
@@ -34,6 +38,9 @@ export default function Nav() {
             <input ref={location} required type="text" placeholder="Enter a location..." />
           </form>
           <i className="fas fa-search"></i>
+        </div>
+        <div className="calendar-component">
+          { showCalendar && <Calendar />}
         </div>
       </div>
       <div className="nav-right">
