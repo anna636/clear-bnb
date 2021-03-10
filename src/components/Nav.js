@@ -5,6 +5,8 @@ import Calendar from './Calendar';
 
 export default function Nav() {
 
+  // Dont show calendar if location doesnt exist
+
   const history = useHistory()
   const location = useRef()
   const [showCalendar, setShowCalendar] = useState(false)
