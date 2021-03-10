@@ -1,19 +1,32 @@
 import '../css/Nav.css';
-import { useState, useRef } from 'react'
-import { useHistory } from 'react-router-dom'
+import { useContext, useState, useRef } from 'react'
 import MyCalendar from './MyCalendar';
+import { ApartmentContext } from '../contexts/ApartmentContextProvider'
 
 export default function Nav() {
 
   // Dont show calendar if location doesnt exist!! TO DO
+
+  const { apartments } = useContext(ApartmentContext)
 
   const [showCalendar, setShowCalendar] = useState(false)
   const location = useRef()
 
   const searchLocation = async e => {
     e.preventDefault()
-    setShowCalendar(true)
+    checkLocation() && setShowCalendar(true)
+  }
 
+  function checkLocation() {
+    let tempBool = false
+    for (const apartment of apartments) {
+      if (apartment.city.toLowerCase() === location.current.value.toLowerCase() ||
+        apartment.region.toLowerCase() === location.current.value.toLowerCase()) {
+        tempBool = true
+        break
+      }
+    }
+    return tempBool
   }
 
 
