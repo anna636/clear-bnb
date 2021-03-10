@@ -10,11 +10,13 @@
   position: absolute;
   top: 50px;
   right: 205px;
-  z-index: 100;
+  z-index: 90;
   background: white;
   border: 1px solid rgb(216, 213, 213);
   border-radius: 15px;
   padding-top: 10px;
+  padding-bottom: 245px;
+  /* overflow: hidden; */
 }
 
 .login-popup-div {
@@ -30,4 +32,5 @@
   opacity: 0.5;
   margin: 4px 0 4px 0;
 }
+
 
