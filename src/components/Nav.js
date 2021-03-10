@@ -1,23 +1,19 @@
 import '../css/Nav.css';
 import { useState, useRef } from 'react'
-import { Link, useHistory } from 'react-router-dom'
-import Calendar from './Calendar';
+import { useHistory } from 'react-router-dom'
+import MyCalendar from './MyCalendar';
 
 export default function Nav() {
 
-  // Dont show calendar if location doesnt exist
+  // Dont show calendar if location doesnt exist!! TO DO
 
-  const history = useHistory() // To delete
   const [showCalendar, setShowCalendar] = useState(false)
   const location = useRef()
-  // let userSearch = location.current.value.toLowerCase()
 
   const searchLocation = async e => {
     e.preventDefault()
-
     setShowCalendar(true)
 
-    // history.push('/search/' + userSearch) // Search by city or region you type in search
   }
 
 
@@ -41,7 +37,7 @@ export default function Nav() {
           <i className="fas fa-search"></i>
         </div>
         <div className="calendar-component">
-          {showCalendar && <Calendar userSearch={location.current.value.toLowerCase()} />}
+          {showCalendar && <MyCalendar userSearch={location.current.value.toLowerCase()} />}
         </div>
       </div>
       <div className="nav-right">
