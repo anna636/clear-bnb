@@ -7,17 +7,16 @@ export default function Nav() {
 
   // Dont show calendar if location doesnt exist
 
-  const history = useHistory()
-  const location = useRef()
+  const history = useHistory() // To delete
   const [showCalendar, setShowCalendar] = useState(false)
+  const location = useRef()
+  // let userSearch = location.current.value.toLowerCase()
 
   const searchLocation = async e => {
     e.preventDefault()
-    
+
     setShowCalendar(true)
 
-
-    // let userSearch = location.current.value.toLowerCase()
     // history.push('/search/' + userSearch) // Search by city or region you type in search
   }
 
@@ -25,9 +24,9 @@ export default function Nav() {
   return (
     <div className="nav">
       <img className="nav-logo"
-           /* src="https://cdn.discordapp.com/attachments/815586944222363684/818141369045745706/logo_clearbnb01.jpg" */
-           src="https://i.imgur.com/XsXTFPI.png"
-           alt=""
+        /* src="https://cdn.discordapp.com/attachments/815586944222363684/818141369045745706/logo_clearbnb01.jpg" */
+        src="https://i.imgur.com/XsXTFPI.png"
+        alt=""
       />
       <div className="nav-center">
         <div className="nav-center-options">
@@ -42,7 +41,7 @@ export default function Nav() {
           <i className="fas fa-search"></i>
         </div>
         <div className="calendar-component">
-          { showCalendar && <Calendar />}
+          {showCalendar && <Calendar userSearch={location.current.value.toLowerCase()} />}
         </div>
       </div>
       <div className="nav-right">
