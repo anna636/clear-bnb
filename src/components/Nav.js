@@ -5,8 +5,6 @@ import { ApartmentContext } from '../contexts/ApartmentContextProvider'
 
 export default function Nav() {
 
-  // Dont show calendar if location doesnt exist!! TO DO
-
   const { apartments } = useContext(ApartmentContext)
 
   const [showCalendar, setShowCalendar] = useState(false)
