@@ -6,6 +6,7 @@ import ApartmentSearch from './pages/ApartmentSearch';
 import Home from './pages/Home.js'
 import Footer from './components/Footer'
 import ApartmentContextProvider from './contexts/ApartmentContextProvider';
+import BookingContextProvider from './contexts/BookingContextProvider';
 
 function App() {
 
@@ -16,22 +17,24 @@ function App() {
   return (
     <div className="App">
       <ApartmentContextProvider>
-      <Router>
-        <header>
-          <Nav />
-        </header>
-        <main>
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/search/:city" component={ApartmentSearch} />
-            <Route path="*" component={page404} />
-          </Switch>
-        </main>
+        <BookingContextProvider>
+          <Router>
+            <header>
+              <Nav />
+            </header>
+            <main>
+              <Switch>
+                <Route exact path="/" component={Home} />
+                <Route exact path="/search/:city" component={ApartmentSearch} />
+                <Route path="*" component={page404} />
+              </Switch>
+            </main>
 
-        <footer>
-          <Footer />
-        </footer>
-        </Router>
+            <footer>
+              <Footer />
+            </footer>
+          </Router>
+        </BookingContextProvider>
       </ApartmentContextProvider>
     </div>
   );

@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
+import { BookingContext } from '../contexts/BookingContextProvider'
 import Calendar from 'react-calendar'  // npm i react-calendar
 import { useHistory } from 'react-router-dom'
 const moment = require("moment");  // npm i moment
@@ -6,18 +7,20 @@ const moment = require("moment");  // npm i moment
 export default function ReactCalendar({ userSearch }) {
   const history = useHistory()
   const [dates, setDates] = useState() // dates is array of 2 dates
+  const { addCalendarDates } = useContext(BookingContext)
 
   const onChange = newDate => {
     setDates(newDate)
   }
 
   function next() {
-    history.push('/search/' + userSearch)
+    const getDatesArray = getDates(dates[0], dates[1])
+    addCalendarDates(getDatesArray)
 
-    console.log(getDates(dates[0], dates[1]))
+    history.push('/search/' + userSearch)
   }
 
-  //Function to get dates between 2 dates
+  //Function to get array of dates between 2 dates
   function getDates(startDate, stopDate) {
     var dateArray = [];
     var currentDate = moment(startDate);
