@@ -16,8 +16,8 @@ function App() {
 
   return (
     <div className="App">
-      <ApartmentContextProvider>
-        <BookingContextProvider>
+      <BookingContextProvider>
+        <ApartmentContextProvider>
           <Router>
             <header>
               <Nav />
@@ -34,8 +34,8 @@ function App() {
               <Footer />
             </footer>
           </Router>
-        </BookingContextProvider>
-      </ApartmentContextProvider>
+        </ApartmentContextProvider>
+      </BookingContextProvider>
     </div>
   );
 }

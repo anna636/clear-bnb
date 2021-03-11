@@ -13,7 +13,6 @@ export default function Nav() {
   const searchLocation = async e => {
     e.preventDefault()
     checkLocation() && setShowCalendar(true)
-
   }
 
   function checkLocation() {
@@ -36,7 +35,7 @@ export default function Nav() {
           <img className="nav-logo"
             /* src="https://cdn.discordapp.com/attachments/815586944222363684/818141369045745706/logo_clearbnb01.jpg" */
             src="https://i.imgur.com/XsXTFPI.png"
-            alt=""
+          alt=""
           />
           <div className="nav-center">
             <div className="nav-center-options">

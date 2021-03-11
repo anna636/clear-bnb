@@ -13,9 +13,10 @@ export default function ReactCalendar({ userSearch }) {
     setDates(newDate)
   }
 
-  function next() {
+  async function next() {
     const getDatesArray = getDates(dates[0], dates[1])
-    addCalendarDates(getDatesArray)
+    console.log(getDatesArray)
+    await addCalendarDates(getDatesArray[0])
 
     history.push('/search/' + userSearch)
   }
