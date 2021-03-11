@@ -12,27 +12,37 @@ export default function ApartmentSearch() {
 
   const { calendarDates } = useContext(BookingContext)
 
+
   function filterByLocationAndDates(location, allApartments) {
+
+    console.log(allApartments[0].availableDates)  // Check if available dates exist
+
     let filteredByLocationArray = allApartments.filter((apartment) => apartment.city.toLowerCase() === location || apartment.region.toLowerCase() === location)
     let unavailableApartments = []
 
-    for (const apartment in filteredByLocationArray) {
-      for (const date in a.availableDates) {
-        if (calendarDates.includes(date)) {
-          continue
-        }
-        else {
-          unavailableApartments.push(apartment)
-          break  // check that this doesn't stop the whole loop through apartments!!
+    for (const apartment of filteredByLocationArray) {
+      if (!apartment.availableDates.length) {
+        unavailableApartments.push(apartment)
+        continue
+      }
+      else {
+        for (const date of apartment.availableDates) {
+          if (calendarDates.includes(date)) {
+            continue
+          }
+          else {
+            unavailableApartments.push(apartment)
+            break // check that this doesn't stop the whole loop through apartments!!
+          }
         }
       }
     }
 
+    console.log('Unavailable apartments:', unavailableApartments)
 
+    let filteredByLocationAndDateArray = filteredByLocationArray.filter((ap) => !unavailableApartments.includes(ap))
 
-
-
-    return filteredByLocationArray
+    return filteredByLocationAndDateArray
   }
 
 
