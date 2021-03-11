@@ -21,7 +21,11 @@ export default function PlusMinusGuests() {
 
     const totalGuests = newGuests[0].currentValue + newGuests[1].currentValue // adults + kids can not exceed max amount guests
 
-    if (totalGuests < guest.maxValue && guest.currentValue < guest.maxValue) {
+    if (guest.id === 2) {
+      if (guest.currentValue < guest.maxValue) {
+        guest.currentValue += 1;
+      }
+    } else if (totalGuests < guest.maxValue) {
       guest.currentValue += 1;
     }
 
