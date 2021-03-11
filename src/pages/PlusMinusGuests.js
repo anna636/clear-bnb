@@ -29,6 +29,14 @@ export default function PlusMinusGuests() {
       guest.currentValue += 1;
     }
 
+    // SAME AS:
+    // if (
+    //   (guest.id === 2 && guest.currentValue < guest.maxValue)
+    //   || (guest.id !== 2 && totalGuests < guest.maxValue)
+    // ) {
+    //   guest.currentValue += 1;
+    // }
+
     setCount(newGuests)
   }
 
