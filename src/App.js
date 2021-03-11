@@ -7,9 +7,6 @@ import Home from './pages/Home.js'
 import Footer from './components/Footer'
 import ApartmentContextProvider from './contexts/ApartmentContextProvider';
 
-// Libs
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-
 function App() {
 
   const page404 = () => (
