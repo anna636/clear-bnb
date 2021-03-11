@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom'
 import { useContext, useState } from 'react'
 import { ApartmentContext } from '../contexts/ApartmentContextProvider'
+import '../css/PlusMinusGuests.css'
 
 export default function PlusMinusGuests() {
   const { id } = useParams()
@@ -40,57 +41,78 @@ export default function PlusMinusGuests() {
   return (
     <>
       {apartment &&
-        <div>
-          <h3>How many guests you want to book?</h3>
-          <p>Adults:
-            <button
-              onClick={() => buttonHandler(0, 'decr')} disabled={decrButtonEnableDisable(0)}
-            >
-              -
+        <div className="container">
+          <h3>Choose amount of guests.</h3>
+          <div className="wrapper">
+            <div className="content-left">Adults: </div>
+            <div className="buttons-right">
+              <button
+                onClick={() => buttonHandler(0, 'decr')} disabled={decrButtonEnableDisable(0)}
+                style={decrButtonEnableDisable(0) ? styles.notAllowed : styles.regular}
+              >
+                -
             </button>
-
-            {guests[0].currentValue}
-
-            <button
-              onClick={() => buttonHandler(0, 'incr')} disabled={incrButtonEnableDisable(0)}
-            >
-              +
+              <span>{guests[0].currentValue}</span>
+              <button
+                onClick={() => buttonHandler(0, 'incr')} disabled={incrButtonEnableDisable(0)}
+                style={incrButtonEnableDisable(0) ? styles.notAllowed : styles.regular}
+              >
+                +
             </button>
-          </p>
+            </div>
 
-          <p>Children (Age 2-12):
-            <button
-              onClick={() => buttonHandler(1, 'decr')} disabled={decrButtonEnableDisable(1)}
-            >
-              -
+
+            <div className="content-left">Children <br />(Age 2-12): </div>
+            <div className="buttons-right">
+              <button
+                onClick={() => buttonHandler(1, 'decr')} disabled={decrButtonEnableDisable(1)}
+                style={decrButtonEnableDisable(1) ? styles.notAllowed : styles.regular}
+              >
+                -
             </button>
-            {guests[1].currentValue}
-            <button
-              onClick={() => buttonHandler(1, 'incr')} disabled={incrButtonEnableDisable(1)}
-            >
-              +
+              <span>{guests[1].currentValue}</span>
+              <button
+                onClick={() => buttonHandler(1, 'incr')} disabled={incrButtonEnableDisable(1)}
+                style={incrButtonEnableDisable(1) ? styles.notAllowed : styles.regular}
+              >
+                +
             </button>
-          </p>
+            </div>
 
 
-
-          <p>Infants (Under 2):
-            <button
-              onClick={() => buttonHandler(2, 'decr')} disabled={decrButtonEnableDisable(2)}
-            >
-              -
+            <div className="content-left">Infants <br />(Under 2):</div>
+            <div className="buttons-right">
+              <button
+                onClick={() => buttonHandler(2, 'decr')} disabled={decrButtonEnableDisable(2)}
+                style={decrButtonEnableDisable(2) ? styles.notAllowed : styles.regular}
+              >
+                -
             </button>
-            {guests[2].currentValue}
-            <button
-              onClick={() => buttonHandler(2, 'incr')} disabled={incrButtonEnableDisable(2)}
-            >
-              +
+              <span>{guests[2].currentValue}</span>
+              <button
+                onClick={() => buttonHandler(2, 'incr')} disabled={incrButtonEnableDisable(2)}
+                style={incrButtonEnableDisable(2) ? styles.notAllowed : styles.regular}
+              >
+                +
             </button>
-          </p>
-
-          <p><br />{apartment.maxGuests} guests maximum. <br />Infants don't count towards the the number of guests, but could affect final price. <br /> Max 5 infants.</p>
-        </div>
+            </div>
+          </div> {/* end of wrapper div */}
+          <div className="content-under"><p>{apartment.maxGuests} guests maximum. </p><p>Infants don't count towards the the number of guests, but could affect final price. </p>
+          </div>
+        </div> // end of container div
       }
     </>
   )
+}
+
+const styles = {
+  notAllowed: {
+    cursor: 'not-allowed',
+    opacity: '40%'
+
+  },
+  regular: {
+    cursor: 'pointer',
+    opacity: '100%'
+  }
 }
