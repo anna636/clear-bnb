@@ -7,8 +7,8 @@ h2, h4, button {
 .banner {
   /* background: url("https://bostadsrattsnytt.se/img/containers/main/img/17476103-lagenheter.jpg/87eec7199a229dd44681c3ca0d1a2e23.jpg") no-repeat center center fixed; */
   background-image: url('../imgs/banner.jpg');
-  height: 50vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -18,14 +18,19 @@ h2, h4, button {
 .banner-info {
   background-color: black;
   color: white;
-  width: 300px;
-  padding: 50px;
+  width: 30%;
+  padding: 40px;
   height: 100%;
   text-align: left;
 }
 
+.banner-info > h2 {
+  margin-top: 40px;
+  font-size: 1.2em;
+}
 .banner-info > h4 {
   margin-top: 40px;
+  font-size: 1em;
 }
 
 .banner-info-btn {
@@ -33,6 +38,6 @@ h2, h4, button {
   border: none;
   border-radius: 15px;
   padding: 4px 10px;
-  margin-top: 100px;
-  margin-left: 15px;
+  margin: 50px auto 0 auto;
+
 }
