@@ -8,8 +8,8 @@ export default function PlusMinusGuests() {
   const apartment = apartments.find(el => el._id === id)
 
   const [guests, setCount] = useState([
-    { id: 0, currentValue: 1, maxValue: null, minValue: 1, disabled: false },
-    { id: 1, currentValue: 0, maxValue: null, minValue: 0, disabled: false },
+    { id: 0, currentValue: 1, maxValue: null, minValue: 1 },
+    { id: 1, currentValue: 0, maxValue: null, minValue: 0 },
     { id: 2, currentValue: 0, maxValue: 5, minValue: 0 }
   ])
 
@@ -25,29 +25,22 @@ export default function PlusMinusGuests() {
     setCount(newGuests)
   }
 
-  const decrButtonEnableDisable = param => {
+  const decrButtonEnableDisable = (param) => {
     const guest = guests[param]
     return guest.currentValue <= guest.minValue ? true : false
   }
 
-  const incrButtonEnableDisable = param => {
-
+  const incrButtonEnableDisable = (param) => {
     const guest = guests[param]
     if (guest.id !== 2) guest.maxValue = apartment.maxGuests //max 5 infants
 
     const totalGuests = guests[0].currentValue + guests[1].currentValue // adults + kids can not exceed max amount guests
 
     if (guest.id === 2) {
-      if (guest.currentValue < guest.maxValue) {
-        return false;
-      } else {
-        return true;
-      }
-    } else if (totalGuests < guest.maxValue) {
-      return false;
-    } else {
-      return true;
-    }
+      return guest.currentValue < guest.maxValue ? false : true;
+
+    } else
+      return totalGuests < guest.maxValue ? false : true
   }
 
 
