@@ -1,19 +1,19 @@
 import { createContext, useState, useEffect } from "react";
 
-export const ApartmentContext=createContext()
+export const ApartmentContext = createContext()
 
 export default function ApartmentContextProvider(props) {
 
   const [apartments, setApartments] = useState([]);
 
-   const fetchApartments = async () => {
-     let res = await fetch("/rest/apartments");
-     res = await res.json();
-     setApartments(res);
-   };
+  const fetchApartments = async () => {
+    let res = await fetch("/rest/apartments");
+    res = await res.json();
+    setApartments(res);
+  };
 
   useEffect(() => {
-    
+
     fetchApartments();
   }, []);
 
@@ -21,6 +21,8 @@ export default function ApartmentContextProvider(props) {
   const values = {
     apartments
   }
+
+
 
   return (
     <ApartmentContext.Provider value={values}>
