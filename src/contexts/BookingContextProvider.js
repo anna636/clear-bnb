@@ -12,10 +12,7 @@ export default function BookingContextProvider(props) {
 
 
   const addCalendarDates = newDates => {
-    setCalendarDates([...calendarDates, newDates])
-
-    console.log('From bookingcontext, newdates: ', newDates)
-    console.log('From bookingcontext: calendarDates: ', calendarDates)
+    setCalendarDates(newDates)
   }
 
   // Sends a new booking to backend which saves it

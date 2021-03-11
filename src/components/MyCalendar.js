@@ -6,17 +6,17 @@ const moment = require("moment");  // npm i moment
 
 export default function ReactCalendar({ userSearch }) {
   const history = useHistory()
-  const [dates, setDates] = useState() // dates is array of 2 dates
+  const [dates, setDates] = useState() // dates is array of 2 dates picked
   const { addCalendarDates } = useContext(BookingContext)
 
   const onChange = newDate => {
     setDates(newDate)
   }
 
-  async function next() {
+  function next() {
     const getDatesArray = getDates(dates[0], dates[1])
     console.log(getDatesArray)
-    await addCalendarDates(getDatesArray[0])
+    addCalendarDates(getDatesArray)
 
     history.push('/search/' + userSearch)
   }
