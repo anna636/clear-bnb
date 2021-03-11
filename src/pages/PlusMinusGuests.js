@@ -14,13 +14,12 @@ export default function PlusMinusGuests() {
   ])
 
   const increment = (param) => {
-    // if (apartment && defaultGuests < apartment.maxGuests)
     const newGuests = [...guests]
     const guest = newGuests.find(g => g.id === param)
 
-    if (guest.id !== 2) guest.maxValue = apartment.maxGuests
+    if (guest.id !== 2) guest.maxValue = apartment.maxGuests //max 5 infants
 
-    const totalGuests = newGuests[0].currentValue + newGuests[1].currentValue
+    const totalGuests = newGuests[0].currentValue + newGuests[1].currentValue // adults + kids can not exceed max amount guests
 
     if (totalGuests < guest.maxValue && guest.currentValue < guest.maxValue) {
       guest.currentValue += 1;
