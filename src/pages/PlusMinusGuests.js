@@ -6,14 +6,21 @@ export default function PlusMinusGuests() {
   const { id } = useParams()
   const { apartments } = useContext(ApartmentContext)
   const apartment = apartments.find(el => el._id === id)
+  const defaultGuests = 1
 
   console.log(id, apartment)
 
   return (
-    <div>
-      <p>see if it works?
-      {/* {apartment.maxGuests} */}
-      </p>
-    </div>
+    <>
+      { apartment &&
+        <div>
+          {/* <p>How many guests you want to book?</p>
+          <p>
+
+          </p> */}
+          {apartment.maxGuests}
+        </div>
+      }
+    </>
   )
 }
