@@ -13,15 +13,9 @@ export default function PlusMinusGuests() {
     { id: 2, currentValue: 0, maxValue: 5, minValue: 0 }
   ])
 
-  const decrButtonHandler = (param) => {
+  const buttonHandler = (param, operator) => {
     const newGuests = [...guests]
-    newGuests[param].currentValue -= 1
-    setCount(newGuests)
-  }
-
-  const incrButtonHandler = (param) => {
-    const newGuests = [...guests]
-    newGuests[param].currentValue += 1
+    operator === 'decr' ? newGuests[param].currentValue -= 1 : newGuests[param].currentValue += 1
     setCount(newGuests)
   }
 
@@ -38,7 +32,6 @@ export default function PlusMinusGuests() {
 
     if (guest.id === 2) {
       return guest.currentValue < guest.maxValue ? false : true;
-
     } else
       return totalGuests < guest.maxValue ? false : true
   }
@@ -51,8 +44,7 @@ export default function PlusMinusGuests() {
           <h3>How many guests you want to book?</h3>
           <p>Adults:
             <button
-              onClick={() => decrButtonHandler(0)}
-              disabled={decrButtonEnableDisable(0)}
+              onClick={() => buttonHandler(0, 'decr')} disabled={decrButtonEnableDisable(0)}
             >
               -
             </button>
@@ -60,8 +52,7 @@ export default function PlusMinusGuests() {
             {guests[0].currentValue}
 
             <button
-              onClick={() => incrButtonHandler(0)}
-              disabled={incrButtonEnableDisable(0)}
+              onClick={() => buttonHandler(0, 'incr')} disabled={incrButtonEnableDisable(0)}
             >
               +
             </button>
@@ -69,15 +60,13 @@ export default function PlusMinusGuests() {
 
           <p>Children (Age 2-12):
             <button
-              onClick={() => decrButtonHandler(1)}
-              disabled={decrButtonEnableDisable(1)}
+              onClick={() => buttonHandler(1, 'decr')} disabled={decrButtonEnableDisable(1)}
             >
               -
             </button>
             {guests[1].currentValue}
             <button
-              onClick={() => incrButtonHandler(1)}
-              disabled={incrButtonEnableDisable(1)}
+              onClick={() => buttonHandler(1, 'incr')} disabled={incrButtonEnableDisable(1)}
             >
               +
             </button>
@@ -87,15 +76,13 @@ export default function PlusMinusGuests() {
 
           <p>Infants (Under 2):
             <button
-              onClick={() => decrButtonHandler(2)}
-              disabled={decrButtonEnableDisable(2)}
+              onClick={() => buttonHandler(2, 'decr')} disabled={decrButtonEnableDisable(2)}
             >
               -
             </button>
             {guests[2].currentValue}
             <button
-              onClick={() => incrButtonHandler(2)}
-              disabled={incrButtonEnableDisable(2)}
+              onClick={() => buttonHandler(2, 'incr')} disabled={incrButtonEnableDisable(2)}
             >
               +
             </button>
