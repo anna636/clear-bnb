@@ -12,12 +12,17 @@ export default function ApartmentSearch() {
 
   const { calendarDates } = useContext(BookingContext)
 
+  function filterByLocation(location, allApartments) {
+    let filteredByLocationArray = allApartments.filter((apartment) => apartment.city.toLowerCase() === location || apartment.region.toLowerCase() === location)
+    return filteredByLocationArray
+  }
+
 
   return (
     <div className="apartment-search">
+      <h3>{calendarDates[0]} to {calendarDates[calendarDates.length - 1]}</h3>
       <h1>{capitalFirstLetter(city)}</h1>
-      <ApartmentList apartments={apartments.filter((apartment) => apartment.city.toLowerCase() === city || apartment.region.toLowerCase() === city)} />
-      <h3>**TEST for calendarDates**{calendarDates}</h3>
+      <ApartmentList apartments={filterByLocation(city, apartments)} />
     </div>
   )
 }
