@@ -23,7 +23,7 @@ export default function ReactCalendar({ userSearch }) {
         value={date}
         selectRange={true}
       />
-      <button onClick={next}>Next</button>
+      <button className="calendarNext" onClick={next}>Next</button>
       <div>
         <p>Just a check that it works: </p>
         {date &&
