@@ -5,8 +5,11 @@ export const BookingContext = createContext()
 
 export default function BookingContextProvider(props) { 
 
-  // Reactive state to store bookings, with empty array as start value
-  const [] = useState([])
+  
+  const [bookings, setBookings] = useState([])
+
+  const [dates, setDates] = useState([])
+
 
   // Sends a new booking to backend which saves it
   const addBooking = async booking => { 
