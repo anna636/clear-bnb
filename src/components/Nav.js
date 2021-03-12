@@ -33,7 +33,7 @@ export default function Nav() {
   }
 
   return (
-    <div className={showCalendar ? "nav black": "nav"}>
+    <div className="nav">
       <img
         className="nav-logo"
         /* src="https://cdn.discordapp.com/attachments/815586944222363684/818141369045745706/logo_clearbnb01.jpg" */
