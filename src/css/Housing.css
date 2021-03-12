@@ -1,1 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+.vertical-line {
+  width: 98%;
+  height: 1px;
+  background: rgb(209, 209, 209);
+  margin: 20px auto;
+}

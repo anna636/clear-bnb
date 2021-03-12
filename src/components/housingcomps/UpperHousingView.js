@@ -5,7 +5,6 @@ import { useContext } from 'react'
 export default function UpperHousingView(props) {
   const {apartments} = useContext(HousingContext);
 
-
   return (
     <div className="upper-housing-container">
       <div>
