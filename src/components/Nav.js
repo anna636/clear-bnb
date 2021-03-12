@@ -13,6 +13,7 @@ export default function Nav() {
   const searchLocation = async e => {
     e.preventDefault()
     checkLocation() && setShowCalendar(true)
+    console.log(showCalendar);
   }
 
   function checkLocation() {
@@ -27,6 +28,9 @@ export default function Nav() {
     return tempBool
   }
 
+  function hideCalendar() {
+    setShowCalendar(false)
+  }
 
   return (
     <div className={showCalendar ? "nav black": "nav"}>
@@ -59,16 +63,16 @@ export default function Nav() {
         <p>Logga in</p>
         <i className="far fa-user-circle"></i>
       </div>
-      <>
+      <div>
         {showCalendar && (
           <div className="calendar-component">
-            <div className="mySpan"><span>X</span></div>
+            <div className="mySpan"><span onClick={hideCalendar}>X</span></div>
             <p className="selectDates">Select dates</p>
             
             <MyCalendar userSearch={location.current.value.toLowerCase()} />
           </div>
         )}
-      </>
+      </div>
     </div>
   );
 }
