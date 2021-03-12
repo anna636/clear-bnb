@@ -1,4 +1,5 @@
 import "../css/Nav.css";
+import LoginModal from './LoginModal'
 import { useContext, useState, useRef } from "react";
 import MyCalendar from "./MyCalendar";
 import { ApartmentContext } from "../contexts/ApartmentContextProvider";
@@ -7,6 +8,7 @@ export default function Nav() {
   const { apartments } = useContext(ApartmentContext);
 
   const [showCalendar, setShowCalendar] = useState(false);
+  const [loginDisplay, setLoginDisplay] = useState(false);
   const location = useRef();
 
   const searchLocation = async (e) => {
@@ -47,6 +49,8 @@ export default function Nav() {
           <h3>Kom igång</h3>
         </div>
         <div className="nav-center-searchbar">
+
+
           <form onSubmit={searchLocation}>
             <input
               ref={location}
@@ -60,8 +64,22 @@ export default function Nav() {
       </div>
 
       <div className="nav-right">
-        <p>Logga in</p>
-        <i className="far fa-user-circle"></i>
+          {/* <p>Logga in</p> */}
+        <div className="flex-container">
+          <button className="login-btn"
+            onClick={() => {
+              setLoginDisplay(!loginDisplay)
+            }}>
+            <div className="login-btn-icons-container">
+              <i className="fas fa-bars"></i>
+              <i className="far fa-user-circle"></i>
+            </div>
+          </button>
+        </div>
+        {loginDisplay && <LoginModal />}
+    
+
+        
       </div>
       <>
         {showCalendar && (

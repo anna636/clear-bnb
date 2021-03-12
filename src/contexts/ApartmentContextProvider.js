@@ -22,6 +22,8 @@ export default function ApartmentContextProvider(props) {
     apartments
   }
 
+
+
   return (
     <ApartmentContext.Provider value={values}>
       {props.children}

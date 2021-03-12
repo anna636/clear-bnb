@@ -83,13 +83,10 @@ h3 {
 }
 
 .nav-right {
-  margin-top: 20px;
   display: flex;
+  justify-content: center;
   align-items: center;
-  width: 15vw;
-  gap: 1em;
-  position: relative;
-  left: 100px;
+  margin-right: 10px;
 }
 
 .nav-right > p {
@@ -125,4 +122,32 @@ h3 {
   font-size:30px;
   font-weight: bold;
   padding:2vh;
+}
+.login-btn {
+  border-radius: 999px;
+  /* border: 1px solid lightgray; */
+  
+  border: none;
+  text-align: center;
+  outline: none;
+  cursor: pointer;
+  background-color: rgb(230, 230, 230);
+
+}
+
+.login-btn-icons-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 5px;
+  font-size: 20px;
+}
+
+.login-btn-icons-container > i {
+  padding: 3px;
+}
+
+.login-btn:hover {
+  opacity: 0.5;
 }
