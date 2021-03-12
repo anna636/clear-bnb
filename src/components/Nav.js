@@ -1,41 +1,42 @@
-import '../css/Nav.css';
-import { useContext, useState, useRef } from 'react'
-import MyCalendar from './MyCalendar';
-import { ApartmentContext } from '../contexts/ApartmentContextProvider'
+import "../css/Nav.css";
+import { useContext, useState, useRef } from "react";
+import MyCalendar from "./MyCalendar";
+import { ApartmentContext } from "../contexts/ApartmentContextProvider";
 
 export default function Nav() {
+  const { apartments } = useContext(ApartmentContext);
 
-  const { apartments } = useContext(ApartmentContext)
+  const [showCalendar, setShowCalendar] = useState(false);
+  const location = useRef();
 
-  const [showCalendar, setShowCalendar] = useState(false)
-  const location = useRef()
-
-  const searchLocation = async e => {
-    e.preventDefault()
-    checkLocation() && setShowCalendar(true)
-  }
+  const searchLocation = async (e) => {
+    e.preventDefault();
+    checkLocation() && setShowCalendar(true);
+  };
 
   function checkLocation() {
-    let tempBool = false
+    let tempBool = false;
     for (const apartment of apartments) {
-      if (apartment.city.toLowerCase() === location.current.value.toLowerCase() ||
-        apartment.region.toLowerCase() === location.current.value.toLowerCase()) {
-        tempBool = true
-        break
+      if (
+        apartment.city.toLowerCase() === location.current.value.toLowerCase() ||
+        apartment.region.toLowerCase() === location.current.value.toLowerCase()
+      ) {
+        tempBool = true;
+        break;
       }
     }
-    return tempBool
+    return tempBool;
   }
-
 
   return (
     <>
-      { apartments &&
+      {apartments && (
         <div className="nav">
-          <img className="nav-logo"
+          <img
+            className="nav-logo"
             /* src="https://cdn.discordapp.com/attachments/815586944222363684/818141369045745706/logo_clearbnb01.jpg" */
             src="https://i.imgur.com/XsXTFPI.png"
-          alt=""
+            alt=""
           />
           <div className="nav-center">
             <div className="nav-center-options">
@@ -45,12 +46,19 @@ export default function Nav() {
             </div>
             <div className="nav-center-searchbar">
               <form onSubmit={searchLocation}>
-                <input ref={location} required type="text" placeholder="Enter a location..." />
+                <input
+                  ref={location}
+                  required
+                  type="text"
+                  placeholder="Enter a location..."
+                />
               </form>
               <i className="fas fa-search"></i>
             </div>
             <div className="calendar-component">
-              {showCalendar && <MyCalendar userSearch={location.current.value.toLowerCase()} />}
+              {showCalendar && (
+                <MyCalendar userSearch={location.current.value.toLowerCase()} />
+              )}
             </div>
           </div>
           <div className="nav-right">
@@ -58,7 +66,7 @@ export default function Nav() {
             <i className="far fa-user-circle"></i>
           </div>
         </div>
-      }
+      )}
     </>
-  )
+  );
 }
