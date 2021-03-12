@@ -32,7 +32,7 @@ function getDates(startDate, stopDate) {
 app.get("/rest/:model", async (req, res) => {
   let model = models[req.params.model];
   if (req.params.model === "apartments") {
-    let docs = await model.find().populate(["amenities", "ownerId"]).exec();  // merge wanted to trash populate "ownerId"
+    let docs = await model.find().populate(["amenities", "ownerId", "availableDates"]).exec();  // merge wanted to trash populate "ownerId"
     res.json(docs)
     return;
   }

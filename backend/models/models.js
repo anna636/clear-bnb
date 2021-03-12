@@ -54,11 +54,10 @@ const Apartment = mongoose.model("Apartment", {
       ref: "Amenities",
     }
   ],
-
   availableDates: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "AvailableDates"
+      ref: "AvailableDates",
     }
   ]
 });

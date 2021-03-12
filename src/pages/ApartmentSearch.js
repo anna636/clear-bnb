@@ -3,6 +3,7 @@ import { useContext } from 'react'
 import ApartmentList from "../components/ApartmentList";
 import { ApartmentContext } from '../contexts/ApartmentContextProvider'
 import { BookingContext } from '../contexts/BookingContextProvider';
+const moment = require("moment");  // npm i moment
 
 
 export default function ApartmentSearch() {
@@ -11,6 +12,18 @@ export default function ApartmentSearch() {
   const { apartments } = useContext(ApartmentContext)
 
   const { calendarDates } = useContext(BookingContext)
+
+
+  function getDates(startDate, stopDate) {
+    var dateArray = [];
+    var currentDate = moment(startDate);
+    var stopDate = moment(stopDate);
+    while (currentDate <= stopDate) {
+      dateArray.push(moment(currentDate).format("YYYY-MM-DD"));
+      currentDate = moment(currentDate).add(1, "days");
+    }
+    return dateArray;
+  }
 
 
   function filterByLocationAndDates(location, allApartments) {
@@ -26,14 +39,19 @@ export default function ApartmentSearch() {
         continue
       }
       else {
-        for (const date of apartment.availableDates) {
+
+        let apartmentDates = getDates(apartment.availableDates.availableStartDate, apartment.availableDates.availableEndDate)
+
+        for (const date of apartmentDates) {
+          console.log(date)
           if (calendarDates.includes(date)) {
+            console.log('Date is available')
             continue
           }
-          else {
-            unavailableApartments.push(apartment)
-            break // check that this doesn't stop the whole loop through apartments!!
-          }
+          // else {
+          //   unavailableApartments.push(apartment)
+          //   break // check that this doesn't stop the whole loop through apartments!!
+          // }
         }
       }
     }
