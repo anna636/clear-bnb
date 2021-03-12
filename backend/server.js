@@ -44,42 +44,32 @@ app.get("/rest/:model", async (req, res) => {
   res.json(docs);
 });
 
-//Find retunerar arraaaaaay!!!!!!!
-app.post("/api/new-booking", async (req, res) => {
-  let Booking = models["bookings"];
-  let AvailableDates = models["availableDates"];
-  let booking = new Booking(req.body); //Selecting sent booking
 
-  let bookingStartDate = booking.startDate; //Selecting booking dates
-  let bookingEndDate = booking.endDate;
-  //await booking.save();  //Sparar booking
 
-  //Finding available dates for the apartment
-  AvailableDates.find({ apartmentId: booking.apartmentId }, function (err, docs) {
-    if (err) {
-      res.send(err);
-      
-    }
-    const apartmentDates = docs[0]; //Selecting dates will be booked and not available
-    const apartmentDatesDiff = getDates(
-      apartmentDates.availableStartDate,
-      apartmentDates.availableEndDate
-    );
-    const bookingDatesDiff = getDates(bookingStartDate, bookingEndDate);
+app.put("/api/update-dates/:id", async (req, res) => {
+  //Send id of a booking
+  let Booking = models['bookings']
+  let booking = await Booking.findById(req.params.id) //Finding booking
 
-    const unavailableDates = [];
+   let Apartment = models["apartments"];
+  let apartment = await Apartment.findById(booking.apartmentId); //Finding apartment
 
-    for (let date of apartmentDatesDiff) {
-      for (let bookingDate of bookingDatesDiff) {
-        if (date === bookingDate) {
-          unavailableDates.push(date);
-        }
-      }
-    }
-    res.json(unavailableDates)
-   
-  });
+  let newDates = getDates(booking.startDate, booking.endDate); //Getting all dates of booking
+ 
+
+  //Pushing dates is bookedDates if they're not there yet
+  for (date of newDates) {
+    if (!apartment.bookedDates.includes(date)) {
+      apartment.bookedDates.push(date);
+    }  
+  }
+
+  await apartment.save()
+  
+  res.json(apartment);
 });
+
+
 
 //Post for all models except for amenities
 app.post("/rest/:model", async (req, res) => {

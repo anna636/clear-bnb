@@ -51,9 +51,15 @@ const Apartment = mongoose.model("Apartment", {
   availableDates: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "AvailableDates"
-    }
-  ]
+      ref: "AvailableDates",
+    },
+  ],
+
+  bookedDates: [
+    {
+      type: String,
+    },
+  ],
 });
 
 const Booking = mongoose.model("Booking", {
