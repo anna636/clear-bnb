@@ -93,7 +93,32 @@ app.post("/api/new-booking", async (req, res) => {
     res.json(unavailableDates)
    
   });
+
+
+app.put("/api/update-dates/:id", async (req, res) => {
+  //Send id of a booking
+  let Booking = models['bookings']
+  let booking = await Booking.findById(req.params.id) //Finding booking
+
+   let Apartment = models["apartments"];
+  let apartment = await Apartment.findById(booking.apartmentId); //Finding apartment
+
+  let newDates = getDates(booking.startDate, booking.endDate); //Getting all dates of booking
+ 
+
+  //Pushing dates is bookedDates if they're not there yet
+  for (date of newDates) {
+    if (!apartment.bookedDates.includes(date)) {
+      apartment.bookedDates.push(date);
+    }  
+  }
+
+  await apartment.save()
+  
+  res.json(apartment);
 });
+
+
 
 //Post for all models except for amenities
 app.post("/rest/:model", async (req, res) => {
