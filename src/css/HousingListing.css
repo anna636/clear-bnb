@@ -4,7 +4,6 @@
 }
 
 .housing-listing-container {
-  cursor: pointer;
   display: grid;
   grid-template-columns: auto auto auto;
   gap: 4em;
@@ -12,6 +11,7 @@
 }
 
 .housing-object {
+  cursor: pointer;
   border-radius: 15px;
   box-shadow: 0 0 20px 5px rgba(179, 179, 179, 0.3);
 }
@@ -29,14 +29,35 @@
   justify-content: space-between;
   align-items: center;
   padding: 10px;
+  padding-bottom: 0;
+}
+
+.renter {
+  display: flex;
+  align-items: center;
+  gap: .5em;
+  margin-bottom: .5em;
 }
 
 .housing-info-bottom {
-  padding: 10px;
+  padding: 5px 10px 0 10px;
+}
+
+.housing-description {
+  margin-bottom: 5px;
+}
+
+.housing-description > p {
+  font-weight: 100;
+  font-size: 13px;
 }
 
 .fa-user-circle {
   font-size: 30px;
   margin-right: 10px;
   color: rgb(131, 131, 131);
+}
+
+.housing-price {
+  margin: 0.5rem 0 0.5rem 0;
 }

@@ -4,6 +4,18 @@ import '../../css/HousingListing.css'
 
 export default function HousingListing() {
   const {apartments} = useContext(HousingContext);
+
+  function truncate(str, length = 200) {
+    if(typeof(str) === 'string') {
+      let trimmed = str.length > length ? str.substring(0, length - 3) + '...' : str;
+      return trimmed;
+    }
+    
+    return '';
+  };
+
+  
+
   // subcomponent
   const housingObj = housing => (
     <div className="housing-object">
@@ -16,19 +28,21 @@ export default function HousingListing() {
       <div className="housing-info">
         <div className="housing-info-upper">
           <div>
-            <h2>{housing.city}</h2>
+            <h2><i className="fas fa-map-pin"></i> {housing.city}</h2>
             <h4>{housing.region}</h4>
           </div>
-          <div>
+          <div className="renter">
+            <h6>{housing.objectId}</h6>
             <i className="fas fa-user-circle"></i>
           </div>
         </div>
         <div className="housing-info-bottom">
           <h6>Max guests: {housing.maxGuests}</h6>
           <div className="housing-description">
-            <p>{housing.description}</p>
+            {/* <p>{housing.description}</p> */}
+            <p>{truncate(housing.description)}</p>
           </div>
-          <h5>Price: {housing.pricePerDay}SEK</h5>
+          <h5 className="housing-price">Price: {housing.pricePerDay}SEK</h5>
         </div>
       </div>
     </div>
