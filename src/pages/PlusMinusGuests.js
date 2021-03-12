@@ -98,6 +98,8 @@ export default function PlusMinusGuests() {
             </div>
           </div> {/* end of wrapper div */}
           <div className="content-under"><p>{apartment.maxGuests} guests maximum. </p><p>Infants don't count towards the the number of guests, but could affect final price. </p>
+            <button id="cancel">Cancel</button>
+            <button id="save">Save</button>
           </div>
         </div> // end of container div
       }

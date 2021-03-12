@@ -1,3 +1,8 @@
+/* to remove border around button after clicking on it */
+*:focus {
+    outline: none;
+}
+
 .container {
   width: 500px;
 }
@@ -31,3 +36,20 @@ grid-template-columns: repeat(2, auto);
 .content-under{
 padding: 10px;
 }
+
+#cancel {
+  background: #fff;
+  border: 0;
+  text-decoration: underline;
+  margin: 20px;
+  cursor: pointer;
+}
+
+#save {
+  background: #000;
+  color: #fff;
+  border: 1px solid grey;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
