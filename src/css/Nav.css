@@ -76,7 +76,10 @@ header {
 }
 
 .nav-right {
+  display: flex;
+  justify-content: center;
   align-items: center;
+  margin-right: 10px;
 }
 
 .nav-right > p {
@@ -90,4 +93,17 @@ header {
 
 .nav-right > .fa-user-circle {
   font-size: 35px;
+}
+
+.login-btn {
+  padding: 5px 20px;
+  border-radius: 999px;
+  /* border: 1px solid lightgray; */
+  
+  border: none;
+  text-align: center;
+  outline: none;
+  cursor: pointer;
+  background-color: rgb(230, 230, 230);
+
 }
