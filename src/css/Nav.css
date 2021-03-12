@@ -96,7 +96,6 @@ header {
 }
 
 .login-btn {
-  padding: 5px 20px;
   border-radius: 999px;
   /* border: 1px solid lightgray; */
   
@@ -106,4 +105,21 @@ header {
   cursor: pointer;
   background-color: rgb(230, 230, 230);
 
+}
+
+.login-btn-icons-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 5px;
+  font-size: 20px;
+}
+
+.login-btn-icons-container > i {
+  padding: 3px;
+}
+
+.login-btn:hover {
+  opacity: 0.5;
 }
