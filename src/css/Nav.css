@@ -9,6 +9,9 @@ header {
   position: sticky;
   top: 0;
   z-index: 100;
+  width: 100%;
+  flex-wrap: wrap;
+  height:14vh;
 }
 
 .nav {
@@ -69,6 +72,15 @@ header {
   font-size: medium;
   width: 100%;
   font-family: 'Poppins', sans-serif;
+ 
+
+}
+
+.nav-center-searchbar input{
+ border:none;
+ outline:none;
+ width:60vh;
+ font-size: 15px;
 }
 
 .nav-center-searchbar > input:focus{
@@ -90,4 +102,26 @@ header {
 
 .nav-right > .fa-user-circle {
   font-size: 35px;
+}
+
+
+.calendar-component{
+  margin-top:3vh;
+   padding-bottom:3vh;
+   text-align: center;
+   background-color: white;
+  margin-left:38vh;
+  
+}
+
+.mySpan{
+  float:right;
+  padding:2vh;
+  cursor: pointer;
+}
+
+.selectDates{
+  font-size:30px;
+  font-weight: bold;
+  padding:2vh;
 }
