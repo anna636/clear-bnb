@@ -63,7 +63,7 @@ export default function Nav() {
         <p>Logga in</p>
         <i className="far fa-user-circle"></i>
       </div>
-      <div>
+      <>
         {showCalendar && (
           <div className="calendar-component">
             <div className="mySpan"><span onClick={hideCalendar}>X</span></div>
@@ -72,7 +72,7 @@ export default function Nav() {
             <MyCalendar userSearch={location.current.value.toLowerCase()} />
           </div>
         )}
-      </div>
+      </>
     </div>
   );
 }
