@@ -1,11 +1,12 @@
 const express = require("express");
 global.mongoose = require("mongoose");
-global.app = express();
+const app = express();
 
+// import models
 const models = require("./models/models.js");
-require('./auth.js')
 
-const app = global.app;
+// import controllers
+const authHandler = require('./auth.js')
 
 app.use(express.json());
 
@@ -101,6 +102,9 @@ app.put("/api/add-amenitie-to-apartment/:id", async (req, res) => {
   await apartment.save();
   res.json(apartment);
 });
+
+// fire controllers
+authHandler(app, models)
 
 
 app.listen(3001, () => console.log("Server stated on port 3001"));

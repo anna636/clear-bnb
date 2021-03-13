@@ -1,18 +1,12 @@
-const app = global.app;
-const express = require("express");
-
 const session = require('express-session');
 const connectMongo = require('connect-mongo')(session);
-
 const crypto = require('crypto');
-const models = require("./models/models.js");
 
-const User = models.users;
-const secret = 'H!#45i12ip154?31!+';
+module.exports = function (app, models) {
 
-app.use(express.json());
+  const User = models.users;
+  const secret = 'H!#45i12ip154?31!+';
 
-function authLogic() {
   app.use(session({
     secret: 'very secret one', // choose your own...
     resave: false,
@@ -105,8 +99,4 @@ function authLogic() {
     }
   });
 
-}
-
-module.exports = {
-  authLogic: authLogic()
-}
+} //end of module.exports
