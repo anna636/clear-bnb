@@ -28,33 +28,20 @@ export default function ApartmentSearch() {
 
   function filterByLocationAndDates(location, allApartments) {
 
-    console.log(allApartments[0].availableDates)  // Check if available dates exist
-
     let filteredByLocationArray = allApartments.filter((apartment) => apartment.city.toLowerCase() === location || apartment.region.toLowerCase() === location)
     let unavailableApartments = []
 
     for (const apartment of filteredByLocationArray) {
-      if (!apartment.availableDates.length) {
-        unavailableApartments.push(apartment)
-        continue
-      }
-      else {
-
-        let apartmentDates = getDates(apartment.availableDates.availableStartDate, apartment.availableDates.availableEndDate)
-
-        for (const date of apartmentDates) {
-          console.log(date)
-          if (calendarDates.includes(date)) {
-            console.log('Date is available')
-            continue
-          }
-          // else {
-          //   unavailableApartments.push(apartment)
-          //   break // check that this doesn't stop the whole loop through apartments!!
-          // }
+      for (const bookeddate of apartment.bookedDates) {
+        if (calendarDates.includes(bookeddate)) {
+          unavailableApartments.push(apartment)
+          break  // check this doesn't break whole apartments loop!!
         }
       }
     }
+
+    // Maybe add a field to apartment, boolean availableToRent? On a timer..?
+
 
     console.log('Unavailable apartments:', unavailableApartments)
 
