@@ -2,12 +2,12 @@
 
 .apartment-list {
   display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  gap: 10px;
+  grid-template-columns: auto auto;
   grid-auto-rows: 100px;
     grid-template-areas:
     "a b";
   align-items: start;
+    min-height: 100vh;
 }
 
 
@@ -16,8 +16,13 @@
   border: 1px solid lightgray;
   overflow: hidden;
   cursor: pointer;
-  text-align: center;
   padding: 10px;
+  margin: 5px;
+    display: grid;
+  grid-template-columns: auto auto;
+    grid-template-areas:
+    "a b";
+  align-items: start;
 }
 
 .apartment-search  h1 {
@@ -33,7 +38,7 @@
 .apartment-img {
   grid-area: a;
   border-radius: 15px;
-  object-fit: cover;
+  max-height: 30vh;
   max-width: 30vw;
   opacity: 0.8;
   transition: 0.2s ease;
@@ -42,6 +47,7 @@
 
 .apartment-description {
   grid-area: b;
+  margin: 5px;
 }
 
 .apartment-img:hover {
