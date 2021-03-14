@@ -8,6 +8,7 @@ import PlusMinusGuests from './pages/PlusMinusGuests.js'
 import Footer from './components/Footer'
 import ApartmentContextProvider from './contexts/ApartmentContextProvider';
 import BookingContextProvider from './contexts/BookingContextProvider';
+import Checkin from './pages/Checkin'
 
 function App() {
 
@@ -28,6 +29,7 @@ function App() {
                 <Route exact path="/" component={Home} />
                 <Route exact path="/search/:city" component={ApartmentSearch} />
                   <Route exact path="/plusminus/:id" component={PlusMinusGuests} />
+                  <Route exact path="/checkin/:id" component={Checkin} />
                 <Route path="*" component={page404} />
               </Switch>
             </main>
