@@ -3,7 +3,7 @@ import { useContext } from 'react'
 import ApartmentList from "../components/ApartmentList";
 import { ApartmentContext } from '../contexts/ApartmentContextProvider'
 import { BookingContext } from '../contexts/BookingContextProvider';
-const moment = require("moment");  // npm i moment
+import '../css/ApartmentSearch.css'
 
 
 export default function ApartmentSearch() {
@@ -12,18 +12,6 @@ export default function ApartmentSearch() {
   const { apartments } = useContext(ApartmentContext)
 
   const { calendarDates } = useContext(BookingContext)
-
-
-  function getDates(startDate, stopDate) {
-    var dateArray = [];
-    var currentDate = moment(startDate);
-    var stopDate = moment(stopDate);
-    while (currentDate <= stopDate) {
-      dateArray.push(moment(currentDate).format("YYYY-MM-DD"));
-      currentDate = moment(currentDate).add(1, "days");
-    }
-    return dateArray;
-  }
 
 
   function filterByLocationAndDates(location, allApartments) {
@@ -35,7 +23,7 @@ export default function ApartmentSearch() {
       for (const bookeddate of apartment.bookedDates) {
         if (calendarDates.includes(bookeddate)) {
           unavailableApartments.push(apartment)
-          break  // check this doesn't break whole apartments loop!!
+          break
         }
       }
     }
@@ -43,7 +31,7 @@ export default function ApartmentSearch() {
     // Maybe add a field to apartment, boolean availableToRent? On a timer..?
 
 
-    console.log('Unavailable apartments:', unavailableApartments)
+    console.log('Unavailable apartments:', unavailableApartments)  // Check that booking filter worked
 
     let filteredByLocationAndDateArray = filteredByLocationArray.filter((ap) => !unavailableApartments.includes(ap))
 
@@ -54,7 +42,9 @@ export default function ApartmentSearch() {
 
   return (
     <div className="apartment-search">
-      <h3>{calendarDates[0]} to {calendarDates[calendarDates.length - 1]}</h3>
+      <> { calendarDates.length > 0 &&
+        <h3>{calendarDates[0]} to {calendarDates[calendarDates.length - 1]}</h3>
+      }</>
       <h1>{capitalFirstLetter(city)}</h1>
       <ApartmentList apartments={filterByLocationAndDates(city, apartments)} />
     </div>

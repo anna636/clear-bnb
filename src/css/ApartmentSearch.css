@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+.apartment-list {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 10px;
+  grid-auto-rows: 100px;
+    grid-template-areas:
+    "a b";
+  align-items: start;
+}
+
+
+.apartment-preview {
+  border-radius: 15px;
+  border: 1px solid lightgray;
+  overflow: hidden;
+  cursor: pointer;
+  text-align: center;
+  padding: 10px;
+}
+
+.apartment-search  h1 {
+  font-family: 'Poppins', sans-serif;
+}
+
+.apartment-preview > h3 {
+  position: relative; 
+  bottom: 40px;
+  left: 10px;
+}
+
+.apartment-img {
+  grid-area: a;
+  border-radius: 15px;
+  object-fit: cover;
+  max-width: 30vw;
+  opacity: 0.8;
+  transition: 0.2s ease;
+  margin: 10px;
+}
+
+.apartment-description {
+  grid-area: b;
+}
+
+.apartment-img:hover {
+  transform: scale(1.05);
+  opacity: 0.6;
+}

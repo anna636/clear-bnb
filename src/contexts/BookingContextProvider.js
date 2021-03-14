@@ -8,7 +8,7 @@ export default function BookingContextProvider(props) {
   const [bookings, setBookings] = useState([])
 
   // storing the dates the user picked from MyCalendar
-  const [calendarDates, setCalendarDates] = useState(["test", "yep"])
+  const [calendarDates, setCalendarDates] = useState([])
 
 
   const addCalendarDates = newDates => {
