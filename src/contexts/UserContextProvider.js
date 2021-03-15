@@ -12,10 +12,6 @@ export default function UserContextProvider(props) {
     setUsers(res);
   };
 
-  useEffect(() => {
-    fetchUsers();
-  }, []);
-
   const addUser = async (user) => {
     let res = await fetch("/api/register", {
       method: "POST",
@@ -55,6 +51,11 @@ export default function UserContextProvider(props) {
     login,
     user
   };
+
+  useEffect(() => {
+    fetchUsers();
+    fetchUser();
+  }, []);
 
   return (
     <UserContext.Provider value={values}>{props.children}</UserContext.Provider>
