@@ -21,7 +21,10 @@ const Apartment = mongoose.model("Apartment", {
   ownerId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
-    required: true,
+    required: true,   // Comment out if adding new appartments with Postman!!
+  },
+  title: {
+    type: String,
   },
   pricePerDay: {
     type: Number,
@@ -64,7 +67,7 @@ const Apartment = mongoose.model("Apartment", {
   bookedDates: [
     {
       type: String,
-    },
+    }
   ],
 });
 

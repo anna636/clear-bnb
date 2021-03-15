@@ -1,6 +1,23 @@
 import '../css/Login.css'
+import { UserContext } from '../contexts/UserContextProvider'
+import { useContext, useState } from "react";
 
 export default function Login() {
+
+   const {login } = useContext(UserContext);
+const [email, setEmail]=useState('')
+  const [password, setPassword] = useState('')
+  
+  function logIn() {
+    let user = {
+      email: email,
+      password:password
+    }
+    
+    login(user)
+  }
+
+
   return (
     <div className="login-container">
       <div className="upper-login-wrap">
@@ -9,34 +26,32 @@ export default function Login() {
       <div>
         <div className="input-login-div-wrap">
           <div className="input-login-div line">
-            <input type="text" placeholder="Användarnamn"/>
+            <input
+              type="text"
+              required
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
           </div>
           <div className="input-login-div">
-            <input type="password" placeholder="Lösenord"/>
+            <input
+              type="password"
+              required
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
           </div>
         </div>
         <div className="login-btn-wrap">
-          <button className="login">Logga in</button>
-        </div>
-        <div className="other-login-options-wrap">
-          <div className="breakline"></div>
-          <p>eller</p>
-          <div className="breakline"></div>
-        </div>
-        <div className="login-options-wrapper">
-          <div className="login-option-div">
-            <button className="login-option-btn">Logga in med användarnamn</button>
-          </div>
-          <div className="login-option-div">
-            <button className="login-option-btn">Logga in med email</button>
-          </div>
+          <button className="login"
+          onClick={logIn}>Log in</button>
         </div>
       </div>
-      <div>
-
-      </div>
+      <div></div>
     </div>
-  )
+  );
 }
 
 /* 

@@ -15,6 +15,7 @@ export default function BookingContextProvider(props) {
 
 
 
+
   const addCalendarDates = newDates => {
     setCalendarDates(newDates)  
   }
@@ -27,6 +28,19 @@ export default function BookingContextProvider(props) {
     console.log(amountOfGuests);
   }
 
+  
+
+  const updateApartmentDates = async bookedDates => {
+    let res = await fetch("/api/update-dates/", {
+      method: "PUT",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(bookedDates),
+    });
+    res = await res.json();
+    console.log("updating apartment dates ok");
+  };
+  
+
   // Sends a new booking to backend which saves it
   const addBooking = async booking => {
     let res = await fetch('/rest/bookings', {
@@ -34,16 +48,27 @@ export default function BookingContextProvider(props) {
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify(booking)
     })
-
-    console.log(res)
+    res = await res.json();
+    
+     await updateApartmentDates([calendarDates[0], calendarDates[1]]);
+    console.log('id is', res._id)
+    
+   
   }
+
+
+
+
+
 
   const values = {
     bookings,
     calendarDates,
     addCalendarDates,
     addGuests,
-    amountOfGuests
+    amountOfGuests,
+    addBooking,
+    updateApartmentDates,
   };
 
   return (

@@ -3,9 +3,12 @@ import LoginModal from './LoginModal'
 import { useContext, useState, useRef } from "react";
 import MyCalendar from "./MyCalendar";
 import { ApartmentContext } from "../contexts/ApartmentContextProvider";
+import { UserContext } from "../contexts/UserContextProvider";
 
 export default function Nav() {
   const { apartments } = useContext(ApartmentContext);
+  const { user } = useContext(UserContext)
+  console.log(user, 'what is here')
 
   const [showCalendar, setShowCalendar] = useState(false);
   const [loginDisplay, setLoginDisplay] = useState(false);
@@ -64,7 +67,13 @@ export default function Nav() {
       </div>
 
       <div className="nav-right">
-          {/* <p>Logga in</p> */}
+
+        <div>
+          {user &&
+            <h5>Welcome, {user.fullName}</h5>
+          }
+        </div>
+
         <div className="flex-container">
           <button className="login-btn"
             onClick={() => {
@@ -77,16 +86,16 @@ export default function Nav() {
           </button>
         </div>
         {loginDisplay && <LoginModal />}
-    
 
-        
+
+
       </div>
       <>
         {showCalendar && (
           <div className="calendar-component">
             <div className="mySpan"><span onClick={hideCalendar}>X</span></div>
             <p className="selectDates">Select dates</p>
-            
+
             <MyCalendar userSearch={location.current.value.toLowerCase()} />
           </div>
         )}
