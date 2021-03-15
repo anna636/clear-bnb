@@ -12,6 +12,7 @@ export default function Checkin() {
   const apartment = apartments.find((el) => el._id === id);
 
   //Taking choosen dates from calendar
+  //service fee is 15% of total price + 5 euros for every new guest
   const { calendarDates, amountOfGuests } = useContext(BookingContext);
 
 
@@ -59,8 +60,7 @@ export default function Checkin() {
 
             <div className="price">
               <p className="nightsAndPrice">
-                {apartment.pricePerDay} x {calendarDates.length}{" "}
-                <span>nights</span>{" "}
+                {apartment.pricePerDay} x {calendarDates.length} nights
               </p>
               <p className="change">
                 {apartment.pricePerDay * calendarDates.length} €
