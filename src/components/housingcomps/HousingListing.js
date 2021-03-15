@@ -14,21 +14,41 @@ export default function HousingListing() {
     return '';
   };
 
-  // method to retrieve users
   /* const getRenter = async (id) => {
-    let data = await fetch(`/rest/apartments/${id}`);
-    let renter = await data.json();
+    let data = await 
+    fetch(`http://localhost:3001/rest/apartments/${id}`);
+    let renter = await data.json()
     return renter;
+  };
+  
+  async function main() {
+    let test = await getRenter('604b43fa6b715a316c048f3f');
+    console.log(test);
+  } */
+
+  const fetchAmenities = async (id) => {
+    let data = await fetch(`/rest/apartments/${id}`);
+    let res = await data.json();
+    return res;
+  };
+
+  async function getAmenities() {
+    let residence = await fetchAmenities('604b667b11fc215c4764f81c');
+    
+    /* console.log(residence.amenities); */
+    let res = residence.amenities.map((amenitie) => {
+      return amenitie.name;
+    });
+    console.log(res);
+  };
+
+  getAmenities();
+
+  /* async function getAmenities(id) {
+    let data = await fetch(`/rest/apartments/${id}`);
+    let res = await data.json();
+    return res;
   }; */
-
-  /* async function getRenter(id) {
-    let data = await fetch(`/rest/apartments/${id}`);
-    let renter = await data.json();
-    return renter;
-  }
-
-  let test = getRenter('604b43fa6b715a316c048f3f');
-  console.log(test); */
 
   // subcomponent
   const housingObj = housing => (
@@ -44,9 +64,14 @@ export default function HousingListing() {
           <div>
             <h2><i className="fas fa-map-pin"></i> {housing.city}</h2>
             <h4>{housing.region}</h4>
+            <div className="amenities">
+              {housing.amenities.map(amenitie => {
+                return <h6><i className={amenitie.icon}></i> {amenitie.name}</h6>
+              })}
+            </div>
           </div>
           <div className="renter">
-            {/* <h6>{getRenter(housing._id)}</h6> */}
+            <h6>{housing.ownerId.fullName}</h6>
             <i className="fas fa-user-circle"></i>
           </div>
         </div>

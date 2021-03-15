@@ -61,3 +61,12 @@
 .housing-price {
   margin: 0.5rem 0 0.5rem 0;
 }
+
+.amenities {
+  display: flex;
+  gap: 1em;
+}
+
+.amenitie {
+  font-size: 30px;
+}
