@@ -14,9 +14,22 @@ export default function Checkin() {
   //Taking choosen dates from calendar
   const { calendarDates, amountOfGuests } = useContext(BookingContext);
 
+
   //When clicking on guests div let user change amount of guests
   function changeGuests() {
     history.push("/plusminus/" + apartment._id);
+    console.log(calendarDates);
+  }
+
+  function createBooking() {
+    console.log('id here is', id);
+    const newBooking = {
+      "userId": "",
+      "apartmentId": id,
+      "startDate": calendarDates[0],
+      "endDate": calendarDates[calendarDates.length-1]
+    }
+    console.log(newBooking);
   }
 
   return (
@@ -33,27 +46,44 @@ export default function Checkin() {
                 </div>
                 <div className="endDate">
                   <h4>CHECK-OUT</h4>
-                  <p>{calendarDates[1]}</p>
+                  <p>{calendarDates[calendarDates.length - 1]}</p>
                 </div>
               </div>
               <div className="guests">
                 <h4>Guests</h4>
-                <p onClick={changeGuests}>{amountOfGuests} people</p>
+                <p onClick={changeGuests}>
+                  {amountOfGuests} {amountOfGuests > 1 ? "people" : "person"}
+                </p>
               </div>
             </div>
 
             <div className="price">
-              <p>{apartment.pricePerDay} x 3 nights</p>
-              <p className="change">140 euros</p>
+              <p className="nightsAndPrice">
+                {apartment.pricePerDay} x {calendarDates.length}{" "}
+                <span>nights</span>{" "}
+              </p>
+              <p className="change">
+                {apartment.pricePerDay * calendarDates.length} €
+              </p>
               <p>Service fee</p>
-              <p className="change">8 euros</p>
+              <p className="change">
+                {amountOfGuests * 5 +
+                  apartment.pricePerDay * calendarDates.length * 0.15}{" "}
+                € 
+              </p>
             </div>
             <div className="totalPrice">
               <h4>Total</h4>
-              <p>140 euros</p>
+              <p>
+                {amountOfGuests * 5 +
+                  apartment.pricePerDay * calendarDates.length * 0.15 +
+                  apartment.pricePerDay * calendarDates.length}{" "}
+                €
+              </p>
             </div>
 
-            <button className="reserveButton">Reserve</button>
+            <button className="reserveButton"
+             onClick={createBooking}>Reserve</button>
           </div>
         </div>
       )}

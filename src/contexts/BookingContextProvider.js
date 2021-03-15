@@ -13,8 +13,10 @@ export default function BookingContextProvider(props) {
 
 
 
+
+
   const addCalendarDates = newDates => {
-    setCalendarDates(newDates)
+    setCalendarDates(newDates)  
   }
 
   function addGuests(guests){
