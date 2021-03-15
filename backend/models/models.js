@@ -4,7 +4,7 @@ const User = mongoose.model("User", {
   fullName: {
     type: String,
     unique: false,
-    required: true
+    required: true,
   },
   email: {
     type: String,
@@ -45,21 +45,27 @@ const Apartment = mongoose.model("Apartment", {
   },
   gallery: [
     {
-      type: String
-    }
+      type: String,
+    },
   ],
   amenities: [
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Amenities",
-    }
+    },
   ],
   availableDates: [
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: "AvailableDates",
-    }
-  ]
+    },
+  ],
+
+  bookedDates: [
+    {
+      type: String,
+    },
+  ],
 });
 
 const Booking = mongoose.model("Booking", {
@@ -75,11 +81,11 @@ const Booking = mongoose.model("Booking", {
   },
 
   startDate: {
-    type: Number,
+    type: String,
     required: true,
   },
   endDate: {
-    type: Number,
+    type: String,
     required: true,
   },
 });
@@ -91,22 +97,16 @@ const AvailableDates = mongoose.model("AvailableDates", {
     required: true,
   },
   availableStartDate: {
-    type: Number,
+    type: String,
     required: true,
   },
   availableEndDate: {
-    type: Number,
+    type: String,
     required: true,
   },
 });
 
 const Amenities = mongoose.model("Amenities", {
-  apartmentId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Apartment",
-    required: true,
-  },
-
   name: {
     type: String,
     required: true,

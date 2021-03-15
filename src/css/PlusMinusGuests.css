@@ -1,0 +1,55 @@
+/* to remove border around button after clicking on it */
+*:focus {
+    outline: none;
+}
+
+.container {
+  width: 500px;
+}
+
+.wrapper {
+display: grid;
+grid-template-columns: repeat(2, auto);
+}
+
+.content-left {
+  margin: 10px;
+}
+.buttons-right {
+  margin: 0 auto;
+}
+
+.buttons-right > button {
+  margin: 10px;
+  border: 1px solid grey;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  text-align: center;
+  outline: none;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  font-size: 20px
+}
+
+.content-under{
+padding: 10px;
+}
+
+#cancel {
+  background: #fff;
+  border: 0;
+  text-decoration: underline;
+  margin: 20px;
+  cursor: pointer;
+}
+
+#save {
+  background: #000;
+  color: #fff;
+  border: 1px solid grey;
+  border-radius: 10px;
+  cursor: pointer;
+}
+

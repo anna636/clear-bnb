@@ -3,13 +3,20 @@ import { createContext, useState } from 'react'
 // create a reference to this context (to be used with the useContext hook in components)
 export const BookingContext = createContext()
 
-export default function BookingContextProvider(props) { 
+export default function BookingContextProvider(props) {
 
-  // Reactive state to store bookings, with empty array as start value
-  const [] = useState([])
+  const [bookings, setBookings] = useState([])
+
+  // storing the dates the user picked from MyCalendar
+  const [calendarDates, setCalendarDates] = useState(["test", "yep"])
+
+
+  const addCalendarDates = newDates => {
+    setCalendarDates(newDates)
+  }
 
   // Sends a new booking to backend which saves it
-  const addBooking = async booking => { 
+  const addBooking = async booking => {
     let res = await fetch('/rest/bookings', {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
@@ -19,9 +26,14 @@ export default function BookingContextProvider(props) {
     console.log(res)
   }
 
+  const values = {
+    bookings,
+    calendarDates,
+    addCalendarDates
+  }
 
   return (
-    <BookingContext.Provider>
+    <BookingContext.Provider value={values}>
       {props.children}
     </BookingContext.Provider>
   )
