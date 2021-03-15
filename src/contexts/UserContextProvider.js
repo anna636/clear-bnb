@@ -40,10 +40,20 @@ export default function UserContextProvider(props) {
     res = await res.json();
   };
 
+  const [user, setUser] = useState();
+
+  const fetchUser = async () => {
+    let res = await fetch("/api/whoami");
+    res = await res.json();
+    console.log(res)
+    setUser(res);
+  };
+
   const values = {
     users,
     addUser,
-    login
+    login,
+    user
   };
 
   return (
