@@ -6,18 +6,26 @@ import { ApartmentContext } from "../contexts/ApartmentContextProvider";
 
 export default function Nav() {
   const { apartments } = useContext(ApartmentContext);
-
   const [showCalendar, setShowCalendar] = useState(false);
   const [loginDisplay, setLoginDisplay] = useState(false);
+  const [showDynamicSearch, setShowDynamicSearch] = useState(true);
   const location = useRef();
 
   const allLocations = getAllLocations()  // change so it only updates on component start
 
   const [searchTerm, setSearchTerm] = useState("")
 
+
   const searchLocation = async (e) => {
     e.preventDefault();
     checkLocation() && setShowCalendar(true);
+    setShowDynamicSearch(false);
+  };
+
+  const searchSuggestedLocation = async (e) => {
+    e.preventDefault();
+    setShowDynamicSearch(false);
+    setShowCalendar(true);
   };
 
   // Get the names of all cities and regions
@@ -53,6 +61,7 @@ export default function Nav() {
 
   function hideCalendar() {
     setShowCalendar(false)
+    setShowDynamicSearch(true)
   }
 
   return (
@@ -82,7 +91,6 @@ export default function Nav() {
           </form>
           <i className="fas fa-search"></i>
         </div>
-
         <div className="dynamic-search">
           {allLocations.filter((val) => {
             if (searchTerm === "") {
@@ -91,13 +99,12 @@ export default function Nav() {
             else if (val.toLowerCase().includes(searchTerm.toLowerCase())) {
               return val
             }
-          }).map((val, key) => (
-            <div className="dynamic-search-value" key={key}>
+          }).map((val, key) => (showDynamicSearch &&
+            <div className="dynamic-search-value" key={key} onClick={searchSuggestedLocation}>
               <p>{val}</p>
             </div>
           ))}
         </div>
-        
       </div>
 
       <div className="nav-right">

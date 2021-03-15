@@ -167,6 +167,11 @@ h3 {
   margin: 10px;
 }
 
+.dynamic-search-value:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
+
 .dynamic-search-value:last-child {
   margin-bottom: 20px;
 }
