@@ -8,6 +8,7 @@ import PlusMinusGuests from './pages/PlusMinusGuests.js'
 import Footer from './components/Footer'
 import ApartmentContextProvider from './contexts/ApartmentContextProvider';
 import BookingContextProvider from './contexts/BookingContextProvider';
+import UserContextProvider from "./contexts/UserContextProvider";
 
 function App() {
 

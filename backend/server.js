@@ -1,9 +1,13 @@
-
-global.mongoose = require("mongoose");
 const express = require("express");
+global.mongoose = require("mongoose");
 const app = express();
+
+// import models
 const models = require("./models/models.js");
 const moment = require("moment");  // npm i moment
+
+// import controllers
+const authHandler = require('./auth.js')
 
 app.use(express.json());
 
@@ -36,10 +40,10 @@ app.get("/rest/:model", async (req, res) => {
     res.json(docs)
     return;
   }
-  if (req.params.model === "users") {
+  /*if (req.params.model === "users") {
     res.json("No such request is found");
     return;
-  }
+  }*/
 
   let docs = await model.find();
   res.json(docs);
@@ -134,6 +138,9 @@ app.put("/api/add-amenitie-to-apartment/:id", async (req, res) => {
   await apartment.save();
   res.json(apartment);
 });
+
+// fire controllers
+authHandler(app, models)
 
 
 app.listen(3001, () => console.log("Server stated on port 3001"))
