@@ -11,6 +11,7 @@ import ApartmentContextProvider from './contexts/ApartmentContextProvider';
 import BookingContextProvider from './contexts/BookingContextProvider';
 import Checkin from './pages/Checkin'
 import UserContextProvider from "./contexts/UserContextProvider";
+import Confirmation from './pages/Confirmation.js'
 
 function App() {
 
@@ -33,6 +34,7 @@ function App() {
                   <Route exact path="/plusminus/:id" component={PlusMinusGuests} />
                   <Route exact path="/checkin/:id" component={Checkin} />
                   <Route exact path="/details/:id" component={ApartmentDetails} />
+                  <Route exact path="/confirmation/:id" component={Confirmation} />
                 <Route path="*" component={page404} />
               </Switch>
             </main>

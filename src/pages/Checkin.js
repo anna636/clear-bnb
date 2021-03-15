@@ -31,6 +31,7 @@ export default function Checkin() {
       "endDate": calendarDates[calendarDates.length-1]
     }
     console.log(newBooking);
+    history.push("/confirmation/" + apartment._id)
   }
 
   return (
