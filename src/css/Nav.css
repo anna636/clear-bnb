@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
-
 h3 {
   font-family: 'Poppins', sans-serif;
   cursor: pointer;
@@ -17,6 +16,7 @@ h3 {
   z-index: 100;
   width: 100%;
   flex-wrap: wrap;
+  height:14vh;
 }
 
 /* .nav > * {
@@ -71,16 +71,22 @@ h3 {
   width: 100%;
   padding-left: 10px;
   font-family: 'Poppins', sans-serif;
+ 
+
+}
+
+.nav-center-searchbar input{
+ border:none;
+ outline:none;
+ width:60vh;
+ font-size: 15px;
 }
 
 .nav-right {
-  margin-top: 20px;
   display: flex;
+  justify-content: center;
   align-items: center;
-  width: 15vw;
-  gap: 1em;
-  position: relative;
-  left: 100px;
+  margin-right: 10px;
 }
 
 .nav-right > p {
@@ -94,4 +100,54 @@ h3 {
 
 .nav-right > .fa-user-circle {
   font-size: 35px;
+}
+
+
+.calendar-component{
+  margin-top:2vh;
+   padding-bottom:3vh;
+   text-align: center;
+   background-color: white;
+  margin-left:38vh;
+  
+}
+
+.mySpan{
+  float:right;
+  padding:2vh;
+  cursor: pointer;
+}
+
+.selectDates{
+  font-size:30px;
+  font-weight: bold;
+  padding:2vh;
+}
+.login-btn {
+  border-radius: 999px;
+  /* border: 1px solid lightgray; */
+  
+  border: none;
+  text-align: center;
+  outline: none;
+  cursor: pointer;
+  background-color: rgb(230, 230, 230);
+
+}
+
+.login-btn-icons-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 5px;
+  font-size: 20px;
+}
+
+.login-btn-icons-container > i {
+  padding: 3px;
+}
+
+.login-btn:hover {
+  opacity: 0.5;
 }

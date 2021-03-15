@@ -1,81 +1,76 @@
-import "../css/RegisterAndLogin.css";
-import Register from "./Register";
-import React, { useState } from "react";
-import { useContext } from "react";
-import { UserContext } from "../contexts/UserContextProvider";
-import { useHistory } from "react-router-dom";
+import '../css/Login.css'
 
 export default function Login() {
-  //Using state to make reactive inputs
-  //Not connected to backend yet
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [isActive, setActive] = useState("true");
-  const [missingData, setMissingData] = useState("false"); //Doesn't work?
-
-  //Register modul dyker upp försvinner login modul
-  const handleToggle = () => {
-    setActive(!isActive);
-  };
-
-  const toggleMissingData = () => {
-    setMissingData(!missingData);
-  };
-
-  function login() {
-    if (email === "" || password === "") {
-      toggleMissingData();
-      console.log(missingData);
-      setEmail("");
-      setPassword("");
-      return;
-    }
-    console.log(email, password);
-    console.log(missingData);
-    setEmail("");
-    setPassword("");
-  }
-
   return (
-    <div className="modules">
-      <div className={isActive ? "dissappear" : ""}>
-        <Register />
+    <div className="login-container">
+      <div className="upper-login-wrap">
+        <h3>Logga in</h3>
       </div>
+      <div>
+        <div className="input-login-div-wrap">
+          <div className="input-login-div line">
+            <input type="text" placeholder="Användarnamn"/>
+          </div>
+          <div className="input-login-div">
+            <input type="password" placeholder="Lösenord"/>
+          </div>
+        </div>
+        <div className="login-btn-wrap">
+          <button className="login">Logga in</button>
+        </div>
+        <div className="other-login-options-wrap">
+          <div className="breakline"></div>
+          <p>eller</p>
+          <div className="breakline"></div>
+        </div>
+        <div className="login-options-wrapper">
+          <div className="login-option-div">
+            <button className="login-option-btn">Logga in med användarnamn</button>
+          </div>
+          <div className="login-option-div">
+            <button className="login-option-btn">Logga in med email</button>
+          </div>
+        </div>
+      </div>
+      <div>
 
-      <div className={isActive ? "login" : "login dissappear"}>
-        <div>
-          <label>Email</label>
-          <input
-            className="emailInput"
-            type="text"
-            required
-            placeholder="  Type your email..."
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          ></input>
-        </div>
-        <div>
-          <label>Password</label>
-          <input
-            type="text"
-            required
-            placeholder="  Type your password..."
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          ></input>
-        </div>
-
-        <div className="loginButton">
-          <button onClick={login}>Log in</button>
-        </div>
-        <p className={missingData ? "hidden" : "warning"}>
-          Please fill all the fields above
-        </p>
-        <span className="loginSpan">Or</span>
-        <div className="registerButton">
-          <button onClick={handleToggle}>Register new user</button>
-        </div>
       </div>
     </div>
-  );
+  )
 }
+
+/* 
+
+[login]
+  [upperdiv]
+    [h3]
+  [upperdiv]
+  [middlediv]
+    [div]
+      [input]
+      [input]
+    [div]
+    [div]
+      [button]
+    [div]
+    [div]
+      [hr eller hr]
+    [div]
+    [div]
+      [div]
+        [button]
+      [div]
+      [div]
+        [button]
+      [div]
+      [div]
+        [button]
+      [div]
+    [div]
+  [middlediv]
+  [lowerdiv]
+    [button]
+  [lowerdiv]
+[login]
+
+*/

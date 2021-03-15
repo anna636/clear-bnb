@@ -4,6 +4,7 @@ const app = express();
 
 // import models
 const models = require("./models/models.js");
+const moment = require("moment");  // npm i moment
 
 // import controllers
 const authHandler = require('./auth.js')
@@ -19,12 +20,23 @@ global.mongoose.connect(atlasUrl, {
   useCreateIndex: false,
 });
 
+//Function to get dates between 2 dates
+function getDates(startDate, stopDate) {
+  var dateArray = [];
+  var currentDate = moment(startDate);
+  var stopDate = moment(stopDate);
+  while (currentDate <= stopDate) {
+    dateArray.push(moment(currentDate).format("YYYY-MM-DD"));
+    currentDate = moment(currentDate).add(1, "days");
+  }
+  return dateArray;
+}
 
 //Getter for all models except for users
 app.get("/rest/:model", async (req, res) => {
   let model = models[req.params.model];
   if (req.params.model === "apartments") {
-    let docs = await model.find().populate(["amenities", "ownerId"]).exec();
+    let docs = await model.find().populate(["amenities", "ownerId", "availableDates"]).exec();  // merge wanted to trash populate "ownerId"
     res.json(docs)
     return;
   }
@@ -37,7 +49,7 @@ app.get("/rest/:model", async (req, res) => {
   res.json(docs);
 });
 
-
+// merge wanted to get rid of this
 app.get("/rest/:model/:id", async (req, res) => {
   let model = models[req.params.model];
   if (req.params.model === "apartments") {
@@ -49,6 +61,33 @@ app.get("/rest/:model/:id", async (req, res) => {
   let doc = await model.findById(req.params.id)
   res.json(doc);
 });
+
+
+
+
+app.put("/api/update-dates/:id", async (req, res) => {
+  //Send id of a booking
+  let Booking = models['bookings']
+  let booking = await Booking.findById(req.params.id) //Finding booking
+
+   let Apartment = models["apartments"];
+  let apartment = await Apartment.findById(booking.apartmentId); //Finding apartment
+
+  let newDates = getDates(booking.startDate, booking.endDate); //Getting all dates of booking
+ 
+
+  //Pushing dates is bookedDates if they're not there yet
+  for (date of newDates) {
+    if (!apartment.bookedDates.includes(date)) {
+      apartment.bookedDates.push(date);
+    }  
+  }
+
+  await apartment.save()
+  
+  res.json(apartment);
+});
+
 
 
 //Post for all models except for amenities
@@ -65,13 +104,12 @@ app.post("/rest/:model", async (req, res) => {
   res.json(doc);
 });
 
-
 //Delete for all models
 app.delete("/rest/:model/:id", async (req, res) => {
-  let model = models[req.params.model]
-  let doc = await model.findByIdAndDelete(req.params.id)
-  res.json(doc)
-})
+  let model = models[req.params.model];
+  let doc = await model.findByIdAndDelete(req.params.id);
+  res.json(doc);
+});
 
 //Put for all models
 app.put("/rest/:model/:id", async (req, res) => {
@@ -84,20 +122,18 @@ app.put("/rest/:model/:id", async (req, res) => {
   await doc.save();
 
   res.json(doc);
-})
+});
 
 //Add amenitie to already existing apartments by passing apartmentId and array of amenities ids
 app.put("/api/add-amenitie-to-apartment/:id", async (req, res) => {
-
   let Apartment = models["apartments"];
   let Amenities = models["amenities"];
 
   let apartment = await Apartment.findById(req.body.apartmentId);
 
   for (let amenitiesId of req.body.amenitiesIds) {
-    apartment.amenities.push(await Amenities.findById(amenitiesId))
+    apartment.amenities.push(await Amenities.findById(amenitiesId));
   }
-
 
   await apartment.save();
   res.json(apartment);
@@ -107,4 +143,4 @@ app.put("/api/add-amenitie-to-apartment/:id", async (req, res) => {
 authHandler(app, models)
 
 
-app.listen(3001, () => console.log("Server stated on port 3001"));
+app.listen(3001, () => console.log("Server stated on port 3001"))
