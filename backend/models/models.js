@@ -64,7 +64,7 @@ const Apartment = mongoose.model("Apartment", {
   bookedDates: [
     {
       type: String,
-    },
+    }
   ],
 });
 
