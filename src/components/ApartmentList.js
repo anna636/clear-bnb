@@ -18,7 +18,7 @@ const ApartmentList = ({ apartments }) => {
             <p>{apartment.description}</p>
             {apartment.amenities.map((amenity) => (
               <div className="amenities" key={amenity.id} style={{ fontSize: "15px" }, { color: "rgb(82, 82, 82)"}}>
-                <p> -{ amenity.name } </p>
+                <i className={amenity.icon}/> <span>{amenity.name} </span>
               </div>
             ))}
           </div>
