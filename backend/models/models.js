@@ -112,7 +112,10 @@ const Amenities = mongoose.model("Amenities", {
     required: true,
   },
 
-  icon: String,
+  icon: {
+    type: String,
+    required: true,
+  },
 });
 
 module.exports = {
