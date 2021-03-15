@@ -1,11 +1,15 @@
 import '../css/ApartmentSearch.css'
+import { useHistory } from 'react-router-dom'
+
 
 const ApartmentList = ({ apartments }) => {
-
+  const history = useHistory();
   return (
     <div>
       {apartments.map((apartment) => (
-        <div className="apartment-preview" key={apartment._id}>
+        <div
+        onClick={() => history.push('/details/' + apartment._id)}
+          className="apartment-preview" key={apartment._id}>
           <div className="img-container">
             <img src={apartment.gallery[0]} alt="" className="apartment-img" />
           </div>

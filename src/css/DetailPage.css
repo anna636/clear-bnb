@@ -1,0 +1,35 @@
+.Details{
+    margin-top: 50px;
+    text-align: center;
+}
+p{
+    margin-top: 20px;
+}
+.Detail-img{
+    display: inline;
+    width: 800px;
+    height: 600px;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+}
+.description-text{
+    margin-top: 50px;
+    width: 45vw;
+    margin-left: 27vw;
+}
+.next-btn-details{
+    background: #b8c2c9;
+    width: 180px;
+    height: 45px;
+    padding: 4px 0;
+    border-radius: 3px;
+}
+.next-btn-details:hover {
+    cursor: pointer;
+    background: #c1cad1;
+    transition: all 0.2s ease 0s;
+}
+.btn-div-details{
+    padding: 40px;
+}

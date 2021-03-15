@@ -6,6 +6,7 @@ import ApartmentSearch from './pages/ApartmentSearch';
 import Home from './pages/Home.js'
 import PlusMinusGuests from './pages/PlusMinusGuests.js'
 import Footer from './components/Footer'
+import ApartmentDetails from './pages/ApartmentDetails.js'
 import ApartmentContextProvider from './contexts/ApartmentContextProvider';
 import BookingContextProvider from './contexts/BookingContextProvider';
 import UserContextProvider from "./contexts/UserContextProvider";
@@ -29,6 +30,7 @@ function App() {
                 <Route exact path="/" component={Home} />
                 <Route exact path="/search/:city" component={ApartmentSearch} />
                   <Route exact path="/plusminus/:id" component={PlusMinusGuests} />
+                  <Route exact path="/details/:id" component={ApartmentDetails} />
                 <Route path="*" component={page404} />
               </Switch>
             </main>
