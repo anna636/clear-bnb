@@ -9,10 +9,20 @@ export default function BookingContextProvider(props) {
 
   // storing the dates the user picked from MyCalendar
   const [calendarDates, setCalendarDates] = useState(["test", "yep"])
+  const [amountOfGuests, setAmountOfGuests] = useState(1);
+
 
 
   const addCalendarDates = newDates => {
     setCalendarDates(newDates)
+  }
+
+  function addGuests(guests){
+    console.log('amount is booking context is', guests);
+   
+    setAmountOfGuests(guests)
+    
+    console.log(amountOfGuests);
   }
 
   // Sends a new booking to backend which saves it
@@ -29,8 +39,10 @@ export default function BookingContextProvider(props) {
   const values = {
     bookings,
     calendarDates,
-    addCalendarDates
-  }
+    addCalendarDates,
+    addGuests,
+    amountOfGuests
+  };
 
   return (
     <BookingContext.Provider value={values}>

@@ -6,13 +6,13 @@ import { BookingContext } from "../contexts/BookingContextProvider";
 import { useHistory } from "react-router-dom";
 
 export default function Checkin() {
-  const history=useHistory()
+  const history = useHistory();
   const { id } = useParams();
   const { apartments } = useContext(ApartmentContext);
   const apartment = apartments.find((el) => el._id === id);
 
   //Taking choosen dates from calendar
-  const { calendarDates } = useContext(BookingContext);
+  const { calendarDates, amountOfGuests } = useContext(BookingContext);
 
   //When clicking on guests div let user change amount of guests
   function changeGuests() {
@@ -38,7 +38,7 @@ export default function Checkin() {
               </div>
               <div className="guests">
                 <h4>Guests</h4>
-                <p onClick={changeGuests}>1 person</p>
+                <p onClick={changeGuests}>{amountOfGuests} people</p>
               </div>
             </div>
 
