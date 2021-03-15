@@ -12,16 +12,17 @@ export default function ApartmentContextProvider(props) {
     setApartments(res);
   };
 
+
   useEffect(() => {
 
     fetchApartments();
+
   }, []);
 
 
   const values = {
     apartments
   }
-
 
 
   return (

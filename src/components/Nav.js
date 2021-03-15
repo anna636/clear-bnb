@@ -11,10 +11,31 @@ export default function Nav() {
   const [loginDisplay, setLoginDisplay] = useState(false);
   const location = useRef();
 
+  const allLocations = getAllLocations()
+
+  const [searchTerm, setSearchTerm] = useState("")
+
   const searchLocation = async (e) => {
     e.preventDefault();
     checkLocation() && setShowCalendar(true);
   };
+
+  // Get the names of all cities and regions
+  function getAllLocations() {
+    let locationsArray = []
+    for (const apartment of apartments) {
+      if (!locationsArray.includes(apartment.city)) {
+        locationsArray.push(apartment.city)
+      }
+      if (apartment.city !== apartment.region && !locationsArray.includes(apartment.region)) {
+        locationsArray.push(apartment.region)
+      }
+    }
+    console.log(...locationsArray)
+
+    return locationsArray
+  }
+
 
   function checkLocation() {
     let tempBool = false;
@@ -57,14 +78,27 @@ export default function Nav() {
               required
               type="text"
               placeholder="Enter a location..."
+              onChange={(e) => { setSearchTerm(e.target.value) }}
             />
+            {allLocations.filter((val) => {
+              if (searchTerm === "") {
+                return
+              }
+              else if (val.toLowerCase().includes(searchTerm.toLowerCase())) {
+                return val
+              }
+            }).map((val, key) => (
+              <div key={key}>
+                <p>{ val }</p>
+              </div>
+            ))}
           </form>
           <i className="fas fa-search"></i>
         </div>
       </div>
 
       <div className="nav-right">
-          {/* <p>Logga in</p> */}
+        {/* <p>Logga in</p> */}
         <div className="flex-container">
           <button className="login-btn"
             onClick={() => {
@@ -77,16 +111,16 @@ export default function Nav() {
           </button>
         </div>
         {loginDisplay && <LoginModal />}
-    
 
-        
+
+
       </div>
       <>
         {showCalendar && (
           <div className="calendar-component">
             <div className="mySpan"><span onClick={hideCalendar}>X</span></div>
             <p className="selectDates">Select dates</p>
-            
+
             <MyCalendar userSearch={location.current.value.toLowerCase()} />
           </div>
         )}
