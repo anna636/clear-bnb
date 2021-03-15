@@ -6,9 +6,11 @@ const ApartmentList = ({ apartments }) => {
     <div>
       {apartments.map((apartment) => (
         <div className="apartment-preview" key={apartment._id}>
-          <img src={apartment.gallery[0]} alt="" className="apartment-img" />
+          <div className="img-container">
+            <img src={apartment.gallery[0]} alt="" className="apartment-img" />
+          </div>
           <div className="apartment-description">
-          <h3>{apartment.city}</h3>
+            <h3>{apartment.city}</h3>
             <p>{apartment.description}</p>
           </div>
         </div>
