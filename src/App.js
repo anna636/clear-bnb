@@ -10,6 +10,7 @@ import ApartmentDetails from './pages/ApartmentDetails.js'
 import ApartmentContextProvider from './contexts/ApartmentContextProvider';
 import BookingContextProvider from './contexts/BookingContextProvider';
 import Checkin from './pages/Checkin'
+import UserContextProvider from "./contexts/UserContextProvider";
 
 function App() {
 

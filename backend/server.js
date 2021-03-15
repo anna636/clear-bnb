@@ -1,9 +1,13 @@
-
-global.mongoose = require("mongoose");
 const express = require("express");
+global.mongoose = require("mongoose");
 const app = express();
+
+// import models
 const models = require("./models/models.js");
 const moment = require("moment");  // npm i moment
+
+// import controllers
+const authHandler = require('./auth.js')
 
 app.use(express.json());
 
@@ -36,10 +40,10 @@ app.get("/rest/:model", async (req, res) => {
     res.json(docs)
     return;
   }
-  if (req.params.model === "users") {
-    res.json("No such request is found");
-    return;
-  }
+  // if (req.params.model === "users") {
+  //   res.json("No such request is found");
+  //   return;
+  // }
 
   let docs = await model.find();
   res.json(docs);
@@ -66,21 +70,21 @@ app.put("/api/update-dates/:id", async (req, res) => {
   let Booking = models['bookings']
   let booking = await Booking.findById(req.params.id) //Finding booking
 
-   let Apartment = models["apartments"];
+  let Apartment = models["apartments"];
   let apartment = await Apartment.findById(booking.apartmentId); //Finding apartment
 
   let newDates = getDates(booking.startDate, booking.endDate); //Getting all dates of booking
- 
+
 
   //Pushing dates is bookedDates if they're not there yet
   for (date of newDates) {
     if (!apartment.bookedDates.includes(date)) {
       apartment.bookedDates.push(date);
-    }  
+    }
   }
 
   await apartment.save()
-  
+
   res.json(apartment);
 });
 
@@ -121,19 +125,26 @@ app.put("/rest/:model/:id", async (req, res) => {
 });
 
 //Add amenitie to already existing apartments by passing apartmentId and array of amenities ids
-app.put("/api/add-amenitie-to-apartment/:id", async (req, res) => {
+app.put("/api/add-amenity-to-apartment/:apartmentId", async (req, res) => {
   let Apartment = models["apartments"];
-  let Amenities = models["amenities"];
 
-  let apartment = await Apartment.findById(req.body.apartmentId);
+  let apartment = await Apartment.findById(req.params.apartmentId);
 
-  for (let amenitiesId of req.body.amenitiesIds) {
-    apartment.amenities.push(await Amenities.findById(amenitiesId));
+  for (let amenity of req.body.amenityIds) {
+    if (apartment.amenities.includes(amenity)) {
+      res.json('already exists')
+      return; //do nothing
+    } else {
+      apartment.amenities.push(amenity);
+    }
   }
 
   await apartment.save();
   res.json(apartment);
 });
+
+// fire controllers
+authHandler(app, models)
 
 
 app.listen(3001, () => console.log("Server stated on port 3001"))
