@@ -5,6 +5,7 @@ export const UserContext=createContext()
 export default function UserContextProvider(props) {
   
   const [users, setUsers] = useState([])
+  const [newUser, setNewUser] = useState()
   
     const fetchUsers = async () => {
       let res = await fetch("/rest/users");
@@ -13,14 +14,15 @@ export default function UserContextProvider(props) {
     };
 
     useEffect(() => {
-      // mounted
+      
       fetchUsers();
+      
     }, []);
 
 
 
   const addUser = async (user) => {
-    let res = await fetch("/rest/users", {
+    let res = await fetch("/api/register", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(user),
@@ -30,20 +32,14 @@ export default function UserContextProvider(props) {
     user.id = res.id;
 
     console.log('The user object is being saved', res);
-
-    // append a new recipe to the reactive recipes list.
-    // and to trigger reactivity we have to replace
-    // the recipe object with a new object (in this case, a copy of the array)
     setUsers([...users, user]);
       
   }
-
-
-
-      
+ 
   const values = {
     users,
     addUser,
+    setNewUser
   };
 
   return (

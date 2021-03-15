@@ -21,24 +21,38 @@ function App() {
     <div className="App">
       <BookingContextProvider>
         <ApartmentContextProvider>
-          <Router>
-            <header>
-              <Nav />
-            </header>
-            <main>
-              <Switch>
-                <Route exact path="/" component={Home} />
-                <Route exact path="/search/:city" component={ApartmentSearch} />
-                  <Route exact path="/plusminus/:id" component={PlusMinusGuests} />
-                  <Route exact path="/details/:id" component={ApartmentDetails} />
-                <Route path="*" component={page404} />
-              </Switch>
-            </main>
+          <UserContextProvider>
+            <Router>
+              <header>
+                <Nav />
+              </header>
+              <main>
+                <Switch>
+                  <Route exact path="/" component={Home} />
+                  <Route
+                    exact
+                    path="/search/:city"
+                    component={ApartmentSearch}
+                  />
+                  <Route
+                    exact
+                    path="/plusminus/:id"
+                    component={PlusMinusGuests}
+                  />
+                  <Route
+                    exact
+                    path="/details/:id"
+                    component={ApartmentDetails}
+                  />
+                  <Route path="*" component={page404} />
+                </Switch>
+              </main>
 
-            <footer>
-              <Footer />
-            </footer>
-          </Router>
+              <footer>
+                <Footer />
+              </footer>
+            </Router>
+          </UserContextProvider>
         </ApartmentContextProvider>
       </BookingContextProvider>
     </div>
