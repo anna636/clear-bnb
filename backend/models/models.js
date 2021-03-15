@@ -23,6 +23,9 @@ const Apartment = mongoose.model("Apartment", {
     ref: "User",
     required: true,   // Comment out if adding new appartments with Postman!!
   },
+  title: {
+    type: String,
+  },
   pricePerDay: {
     type: Number,
     required: true,
