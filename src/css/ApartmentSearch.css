@@ -1,5 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
+.apartment-search {
+  font-family: 'Poppins', sans-serif;
+}
+
+.dates-title{
+margin: 10px 10px 10px 20px;
+}
+
 .apartment-list {
   display: grid;
   grid-template-columns: auto auto;
@@ -25,9 +33,6 @@
   align-items: start;
 }
 
-.apartment-search  h1 {
-  font-family: 'Poppins', sans-serif;
-}
 
 .apartment-preview > h3 {
   position: relative; 
@@ -52,7 +57,7 @@
 
 .apartment-description {
   grid-area: b;
-  margin: 5px;
+  margin: 10px;
 }
 
 .apartment-img:hover {

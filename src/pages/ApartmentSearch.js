@@ -42,10 +42,12 @@ export default function ApartmentSearch() {
 
   return (
     <div className="apartment-search">
-      <> { calendarDates.length > 0 &&
-        <h3>{calendarDates[0]} to {calendarDates[calendarDates.length - 1]}</h3>
-      }</>
-      <h1>{capitalFirstLetter(city)}</h1>
+      <div className="dates-title">
+        <> {calendarDates.length > 0 &&
+          <h3>{calendarDates[0]} to {calendarDates[calendarDates.length - 1]}</h3>
+        }</>
+        <h1>{capitalFirstLetter(city)}</h1>
+      </div>
       <ApartmentList apartments={filterByLocationAndDates(city, apartments)} />
     </div>
   )
