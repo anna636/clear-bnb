@@ -65,8 +65,5 @@
 .amenities {
   display: flex;
   gap: 1em;
-}
-
-.amenitie {
-  font-size: 30px;
+  padding: 2px 10px 0 10px;
 }
