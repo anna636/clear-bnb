@@ -8,7 +8,6 @@ export default function HousingContextProvider(props) {
   const fetchApartments = async () => {
     let res = await fetch("/rest/apartments");
     res = await res.json();
-    console.log(res.length);
     setApartments(res);
   };
 

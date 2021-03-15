@@ -14,11 +14,25 @@ export default function HousingListing() {
     return '';
   };
 
-  
+  // method to retrieve users
+  /* const getRenter = async (id) => {
+    let data = await fetch(`/rest/apartments/${id}`);
+    let renter = await data.json();
+    return renter;
+  }; */
+
+  /* async function getRenter(id) {
+    let data = await fetch(`/rest/apartments/${id}`);
+    let renter = await data.json();
+    return renter;
+  }
+
+  let test = getRenter('604b43fa6b715a316c048f3f');
+  console.log(test); */
 
   // subcomponent
   const housingObj = housing => (
-    <div className="housing-object">
+    <div key={housing._id} className="housing-object">
       <div className="housing-img-container">
         <img className="housing-img" 
              src={housing.gallery[1]} 
@@ -32,14 +46,13 @@ export default function HousingListing() {
             <h4>{housing.region}</h4>
           </div>
           <div className="renter">
-            <h6>{housing.objectId}</h6>
+            {/* <h6>{getRenter(housing._id)}</h6> */}
             <i className="fas fa-user-circle"></i>
           </div>
         </div>
         <div className="housing-info-bottom">
           <h6>Max guests: {housing.maxGuests}</h6>
           <div className="housing-description">
-            {/* <p>{housing.description}</p> */}
             <p>{truncate(housing.description)}</p>
           </div>
           <h5 className="housing-price">Price: {housing.pricePerDay}SEK</h5>
