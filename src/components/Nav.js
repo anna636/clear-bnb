@@ -11,7 +11,7 @@ export default function Nav() {
   const [loginDisplay, setLoginDisplay] = useState(false);
   const location = useRef();
 
-  const allLocations = getAllLocations()
+  const allLocations = getAllLocations()  // change so it only updates on component start
 
   const [searchTerm, setSearchTerm] = useState("")
 
@@ -69,9 +69,8 @@ export default function Nav() {
           <h3>Destinationer</h3>
           <h3>Kom igång</h3>
         </div>
+
         <div className="nav-center-searchbar">
-
-
           <form onSubmit={searchLocation}>
             <input
               ref={location}
@@ -80,21 +79,25 @@ export default function Nav() {
               placeholder="Enter a location..."
               onChange={(e) => { setSearchTerm(e.target.value) }}
             />
-            {allLocations.filter((val) => {
-              if (searchTerm === "") {
-                return
-              }
-              else if (val.toLowerCase().includes(searchTerm.toLowerCase())) {
-                return val
-              }
-            }).map((val, key) => (
-              <div key={key}>
-                <p>{ val }</p>
-              </div>
-            ))}
           </form>
           <i className="fas fa-search"></i>
         </div>
+
+        <div className="dynamic-search">
+          {allLocations.filter((val) => {
+            if (searchTerm === "") {
+              return
+            }
+            else if (val.toLowerCase().includes(searchTerm.toLowerCase())) {
+              return val
+            }
+          }).map((val, key) => (
+            <div className="dynamic-search-value" key={key}>
+              <p>{val}</p>
+            </div>
+          ))}
+        </div>
+        
       </div>
 
       <div className="nav-right">
@@ -111,10 +114,8 @@ export default function Nav() {
           </button>
         </div>
         {loginDisplay && <LoginModal />}
-
-
-
       </div>
+
       <>
         {showCalendar && (
           <div className="calendar-component">
