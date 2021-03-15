@@ -1,11 +1,13 @@
 import { useParams } from 'react-router-dom'
 import { useContext, useState } from 'react'
 import { ApartmentContext } from '../contexts/ApartmentContextProvider'
+import { UserContext } from '../contexts/UserContextProvider'
 import '../css/PlusMinusGuests.css'
 
 export default function PlusMinusGuests() {
   const { id } = useParams()
   const { apartments } = useContext(ApartmentContext)
+  const { user } = useContext(UserContext)
   const apartment = apartments.find(el => el._id === id)
 
   const [guests, setCount] = useState([
@@ -40,7 +42,7 @@ export default function PlusMinusGuests() {
 
   return (
     <>
-      {apartment &&
+      {apartment && user &&
         <div className="container">
           <h3>Choose amount of guests.</h3>
           <div className="wrapper">
@@ -100,6 +102,11 @@ export default function PlusMinusGuests() {
           <div className="content-under"><p>{apartment.maxGuests} guests maximum. </p><p>Infants don't count towards the the number of guests, but could affect final price. </p>
             <button id="cancel">Cancel</button>
             <button id="save">Save</button>
+          </div>
+
+          <div>
+            <h1>TEST</h1>
+            <p>{user.email}</p>
           </div>
         </div> // end of container div
       }

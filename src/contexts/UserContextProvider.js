@@ -1,21 +1,31 @@
 import { createContext, useState, useEffect } from "react";
 
-export const UserContext=createContext()
+export const UserContext = createContext()
 
 export default function UserContextProvider(props) {
-  
-  const [users, setUsers] = useState([])
-  
-    const fetchUsers = async () => {
-      let res = await fetch("/rest/users");
-      res = await res.json();
-      setUsers(res);
-    };
 
-    useEffect(() => {
-      // mounted
-      fetchUsers();
-    }, []);
+  const [users, setUsers] = useState([])
+
+  const fetchUsers = async () => {
+    let res = await fetch("/rest/users");
+    res = await res.json();
+
+    setUsers(res);
+  };
+
+  const [user, setUser] = useState();
+
+  const fetchUser = async () => {
+    let res = await fetch("/api/whoami");
+    res = await res.json();
+    setUser(res);
+  };
+
+  useEffect(() => {
+    // mounted
+    fetchUsers();
+    fetchUser();
+  }, []);
 
 
 
@@ -35,15 +45,13 @@ export default function UserContextProvider(props) {
     // and to trigger reactivity we have to replace
     // the recipe object with a new object (in this case, a copy of the array)
     setUsers([...users, user]);
-      
+
   }
 
-
-
-      
   const values = {
     users,
     addUser,
+    user
   };
 
   return (
@@ -51,5 +59,5 @@ export default function UserContextProvider(props) {
       {props.children}
     </UserContext.Provider>
   );
-  
+
 }

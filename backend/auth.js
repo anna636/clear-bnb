@@ -67,6 +67,30 @@ module.exports = function (app, models) {
     }
   });
 
+  app.get('/testlogin', async (req, res) => {
+    console.log(req.session.user, 'before')
+    let userObject = { email: "mcampos0@archive.org", password: "hehs123" }
+
+    if (req.session.user) {
+      res.json({ error: 'Someone is already logged in' });
+      return;
+    }
+    // Encrypt password
+    const hash = crypto.createHmac('sha256', secret)
+      .update(userObject.password).digest('hex');
+    // Search for user
+    let user = await User.findOne({ email: userObject.email, password: hash });
+    if (user) {
+      // succesful login, save the user to the session object
+      req.session.user = user;
+      res.json({ success: 'Logged in' });
+    }
+    else {
+      res.json({ error: 'No match.' });
+    }
+
+  })
+
   // Check if logged in
   app.get('/api/whoami', (req, res) => {
     if (req.session.user) {
