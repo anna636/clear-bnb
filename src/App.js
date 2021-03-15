@@ -9,6 +9,7 @@ import Footer from './components/Footer'
 import ApartmentDetails from './pages/ApartmentDetails.js'
 import ApartmentContextProvider from './contexts/ApartmentContextProvider';
 import BookingContextProvider from './contexts/BookingContextProvider';
+import UserContextProvider from "./contexts/UserContextProvider";
 
 function App() {
 
