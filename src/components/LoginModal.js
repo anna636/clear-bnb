@@ -30,7 +30,7 @@ export default function LoginModal() {
         </>
       }
 
-      {getCurrentUser &&
+      {getCurrentUser() &&
         <>
           <div className="login-popup-div">
             <p className="login-popup-content bli-värd-boende">Rent out</p>
