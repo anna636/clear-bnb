@@ -22,8 +22,8 @@ export default function Confirmation() {
 
         <p>Total price: {totalPrice} €</p>
         <p>Registered amount of guests: {amountOfGuests}</p>
-        <p>Moving in:   {calendarDates[0]}</p>
-        <p>Moving out:   {calendarDates[calendarDates.length - 1]}</p>
+        <p>Check in:   {calendarDates[0]}</p>
+        <p>Check out:   {calendarDates[calendarDates.length - 1]}</p>
       </div>
       <div className="buttonWrapper">
         <button onClick={() => history.push("/")}>Take me to start page</button>
