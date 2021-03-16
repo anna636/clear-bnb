@@ -47,6 +47,16 @@ h3 {
   top: 10px;
 }
 
+.nav-center-options > a {
+text-decoration: none;
+color: black;
+}
+
+.nav-center-options > a:hover{
+opacity: 0.5;
+transform: scale(1.05);
+}
+
 .nav-center-options > h3:hover {
   opacity: 0.5;
   transform: scale(1.05);
