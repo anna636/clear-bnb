@@ -42,7 +42,7 @@ export default function ReactCalendar({ userSearch }) {
         value={dates}
         selectRange={true}
       />
-      <button className="calendarNext" onClick={next}>Next</button>
+      <button className="calendarNext" disabled={!dates} onClick={next}>Next</button>
     </div>
   );
 }
