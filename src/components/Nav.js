@@ -91,7 +91,7 @@ export default function Nav() {
       <div className="nav-center">
         <div className="nav-center-options">
            <Link to="/housing-listing">  
-            <h3>Apartments</h3>
+            <h3 className="apartmentsText">Apartments</h3>
           </Link>  
           <h3>Destinations</h3>
           <h3>Get started</h3>

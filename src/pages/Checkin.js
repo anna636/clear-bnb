@@ -5,13 +5,17 @@ import { ApartmentContext } from "../contexts/ApartmentContextProvider";
 import { BookingContext } from "../contexts/BookingContextProvider";
 import { UserContext } from "../contexts/UserContextProvider";
 import { useHistory } from "react-router-dom";
+import Login from '../components/Login.js'
+import Register from '../components/Register.js'
 
 export default function Checkin() {
   const history = useHistory();
   const { id } = useParams();
   const { apartments } = useContext(ApartmentContext);
   const apartment = apartments.find((el) => el._id === id);
-  const { user } = useContext(UserContext);
+  const { getCurrentUser } = useContext(UserContext);
+  const [openLogin, setOpenLogin]=useState(false)
+  const [openRegister, setOpenRegister]=useState(false)
 
   //Taking choosen dates from calendar
   //service fee is 15% of total price + 5 euros for every new guest
@@ -31,7 +35,7 @@ export default function Checkin() {
   //Creating new booking object and another object to update apartment bookedDates
   async function createBooking() {
     const newBooking = {
-      userId: user._id,
+      userId: getCurrentUser()._id,
       apartmentId: id,
       startDate: calendarDates[0],
       endDate: calendarDates[calendarDates.length - 1],
@@ -49,15 +53,29 @@ export default function Checkin() {
     updateTotalPrice(totalPrice);
     addBooking(newBooking);
     updateApartmentDates(bookingInfo);
+    console.log('new booking is', newBooking);
 
     history.push("/confirmation/" + apartment._id);
   }
 
   return (
     <>
-      {apartment && user && (
+      {apartment && (
         <div className="checkin">
           <h1>Your trip</h1>
+          {openLogin && (
+            <div className="loginWrapper">
+              <span onClick={() => setOpenLogin(false)}>x</span>
+              <Login />
+            </div>
+          )}
+          {openRegister && (
+            <div className="registerWrapper">
+              <span onClick={() => setOpenRegister(false)}>x</span>
+              <Register />
+            </div>
+          )}
+
           <div className="tripInformation">
             <div className="datesAndGuests">
               <div className="dates">
@@ -101,11 +119,18 @@ export default function Checkin() {
                 €
               </p>
             </div>
-
+          </div>
+          {getCurrentUser() && (
             <button className="reserveButton" onClick={createBooking}>
               Reserve
             </button>
-          </div>
+          )}
+          {getCurrentUser() === null && (
+            <div className="buttonsWrapper">
+              <button onClick={() => openRegister === false ? setOpenLogin(true): ""}>Log in</button>
+              <button onClick={()=> openLogin === false ? setOpenRegister(true):""}>Register</button>
+            </div>
+          )}
         </div>
       )}
     </>

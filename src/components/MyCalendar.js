@@ -9,6 +9,7 @@ export default function ReactCalendar({ userSearch }) {
   const history = useHistory();
   const [dates, setDates] = useState(); // dates is array of 2 dates picked
   const { addCalendarDates, addGuests } = useContext(BookingContext);
+  
 
   const onChange = (newDate) => {
     setDates(newDate);

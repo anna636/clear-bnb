@@ -110,6 +110,7 @@ p {
   font-size: 15px;
   font-weight: bold;
   cursor: pointer;
+  
 }
 .reserveButton:hover {
   background: rgba(128, 128, 128, 0.548);
@@ -122,4 +123,53 @@ p {
 
 .totalPrice p {
   margin-right: 2vh;
+}
+
+.buttonsWrapper {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  align-self: flex-end;
+
+}
+
+.buttonsWrapper > button {
+  margin-top: 1vh;
+  border: 1px solid lightgray;
+  background: black;
+  width: 50%;
+
+  text-align: center;
+  padding: 6px;
+  margin-right: 3vh;
+  font-weight: 900;
+  font-size: 13px;
+  border-radius: 15px;
+  cursor: pointer;
+  outline: none;
+  color: white;
+}
+
+.buttonsWrapper > button:hover {
+  background: rgba(128, 128, 128, 0.548);
+  color: gray;
+}
+
+.loginWrapper {
+  width: 30vw;
+  height: 30vw;
+  position: fixed;
+}
+
+.registerWrapper {
+  width: 30vw;
+
+  position: fixed;
+}
+
+span {
+  float: right;
+  padding-top: 1vh;
+  padding-right: 1vh;
+  cursor: pointer;
 }

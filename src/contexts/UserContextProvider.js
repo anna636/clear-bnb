@@ -58,7 +58,8 @@ export default function UserContextProvider(props) {
     registerUser,
     login,
     logout,
-    getCurrentUser
+    getCurrentUser,
+    currentUser,
   };
 
   return (

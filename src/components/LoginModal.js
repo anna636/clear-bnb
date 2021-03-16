@@ -19,37 +19,54 @@ export default function LoginModal() {
 
   return (
     <div className="login-modal">
-      { !getCurrentUser() &&
+      {register && (
+        <div className="registerWrapper">
+          <span onClick={() => setRegister(false)}>x</span>
+          <Register />
+        </div>
+      )}
+
+      {login && (
+        <div className="loginWrapper">
+          <span onClick={() => setLogin(false)}>x</span>
+          <Login />
+        </div>
+      )}
+      {!getCurrentUser() && (
         <>
-          <div className="login-popup-div"
-            onClick={() => {
-              setRegister(!register);
-            }}
+          <div
+            className="login-popup-div"
+            onClick={() => 
+              login===false ? setRegister(true): ""
+            }
           >
             <p className="login-popup-content bli-medlem">Register</p>
           </div>
-          <div className="login-popup-div"
-            onClick={() => {
-              setLogin(!login);
-            }}
+          <div
+            className="login-popup-div"
+            onClick={() => 
+              register===false ? setLogin(true):""
+            }
           >
             <p className="login-popup-content logga-in">Login</p>
           </div>
         </>
-      }
+      )}
 
-      {getCurrentUser() &&
+      {getCurrentUser() && (
         <>
           <div className="login-popup-div">
             <p className="login-popup-content bli-värd-boende">Rent out</p>
             <p className="login-popup-content bli-värd-boende">My pages</p>
-            <p className="login-popup-content bli-värd-boende" onClick={logoutHandler}>logout</p>
+            <p
+              className="login-popup-content bli-värd-boende"
+              onClick={logoutHandler}
+            >
+              logout
+            </p>
           </div>
         </>
-      }
-      {register && <Register />}
-      {login && <Login />}
-
+      )}
     </div>
-  )
+  );
 }
