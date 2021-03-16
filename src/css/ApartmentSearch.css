@@ -5,7 +5,12 @@
 }
 
 .dates-title{
-margin: 10px 10px 10px 20px;
+margin: 10px 10px 10px 35px;
+}
+
+.dates-title h3 {
+  color: rgb(82, 82, 82);
+  font-size: 15px;
 }
 
 .apartment-list {

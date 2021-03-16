@@ -71,7 +71,6 @@ h3 {
   width: 100%;
   padding-left: 10px;
   font-family: 'Poppins', sans-serif;
- 
 
 }
 
@@ -150,4 +149,29 @@ h3 {
 
 .login-btn:hover {
   opacity: 0.5;
+}
+
+
+.nav-center .dynamic-search {
+  background-color: white;
+  max-width: 20vw;
+  font-family: 'Poppins', sans-serif;
+  position: absolute;
+  margin-top: 14vh;
+  margin-left: 60px;
+  border-radius: 9px;
+  text-align: center;
+}
+
+.dynamic-search-value {
+  margin: 10px;
+}
+
+.dynamic-search-value:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.dynamic-search-value:last-child {
+  margin-bottom: 20px;
 }
