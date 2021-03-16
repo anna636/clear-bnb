@@ -1,6 +1,6 @@
 import "../css/Nav.css";
 import LoginModal from './LoginModal'
-import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom'
 import { useContext, useState, useRef, useEffect } from "react";
 import MyCalendar from "./MyCalendar";
 import { ApartmentContext } from "../contexts/ApartmentContextProvider";
@@ -56,7 +56,7 @@ export default function Nav() {
         locationsArray.push(apartment.region)
       }
     }
- 
+
 
     allLocations = locationsArray
   }
@@ -82,17 +82,18 @@ export default function Nav() {
 
   return (
     <div className="nav">
-      <img
-        className="nav-logo"
-        /* src="https://cdn.discordapp.com/attachments/815586944222363684/818141369045745706/logo_clearbnb01.jpg" */
-        src="https://i.imgur.com/XsXTFPI.png"
-        alt=""
-      />
+      <Link to="/">
+        <img
+          className="nav-logo"
+          src="https://i.imgur.com/XsXTFPI.png"
+          alt=""
+        />
+      </Link>
       <div className="nav-center">
         <div className="nav-center-options">
-           <Link to="/housing-listing">  
+          <Link to="/housing-listing">
             <h3>Apartments</h3>
-          </Link>  
+          </Link>
           <h3>Destinations</h3>
           <h3>Get started</h3>
         </div>
