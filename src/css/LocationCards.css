@@ -12,8 +12,13 @@
 
 .card > h3 {
   position: relative; 
-  bottom: 40px;
-  left: 10px;
+  bottom: 42px;
+  background-color: rgba(238, 238, 238, 0.5);
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  padding: 0 0 0 5px;
+  width: 70%;
+  color: #333;
 }
 
 .location-cards {
