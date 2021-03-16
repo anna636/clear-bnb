@@ -4,7 +4,6 @@ export const UserContext = createContext();
 
 export default function UserContextProvider(props) {
 
-  const [users, setUsers] = useState([]);
   const [currentUser, setCurrentUser] = useState(null);
 
   const registerUser = async (user) => {
@@ -15,9 +14,6 @@ export default function UserContextProvider(props) {
     });
 
     res = await res.json();
-    user.id = res.id;
-
-    setUsers([...users, user]);
   };
 
   const login = async (user) => {
@@ -28,7 +24,6 @@ export default function UserContextProvider(props) {
     });
     res = await res.json();
     if (res.success) {
-      delete res.user.password
       setCurrentUser({ ...res.user })
     } else {
       console.log(res.error)
@@ -46,11 +41,7 @@ export default function UserContextProvider(props) {
   };
 
   const getCurrentUser = () => {
-    if (currentUser) {
-      return currentUser
-    } else {
-      return null;
-    }
+    return currentUser
   }
 
   const logout = async () => {

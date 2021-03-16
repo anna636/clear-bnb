@@ -49,6 +49,7 @@ module.exports = function (app, models) {
     if (user) {
       // succesful login, save the user to the session object
       req.session.user = user;
+      user = (({ fullName, email, _id }) => ({ fullName, email, _id }))(user) //create a  new object with only a subset of user properties
       res.json({ success: 'Logged in', user });
     }
     else {
