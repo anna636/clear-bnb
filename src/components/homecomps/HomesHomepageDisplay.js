@@ -26,7 +26,7 @@ export default function HomesHomepageDisplay() {
 
   return (
     <div className="homes-display">
-      <h1>Utforska boenden</h1>
+      <h1>Discover apartments</h1>
       <div className="home-elements">
         {homes.map(home => {
           return card(home);

@@ -56,7 +56,7 @@ export default function Nav() {
         locationsArray.push(apartment.region)
       }
     }
-    console.log(...locationsArray)
+ 
 
     allLocations = locationsArray
   }
@@ -91,10 +91,10 @@ export default function Nav() {
       <div className="nav-center">
         <div className="nav-center-options">
            <Link to="/housing-listing">  
-            <h3>Boenden</h3>
+            <h3>Apartments</h3>
           </Link>  
-          <h3>Destinationer</h3>
-          <h3>Kom igång</h3>
+          <h3>Destinations</h3>
+          <h3>Get started</h3>
         </div>
 
         <div className="nav-center-searchbar">
