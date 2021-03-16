@@ -4,16 +4,15 @@ import { useContext, useState } from "react";
 
 export default function Login() {
 
-   const {login } = useContext(UserContext);
-const [email, setEmail]=useState('')
+  const { login } = useContext(UserContext);
+  const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  
+
   function logIn() {
     let user = {
       email: email,
-      password:password
+      password: password
     }
-    
     login(user)
   }
 
@@ -46,7 +45,7 @@ const [email, setEmail]=useState('')
         </div>
         <div className="login-btn-wrap">
           <button className="login"
-          onClick={logIn}>Log in</button>
+            onClick={logIn}>Log in</button>
         </div>
       </div>
       <div></div>
@@ -54,7 +53,7 @@ const [email, setEmail]=useState('')
   );
 }
 
-/* 
+/*
 
 [login]
   [upperdiv]
