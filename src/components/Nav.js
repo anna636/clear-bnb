@@ -5,6 +5,7 @@ import { useContext, useState, useRef, useEffect } from "react";
 import MyCalendar from "./MyCalendar";
 import { ApartmentContext } from "../contexts/ApartmentContextProvider";
 import { UserContext } from "../contexts/UserContextProvider";
+import { BookingContext } from "../contexts/BookingContextProvider";
 
 // Prop to MyCalendar component with location from search bar
 let locationProp = ""
@@ -13,9 +14,9 @@ let allLocations = []
 
 
 export default function Nav() {
+  const { addCalendarDates } = useContext(BookingContext);
   const { apartments } = useContext(ApartmentContext);
   const { getCurrentUser } = useContext(UserContext)
-
   const [showCalendar, setShowCalendar] = useState(false);
   const [loginDisplay, setLoginDisplay] = useState(false);
   const [showDynamicSearch, setShowDynamicSearch] = useState(true);
@@ -80,9 +81,16 @@ export default function Nav() {
     setShowDynamicSearch(false)
   }
 
+  function navHome() {
+    setSearchTerm("")
+    setShowDynamicSearch(true)
+    setShowCalendar(false)
+    addCalendarDates([])
+  }
+
   return (
     <div className="nav">
-      <Link to="/">
+      <Link to="/" onClick={navHome}>
         <img
           className="nav-logo"
           src="https://i.imgur.com/XsXTFPI.png"
