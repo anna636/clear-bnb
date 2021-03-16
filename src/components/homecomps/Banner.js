@@ -11,7 +11,7 @@ export default function Banner() {
           <br />
           Plan an exceptional trip with our help.
         </h4>
-        <button className="banner-info-btn">Discover apartments</button>
+        {/* <button className="banner-info-btn">Discover apartments</button> */}
       </div>
     </div>
   );
