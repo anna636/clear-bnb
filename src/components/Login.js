@@ -7,6 +7,7 @@ export default function Login() {
    const {login } = useContext(UserContext);
 const [email, setEmail]=useState('')
   const [password, setPassword] = useState('')
+  const [openLogin, setOpenLogin] = useState(true)
   
   function logIn() {
     let user = {
@@ -15,42 +16,47 @@ const [email, setEmail]=useState('')
     }
     
     login(user)
+    window.location.reload();
   }
 
 
   return (
-    <div className="login-container">
-      <div className="upper-login-wrap">
-        <h3>Logga in</h3>
-      </div>
-      <div>
-        <div className="input-login-div-wrap">
-          <div className="input-login-div line">
-            <input
-              type="text"
-              required
-              placeholder="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
+    
+        <div className="login-container">
+          
+          <div className="upper-login-wrap">
+            <h3>Logga in</h3>
           </div>
-          <div className="input-login-div">
-            <input
-              type="password"
-              required
-              placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
+          <div>
+            <div className="input-login-div-wrap">
+              <div className="input-login-div line">
+                <input
+                  type="text"
+                  required
+                  placeholder="Email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              </div>
+              <div className="input-login-div">
+                <input
+                  type="password"
+                  required
+                  placeholder="Password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+              </div>
+            </div>
+            <div className="login-btn-wrap">
+              <button className="login" onClick={logIn}>
+                Log in
+            </button>
+            </div>
           </div>
+          <div></div>
         </div>
-        <div className="login-btn-wrap">
-          <button className="login"
-          onClick={logIn}>Log in</button>
-        </div>
-      </div>
-      <div></div>
-    </div>
+    
   );
 }
 

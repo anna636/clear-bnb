@@ -4,18 +4,20 @@
 }
 
 .login-container {
-  position: fixed;
-  /* top: 100px;
-  right: 500px; */
+  /*position: fixed;
+  top: 100px;
+  right: 500px; 
   width: 30vw;
   top: 45%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  left: 50%;*/
+  
+  width: 30vw;
+ 
   background-color: white;
-  border: 1px solid rgb(216, 213, 213);
+  /*border: 1px solid rgb(216, 213, 213);*/
   border-radius: 15px;
   z-index: 100;
-  box-shadow: 0px 0px 100px 0px rgba(50, 50, 50, 0.9);
+ /* box-shadow: 0px 0px 100px 0px rgba(50, 50, 50, 0.9);*/
   padding-bottom: 20px;
 }
 
@@ -114,5 +116,9 @@
   height: 100%;
   font-size: 12px;
   cursor: pointer;
+}
+
+.closeSpan{
+  margin-left:90%;
 }
 
