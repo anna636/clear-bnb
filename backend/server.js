@@ -4,10 +4,10 @@ const app = express();
 
 // import models
 const models = require("./models/models.js");
-const moment = require("moment");  // npm i moment
+const moment = require("moment"); // npm i moment
 
 // import controllers
-const authHandler = require('./auth.js')
+const authHandler = require("./auth.js");
 
 app.use(express.json());
 
@@ -36,8 +36,11 @@ function getDates(startDate, stopDate) {
 app.get("/rest/:model", async (req, res) => {
   let model = models[req.params.model];
   if (req.params.model === "apartments") {
-    let docs = await model.find().populate(["amenities", "ownerId", "availableDates"]).exec();  // merge wanted to trash populate "ownerId"
-    res.json(docs)
+    let docs = await model
+      .find()
+      .populate(["amenities", "ownerId", "availableDates"])
+      .exec(); // merge wanted to trash populate "ownerId"
+    res.json(docs);
     return;
   }
   // if (req.params.model === "users") {
@@ -53,28 +56,23 @@ app.get("/rest/:model", async (req, res) => {
 app.get("/rest/:model/:id", async (req, res) => {
   let model = models[req.params.model];
   if (req.params.model === "apartments") {
-    let doc = await model.findById(req.params.id).populate(['amenities', 'ownerId']).exec()
+    let doc = await model
+      .findById(req.params.id)
+      .populate(["amenities", "ownerId"])
+      .exec();
     res.json(doc);
     return;
   }
 
-  let doc = await model.findById(req.params.id)
+  let doc = await model.findById(req.params.id);
   res.json(doc);
 });
 
-
-
-
-app.put("/api/update-dates/:id", async (req, res) => {
-  //Send id of a booking
-  let Booking = models['bookings']
-  let booking = await Booking.findById(req.params.id) //Finding booking
-
+app.put("/api/update-dates/", async (req, res) => {
   let Apartment = models["apartments"];
-  let apartment = await Apartment.findById(booking.apartmentId); //Finding apartment
+  let apartment = await Apartment.findById(req.body.apartmentId); //Finding apartment
 
-  let newDates = getDates(booking.startDate, booking.endDate); //Getting all dates of booking
-
+  let newDates = getDates(req.body.dates[0], req.body.dates[1]);
 
   //Pushing dates is bookedDates if they're not there yet
   for (date of newDates) {
@@ -83,12 +81,10 @@ app.put("/api/update-dates/:id", async (req, res) => {
     }
   }
 
-  await apartment.save()
+  await apartment.save();
 
   res.json(apartment);
 });
-
-
 
 //Post for all models except for amenities
 app.post("/rest/:model", async (req, res) => {
@@ -132,7 +128,7 @@ app.put("/api/add-amenity-to-apartment/:apartmentId", async (req, res) => {
 
   for (let amenity of req.body.amenityIds) {
     if (apartment.amenities.includes(amenity)) {
-      res.json('already exists')
+      res.json("already exists");
       return; //do nothing
     } else {
       apartment.amenities.push(amenity);
@@ -144,7 +140,6 @@ app.put("/api/add-amenity-to-apartment/:apartmentId", async (req, res) => {
 });
 
 // fire controllers
-authHandler(app, models)
+authHandler(app, models);
 
-
-app.listen(3001, () => console.log("Server stated on port 3001"))
+app.listen(3001, () => console.log("Server stated on port 3001"));

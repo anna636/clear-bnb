@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { useContext, useState } from "react";
 import { ApartmentContext } from "../contexts/ApartmentContextProvider";
 import { BookingContext } from "../contexts/BookingContextProvider";
+import { UserContext } from "../contexts/UserContextProvider";
 import { useHistory } from "react-router-dom";
 
 export default function Checkin() {
@@ -10,10 +11,17 @@ export default function Checkin() {
   const { id } = useParams();
   const { apartments } = useContext(ApartmentContext);
   const apartment = apartments.find((el) => el._id === id);
+  const { user } = useContext(UserContext);
+ 
 
   //Taking choosen dates from calendar
   //service fee is 15% of total price + 5 euros for every new guest
-  const { calendarDates, amountOfGuests } = useContext(BookingContext);
+  const {
+    calendarDates,
+    amountOfGuests,
+    addBooking,
+    updateApartmentDates,
+  } = useContext(BookingContext);
 
 
   //When clicking on guests div let user change amount of guests
@@ -22,21 +30,33 @@ export default function Checkin() {
     console.log(calendarDates);
   }
 
-  function createBooking() {
-    console.log('id here is', id);
+  async function createBooking() {
+   
     const newBooking = {
-      "userId": "",
-      "apartmentId": id,
-      "startDate": calendarDates[0],
-      "endDate": calendarDates[calendarDates.length-1]
+      userId: user._id,
+      apartmentId: id,
+      startDate: calendarDates[0],
+      endDate: calendarDates[calendarDates.length-1]
     }
-    console.log(newBooking);
+
+    const bookingInfo = {
+      apartmentId: id,
+      dates: [
+        calendarDates[0],
+        calendarDates[calendarDates.length-1]
+      ]
+    }
+    console.log('new booking is', newBooking, 'and bookingInfo is', bookingInfo);
+    addBooking(newBooking);
+    updateApartmentDates(bookingInfo)
+
     history.push("/confirmation/" + apartment._id)
+   
   }
 
   return (
     <>
-      {apartment && (
+      {apartment && user &&(
         <div className="checkin">
           <h1>Your trip</h1>
           <div className="tripInformation">
