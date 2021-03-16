@@ -1,17 +1,24 @@
 import "../css/Nav.css";
 import LoginModal from './LoginModal'
-import { useContext, useState, useRef } from "react";
+import { useContext, useState, useRef, useEffect } from "react";
 import MyCalendar from "./MyCalendar";
 import { ApartmentContext } from "../contexts/ApartmentContextProvider";
 import { UserContext } from "../contexts/UserContextProvider";
 
 export default function Nav() {
   const { apartments } = useContext(ApartmentContext);
-  const { user, logout } = useContext(UserContext)
+  const { logout, getCurrentUser } = useContext(UserContext)
 
   const [showCalendar, setShowCalendar] = useState(false);
   const [loginDisplay, setLoginDisplay] = useState(false);
   const location = useRef();
+
+
+  useEffect(() => {
+    getCurrentUser()
+  }, []);
+
+  console.log(getCurrentUser())
 
   const searchLocation = async (e) => {
     e.preventDefault();
@@ -72,9 +79,9 @@ export default function Nav() {
       <div className="nav-right">
 
         <div>
-          {user &&
+          {getCurrentUser() &&
             <>
-              <h5>Welcome, {user.fullName}</h5>
+              <h5>Welcome, {getCurrentUser().fullName}</h5>
               <button onClick={logoutHandler}>Logout</button>
             </>
           }

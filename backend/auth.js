@@ -45,11 +45,11 @@ module.exports = function (app, models) {
     const hash = crypto.createHmac('sha256', secret)
       .update(req.body.password).digest('hex');
     // Search for user
-    let user = await User.findOne({ username: req.body.username, password: hash });
+    let user = await User.findOne({ email: req.body.email, password: hash });
     if (user) {
       // succesful login, save the user to the session object
       req.session.user = user;
-      res.json({ success: 'Logged in' });
+      res.json({ success: 'Logged in', user });
     }
     else {
       res.json({ error: 'No match.' });
