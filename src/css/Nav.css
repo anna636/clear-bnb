@@ -5,43 +5,46 @@ h3 {
   transition: 0.1s ease-in-out;
 }
 
-header {
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   position: sticky;
   top: 0;
-  z-index: 100;
-}
-
-.nav {
-  display: grid;
-  grid-template-columns: auto 1fr auto;
+  /* background-color: white; */
   background-color: #f7f7f7;
+  z-index: 100;
   width: 100%;
-  padding: 10px 0;
-  margin: 0 auto;
+  flex-wrap: wrap;
+  height:14vh;
 }
 
-.nav-logo img {
-  /* object-fit: contain; */
-  height: 7vw;
-  padding-left: 5px;
+/* .nav > * {
+  flex-wrap: wrap;
+  flex: 0 1;
+} */
+
+.nav-logo {
+  object-fit: contain;
+  height: 100px;
+  margin-left: 20px;
   background-color: #f7f7f7;
 }
 
 .nav-center {
+  margin-top: 10px;
   display: grid;
-  grid-template-rows: 2;
-  width: 80%;
-  text-align: center;
+  /* grid-template-columns: 1 1; */
+  width: 600px;
 }
 
 .nav-center-options {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.nav-center-options > h3{
-  padding-left: 20px;
+  gap: 4em;
+  position: relative;
+  top: 10px;
 }
 
 .nav-center-options > h3:hover {
@@ -53,30 +56,36 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 5px;
-  width: 80%;
-  margin: 0 auto;
+  padding: 10px;
+  border: 1px solid lightgray;
+  border-radius: 999px;
+  position: relative;
+  top: 18px;
+  background-color: white;
+  border-bottom: 1px solid rgba(83, 83, 83, 0.5);
 }
 
 .nav-center-searchbar > input {
-  border-radius: 10px;
-  padding: 5px 10px;
-  border: 1px solid rgba(83, 83, 83, 0.5);
-  color: black;
-  text-decoration: none;
-  cursor: default;
-  border-radius: 90px;
-  font-size: medium;
+  border: none; 
+  outline: none;
   width: 100%;
+  padding-left: 10px;
   font-family: 'Poppins', sans-serif;
+
 }
 
-.nav-center-searchbar > input:focus{
-  outline: none;
+.nav-center-searchbar input{
+ border:none;
+ outline:none;
+ width:60vh;
+ font-size: 15px;
 }
 
 .nav-right {
+  display: flex;
+  justify-content: center;
   align-items: center;
+  margin-right: 10px;
 }
 
 .nav-right > p {
@@ -90,4 +99,79 @@ header {
 
 .nav-right > .fa-user-circle {
   font-size: 35px;
+}
+
+
+.calendar-component{
+  margin-top:2vh;
+   padding-bottom:3vh;
+   text-align: center;
+   background-color: white;
+  margin-left:38vh;
+  
+}
+
+.mySpan{
+  float:right;
+  padding:2vh;
+  cursor: pointer;
+}
+
+.selectDates{
+  font-size:30px;
+  font-weight: bold;
+  padding:2vh;
+}
+.login-btn {
+  border-radius: 999px;
+  /* border: 1px solid lightgray; */
+  
+  border: none;
+  text-align: center;
+  outline: none;
+  cursor: pointer;
+  background-color: rgb(230, 230, 230);
+
+}
+
+.login-btn-icons-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 5px;
+  font-size: 20px;
+}
+
+.login-btn-icons-container > i {
+  padding: 3px;
+}
+
+.login-btn:hover {
+  opacity: 0.5;
+}
+
+
+.nav-center .dynamic-search {
+  background-color: white;
+  max-width: 20vw;
+  font-family: 'Poppins', sans-serif;
+  position: absolute;
+  margin-top: 14vh;
+  margin-left: 60px;
+  border-radius: 9px;
+  text-align: center;
+}
+
+.dynamic-search-value {
+  margin: 10px;
+}
+
+.dynamic-search-value:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.dynamic-search-value:last-child {
+  margin-bottom: 20px;
 }

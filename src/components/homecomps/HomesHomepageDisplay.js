@@ -3,7 +3,7 @@ import homes from './homestest.json'
 
 export default function HomesHomepageDisplay() {
   const card = home => (
-    <div className="home-comp-wrapper">
+    <div className="home-comp-wrapper" key={Math.random()}>
       <div className="home-comp-img">
         <img src={home.img}
           alt=""

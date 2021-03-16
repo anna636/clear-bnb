@@ -1,0 +1,42 @@
+.Details{
+    margin-top: 50px;
+    text-align: center;
+}
+p{
+    margin-top: 20px;
+}
+.Detail-img{
+    display: inline;
+    width: 800px;
+    height: 600px;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+}
+.description-text{
+    margin-top: 50px;
+    width: 45vw;
+    margin-left: 27vw;
+}
+.next-btn-details{
+    width: 180px;
+    height: 45px;
+    padding: 4px 0;
+    border-radius: 3px;
+    margin-top: 3vh;
+    outline: none;
+    border: 0;
+    background: black;
+    color: white;
+    padding: 1vh 3vh;
+    font-size: 15px;
+    font-weight: bold;
+}
+.next-btn-details:hover {
+    cursor: pointer;
+    background: #3e3f41;
+    transition: all 0.2s ease 0s;
+}
+.btn-div-details{
+    padding: 40px;
+}

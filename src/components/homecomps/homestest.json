@@ -8,7 +8,8 @@
     "description": "En nyrenoveredad två som hyrs ut för folk i behov av bostad under kortare perioder. Läget är väldigt centralt i Malmö med nära till allt, såsom köpcentrum, tåg & buss och uteliv. Byggnaden lägenheten tillhör till har även en fin innergård som är perfekt för sommaren. Tvättstuga, grillplats, cykelstation och vind samt källare finns och får användas.",
     "price": "370kr/natt",
     "rating": "4,65/5",
-    "owner": "Marcus Jacobsson"
+    "owner": "Marcus Jacobsson",
+    "id": "1"
   },
   {
     "region": "Skåne",
@@ -19,7 +20,8 @@
     "description": "En nyrenoveredad två som hyrs ut för folk i behov av bostad under kortare perioder. Läget är väldigt centralt i Malmö med nära till allt, såsom köpcentrum, tåg & buss och uteliv. Byggnaden lägenheten tillhör till har även en fin innergård som är perfekt för sommaren. Tvättstuga, grillplats, cykelstation och vind samt källare finns och får användas.",
     "price": "370kr/natt",
     "rating": "4,65/5",
-    "owner": "Patrik Jansson"
+    "owner": "Patrik Jansson",
+    "id": "2"
   },
   {
     "region": "Skåne",
@@ -30,7 +32,8 @@
     "description": "En nyrenoveredad två som hyrs ut för folk i behov av bostad under kortare perioder. Läget är väldigt centralt i Malmö med nära till allt, såsom köpcentrum, tåg & buss och uteliv. Byggnaden lägenheten tillhör till har även en fin innergård som är perfekt för sommaren. Tvättstuga, grillplats, cykelstation och vind samt källare finns och får användas.",
     "price": "370kr/natt",
     "rating": "4,65/5",
-    "owner": "Love Turesson"
+    "owner": "Love Turesson",
+    "id": "3"
   },
   {
     "region": "Skåne",
@@ -41,7 +44,8 @@
     "description": "En nyrenoveredad två som hyrs ut för folk i behov av bostad under kortare perioder. Läget är väldigt centralt i Malmö med nära till allt, såsom köpcentrum, tåg & buss och uteliv. Byggnaden lägenheten tillhör till har även en fin innergård som är perfekt för sommaren. Tvättstuga, grillplats, cykelstation och vind samt källare finns och får användas.",
     "price": "370kr/natt",
     "rating": "4,65/5",
-    "owner": "John Johnsson"
+    "owner": "John Johnsson",
+    "id": "4"
   },
   {
     "region": "Skåne",
@@ -52,7 +56,8 @@
     "description": "En nyrenoveredad två som hyrs ut för folk i behov av bostad under kortare perioder. Läget är väldigt centralt i Malmö med nära till allt, såsom köpcentrum, tåg & buss och uteliv. Byggnaden lägenheten tillhör till har även en fin innergård som är perfekt för sommaren. Tvättstuga, grillplats, cykelstation och vind samt källare finns och får användas.",
     "price": "370kr/natt",
     "rating": "4,65/5",
-    "owner": "Venki Jay"
+    "owner": "Venki Jay",
+    "id": "5"
   },
   {
     "region": "Uppland",
@@ -63,7 +68,8 @@
     "description": "En nyrenoveredad två som hyrs ut för folk i behov av bostad under kortare perioder. Läget är väldigt centralt i Malmö med nära till allt, såsom köpcentrum, tåg & buss och uteliv. Byggnaden lägenheten tillhör till har även en fin innergård som är perfekt för sommaren. Tvättstuga, grillplats, cykelstation och vind samt källare finns och får användas.",
     "price": "770kr/natt",
     "rating": "4,9/5",
-    "owner": "Amanda Oscarsson"
+    "owner": "Amanda Oscarsson",
+    "id": "6"
   },
   {
     "region": "Skåne",
@@ -74,7 +80,8 @@
     "description": "En nyrenoveredad två som hyrs ut för folk i behov av bostad under kortare perioder. Läget är väldigt centralt i Malmö med nära till allt, såsom köpcentrum, tåg & buss och uteliv. Byggnaden lägenheten tillhör till har även en fin innergård som är perfekt för sommaren. Tvättstuga, grillplats, cykelstation och vind samt källare finns och får användas.",
     "price": "200kr/natt",
     "rating": "3/5",
-    "owner": "Thomas Brolin"
+    "owner": "Thomas Brolin",
+    "id": "7"
   },
   {
     "region": "Skåne",
@@ -85,6 +92,7 @@
     "description": "En nyrenoveredad två som hyrs ut för folk i behov av bostad under kortare perioder. Läget är väldigt centralt i Malmö med nära till allt, såsom köpcentrum, tåg & buss och uteliv. Byggnaden lägenheten tillhör till har även en fin innergård som är perfekt för sommaren. Tvättstuga, grillplats, cykelstation och vind samt källare finns och får användas.",
     "price": "550kr/natt",
     "rating": "4/5",
-    "owner": "Wall Enberg"
+    "owner": "Wall Enberg",
+    "id": "8"
   }
 ]
