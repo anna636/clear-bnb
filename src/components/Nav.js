@@ -1,11 +1,14 @@
 import "../css/Nav.css";
 import LoginModal from './LoginModal'
-import { useContext, useState, useRef } from "react";
+import { useContext, useState, useRef, useEffect } from "react";
 import MyCalendar from "./MyCalendar";
 import { ApartmentContext } from "../contexts/ApartmentContextProvider";
 
-// Prop to MyCalendar component
+// Prop to MyCalendar component with location from search bar
 let locationProp = ""
+// Fetches all locations on component mount
+let allLocations = []
+
 
 export default function Nav() {
   const { apartments } = useContext(ApartmentContext);
@@ -13,11 +16,11 @@ export default function Nav() {
   const [loginDisplay, setLoginDisplay] = useState(false);
   const [showDynamicSearch, setShowDynamicSearch] = useState(true);
   const location = useRef();
-
-  const allLocations = getAllLocations()  // change so it only updates on component start
-
   const [searchTerm, setSearchTerm] = useState("")
 
+  useEffect(() => {
+    getAllLocations()
+  }, [apartments]);
 
   const searchLocation = async (e) => {
     e.preventDefault();
@@ -35,7 +38,6 @@ export default function Nav() {
     setShowCalendar(true);
   };
 
-  // Get the names of all cities and regions
   function getAllLocations() {
     let locationsArray = []
     for (const apartment of apartments) {
@@ -48,9 +50,8 @@ export default function Nav() {
     }
     console.log(...locationsArray)
 
-    return locationsArray
+    allLocations = locationsArray
   }
-
 
   function checkLocation(location) {
     let tempBool = false;
