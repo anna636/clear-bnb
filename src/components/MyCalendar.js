@@ -7,7 +7,6 @@ const moment = require("moment");  // npm i moment
 
 
 export default function ReactCalendar({ userSearch }) {
-  console.log(userSearch)
   const history = useHistory()
   const [dates, setDates] = useState() // dates is array of 2 dates picked
   const { addCalendarDates } = useContext(BookingContext)
@@ -18,7 +17,6 @@ export default function ReactCalendar({ userSearch }) {
 
   function next() {
     const getDatesArray = getDates(dates[0], dates[1])
-    console.log(getDatesArray)
     addCalendarDates(getDatesArray)
 
     history.push('/search/' + userSearch)
@@ -45,15 +43,6 @@ export default function ReactCalendar({ userSearch }) {
         selectRange={true}
       />
       <button className="calendarNext" onClick={next}>Next</button>
-      <div>
-        <p>Just a check that it works: </p>
-        {dates &&
-          dates.map((d) => (
-            <div key={d.toString()}>
-              <h3>{d.toString()}</h3>
-            </div>
-          ))}
-      </div>
     </div>
   );
 }

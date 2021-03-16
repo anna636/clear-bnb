@@ -22,8 +22,10 @@ export default function Nav() {
   const searchLocation = async (e) => {
     e.preventDefault();
     locationProp = location.current.value.toLowerCase();
-    checkLocation(locationProp) && setShowCalendar(true);
-    setShowDynamicSearch(false);
+    if (checkLocation(locationProp)) {
+      setShowCalendar(true);
+      setShowDynamicSearch(false);
+    }
   };
 
   const searchSuggestedLocation = async (e, loc) => {
