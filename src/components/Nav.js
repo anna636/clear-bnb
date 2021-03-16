@@ -13,14 +13,9 @@ export default function Nav() {
   const [loginDisplay, setLoginDisplay] = useState(false);
   const location = useRef();
 
-  console.log(getCurrentUser())
-
   useEffect(() => {
-
     getCurrentUser()
   }, []);
-
-
 
   const searchLocation = async (e) => {
     e.preventDefault();
