@@ -1,6 +1,7 @@
 // import and rename to Router
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
+import Housing from './pages/Housing.js'
 import Nav from "./components/Nav";
 import ApartmentSearch from "./pages/ApartmentSearch";
 import Home from "./pages/Home.js";
@@ -12,6 +13,7 @@ import BookingContextProvider from "./contexts/BookingContextProvider";
 import Checkin from "./pages/Checkin";
 import UserContextProvider from "./contexts/UserContextProvider";
 import Confirmation from "./pages/Confirmation.js";
+import HousingContextProvider from './contexts/HousingContextProvider' //Use apartment context instead
 
 function App() {
   const page404 = () => <h1>Page not found: {window.location.pathname}</h1>;
@@ -19,6 +21,7 @@ function App() {
   return (
     <div className="App">
       <BookingContextProvider>
+   <HousingContextProvider>
         <ApartmentContextProvider>
           <UserContextProvider>
             <Router>
@@ -50,6 +53,8 @@ function App() {
                     path="/confirmation/:id"
                     component={Confirmation}
                   />
+  
+                  <Route exact path="/housing-listing" component={Housing} />
 
                   <Route path="*" component={page404} />
                 </Switch>
@@ -61,6 +66,7 @@ function App() {
             </Router>
           </UserContextProvider>
         </ApartmentContextProvider>
+    </HousingContextProvider>
       </BookingContextProvider>
     </div>
   );

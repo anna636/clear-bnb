@@ -1,9 +1,8 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect } from 'react';
 
-export const ApartmentContext = createContext()
+export const HousingContext = createContext();
 
-export default function ApartmentContextProvider(props) {
-
+export default function HousingContextProvider(props) {
   const [apartments, setApartments] = useState([]);
 
   const fetchApartments = async () => {
@@ -12,24 +11,19 @@ export default function ApartmentContextProvider(props) {
     setApartments(res);
   };
 
-
   useEffect(() => {
-
     fetchApartments();
-
   }, []);
-
 
   const values = {
     apartments
-  }
-
+  };
 
   return (
-    <ApartmentContext.Provider value={values}>
-      {props.children}
-    </ApartmentContext.Provider>
-  );
+    <div>
+      <HousingContext.Provider value={values}>
+        {props.children}  
+      </HousingContext.Provider>  
+    </div>
+  )
 }
-
-

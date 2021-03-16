@@ -12,7 +12,6 @@ export default function Checkin() {
   const { apartments } = useContext(ApartmentContext);
   const apartment = apartments.find((el) => el._id === id);
   const { user } = useContext(UserContext);
- 
 
   //Taking choosen dates from calendar
   //service fee is 15% of total price + 5 euros for every new guest
@@ -21,42 +20,42 @@ export default function Checkin() {
     amountOfGuests,
     addBooking,
     updateApartmentDates,
+    updateTotalPrice,
   } = useContext(BookingContext);
-
 
   //When clicking on guests div let user change amount of guests
   function changeGuests() {
     history.push("/plusminus/" + apartment._id);
-    console.log(calendarDates);
   }
 
+  //Creating new booking object and another object to update apartment bookedDates
   async function createBooking() {
-   
     const newBooking = {
       userId: user._id,
       apartmentId: id,
       startDate: calendarDates[0],
-      endDate: calendarDates[calendarDates.length-1]
-    }
+      endDate: calendarDates[calendarDates.length - 1],
+    };
 
     const bookingInfo = {
       apartmentId: id,
-      dates: [
-        calendarDates[0],
-        calendarDates[calendarDates.length-1]
-      ]
-    }
-    console.log('new booking is', newBooking, 'and bookingInfo is', bookingInfo);
-    addBooking(newBooking);
-    updateApartmentDates(bookingInfo)
+      dates: [calendarDates[0], calendarDates[calendarDates.length - 1]],
+    };
+    const totalPrice =
+      amountOfGuests * 5 +
+      apartment.pricePerDay * calendarDates.length * 0.15 +
+      apartment.pricePerDay * calendarDates.length;
 
-    history.push("/confirmation/" + apartment._id)
-   
+    updateTotalPrice(totalPrice);
+    addBooking(newBooking);
+    updateApartmentDates(bookingInfo);
+
+    history.push("/confirmation/" + apartment._id);
   }
 
   return (
     <>
-      {apartment && user &&(
+      {apartment && user && (
         <div className="checkin">
           <h1>Your trip</h1>
           <div className="tripInformation">
@@ -90,7 +89,7 @@ export default function Checkin() {
               <p className="change">
                 {amountOfGuests * 5 +
                   apartment.pricePerDay * calendarDates.length * 0.15}{" "}
-                € 
+                €
               </p>
             </div>
             <div className="totalPrice">
@@ -103,8 +102,9 @@ export default function Checkin() {
               </p>
             </div>
 
-            <button className="reserveButton"
-             onClick={createBooking}>Reserve</button>
+            <button className="reserveButton" onClick={createBooking}>
+              Reserve
+            </button>
           </div>
         </div>
       )}

@@ -4,17 +4,16 @@ import { useContext, useState } from "react";
 
 export default function Login() {
 
-   const {login } = useContext(UserContext);
-const [email, setEmail]=useState('')
+  const { login } = useContext(UserContext);
+  const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [openLogin, setOpenLogin] = useState(true)
   
   function logIn() {
     let user = {
       email: email,
-      password:password
+      password: password
     }
-    
     login(user)
     window.location.reload();
   }
@@ -60,7 +59,7 @@ const [email, setEmail]=useState('')
   );
 }
 
-/* 
+/*
 
 [login]
   [upperdiv]

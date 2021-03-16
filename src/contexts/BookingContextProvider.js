@@ -9,14 +9,17 @@ export default function BookingContextProvider(props) {
   // storing the dates the user picked from MyCalendar
   const [calendarDates, setCalendarDates] = useState(["test", "yep"]);
   const [amountOfGuests, setAmountOfGuests] = useState(1);
+  const [totalPrice, setTotalPrice] = useState(0);
 
   const addCalendarDates = (newDates) => {
     setCalendarDates(newDates);
   };
 
-  function addGuests(guests) {
-    console.log("amount is booking context is", guests);
+  const updateTotalPrice = (price) => {
+    setTotalPrice(price);
+  };
 
+  function addGuests(guests) {
     setAmountOfGuests(guests);
   }
 
@@ -38,7 +41,6 @@ export default function BookingContextProvider(props) {
       body: JSON.stringify(booking),
     });
     res = await res.json();
-    console.log("id is", res._id);
   };
 
   const values = {
@@ -49,6 +51,8 @@ export default function BookingContextProvider(props) {
     amountOfGuests,
     addBooking,
     updateApartmentDates,
+    updateTotalPrice,
+    totalPrice,
   };
 
   return (
