@@ -1,0 +1,125 @@
+.checkin {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  margin-left: 35vh;
+  margin-top: 6vh;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  height: 100%;
+}
+
+h1 {
+  align-self: flex-start;
+}
+
+.datesAndGuests {
+  margin-top: 8vh;
+  background-color: white;
+  border: 1px solid black;
+  width: 80vh;
+
+  border-radius: 20px;
+}
+
+.dates {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+
+  width: 100%;
+  height: 50%;
+  border-bottom: 1px solid black;
+}
+
+p {
+  margin: 0;
+  margin-top: 1vh;
+  margin-bottom: 1vh;
+}
+
+.dates > div {
+  height: 80%;
+  width: 50%;
+  text-align: center;
+}
+
+.startDate {
+  border-right: 1px solid black;
+}
+
+.guests {
+  width: 100%;
+  height: 100%;
+  text-align: left;
+  padding-left: 16vh;
+  padding-top: 2vh;
+}
+
+.guests p {
+  cursor: pointer;
+}
+
+.guests p:hover::before {
+  content: " ";
+  width: 10vh;
+  height: 10vh;
+  background-color: crimson;
+  margin-top: 10vh;
+  z-index: 99;
+}
+
+.price {
+  width: 80vh;
+
+  margin-top: 3vh;
+  display: grid;
+  grid-gap: 1vh;
+  grid-template-columns: repeat(2, 1fr);
+  justify-content: space-between;
+  border-bottom: 1px solid black;
+  padding: 3vh;
+}
+
+.price > p {
+  width: 40%;
+}
+
+.change {
+  justify-self: flex-end;
+}
+
+.totalPrice {
+  display: flex;
+  flex-direction: row;
+  padding: 2vh;
+  padding-right: 8vh;
+  justify-content: space-between;
+}
+
+.reserveButton {
+  margin-top: 3vh;
+  outline: none;
+  border: 0;
+  border-radius: 15px;
+  background: black;
+  color: white;
+  padding: 1vh 3vh;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.reserveButton:hover {
+  background: rgba(128, 128, 128, 0.548);
+  color: gray;
+}
+
+.nightsAndPrice {
+  width: 60vh;
+}
+
+.totalPrice p {
+  margin-right: 2vh;
+}

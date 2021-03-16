@@ -3,6 +3,7 @@ import LoginModal from './LoginModal'
 import { useContext, useState, useRef, useEffect } from "react";
 import MyCalendar from "./MyCalendar";
 import { ApartmentContext } from "../contexts/ApartmentContextProvider";
+import { UserContext } from "../contexts/UserContextProvider";
 
 // Prop to MyCalendar component with location from search bar
 let locationProp = ""
