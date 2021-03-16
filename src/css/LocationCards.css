@@ -24,7 +24,6 @@
 
 .card {
   border-radius: 15px;
-  border: 1px solid lightgray;
   overflow: hidden;
   cursor: pointer;
 }
