@@ -3,16 +3,10 @@ import { createContext, useState, useEffect } from "react";
 export const UserContext = createContext();
 
 export default function UserContextProvider(props) {
+
   const [users, setUsers] = useState([]);
 
-
-  const fetchUsers = async () => {
-    let res = await fetch("/rest/users");
-    res = await res.json();
-    setUsers(res);
-  };
-
-  const addUser = async (user) => {
+  const registerUser = async (user) => {
     let res = await fetch("/api/register", {
       method: "POST",
       headers: { "content-type": "application/json" },
@@ -38,24 +32,33 @@ export default function UserContextProvider(props) {
 
   const [user, setUser] = useState();
 
-  const fetchUser = async () => {
+  const whoAmI = async () => {
     let res = await fetch("/api/whoami");
     res = await res.json();
-    console.log(res)
-    setUser(res);
+    if (!res.error) {
+      setUser(res);
+    } else { return; }
   };
 
-  const values = {
-    users,
-    addUser,
-    login,
-    user
+
+  const logout = async () => {
+    let res = await fetch("/api/logout", {
+      method: "DELETE",
+    });
+    res = await res.json();
   };
 
   useEffect(() => {
-    fetchUsers();
-    fetchUser();
+    whoAmI();
   }, []);
+
+
+  const values = {
+    registerUser,
+    login,
+    logout,
+    user
+  };
 
   return (
     <UserContext.Provider value={values}>{props.children}</UserContext.Provider>
