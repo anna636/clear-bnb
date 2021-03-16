@@ -34,11 +34,10 @@ h1 {
   border-bottom: 1px solid black;
 }
 
-p{
-  margin:0;
-  margin-top:1vh;
-  margin-bottom:1vh;
- 
+p {
+  margin: 0;
+  margin-top: 1vh;
+  margin-bottom: 1vh;
 }
 
 .dates > div {
@@ -112,11 +111,15 @@ p{
   font-weight: bold;
   cursor: pointer;
 }
-
-.nightsAndPrice{
- width:60vh;
+.reserveButton:hover {
+  background: rgba(128, 128, 128, 0.548);
+  color: gray;
 }
 
-.totalPrice p{
-  margin-right:2vh;
+.nightsAndPrice {
+  width: 60vh;
+}
+
+.totalPrice p {
+  margin-right: 2vh;
 }
