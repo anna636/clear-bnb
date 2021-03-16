@@ -3,7 +3,7 @@ import { UserContext } from "../contexts/UserContextProvider";
 import { useContext, useState } from "react";
 
 export default function Register() {
-  const {addUser} = useContext(UserContext)
+  const { registerUser } = useContext(UserContext)
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -21,7 +21,7 @@ export default function Register() {
         password: password,
       };
       console.log(newUser);
-      addUser(newUser)
+      registerUser(newUser)
 
     }
   }
