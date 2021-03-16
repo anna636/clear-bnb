@@ -61,7 +61,7 @@ export default function Nav() {
 
   function hideCalendar() {
     setShowCalendar(false)
-    setShowDynamicSearch(true)
+    setShowDynamicSearch(false)
   }
 
   return (
@@ -92,16 +92,16 @@ export default function Nav() {
           <i className="fas fa-search"></i>
         </div>
         <div className="dynamic-search">
-          {allLocations.filter((val) => {
+          {allLocations.filter((location) => {
             if (searchTerm === "") {
               return
             }
-            else if (val.toLowerCase().includes(searchTerm.toLowerCase())) {
-              return val
+            else if (location.toLowerCase().includes(searchTerm.toLowerCase())) {
+              return location
             }
-          }).map((val, key) => (showDynamicSearch &&
+          }).map((location, key) => (showDynamicSearch &&
             <div className="dynamic-search-value" key={key} onClick={searchSuggestedLocation}>
-              <p>{val}</p>
+              <p>{location}</p>
             </div>
           ))}
         </div>
