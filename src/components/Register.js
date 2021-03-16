@@ -3,15 +3,13 @@ import { UserContext } from "../contexts/UserContextProvider";
 import { useContext, useState } from "react";
 
 export default function Register() {
-  const { addUser, login } = useContext(UserContext)
+  const { addUser, login } = useContext(UserContext);
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
-  function createNewUser(e) {
-    e.preventDefault();
-
+  async function createNewUser(e) {
     if (confirmPassword !== password) {
       alert("Password is not matching");
     } else {
@@ -20,10 +18,9 @@ export default function Register() {
         email: email,
         password: password,
       };
-      console.log(newUser);
-      addUser(newUser)
-     window.location.reload();
 
+      console.log(newUser);
+      addUser(newUser);
     }
   }
 
