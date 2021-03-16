@@ -4,6 +4,9 @@ import { useContext, useState, useRef } from "react";
 import MyCalendar from "./MyCalendar";
 import { ApartmentContext } from "../contexts/ApartmentContextProvider";
 
+// Prop to MyCalendar component
+let locationProp = ""
+
 export default function Nav() {
   const { apartments } = useContext(ApartmentContext);
   const [showCalendar, setShowCalendar] = useState(false);
@@ -18,11 +21,13 @@ export default function Nav() {
 
   const searchLocation = async (e) => {
     e.preventDefault();
-    checkLocation() && setShowCalendar(true);
+    locationProp = location.current.value.toLowerCase();
+    checkLocation(locationProp) && setShowCalendar(true);
     setShowDynamicSearch(false);
   };
 
-  const searchSuggestedLocation = async (e) => {
+  const searchSuggestedLocation = async (e, loc) => {
+    locationProp = loc.toLowerCase()
     e.preventDefault();
     setShowDynamicSearch(false);
     setShowCalendar(true);
@@ -45,12 +50,12 @@ export default function Nav() {
   }
 
 
-  function checkLocation() {
+  function checkLocation(location) {
     let tempBool = false;
     for (const apartment of apartments) {
       if (
-        apartment.city.toLowerCase() === location.current.value.toLowerCase() ||
-        apartment.region.toLowerCase() === location.current.value.toLowerCase()
+        apartment.city.toLowerCase() === location ||
+        apartment.region.toLowerCase() === location
       ) {
         tempBool = true;
         break;
@@ -100,7 +105,7 @@ export default function Nav() {
               return location
             }
           }).map((location, key) => (showDynamicSearch &&
-            <div className="dynamic-search-value" key={key} onClick={searchSuggestedLocation}>
+            <div className="dynamic-search-value" key={key} onClick={(e) => searchSuggestedLocation(e, location)}>
               <p>{location}</p>
             </div>
           ))}
@@ -129,7 +134,7 @@ export default function Nav() {
             <div className="mySpan"><span onClick={hideCalendar}>X</span></div>
             <p className="selectDates">Select dates</p>
 
-            <MyCalendar userSearch={location.current.value.toLowerCase()} />
+            <MyCalendar userSearch={locationProp} />
           </div>
         )}
       </>

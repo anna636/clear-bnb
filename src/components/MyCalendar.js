@@ -7,6 +7,7 @@ const moment = require("moment");  // npm i moment
 
 
 export default function ReactCalendar({ userSearch }) {
+  console.log(userSearch)
   const history = useHistory()
   const [dates, setDates] = useState() // dates is array of 2 dates picked
   const { addCalendarDates } = useContext(BookingContext)
