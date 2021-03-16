@@ -26,8 +26,6 @@ export default function UserContextProvider(props) {
     if (res.success) {
       setCurrentUser({ ...res.user })
     } else {
-      console.log(res.error)
-      setCurrentUser(null)
       return;
     }
   };
