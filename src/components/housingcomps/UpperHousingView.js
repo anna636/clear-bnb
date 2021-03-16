@@ -29,26 +29,26 @@ export default function UpperHousingView() {
   */
 
   const regionInput = (
-    <div className="regionInput">
-      <input placeholder="Search region..."></input>
+    <div className="filterButtonsDiv">
+      <input className="regionInput" placeholder="Search region..."></input>
     </div>
   );
   
   const cityInput = (
-    <div className="cityInput">
-      <input placeholder="Search city..."></input>
+    <div className="filterButtonsDiv">
+      <input className="cityInput" placeholder="Search city..."></input>
     </div>
   );
 
   const priceInput = (
-    <div className="cityInput">
-      <input type="range" min={lowestPrice} max={highestPrice}></input>
+    <div className="filterButtonsDiv">
+      <input className="priceInput" type="range" min={lowestPrice} max={highestPrice}></input>
     </div>
   );
 
   const typeInput = (
-    <div className="typeInput">
-      <input placeholder="Search type..."></input>
+    <div className="filterButtonsDiv">
+      <input className="typeInput" placeholder="Search type..."></input>
     </div>
   );
   
