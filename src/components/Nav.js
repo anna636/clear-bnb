@@ -7,7 +7,7 @@ import { UserContext } from "../contexts/UserContextProvider";
 
 export default function Nav() {
   const { apartments } = useContext(ApartmentContext);
-  const { logout, getCurrentUser } = useContext(UserContext)
+  const { getCurrentUser } = useContext(UserContext)
 
   const [showCalendar, setShowCalendar] = useState(false);
   const [loginDisplay, setLoginDisplay] = useState(false);
@@ -22,9 +22,7 @@ export default function Nav() {
     checkLocation() && setShowCalendar(true);
   };
 
-  const logoutHandler = () => {
-    logout()
-  };
+
 
   function checkLocation() {
     let tempBool = false;
@@ -79,7 +77,6 @@ export default function Nav() {
           {getCurrentUser() &&
             <>
               <h5>Welcome, {getCurrentUser().fullName}</h5>
-              <button onClick={logoutHandler}>Logout</button>
             </>
           }
         </div>

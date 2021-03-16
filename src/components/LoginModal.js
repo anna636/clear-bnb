@@ -1,13 +1,21 @@
 import '../css/LoginModal.css'
 import Login from './Login'
 import Register from './Register'
-import { useState, useContext } from 'react'
+import { useState, useContext, useEffect } from 'react'
 import { UserContext } from '../contexts/UserContextProvider'
 
 export default function LoginModal() {
   const [login, setLogin] = useState(false);
   const [register, setRegister] = useState(false);
-  const { getCurrentUser } = useContext(UserContext)
+  const { getCurrentUser, logout } = useContext(UserContext)
+
+  const logoutHandler = () => {
+    logout()
+  };
+
+  useEffect(() => {
+    getCurrentUser()
+  }, []);
 
   return (
     <div className="login-modal">
@@ -34,6 +42,8 @@ export default function LoginModal() {
         <>
           <div className="login-popup-div">
             <p className="login-popup-content bli-värd-boende">Rent out</p>
+            <p className="login-popup-content bli-värd-boende">My pages</p>
+            <p className="login-popup-content bli-värd-boende" onClick={logoutHandler}>logout</p>
           </div>
         </>
       }
