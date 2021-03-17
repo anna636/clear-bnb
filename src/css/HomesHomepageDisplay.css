@@ -1,107 +1,86 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
-.homes-display {
-  margin-top: 100px;
-  padding: 0 20px;
-}
 
-.homes-display > h1 {
-  text-align: center;
-}
-
-.home-elements {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-gap: 20px;
-}
-
-.home-comp-img > img{
-  width: 100%;
-  border-radius: 15px;
-}
-
-.home-comp-wrapper{
-  background: #eee;
-  border-radius: 15px;
-  
-}
-
-.home-attr {
-  padding: 10px;
-  font-size: 13px;
-}
-
-/* .homes {
-  width: 100%;
-  height: 100%;
-  border-radius: 15px;
-} */
-
-/* .homes-display-container > h1, h2, h3, h5, h6, p {
-  font-family: 'Poppins', sans-serif;
+* {
+  box-sizing: border-box;
   margin: 0;
 }
 
-
-
-.home-comp {
-  height: 200px;
+.homes-display {
+  margin: 100px auto 0 auto;
+  /* padding: 0 20px; */
+  width: 80%;
   cursor: pointer;
 }
 
-.home-attr {
-  margin-top: 4px;
-  width: 200px;
-  margin-left: 10px;
-}
-
-.home-comp:hover {
-  opacity: 0.7;
-} */
-
-/* .inline {
-  display: inline;
-}
-
-.homes-display-top {
-  width: 80%;
+.homes-top-container {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-} */
+  margin-bottom: 20px;
+}
 
-/* .fa-angle-right {
-  font-size: 25px;
-  position: relative;
-  left: 160px;
-  top: 25px;
-} */
-
-/* .fa-arrow-alt-circle-right {
-  font-size: 25px;
-
+.fa-arrow-alt-circle-right {
+  font-size: 26px;
+  margin-top: 20px;
   cursor: pointer;
+  text-decoration: none;
+  color: black;
 }
 
 .fa-arrow-alt-circle-right:hover {
   opacity: 0.5;
 }
 
-.fa-user-circle {
-  font-size: 16px;
-  margin-left: 5px;
+.home-elements {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  /* grid-template-rows: 275px 275px; */
+  grid-gap: 20px;
 }
 
-.renter {
+.home-comp-img > img{
+  width: 100%;
+  height: 200px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.home-comp-wrapper{
+  background: #eee;
+  border-radius: 15px;
+  padding-bottom: 10px;
+  box-shadow: rgb(38, 57, 77, 0.5) 0px 20px 30px -10px;
+}
+
+.housing-price-div {
+  padding-left: 10px;
+}
+
+.price-title {
+  font-size: 11px;
+  font-weight: 100;
+}
+
+.inline {
+  display: inline;
+}
+
+.home-attr {
+  padding: 0 10px;
+  font-size: 13px;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  bottom: 16px;
-  left: 90px;
+  justify-content: space-between;
 }
 
-.home-display-cards-info {
-  position: relative;
-  bottom: 10px;
+.renter-div {
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
- */
+
+.region {
+  opacity: 0.7;
+}
+
+.fa-map-marker-alt {
+  margin-right: 2px;
+}
