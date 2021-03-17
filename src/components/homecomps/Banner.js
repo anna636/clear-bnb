@@ -1,4 +1,5 @@
 import '../../css/Banner.css'
+import {Link} from 'react-router-dom'
 
 export default function Banner() {
   return (
@@ -11,7 +12,9 @@ export default function Banner() {
           <br />
           Plan an exceptional trip with our help.
         </h4>
-        <button className="banner-info-btn">Discover apartments</button>
+        <Link to="/housing-listing">
+          <button className="banner-info-btn">Discover apartments</button>
+        </Link>
       </div>
     </div>
   );
