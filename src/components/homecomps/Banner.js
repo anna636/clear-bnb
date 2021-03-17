@@ -6,12 +6,12 @@ export default function Banner() {
       <div className="banner-info">
         <h2 className="banner-info-title">Book or rent out!</h2>
         <h4 className="banner-info-text">
-          Do not let the search for housing stop you from traveling and
-          exploring your destinations.
+          Don't let the search for accommodation stop you from traveling and
+          exploring new destinations.
           <br />
-          Plan a different trip with our help.
+          Plan an exceptional trip with our help.
         </h4>
-        <button className="banner-info-btn">Discover apartments</button>
+        {/* <button className="banner-info-btn">Discover apartments</button> */}
       </div>
     </div>
   );
