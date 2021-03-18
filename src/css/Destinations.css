@@ -1,0 +1,19 @@
+.allDestinations > h3 {
+text-align: center;
+margin: 20px 0;
+}
+
+.allDestinations > h3 {
+  cursor: default;
+}
+
+.allDestWrapper {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  text-align: center;
+}
+
+.destinationsCard > p {
+  width: auto;
+  cursor: pointer;
+}

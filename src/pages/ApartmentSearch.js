@@ -3,8 +3,8 @@ import { useContext } from 'react'
 import ApartmentList from "../components/ApartmentList";
 import { ApartmentContext } from '../contexts/ApartmentContextProvider'
 import { BookingContext } from '../contexts/BookingContextProvider';
-import '../css/ApartmentSearch.css'
 
+import '../css/ApartmentSearch.css'
 
 export default function ApartmentSearch() {
   const { city } = useParams()  // Gets location from url
