@@ -41,6 +41,12 @@ p{
     padding: 40px;
 }
 
+.details-icons {
+    margin: 4vh;
+    display: grid;
+    justify-content: center;
+}
+
 .details-calendar {
     margin-top: 10vh;
       display: grid;
