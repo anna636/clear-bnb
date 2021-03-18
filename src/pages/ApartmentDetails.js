@@ -4,11 +4,14 @@ import { useContext } from 'react'
 import { ApartmentContext } from '../contexts/ApartmentContextProvider'
 import '../css/DetailPage.css'
 import DetailsCalendar from '../components/DetailsCalendar'
+import { BookingContext } from "../contexts/BookingContextProvider";
 
 export default function ApartmentDetails(props) {
+  const history = useHistory()
   const { id } = useParams();
   const { apartments } = useContext(ApartmentContext)
-  const history = useHistory()
+  const { calendarDates } = useContext(BookingContext)
+  
 
 
   let apartment = apartments.find(el => el._id === id)
@@ -36,10 +39,14 @@ export default function ApartmentDetails(props) {
         <p>The landlord's name: {apartment.ownerId.fullName}</p>
         <div className="details-calendar">
           <DetailsCalendar apartmentId={apartment._id} />
-        </div>
+      </div>
+      <> { (calendarDates.length > 0) &&
+        <>
         <div align="right" className="btn-div-details">
           <button className="next-btn-details" onClick={goToCheckIn}>Next</button>
         </div>
+      </>
+      }</>
       </div>
     }</>
   )

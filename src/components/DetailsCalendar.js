@@ -5,6 +5,7 @@ import Calendar from "react-calendar"; // npm i react-calendar
 import { useHistory } from "react-router-dom";
 const moment = require("moment"); // npm i moment
 
+
 export default function DetailsCalendar({ apartmentId }) {
   const history = useHistory();
   const [dates, setDates] = useState(); // dates is array of 2 dates picked
@@ -16,6 +17,12 @@ export default function DetailsCalendar({ apartmentId }) {
     setDates(newDate);
   };
 
+  function goToCheckIn() {
+    const getDatesArray = getDates(dates[0], dates[1])
+    addCalendarDates(getDatesArray)
+    addGuests(1);
+    history.push("/checkin/" + apartmentId);
+  }
 
   //Function to get array of dates between 2 dates
   function getDates(startDate, stopDate) {
@@ -29,16 +36,17 @@ export default function DetailsCalendar({ apartmentId }) {
     return dateArray;
   }
 
-  console.log(...calendarDates)
-
   return (
     <>{!calendarDates.length &&
+      <>
       <Calendar
         minDate={new Date()}
         onChange={onChange}
         value={dates}
         selectRange={true}
-      />
-    }</>
+        />
+      <button className="calendarNext" disabled={!dates} onClick={goToCheckIn}>Next</button>
+      </>
+      }</>
   );
 }
