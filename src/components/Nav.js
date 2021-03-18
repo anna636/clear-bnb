@@ -102,7 +102,9 @@ export default function Nav() {
           <Link to="/housing-listing">
             <h3>Apartments</h3>
           </Link>
-          <h3>Destinations</h3>
+          <Link to="/all-destinations">
+            <h3>Destinations</h3>
+          </Link>
           <h3>Get started</h3>
         </div>
 

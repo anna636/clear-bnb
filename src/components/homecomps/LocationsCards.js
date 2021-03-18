@@ -13,6 +13,7 @@ export default function LocationCards() {
 
   function search(place) {
     history.push("/search/" + place)
+    window.scroll(0, 0);
   }
 
   let card = location => (

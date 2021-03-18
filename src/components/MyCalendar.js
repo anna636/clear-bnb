@@ -9,7 +9,7 @@ export default function ReactCalendar({ userSearch }) {
   const history = useHistory();
   const [dates, setDates] = useState(); // dates is array of 2 dates picked
   const { addCalendarDates, addGuests } = useContext(BookingContext);
-  
+
 
   const onChange = (newDate) => {
     setDates(newDate);
@@ -20,6 +20,12 @@ export default function ReactCalendar({ userSearch }) {
     addCalendarDates(getDatesArray)
     addGuests(1);
 
+    history.push("/search/" + userSearch);
+  }
+
+
+  function skip() {
+    addCalendarDates([])
     history.push("/search/" + userSearch);
   }
 
@@ -44,6 +50,7 @@ export default function ReactCalendar({ userSearch }) {
         selectRange={true}
       />
       <button className="calendarNext" disabled={!dates} onClick={next}>Next</button>
+      <button className="calendarSkip" onClick={skip}>Skip</button>
     </div>
   );
 }

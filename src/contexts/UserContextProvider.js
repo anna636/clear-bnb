@@ -5,6 +5,20 @@ export const UserContext = createContext();
 export default function UserContextProvider(props) {
 
   const [currentUser, setCurrentUser] = useState(null);
+  const [users, setUsers] = useState([]);
+
+  
+  const fetchUsers = async () => {
+    let res = await fetch("/rest/users");
+    res = await res.json();
+    setUsers(res);
+    
+  };
+
+  useEffect(() => {
+    fetchUsers();
+  }, []);
+
 
   const registerUser = async (user) => {
     let res = await fetch("/api/register", {
@@ -60,6 +74,7 @@ export default function UserContextProvider(props) {
     logout,
     getCurrentUser,
     currentUser,
+    users
   };
 
   return (

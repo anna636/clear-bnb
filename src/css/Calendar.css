@@ -148,3 +148,19 @@ abbr[title] {
   outline: none;
   color: white;
 }
+
+.calendarSkip {
+  margin-top: 2vh;
+  width: 20%;
+  margin-left:90vh;
+   border: 1px solid lightgray;
+  background: black;
+  text-align: center;
+  margin-right: 3vh;
+  font-weight: 900;
+  font-size: 13px;
+  border-radius: 15px;
+  cursor: pointer;
+  outline: none;
+  color: white;
+}
