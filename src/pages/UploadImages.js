@@ -63,7 +63,6 @@ export default function UploadImages() {
                 variant="filled"
                 value={inputField}
                 onChange={event => handleChangeInput(index, event)}
-                required
               />
               <IconButton onClick={() => handleRemoveFields(index)}>
                 <RemoveIcon />
