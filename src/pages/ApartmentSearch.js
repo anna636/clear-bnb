@@ -3,6 +3,7 @@ import { useContext } from 'react'
 import ApartmentList from "../components/ApartmentList";
 import { ApartmentContext } from '../contexts/ApartmentContextProvider'
 import { BookingContext } from '../contexts/BookingContextProvider';
+
 import '../css/ApartmentSearch.css'
 
 
