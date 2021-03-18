@@ -9,19 +9,12 @@ export default function DetailsCalendar({ apartmentId }) {
   const history = useHistory();
   const [dates, setDates] = useState(); // dates is array of 2 dates picked
   const { addCalendarDates, addGuests } = useContext(BookingContext);
+  const { calendarDates } = useContext(BookingContext)
 
 
   const onChange = (newDate) => {
     setDates(newDate);
   };
-
-  function next() {
-    const getDatesArray = getDates(dates[0], dates[1])
-    addCalendarDates(getDatesArray)
-    addGuests(1);
-
-    // history.push("/search/" + userSearch);
-  }
 
 
   //Function to get array of dates between 2 dates
@@ -36,15 +29,16 @@ export default function DetailsCalendar({ apartmentId }) {
     return dateArray;
   }
 
+  console.log(...calendarDates)
+
   return (
-    <div className="myalendar">
+    <>{!calendarDates.length &&
       <Calendar
         minDate={new Date()}
         onChange={onChange}
         value={dates}
         selectRange={true}
       />
-      <button className="calendarNext" disabled={!dates}>Next</button>
-    </div>
+    }</>
   );
 }
