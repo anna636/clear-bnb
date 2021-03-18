@@ -44,7 +44,7 @@ export default function DetailsCalendar({ apartmentId }) {
         value={dates}
         selectRange={true}
       />
-      <button className="calendarNext" disabled={!dates} onClick={next}>Next</button>
+      <button className="calendarNext" disabled={!dates}>Next</button>
     </div>
   );
 }

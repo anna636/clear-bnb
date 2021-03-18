@@ -26,12 +26,14 @@ export default function ApartmentDetails(props) {
         <h3 className="description-text">{apartment.description}</h3>
         <p>Property has a capacity of: {apartment.maxGuests} guests</p>
         <p>Price: {apartment.pricePerDay}kr / 24 hours</p>
-        <p>The landlord's name: {apartment.ownerId.fullName}</p>
+      <p>The landlord's name: {apartment.ownerId.fullName}</p>
+      <div className="details-icons">
+      </div>
+      <div className="details-calendar">
+        <DetailsCalendar apartmentId={apartment._id} />
+      </div>
         <div align="right" className="btn-div-details">
           <button className="next-btn-details" onClick={goToCheckIn}>Next</button>
-        </div>
-        <div className="details-calendar">
-          <DetailsCalendar apartmentId={apartment._id} />
         </div>
       </div>
     }</>
