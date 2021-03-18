@@ -19,25 +19,22 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
+
+
 export default function UploadImages() {
   const [inputFields, setInputFields] = useState([''])
   const classes = useStyles()
-  const notEmptyStrings = []
 
   const handleChangeInput = (index, event) => {
     const values = [...inputFields]
+
     values[index] = event.target.value
     setInputFields(values)
   }
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    inputFields.filter(item => {
-      if (!notEmptyStrings.includes(item) && item !== '') {
-        notEmptyStrings.push(item)
-      }
-    })
-    console.log(notEmptyStrings, 'final result what we needed')
+    console.log('input field', inputFields)
   }
 
   const handleAddFields = () => {
@@ -57,13 +54,13 @@ export default function UploadImages() {
         {
           inputFields.map((inputField, index) => (
             <div key={index}>
+
               <TextField
                 name="url"
                 label="Link to picture"
                 variant="filled"
-                value={inputField}
+                value={inputField.url}
                 onChange={event => handleChangeInput(index, event)}
-                required
               />
               <IconButton onClick={() => handleRemoveFields(index)}>
                 <RemoveIcon />
