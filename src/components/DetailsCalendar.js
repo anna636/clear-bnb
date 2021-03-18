@@ -5,7 +5,7 @@ import Calendar from "react-calendar"; // npm i react-calendar
 import { useHistory } from "react-router-dom";
 const moment = require("moment"); // npm i moment
 
-export default function ReactCalendar({ userSearch }) {
+export default function DetailsCalendar({ apartmentId }) {
   const history = useHistory();
   const [dates, setDates] = useState(); // dates is array of 2 dates picked
   const { addCalendarDates, addGuests } = useContext(BookingContext);
@@ -20,7 +20,7 @@ export default function ReactCalendar({ userSearch }) {
     addCalendarDates(getDatesArray)
     addGuests(1);
 
-    history.push("/search/" + userSearch);
+    // history.push("/search/" + userSearch);
   }
 
 
@@ -37,7 +37,7 @@ export default function ReactCalendar({ userSearch }) {
   }
 
   return (
-    <div className="myCalendar">
+    <div className="myalendar">
       <Calendar
         minDate={new Date()}
         onChange={onChange}

@@ -5,7 +5,7 @@ import Calendar from "react-calendar"; // npm i react-calendar
 import { useHistory } from "react-router-dom";
 const moment = require("moment"); // npm i moment
 
-export default function ReactCalendar({ userSearch }) {
+export default function MyCalendar({ userSearch }) {
   const history = useHistory();
   const [dates, setDates] = useState(); // dates is array of 2 dates picked
   const { addCalendarDates, addGuests } = useContext(BookingContext);
