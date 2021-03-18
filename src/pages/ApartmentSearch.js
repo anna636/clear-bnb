@@ -6,7 +6,6 @@ import { BookingContext } from '../contexts/BookingContextProvider';
 
 import '../css/ApartmentSearch.css'
 
-
 export default function ApartmentSearch() {
   const { city } = useParams()  // Gets location from url
 
