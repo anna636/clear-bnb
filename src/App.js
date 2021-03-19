@@ -16,6 +16,7 @@ import Confirmation from "./pages/Confirmation.js";
 import AllDestinations from "./pages/AllDestinations.js";
 import HousingContextProvider from './contexts/HousingContextProvider' //Use apartment context instead
 import MyBookings from './pages/MyBookings.js'
+import MyApartments from './pages/MyApartments.js'
 
 function App() {
   const page404 = () => <h1>Page not found: {window.location.pathname}</h1>;
@@ -60,6 +61,11 @@ function App() {
                     exact
                     path="/my-bookings/:id"
                     component={MyBookings}
+                  />
+                  <Route
+                    exact
+                    path="/my-apartments/:id"
+                    component={MyApartments}
                   />
   
                     <Route exact path="/housing-listing" component={Housing} />
