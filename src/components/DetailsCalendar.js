@@ -14,17 +14,11 @@ export default function DetailsCalendar({ apartmentId }) {
   const { calendarDates } = useContext(BookingContext)
   const { getApartmentById, apartment } = useContext(ApartmentContext)
 
-  
+
   useEffect(() => {
     getApartmentById(apartmentId)
   }, []);
 
-  console.log(apartment.bookedDates)
-
-  // function getBookedDates() {
-  //   const bookedDatesArray = apartment.bookedDates
-    
-  //  }
 
   const onChange = (newDate) => {
     setDates(newDate);
@@ -47,6 +41,8 @@ export default function DetailsCalendar({ apartmentId }) {
       tempArray.push(moment(currentDate).format("YYYY-MM-DD"));
       currentDate = moment(currentDate).add(1, "days");
     }
+
+    // Filters out bookedDates of the apartment
     let datesArray = []
     for (const d of tempArray) {
       if (!apartment.bookedDates.includes(d)) {
@@ -59,7 +55,7 @@ export default function DetailsCalendar({ apartmentId }) {
     return datesArray;
   }
 
-  function disabledTiles({date, view }) {
+  function disabledTiles({ date, view }) {
     if (view === 'month') {
       return apartment.bookedDates.find(d => (d === moment(date).format("YYYY-MM-DD")))
     }
@@ -68,16 +64,16 @@ export default function DetailsCalendar({ apartmentId }) {
   return (
     <>{!calendarDates.length && apartment.bookedDates &&
       <>
-      <Calendar
-        minDate={new Date()}
-        onChange={onChange}
-        value={dates}
-        selectRange={true}
-        tileClassName={ apartment.bookedDates }
-        tileDisabled={disabledTiles}
+        <Calendar
+          minDate={new Date()}
+          onChange={onChange}
+          value={dates}
+          selectRange={true}
+          tileClassName={apartment.bookedDates}
+          tileDisabled={disabledTiles}
         />
-      <button className="calendarNext" disabled={!dates} onClick={goToCheckIn}>Next</button>
+        <button className="calendarNext" disabled={!dates} onClick={goToCheckIn}>Next</button>
       </>
-      }</>
+    }</>
   );
 }
