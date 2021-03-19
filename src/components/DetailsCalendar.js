@@ -1,6 +1,7 @@
 import "../css/Calendar.css";
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { BookingContext } from "../contexts/BookingContextProvider";
+import { ApartmentContext } from '../contexts/ApartmentContextProvider'
 import Calendar from "react-calendar"; // npm i react-calendar
 import { useHistory } from "react-router-dom";
 const moment = require("moment"); // npm i moment
@@ -11,7 +12,19 @@ export default function DetailsCalendar({ apartmentId }) {
   const [dates, setDates] = useState(); // dates is array of 2 dates picked
   const { addCalendarDates, addGuests } = useContext(BookingContext);
   const { calendarDates } = useContext(BookingContext)
+  const { getApartmentById, apartment } = useContext(ApartmentContext)
 
+  
+  useEffect(() => {
+    getApartmentById(apartmentId)
+  }, []);
+
+  console.log(apartment.city)
+
+  // function getBookedDates() {
+  //   const thisApartment = getApartmentById(apartmentId)
+  //   console.log(thisApartment.city)
+  // }
 
   const onChange = (newDate) => {
     setDates(newDate);
