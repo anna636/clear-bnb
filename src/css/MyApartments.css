@@ -1,4 +1,4 @@
-.apartmentsWrapper {
+/* .apartmentsWrapper {
   margin-top: 10vh;
   padding-left: 10vh;
 }
@@ -97,8 +97,12 @@
 .rentOutApartmentButton:hover{
   background: rgba(128, 128, 128, 0.548);
   color: gray;
-}
+} */
 
+.my-apartments-top {
+  padding: 40px 40px 10px 40px;
+
+}
 
 @media screen and (max-width: 1200px) {
   .apartmentItem {

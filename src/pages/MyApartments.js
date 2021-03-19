@@ -33,7 +33,7 @@ export default function MyApartments() {
         </div>
       )}
 
-      {Boolean(apartments && currentUser && myApartments.length) && (
+      {/* {Boolean(apartments && currentUser && myApartments.length) && (
         <div className="apartmentsWrapper">
           <h1 className="apartmentsHeader">Apartments for rent</h1>
 
@@ -57,6 +57,17 @@ export default function MyApartments() {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      )} */}
+
+      {Boolean(apartments && currentUser && myApartments.length) && (
+        <div className="my-apartments-container">
+          <div className="my-apartments-top">
+            <h1>My apartments</h1>
+          </div>
+          <div className="apartment-listing-container">
+
           </div>
         </div>
       )}
