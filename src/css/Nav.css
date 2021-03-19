@@ -1,9 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
 h3 {
   font-family: 'Poppins', sans-serif;
   cursor: pointer;
   transition: 0.1s ease-in-out;
 }
+
 
 .nav {
   display: flex;
@@ -25,10 +27,9 @@ h3 {
 } */
 
 .nav-logo {
-  object-fit: contain;
-  height: 100px;
-  margin-left: 20px;
-  background-color: #f7f7f7;
+  margin-top: -15px;
+  margin-left: -15px;
+  height: 3.5em;
 }
 
 .nav-center {

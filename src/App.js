@@ -2,7 +2,7 @@
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
 import Housing from './pages/Housing.js'
-import Nav from "./components/Nav";
+import NavBar from "./components/navBar";
 import ApartmentSearch from "./pages/ApartmentSearch";
 import Home from "./pages/Home.js";
 import PlusMinusGuests from "./pages/PlusMinusGuests.js";
@@ -28,7 +28,7 @@ function App() {
             <UserContextProvider>
               <Router>
                 <header>
-                  <Nav />
+                  <NavBar />
                 </header>
                 <main>
                   <Switch>
@@ -50,18 +50,18 @@ function App() {
                     />
                     <Route exact path="/checkin/:id" component={Checkin} />
 
-                  <Route
-                    exact
-                    path="/confirmation/:id"
-                    component={Confirmation}
+                    <Route
+                      exact
+                      path="/confirmation/:id"
+                      component={Confirmation}
                     />
-                    
-                  <Route
-                    exact
-                    path="/my-bookings/:id"
-                    component={MyBookings}
-                  />
-  
+
+                    <Route
+                      exact
+                      path="/my-bookings/:id"
+                      component={MyBookings}
+                    />
+
                     <Route exact path="/housing-listing" component={Housing} />
                     <Route exact path="/all-destinations" component={AllDestinations} />
 
