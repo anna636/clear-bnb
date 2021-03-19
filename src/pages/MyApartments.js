@@ -67,7 +67,31 @@ export default function MyApartments() {
             <h1>My apartments</h1>
           </div>
           <div className="apartment-listing-container">
-
+            {myApartments.map((apartment) => (
+              <div className="apartment-container">
+                <div className="apartment-top-container">
+                  <h1>{apartment.city} - {apartment.region}</h1>
+                  <p>Availability: {apartment.availableDates.availableStartDate} - {apartment.availableDates.availableEndDate}</p>
+                </div>
+                <div className="image-gallery">
+                  {/* {apartment.gallery.map((image, i) => {
+                    while(i < 5) {
+                      return <div className="apartment-image"> <img className={"image" + (i + 1)} src={image} /> </div>
+                    }
+                  })} */}
+                  <div className="one-apartment-image">
+                    <img className="image1" src={apartment.gallery[0]}/>
+                  </div>
+                  <div className="four-apartment-images">
+                    <img className="image2" src={apartment.gallery[1]}/>
+                    <img className="image3" src={apartment.gallery[2]}/>
+                    <img className="image4" src={apartment.gallery[3]}/>
+                    <img className="image5" src={apartment.gallery[4]}/>
+                  </div>
+                </div>
+                <div className></div>
+              </div>
+            ))}
           </div>
         </div>
       )}
