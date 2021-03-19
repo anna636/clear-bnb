@@ -40,14 +40,23 @@ export default function DetailsCalendar({ apartmentId }) {
 
   //Function to get array of dates between 2 dates
   function getDates(startDate, stopDate) {
-    var dateArray = [];
-    var currentDate = moment(startDate);
-    var stopDate1 = moment(stopDate);
+    let tempArray = [];
+    let currentDate = moment(startDate);
+    let stopDate1 = moment(stopDate);
     while (currentDate <= stopDate1) {
-      dateArray.push(moment(currentDate).format("YYYY-MM-DD"));
+      tempArray.push(moment(currentDate).format("YYYY-MM-DD"));
       currentDate = moment(currentDate).add(1, "days");
     }
-    return dateArray;
+    let datesArray = []
+    for (const d of tempArray) {
+      if (!apartment.bookedDates.includes(d)) {
+        datesArray.push(d)
+      }
+    }
+
+    console.log(datesArray)
+
+    return datesArray;
   }
 
   function disabledTiles({date, view }) {
