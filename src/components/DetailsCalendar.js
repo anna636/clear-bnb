@@ -19,15 +19,16 @@ export default function DetailsCalendar({ apartmentId }) {
     getApartmentById(apartmentId)
   }, []);
 
-  console.log(apartment.city)
+  console.log(apartment.bookedDates)
 
   // function getBookedDates() {
-  //   const thisApartment = getApartmentById(apartmentId)
-  //   console.log(thisApartment.city)
-  // }
+  //   const bookedDatesArray = apartment.bookedDates
+    
+  //  }
 
   const onChange = (newDate) => {
     setDates(newDate);
+    console.log(newDate)
   };
 
   function goToCheckIn() {
@@ -49,14 +50,22 @@ export default function DetailsCalendar({ apartmentId }) {
     return dateArray;
   }
 
+  function disabledTiles({date, view }) {
+    if (view === 'month') {
+      return apartment.bookedDates.find(d => (d === moment(date).format("YYYY-MM-DD")))
+    }
+  }
+
   return (
-    <>{!calendarDates.length &&
+    <>{!calendarDates.length && apartment.bookedDates &&
       <>
       <Calendar
         minDate={new Date()}
         onChange={onChange}
         value={dates}
         selectRange={true}
+        tileClassName={ apartment.bookedDates }
+        tileDisabled={disabledTiles}
         />
       <button className="calendarNext" disabled={!dates} onClick={goToCheckIn}>Next</button>
       </>
