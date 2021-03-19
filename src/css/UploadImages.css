@@ -1,4 +1,12 @@
-.UploadImagesContainer{
-padding: 40px;
-text-align: center;
+#uploadImages{
+    margin-top: 100px;
 }
+
+#uploadImages input {
+  margin: 5px;
+}
+
+#uploadImages button {
+  margin: 5px;
+}
+

@@ -1,28 +1,9 @@
 import '../css/UploadImages.css'
 import React, { useState } from 'react'
-import TextField from '@material-ui/core/TextField';
-import { makeStyles } from '@material-ui/core/styles'
-import Button from '@material-ui/core/Button'
-import IconButton from '@material-ui/core/IconButton'
-import RemoveIcon from '@material-ui/icons/Remove'
-import AddIcon from '@material-ui/icons/Add'
-const useStyles = makeStyles((theme) => ({
-  root: {
-    '& .MuiTextField-root': {
-      // background: 'red',
-      margin: theme.spacing(1)
-    }
-  },
-  button: {
-    margin: theme.spacing(1)
 
-  }
-}))
 
 export default function UploadImages() {
   const [inputFields, setInputFields] = useState([''])
-  const classes = useStyles()
-  const notEmptyStrings = []
 
   const handleChangeInput = (index, event) => {
     const values = [...inputFields]
@@ -31,17 +12,21 @@ export default function UploadImages() {
   }
 
   const handleSubmit = (e) => {
+    const notEmptyStrings = []
     e.preventDefault();
-    inputFields.filter(item => {
+    inputFields.forEach(item => {
       if (!notEmptyStrings.includes(item) && item !== '') {
         notEmptyStrings.push(item)
       }
+      return notEmptyStrings;
     })
-    console.log(notEmptyStrings, 'final result what we needed')
+    return notEmptyStrings;
   }
 
-  const handleAddFields = () => {
-    setInputFields([...inputFields, ''])
+  const handleAddFields = event => {
+    event.preventDefault()
+    const values = [...inputFields, '']
+    setInputFields(values)
   }
 
   const handleRemoveFields = (index) => {
@@ -51,32 +36,41 @@ export default function UploadImages() {
   }
 
   return (
-    <div className="UploadImagesContainer">
+    <div className="container" id="uploadImages">
       <h1>Add image links</h1>
-      <form className={classes.root} onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
         {
           inputFields.map((inputField, index) => (
-            <div key={index}>
-              <TextField
-                name="url"
-                label="Link to picture"
-                variant="filled"
+            <div key={index} className="input-group flex-nowrap">
+              <input
+                type="text"
+                className="form-control"
+                id="basic-url"
+                aria-describedby="basic-addon3"
+                placeholder="Enter image url"
                 value={inputField}
                 onChange={event => handleChangeInput(index, event)}
               />
-              <IconButton onClick={() => handleRemoveFields(index)}>
-                <RemoveIcon />
-              </IconButton>
-              <IconButton onClick={() => handleAddFields()}>
-                <AddIcon />
-              </IconButton>
+              <button className="btn btn-outline-secondary" onClick={() => handleRemoveFields(index)}>
+                <i className="fas fa-minus"></i>
+              </button>
             </div>
           ))
         }
-        <Button
+        <button className="btn btn-outline-secondary" onClick={event => handleAddFields(event)}>
+          <i className="fas fa-plus"></i>
+        </button>
+        <button
+          className="btn btn-outline-secondary"
           onClick={handleSubmit}
-          className={classes.button}
-          variant="contained" color="primary" type="submit">Submit</Button>
+          type="submit">Submit</button>
+        <button
+          className="btn btn-outline-secondary"
+          onClick={(e) => {
+            e.preventDefault();
+            console.log(handleSubmit(e))
+          }
+          }>console log result</button>
       </form>
     </div >
   )
