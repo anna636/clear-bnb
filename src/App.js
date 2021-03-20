@@ -2,7 +2,6 @@
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
 import Housing from './pages/Housing.js'
-import Nav from "./components/Nav";
 import ApartmentSearch from "./pages/ApartmentSearch";
 import Home from "./pages/Home.js";
 import PlusMinusGuests from "./pages/PlusMinusGuests.js";
@@ -16,6 +15,7 @@ import Confirmation from "./pages/Confirmation.js";
 import AllDestinations from "./pages/AllDestinations.js";
 import HousingContextProvider from './contexts/HousingContextProvider' //Use apartment context instead
 import MyBookings from './pages/MyBookings.js'
+import {NavBar}  from "./components/navbar";
 
 function App() {
   const page404 = () => <h1>Page not found: {window.location.pathname}</h1>;
@@ -28,7 +28,7 @@ function App() {
             <UserContextProvider>
               <Router>
                 <header>
-                  <Nav />
+                  <NavBar/>
                 </header>
                 <main>
                   <Switch>

@@ -7,8 +7,14 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+
+  background: red;
 }
 
 .App-link {
   color: #61dafb;
+}
+
+main {
+  min-height: calc(100vh - (14vh + 100px));  /* 100 vh - (header + footer) */
 }
