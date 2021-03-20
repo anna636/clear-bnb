@@ -104,6 +104,7 @@
 
 .rentOutImage {
   max-height: 30vh;
+  width:50vh;
   
  
   transition: opacity ease-out 250ms;
