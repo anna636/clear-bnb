@@ -16,5 +16,11 @@
 }
 
 main {
-  min-height: calc(100vh - (14vh + 100px));  /* 100 vh - (header + footer) */
+  min-height: calc(100vh - (60px + 100px)); /* 100 vh - (header + footer) */
+}
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 2;
 }
