@@ -3,6 +3,7 @@ import styled from 'styled-components'
 
 const AccessibilityContainer = styled.div`
 display: flex;
+margin-left: 10px;
 `;
 
 const RegisterButton = styled.button`
@@ -10,7 +11,7 @@ border: 0;
 outline: 0;
 padding: 8px 1em;
 color: #fff;
-font-size: 14px;
+font-size: 13px;
 font-weight: 500;
 border-radius: 20px;
 background-color: #6adf76;
@@ -32,7 +33,7 @@ border: 0;
 outline: 0;
 padding: 8px 1em;
 color: #222;
-font-size: 14px;
+font-size: 13px;
 font-weight: 500;
 border-radius: 20px;
 background-color: transparent;

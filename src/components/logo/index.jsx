@@ -12,10 +12,10 @@ height: 100%;
 width: 100%;
 
  img {
-  height: 50px;
+  height: 2.5em;
  }
  `
- 
+
 export function Logo() {
   return <LogoWrapper>
     <LogoImg>
