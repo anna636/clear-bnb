@@ -8,6 +8,7 @@ import Home from "./pages/Home.js";
 import PlusMinusGuests from "./pages/PlusMinusGuests.js";
 import Footer from "./components/Footer";
 import ApartmentDetails from "./pages/ApartmentDetails.js";
+import UploadImages from "./pages/UploadImages.js";
 import ApartmentContextProvider from "./contexts/ApartmentContextProvider";
 import BookingContextProvider from "./contexts/BookingContextProvider";
 import Checkin from "./pages/Checkin";
@@ -67,6 +68,12 @@ function App() {
                     path="/my-apartments/:id"
                     component={MyApartments}
                   />
+
+                   <Route
+                      exact
+                      path="/upload-images"
+                      component={UploadImages}
+                    />
   
                     <Route exact path="/housing-listing" component={Housing} />
                     <Route exact path="/all-destinations" component={AllDestinations} />
