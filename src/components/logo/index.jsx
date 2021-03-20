@@ -14,12 +14,18 @@ width: 100%;
  img {
   height: 2.5em;
  }
- `
+
+ a{
+  text-decoration: none;
+ }
+ `;
 
 export function Logo() {
   return <LogoWrapper>
     <LogoImg>
-      <img src={ClearbnbLogoImg} alt="ClearBNB"/>
+      <a href="/">
+        <img src={ClearbnbLogoImg} alt="ClearBNB" />
+        </a>
     </LogoImg>
   </LogoWrapper>
 }
