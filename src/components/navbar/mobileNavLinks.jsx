@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { Accessibility } from './accessibility';
 import { MenuToggle } from './menuToggle';
@@ -36,12 +37,12 @@ const LinkItem = styled.li`
   &:hover{
     color: #eee;
   }
-`;
 
-const Link = styled.a`
+a {
   text-decoration: none;
   color: inherit;
   font-size: inherit;
+}
 `;
 
 export function MobileNavLinks(props) { 
@@ -51,10 +52,10 @@ export function MobileNavLinks(props) {
     <NavLinksContainer>
     <MenuToggle isOpen={isOpen} toggle={() => setOpen(!isOpen)} />
     {isOpen && (<LinksWrapper>
-      <LinkItem><Link href="/">Home</Link></LinkItem>
-      <LinkItem><Link href="/housing-listing">Apartments</Link></LinkItem>
-      <LinkItem><Link href="/all-destinations">Destinations</Link></LinkItem>
-        <LinkItem><Link href="#">Get started</Link></LinkItem>
+      <LinkItem><Link to="/">Home</Link></LinkItem>
+      <LinkItem><Link to="/housing-listing">Apartments</Link></LinkItem>
+      <LinkItem><Link to="/all-destinations">Destinations</Link></LinkItem>
+        <LinkItem><Link to="#">Get started</Link></LinkItem>
           <Accessibility />
       </LinksWrapper>)}
       

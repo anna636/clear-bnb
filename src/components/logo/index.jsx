@@ -1,4 +1,5 @@
 import React from 'react'
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom'
 import styled from 'styled-components'
 import ClearbnbLogoImg from '../../imgs/logo_clearbnb.jpg'
 
@@ -23,9 +24,9 @@ width: 100%;
 export function Logo() {
   return <LogoWrapper>
     <LogoImg>
-      <a href="/">
+      <Link to="/">
         <img src={ClearbnbLogoImg} alt="ClearBNB" />
-        </a>
+        </Link>
     </LogoImg>
   </LogoWrapper>
 }
