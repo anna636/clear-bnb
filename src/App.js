@@ -50,18 +50,18 @@ function App() {
                     />
                     <Route exact path="/checkin/:id" component={Checkin} />
 
-                  <Route
-                    exact
-                    path="/confirmation/:id"
-                    component={Confirmation}
+                    <Route
+                      exact
+                      path="/confirmation/:id"
+                      component={Confirmation}
                     />
-                    
-                  <Route
-                    exact
-                    path="/my-bookings/:id"
-                    component={MyBookings}
-                  />
-  
+
+                    <Route
+                      exact
+                      path="/my-bookings/:id"
+                      component={MyBookings}
+                    />
+
                     <Route exact path="/housing-listing" component={Housing} />
                     <Route exact path="/all-destinations" component={AllDestinations} />
 
