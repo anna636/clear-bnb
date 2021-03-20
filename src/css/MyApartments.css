@@ -1,6 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+
+
 .apartmentsWrapper {
   margin-top: 10vh;
   padding-left: 10vh;
+  counter-reset: my-sec-counter;
 }
 
 .apartmentsComp {
@@ -17,20 +22,52 @@
 
 .apartmentItem {
   width: 60vh;
-  height: 60vh;
+  height: 70vh;
   padding: 3vh;
-  cursor: pointer;
+ 
   border-radius: 20px;
   display: grid;
   align-items: center;
   justify-content: center;
     background-color: #f7f7f7;
   position: relative;
+  z-index: 1;
+}
+
+.apartmentImgAndInfo{
+  cursor: pointer;
+  z-index: 100;
 }
 
 .apartmentItem:hover{
   opacity: .8;
 }
+
+
+
+.deleteApartment{
+  z-index: 100;
+ 
+}
+
+
+.custom-btn {
+    border: 1px solid lightgray !important;
+  background: black !important;
+  border-radius: 15px !important;
+  cursor: pointer !important;
+  outline: none !important;
+  color: white !important;
+  padding: 6px !important;
+ 
+}
+
+.custom-btn:hover{
+    background: rgba(128, 128, 128, 0.548) !important;
+  color: gray !important;
+}
+
+
 
 .apartmentItem::before,
 .apartmentItem::after {
@@ -99,11 +136,14 @@
   color: gray;
 }
 
+.custom-modal{
+  border-radius: 20px !important;
+}
 
 @media screen and (max-width: 1200px) {
   .apartmentItem {
   width: 40vh;
-  height: 60vh;
+ 
  
   }
 
@@ -112,7 +152,6 @@
 @media screen and (max-width: 1000px) {
   .apartmentItem {
   width: 30vh;
-  height: 40vh;
   font-size:10px;
   }
 
@@ -120,12 +159,16 @@
 }
 @media screen and (max-width: 800px) {
   .apartmentItem {
-    display: flex;
-    flex-direction: column;
+  
   width: 60vh;
   height: 60vh;
-  font-size:15px;
+  font-size:20px;
  
+  }
+
+  .apartmentItem::before{
+     counter-increment: my-sec-counter;
+     content: "Apartment no." counter(my-sec-counter);
   }
 
   .apartmentsComp{
@@ -133,10 +176,6 @@
     flex-direction: column;
   }
 
-  .rentOutImage {
-    
-    width:30vh;
-  }
 }
 
 
@@ -151,6 +190,11 @@
   .apartmentsHeader{
     width:70%;
     font-size: 15px;
+  }
+
+  .apartmentItem::before{
+    font-size: 9px;
+  
   }
 }
 
