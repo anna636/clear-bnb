@@ -171,7 +171,29 @@ export default function MyApartments() {
                       {/* <h2>Bookings</h2> */}
                       {getRenters(apartment._id).map(booking => {
                         return <div className="booking-container">
-                                 <p>{booking._id}</p>
+                                 <div>
+                                   <img
+                                      className="booking-image" 
+                                      src={booking.apartmentId.gallery[0]}/>
+                                 </div>
+                                 <div className="booking-information">
+                                    <div className="wrap">
+                                      <h6 style={{"fontWeight": 100, "opacity": 0.8, "fontSize": "10px"}}>Renter: </h6>
+                                      <div className="renter-container">
+                                        <i class="fas fa-user-circle"></i>
+                                        <p className="inline username-renter">{booking.userId.fullName}</p>
+                                      </div>
+                                    </div>
+                                    <div className="wrap">
+                                      <h6 style={{"fontWeight": 100, "opacity": 0.8, "fontSize": "10px"}}>Dates: </h6>
+                                      <div className="dates-container">
+                                        <h6 >{booking.startDate} - {booking.endDate}</h6>
+                                      </div>
+                                    </div>
+                                    <div className="wrap"> 
+                                      <h6>{booking.apartmentId.city}, {booking.apartmentId.region}</h6>
+                                    </div>
+                                 </div>
                                </div>
                       })
                       }

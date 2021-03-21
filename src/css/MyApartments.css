@@ -1,5 +1,10 @@
 * {
   box-sizing: border-box;
+  margin: 0;
+}
+
+p {
+  margin: 0;
 }
 
 /* .apartmentsWrapper {
@@ -196,9 +201,53 @@
 
 .booking-container {
   width: 100%;
-  border: 1px solid black;
+  display: flex;
+  padding: 5px;
+  margin: 5px;
 }
 
+.booking-image {
+  width: 200px;
+  height: 100%;
+  border-radius: 10px;
+}
+
+.renter-container {
+  display: flex;
+  align-items: center;
+}
+
+.renter-container > .fa-user-circle {
+  font-size: 22px;
+  margin-right: 4px;
+}
+
+.username-renter {
+  font-weight: 900;
+  font-size: 12px;
+}
+
+.dates-container {
+  display: flex;
+  align-items: center;
+}
+
+.fa-calendar-alt {
+  font-size: 22px;
+  margin-right: 4px;
+}
+
+.dates-booking {
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.wrap {
+  margin: 5px;
+  padding: 5px 10px;
+  border-radius: 15px;
+  border: 1px solid lightgray;
+}
 
 @media screen and (max-width: 1200px) {
   .apartmentItem {
