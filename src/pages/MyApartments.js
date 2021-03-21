@@ -5,18 +5,90 @@ import { UserContext } from "../contexts/UserContextProvider";
 import { useHistory } from "react-router-dom";
 import { useParams } from "react-router-dom";
 
-import { useContext, useState } from "react";
+import { useContext } from "react";
 
 export default function MyApartments() {
-
-
   
   const { apartments } = useContext(ApartmentContext);
   const { currentUser} = useContext(UserContext);
+  const {bookings} = useContext(BookingContext);
   
   const myApartments = apartments.filter(function (apartment) {
     return apartment.ownerId._id === currentUser._id;
   });
+
+  /* const rented = bookings.filter(booking => {
+    return booking.apartmentId.ownerId === currentUser._id;
+  });
+
+  console.log(rented); */
+
+  /* const test = bookings.filter(booking => {
+    return booking.apartmentId.ownerId === currentUser._id;
+  });
+
+  console.log(test); */
+
+  const getRenters = (housingId) => {
+    let data = bookings.filter(booking => {
+      return booking.apartmentId.ownerId === currentUser._id;
+    });
+
+    data = data.filter(booking => {
+      return booking.apartmentId._id === housingId;
+    });
+
+    return data;
+  }
+
+  console.log(bookings);
+
+  /* let test = getRenters('604b43fa6b715a316c048f3f');
+  console.log(test); */
+
+  /* function rented(housingId) {
+    let data = bookings.filter(booking => {
+      return booking.apartmentId.ownerId === currentUser._id;
+    });
+    
+    data = data.filter(function(booking) {
+      return booking.apartmentId._id === housingId;
+    });
+
+    return data;
+  }; */
+
+  /* const getRenters = (housingId) => {
+    let data = bookings.filter(function(booking) {
+      return booking.apartmentId.ownerId === currentUser._id;
+    });
+    
+    data = data.filter(booking => {
+      return booking.apartmentId._id === housingId;
+    });
+
+    return data;
+  }
+  
+  let test = getRenters('604b7c6e11fc215c4764f81d');
+  console.log(test); */
+
+  /* let test = rented('604b7c6e11fc215c4764f81d');
+  console.log(test); */
+
+  /* const testing = bookings.map(booking => {
+    return booking.apartmentId.ownerId;
+  });
+
+  console.log(testing); */
+
+  /* 
+    Detta skriver ut alla booking objekt id
+  const test = bookings.map(booking => {
+    return booking.userId._id;
+  });
+
+  console.log(test); */
 
   const history = useHistory();
   const { id } = useParams();
@@ -71,14 +143,8 @@ export default function MyApartments() {
               <div className="apartment-container">
                 <div className="apartment-top-container">
                   <h1>{apartment.city} - {apartment.region}</h1>
-                  <p>Availability: {apartment.availableDates.availableStartDate} - {apartment.availableDates.availableEndDate}</p>
                 </div>
                 <div className="image-gallery">
-                  {/* {apartment.gallery.map((image, i) => {
-                    while(i < 5) {
-                      return <div className="apartment-image"> <img className={"image" + (i + 1)} src={image} /> </div>
-                    }
-                  })} */}
                   <div className="one-apartment-image">
                     <img className="image1" src={apartment.gallery[0]}/>
                   </div>
@@ -89,7 +155,29 @@ export default function MyApartments() {
                     <img className="image5" src={apartment.gallery[4]}/>
                   </div>
                 </div>
-                <div className></div>
+                <div className="apartment-information">
+                  <div>
+                    <h2>Details</h2>
+                    <p>{apartment._id}</p>
+                    <p>{apartment.description}</p>
+                    <div className="availability-section">
+                      <h4>Availability:</h4>
+                      <p>{apartment.availableDates.availableStartDate}</p>
+                      -
+                      <p>{apartment.availableDates.availableEndDate}</p>
+                    </div>
+                    <h2>Bookings</h2>
+                    <div className="bookings-section">
+                      {/* <h2>Bookings</h2> */}
+                      {getRenters(apartment._id).map(booking => {
+                        return <div className="booking-container">
+                                 <p>{booking._id}</p>
+                               </div>
+                      })
+                      }
+                    </div>
+                  </div>
+                </div>
               </div>
             ))}
           </div>
