@@ -1,26 +1,9 @@
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-
-  background: red;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-main {
-  min-height: calc(100vh - (60px + 100px)); /* 100 vh - (header + footer) */
-}
-
 header {
   position: sticky;
   top: 0;
   z-index: 2;
+}
+
+main {
+  min-height: calc(100vh - (90px + 100px)); /* 100 vh - (header + search + footer) */
 }
