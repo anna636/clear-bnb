@@ -11,16 +11,34 @@ img {
   height: auto;
 }
 
-.bookingsComp {
+.bookingsComp{
   padding-top: 4vh;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
+
+
 .bookingsComp > div {
   margin-top: 6vh;
 }
+
+.historyBookings, .upcommingBookings{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.historyBookings > div, .upcommingBookings> div {
+  margin-top:6vh;
+}
+
+
+.historyBookings{
+  margin-top:20vh !important;
+}
+
 
 .bookingItem {
   display: flex;
@@ -46,6 +64,8 @@ img {
   outline: none;
   color: white;
   padding: 6px;
+  height:10vh;
+  width:20vh;
 }
 
 .buttonWrapperBooking > button:hover {
@@ -56,6 +76,10 @@ img {
 @media screen and (max-width: 1080px) {
   .buttonWrapperBooking {
     margin-top: 0%;
+  }
+  .buttonWrapperBooking button{
+    height:10vh;
+    width:20vh;
   }
 
   .bookingsWrapper {
@@ -97,4 +121,8 @@ img {
      width: 15%;
   }
 
+}
+
+.noBookings{
+  text-align: center;
 }
