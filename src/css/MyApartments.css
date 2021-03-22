@@ -120,12 +120,16 @@ p {
 }
 
 .apartment-container {
-  padding: 2em;
+  padding: 1em;
   width: 100%;
   border-bottom: 1px solid rgba(51, 51, 51, 0.5);
   margin-bottom: 20px;
 }
 
+.images {
+  border: 1px solid rgba(51, 51, 51, 0.3);
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px;
+}
 
 .image-gallery {
   width: 100%;
@@ -156,6 +160,10 @@ p {
   border-bottom-right-radius: 8px;
 }
 
+.apartment-information {
+  padding: 15px 10px;
+}
+
 .availability-section {
   display: flex;
   align-items: center;
@@ -177,7 +185,7 @@ p {
   width: 50%;
   height: 100%;
   display: grid;
-  grid-template-columns: 300px 300px;
+  grid-template-columns: 1fr 1fr;
   grid-template-rows: 250px;
   gap: 0.25em;
 }
@@ -204,6 +212,14 @@ hr {
   display: flex;
   padding: 5px;
   margin: 5px;
+  /* border: 1px solid lightgray; */
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.booking-container:hover {
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 1px 0px, rgba(0, 0, 0, 0.15) 0px 8px 24px, rgba(0, 0, 0, 0.15) 0px 16px 48px;
 }
 
 .booking-image {
@@ -240,6 +256,11 @@ hr {
 .dates-booking {
   font-size: 12px;
   font-weight: 900;
+}
+
+.booking-amount {
+  opacity: 0.5;
+  font-size: 20px;
 }
 
 .wrap {
