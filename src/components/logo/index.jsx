@@ -26,7 +26,7 @@ export function Logo() {
     <LogoImg>
       <Link to="/">
         <img src={ClearbnbLogoImg} alt="ClearBNB" />
-        </Link>
+      </Link>
     </LogoImg>
   </LogoWrapper>
 }

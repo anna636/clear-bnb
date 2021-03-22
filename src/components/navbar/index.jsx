@@ -35,7 +35,7 @@ display: flex;
 `
 
 
-export function NavBar(props) {
+export function NavBar() {
 
   const isMobile = useMediaQuery({ maxWidth: DeviceSize.mobile })
   

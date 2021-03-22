@@ -5,5 +5,5 @@ header {
 }
 
 main {
-  min-height: calc(100vh - (90px + 100px)); /* 100 vh - (header + search + footer) */
+  min-height: calc(100vh - (120px + 100px)); /* 100 vh - (header + search + footer) */
 }

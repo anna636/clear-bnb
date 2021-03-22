@@ -40,7 +40,7 @@ a {
 
 `;
 
-export  function NavLinks() {
+export function NavLinks() {
   return <NavLinksContainer>
     <LinksWrapper>
       <LinkItem><Link to="/">Home</Link></LinkItem>
@@ -48,5 +48,5 @@ export  function NavLinks() {
       <LinkItem><Link to="/all-destinations">Destinations</Link></LinkItem>
       <LinkItem><Link to="#">Get started</Link></LinkItem>
     </LinksWrapper>
-</NavLinksContainer>
+  </NavLinksContainer>
 }

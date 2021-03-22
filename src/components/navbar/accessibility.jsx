@@ -51,7 +51,7 @@ transition: all 240ms ease-in-out;
 }
 `
 
-export function Accessibility(props) {
+export function Accessibility() {
   return <AccessibilityContainer>
     <RegisterButton>Register</RegisterButton>
     <LoginButton>Login</LoginButton>

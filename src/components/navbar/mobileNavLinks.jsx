@@ -45,7 +45,7 @@ a {
 }
 `;
 
-export function MobileNavLinks(props) { 
+export function MobileNavLinks() { 
   const [isOpen, setOpen] = useState(false);
 
   return (
