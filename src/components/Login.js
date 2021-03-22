@@ -7,11 +7,17 @@ export default function Login() {
   const { login, getCurrentUser } = useContext(UserContext);
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [showLoginSuccess, setShowLoginSuccess] = useState(false)
 
   useEffect(() => {
     getCurrentUser()
-    console.log(getCurrentUser())
   }, []);
+
+  function tempShowLoginSuccess() {
+    setShowLoginSuccess(true)
+    
+    setTimeout(() => { setShowLoginSuccess(false) }, 2000)
+   }
 
   function logIn() {
     let user = {
@@ -19,12 +25,12 @@ export default function Login() {
       password: password
     }
     login(user)
-    console.log(getCurrentUser())
+    tempShowLoginSuccess()
   }
 
   return (
     <div className="login-container">
-      <> { getCurrentUser() &&
+      <> { getCurrentUser() && showLoginSuccess &&
         <div className="login-success"  >
         <p>Welcome back, {getCurrentUser().fullName}!</p>
         </div>
