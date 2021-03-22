@@ -15,6 +15,7 @@ import Checkin from "./pages/Checkin";
 import UserContextProvider from "./contexts/UserContextProvider";
 import Confirmation from "./pages/Confirmation.js";
 import HousingContextProvider from './contexts/HousingContextProvider' //Use apartment context instead
+import ApartmentListing from './pages/ApartmentListing.js';
 
 function App() {
   const page404 = () => <h1>Page not found: {window.location.pathname}</h1>;
@@ -62,6 +63,8 @@ function App() {
                     />
 
                     <Route exact path="/housing-listing" component={Housing} />
+
+                    <Route exact path="/apartment-listing" component={ApartmentListing} />
 
                     <Route path="*" component={page404} />
                   </Switch>
