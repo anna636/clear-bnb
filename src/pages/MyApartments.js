@@ -29,6 +29,10 @@ export default function MyApartments() {
 
   console.log(test); */
 
+  const apartmentAmount = apartments.filter(function(apartment) {
+    return apartment.ownerId._id === currentUser._id;
+  });
+
   const getRenters = (housingId) => {
     let data = bookings.filter(booking => {
       return booking.apartmentId.ownerId === currentUser._id;
@@ -40,6 +44,10 @@ export default function MyApartments() {
 
     return data;
   }
+
+  const rentersAmount = bookings.filter(booking => {
+    return booking.apartmentId.ownerId === currentUser._id;
+  });
 
   /* let test = getRenters('604b43fa6b715a316c048f3f');
   console.log(test); */
@@ -135,12 +143,22 @@ export default function MyApartments() {
         <div className="my-apartments-container">
           <div className="my-apartments-top">
             <h1>My apartments</h1>
+            <div className="upper-info">
+              {apartmentAmount.length > 1 ? <p>You have {apartmentAmount.length} apartments uploaded</p> : <p>You have {apartmentAmount.length} apartment uploaded</p>}
+              {rentersAmount.length > 1 ? <p>You have {rentersAmount.length} bookings</p> : <p>You have {rentersAmount.length} booking</p>}
+            </div>
           </div>
           <div className="apartment-listing-container">
             {myApartments.map((apartment) => (
               <div className="apartment-container">
                 <div className="apartment-top-container">
                   <h1>{apartment.city} - {apartment.region}</h1>
+                  <div className="options-btns">
+                    <p>edit:</p>
+                    <i class="far fa-edit"></i>
+                    <p>details: </p>
+                    <i class="far fa-arrow-alt-circle-right"></i>  
+                  </div>
                 </div>
                 <div className="image-gallery">
                   <div className="one-apartment-image">
