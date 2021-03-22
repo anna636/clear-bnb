@@ -26,7 +26,7 @@ export default function Login() {
     <div className="login-container">
       <> { getCurrentUser() &&
         <div className="login-success"  >
-          <p>Welcome back!</p>
+        <p>Welcome back, {getCurrentUser().fullName}!</p>
         </div>
       }</>
       <div className="upper-login-wrap">
