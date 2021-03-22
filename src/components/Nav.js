@@ -1,6 +1,6 @@
 import "../css/Nav.css";
 import LoginModal from './LoginModal'
-import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { useContext, useState, useRef, useEffect } from "react";
 import MyCalendar from "./MyCalendar";
 import { ApartmentContext } from "../contexts/ApartmentContextProvider";
@@ -105,7 +105,9 @@ export default function Nav() {
           <Link to="/all-destinations">
             <h3>Destinations</h3>
           </Link>
-          <h3>Get started</h3>
+          <Link to="/getstarted">
+            <h3>Get started</h3>
+          </Link>
         </div>
 
         <div className="nav-center-searchbar">
