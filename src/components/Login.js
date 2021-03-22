@@ -1,12 +1,17 @@
 import '../css/Login.css'
 import { UserContext } from '../contexts/UserContextProvider'
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 
 export default function Login() {
 
-  const { login } = useContext(UserContext);
+  const { login, getCurrentUser } = useContext(UserContext);
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+
+  useEffect(() => {
+    getCurrentUser()
+    console.log(getCurrentUser())
+  }, []);
 
   function logIn() {
     let user = {
@@ -14,11 +19,16 @@ export default function Login() {
       password: password
     }
     login(user)
+    console.log(getCurrentUser())
   }
-
 
   return (
     <div className="login-container">
+      <> { getCurrentUser() &&
+        <div className="login-success"  >
+          <p>Welcome back!</p>
+        </div>
+      }</>
       <div className="upper-login-wrap">
         <h3>Logga in</h3>
       </div>
