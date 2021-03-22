@@ -16,7 +16,7 @@ export default function Login() {
   function tempShowLoginSuccess() {
     setShowLoginSuccess(true)
     
-    setTimeout(() => { setShowLoginSuccess(false) }, 2000)
+    setTimeout(() => { setShowLoginSuccess(false) }, 2500)
    }
 
   function logIn() {
