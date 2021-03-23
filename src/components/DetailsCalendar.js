@@ -63,7 +63,7 @@ export default function DetailsCalendar({ apartmentId }) {
 
   function convertStringToDate(stringDate) {
     console.log(stringDate)
-    let dateObject = new Date(stringDate + '12:00:00')
+    let dateObject = new Date(stringDate + ' 12:00:00')
     console.log(dateObject)
     return dateObject
   }
