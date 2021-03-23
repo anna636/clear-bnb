@@ -26,7 +26,7 @@ export function LoginModal(props) {
 
   return (
     <Modal isOpen={modal} toggle={toggle}>
-      <div className="modal-header" toggle={toggle}>
+      <div className="modal-header">
         <h5 className="modal-title">Log in</h5>
         <button
           type="button"

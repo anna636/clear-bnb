@@ -1,4 +1,3 @@
-import React from 'react'
 import styled from 'styled-components'
 import { Modal, ModalBody, ModalFooter, Button } from 'reactstrap';
 import { useHistory } from "react-router-dom";
@@ -35,7 +34,9 @@ export function RegisterModal(props) {
 
   return (
     <Modal isOpen={modal} toggle={toggle}>
-      <div className="modal-header" toggle={toggle}>
+
+
+      <div className="modal-header">
         <h5 className="modal-title">Register a new user</h5>
         <button
           type="button"
