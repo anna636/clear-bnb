@@ -6,7 +6,6 @@ import { MenuToggle } from './menuToggle';
 import { UserContext } from '../../contexts/UserContextProvider'
 import { Logout } from './logout';
 
-
 const NavLinksContainer = styled.div`
   height: 100%;
   display: flex;

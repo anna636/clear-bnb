@@ -1,5 +1,4 @@
 import React, { useContext, useEffect } from 'react'
-import { Link } from 'react-router-dom'
 import { useMediaQuery } from 'react-responsive';
 import styled from 'styled-components'
 import { Logo } from '../logo'
@@ -15,6 +14,7 @@ import {
   DropdownMenu,
   DropdownItem,
 } from 'reactstrap';
+import { Dropdown } from './dropdown';
 
 const NavbarContainer = styled.div`
 width: 100%;
@@ -43,50 +43,9 @@ const RightSection = styled.div`
 display: flex;
 `
 
-const DropDownWrapper = styled.span`
-list-style: none;
-display: flex;
-justify-content: center;
-align-items: center;
-padding: 0;
-margin: 0;
-width: 100%;
-
-a {
-display: flex;
-justify-content: center;
-align-items: center;
-padding: 0;
-margin: 0;
-}
-`
-
-const LinkItem = styled.li`
-  width: 100%;
-  color: #222;
-  font-weight: 500;
-  font-size: 16px;
-  display: flex;
-
-  &:hover{
-    color: #eee;
-  }
-
-a {
-  text-decoration: none;
-  color: inherit;
-  font-size: inherit;
-}
-`;
-
-
 export function NavBar() {
   const isMobile = useMediaQuery({ maxWidth: DeviceSize.mobile })
-  const { getCurrentUser, getBeautifulFirstName, logout } = useContext(UserContext)
-
-  const logoutHandler = () => {
-    logout()
-  };
+  const { getCurrentUser } = useContext(UserContext)
 
   useEffect(() => {
     getCurrentUser()
@@ -104,33 +63,10 @@ export function NavBar() {
     <RightSection>
       {!isMobile && !getCurrentUser() && <Accessibility />}
       {!isMobile && getCurrentUser() &&
-
-        <DropDownWrapper>
-          <UncontrolledDropdown nav inNavbar>
-            <DropdownToggle nav caret>
-              Welcome back, {getBeautifulFirstName()}!<i className="far fa-user-circle p-1"></i>
-            </DropdownToggle>
-            <DropdownMenu right>
-              <DropdownItem>
-                <LinkItem><Link to="#">Rent out</Link></LinkItem>
-              </DropdownItem>
-              <DropdownItem>
-                <LinkItem><Link to="#">My pages</Link></LinkItem>
-              </DropdownItem>
-              <DropdownItem>
-                <LinkItem><Link to={"/my-bookings/" + getCurrentUser()._id}>My bookings</Link></LinkItem>
-              </DropdownItem>
-              <DropdownItem divider />
-              <DropdownItem onClick={logoutHandler}>
-                Logout
-              </DropdownItem>
-            </DropdownMenu>
-          </UncontrolledDropdown>
-        </DropDownWrapper>
+        <Dropdown />
       }
-
       {isMobile && <MobileNavLinks />}
-
     </RightSection >
+
   </NavbarContainer >
 }

@@ -56,11 +56,7 @@ transition: all 240ms ease-in-out;
 `
 
 export function Accessibility() {
-  const { getCurrentUser, logout } = useContext(UserContext)
-
-  const logoutHandler = () => {
-    logout()
-  };
+  const { getCurrentUser } = useContext(UserContext)
 
   useEffect(() => {
     getCurrentUser()
