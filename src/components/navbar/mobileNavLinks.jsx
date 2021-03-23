@@ -74,6 +74,9 @@ export function MobileNavLinks() {
         {getCurrentUser() &&
           <>
             <hr />
+            <LinkItem><Link to="#">Rent out</Link></LinkItem>
+            <LinkItem><Link to="#">My pages</Link></LinkItem>
+            <LinkItem><Link to={"/my-bookings/" + getCurrentUser()._id}>My pages</Link></LinkItem>
             <Logout></Logout>
           </>}
       </LinksWrapper>)}
