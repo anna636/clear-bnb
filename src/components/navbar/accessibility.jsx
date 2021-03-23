@@ -1,5 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react'
 import { LoginModal } from './loginModal'
+import { RegisterModal } from './registerModal'
 import styled from 'styled-components'
 import { UserContext } from '../../contexts/UserContextProvider'
 
@@ -65,14 +66,18 @@ export function Accessibility() {
     getCurrentUser()
   }, []);
 
-  const [modal, setModal] = useState(false);
+  const [registerModal, setRegisterModal] = useState(false);
+  const [loginModal, setLoginModal] = useState(false);
 
-  const toggle = () => setModal(!modal);
+  const toggleRegister = () => setRegisterModal(!registerModal);
+  const toggleLogin = () => setLoginModal(!loginModal);
+
   return <AccessibilityContainer>
-    <RegisterButton>Register</RegisterButton>
-    <LoginButton onClick={toggle} >Login</LoginButton>
+    <RegisterButton onClick={toggleRegister}>Register</RegisterButton>
+    <LoginButton onClick={toggleLogin}>Login</LoginButton>
 
-    <LoginModal toggle={toggle} modal={modal}></LoginModal>
+    <RegisterModal toggle={toggleRegister} modal={registerModal}></RegisterModal>
+    <LoginModal toggle={toggleLogin} modal={loginModal}></LoginModal>
 
   </AccessibilityContainer>
 }
