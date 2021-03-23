@@ -24,8 +24,7 @@ export default function ApartmentSearch() {
       dateArray.push(moment(currentDate).format("YYYY-MM-DD"));
       currentDate = moment(currentDate).add(1, "days");
     }
-    console.log('getDates: ', ...dateArray) 
-    console.log('availableStartDate: ', startDate)  // CHECKS
+
     return dateArray;
   }
 
@@ -36,18 +35,17 @@ export default function ApartmentSearch() {
 
     // First check if picked dates are within apartments available dates
     for (const apartment of filteredByLocationArray) {
+      if (apartment.availableDates.length) {
+        let availableDatesArray = getDates(apartment.availableDates[0].availableStartDate, apartment.availableDates[0].availableEndDate)
 
-      let availableDatesArray = getDates(apartment.availableDates[0].availableStartDate, apartment.availableDates[0].availableEndDate)
-
-      for (const date of calendarDates) {
-        if (!availableDatesArray.includes(date)) {
-          unavailableApartments.push(apartment)
-          break
+        for (const date of calendarDates) {
+          if (!availableDatesArray.includes(date)) {
+            unavailableApartments.push(apartment)
+            break
+          }
         }
       }
     }
-
-    console.log('Unavailable apartments check 1:', unavailableApartments)
 
     // Then check if picked dates are the same as any of the apartments booked dates
     for (const apartment of filteredByLocationArray) {
@@ -63,8 +61,6 @@ export default function ApartmentSearch() {
         }
       }
     }
-
-    console.log('Unavailable apartments check 2:', unavailableApartments)  // Check that booking filter worked
 
     let filteredByLocationAndDateArray = filteredByLocationArray.filter((ap) => !unavailableApartments.includes(ap))
 
