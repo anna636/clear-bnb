@@ -1,5 +1,8 @@
-import React from 'react'
+import React, { useState, useContext, useEffect } from 'react'
+import { LoginModal } from './loginModal'
 import styled from 'styled-components'
+import { UserContext } from '../../contexts/UserContextProvider'
+
 
 const AccessibilityContainer = styled.div`
 display: flex;
@@ -52,8 +55,24 @@ transition: all 240ms ease-in-out;
 `
 
 export function Accessibility() {
+  const { getCurrentUser, logout } = useContext(UserContext)
+
+  const logoutHandler = () => {
+    logout()
+  };
+
+  useEffect(() => {
+    getCurrentUser()
+  }, []);
+
+  const [modal, setModal] = useState(false);
+
+  const toggle = () => setModal(!modal);
   return <AccessibilityContainer>
     <RegisterButton>Register</RegisterButton>
-    <LoginButton>Login</LoginButton>
+    <LoginButton onClick={toggle} >Login</LoginButton>
+
+    <LoginModal toggle={toggle} modal={modal}></LoginModal>
+
   </AccessibilityContainer>
 }
