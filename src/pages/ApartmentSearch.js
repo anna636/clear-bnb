@@ -47,6 +47,8 @@ export default function ApartmentSearch() {
       }
     }
 
+    console.log('Unavailable apartments check 1:', unavailableApartments)
+
     // Then check if picked dates are the same as any of the apartments booked dates
     for (const apartment of filteredByLocationArray) {
       if (unavailableApartments.includes(apartment)) {
@@ -62,7 +64,7 @@ export default function ApartmentSearch() {
       }
     }
 
-    console.log('Unavailable apartments:', unavailableApartments)  // Check that booking filter worked
+    console.log('Unavailable apartments check 2:', unavailableApartments)  // Check that booking filter worked
 
     let filteredByLocationAndDateArray = filteredByLocationArray.filter((ap) => !unavailableApartments.includes(ap))
 
