@@ -24,18 +24,14 @@
     display: flex;
   }
   .checkbox-wrapper{
-      margin-right: 70px;
+      margin-right: 40px;
   }
-  .ameneties-div{
-      margin-right: 8px;
-  }
-
   /* Customize the label (the checkboxContainer) */
 .checkboxContainer {
     display: block;
     position: relative;
-    padding-left: 35px;
-    margin-bottom: 12px;
+    padding-left: 25px;
+    margin-bottom: 20px;
     cursor: pointer;
     font-size: 15px;
     -webkit-user-select: none;

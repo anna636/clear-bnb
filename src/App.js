@@ -16,6 +16,7 @@ import UserContextProvider from "./contexts/UserContextProvider";
 import Confirmation from "./pages/Confirmation.js";
 import HousingContextProvider from './contexts/HousingContextProvider' //Use apartment context instead
 import ApartmentListing from './pages/ApartmentListing.js';
+import AmenitiesContextProvider from "./contexts/AmenitiesContextProvider";
 
 function App() {
   const page404 = () => <h1>Page not found: {window.location.pathname}</h1>;
@@ -26,6 +27,7 @@ function App() {
         <HousingContextProvider>
           <ApartmentContextProvider>
             <UserContextProvider>
+              <AmenitiesContextProvider>
               <Router>
                 <header>
                   <Nav />
@@ -74,6 +76,7 @@ function App() {
                   <Footer />
                 </footer>
               </Router>
+              </AmenitiesContextProvider>
             </UserContextProvider>
           </ApartmentContextProvider>
         </HousingContextProvider>
