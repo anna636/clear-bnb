@@ -36,14 +36,14 @@ export default function Nav() {
     locationProp = location.current.value.toLowerCase();
     if (checkLocation(locationProp)) {
       setShowCalendar(true);
-      setShowDynamicSearch(false);
+      setSearchTerm("");
     }
   };
 
   const searchSuggestedLocation = async (e, loc) => {
     locationProp = loc.toLowerCase()
     e.preventDefault();
-    setShowDynamicSearch(false);
+    setSearchTerm("");
     setShowCalendar(true);
   };
 
@@ -78,7 +78,7 @@ export default function Nav() {
 
   function hideCalendar() {
     setShowCalendar(false)
-    setShowDynamicSearch(false)
+    setSearchTerm("")
   }
 
   function navHome() {
