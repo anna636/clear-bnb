@@ -24,8 +24,8 @@ export default function ApartmentSearch() {
       dateArray.push(moment(currentDate).format("YYYY-MM-DD"));
       currentDate = moment(currentDate).add(1, "days");
     }
-    console.log('getDates: ', ...dateArray)
-    console.log('availableStartDate: ', startDate)
+    console.log('getDates: ', ...dateArray) 
+    console.log('availableStartDate: ', startDate)  // CHECKS
     return dateArray;
   }
 
@@ -36,7 +36,8 @@ export default function ApartmentSearch() {
 
     // First check if picked dates are within apartments available dates
     for (const apartment of filteredByLocationArray) {
-      let availableDatesArray = getDates(apartment.availableDates.availableStartDate, apartment.availableDates.availableEndDate)
+
+      let availableDatesArray = getDates(apartment.availableDates[0].availableStartDate, apartment.availableDates[0].availableEndDate)
 
       for (const date of calendarDates) {
         if (!availableDatesArray.includes(date)) {
