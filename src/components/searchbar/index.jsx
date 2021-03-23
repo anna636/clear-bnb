@@ -92,10 +92,7 @@ const CalenderComponent = styled.div`
 
   `
 
-
-
 export function SearchBar(props) {
-
   const { addCalendarDates } = useContext(BookingContext);
   const { apartments } = useContext(ApartmentContext);
   const { getCurrentUser } = useContext(UserContext)
