@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import { useMediaQuery } from 'react-responsive';
 import styled from 'styled-components'
 import { Logo } from '../logo'
@@ -7,7 +8,6 @@ import { NavLinks } from './navLinks';
 import { DeviceSize } from '../responsive'
 import { MobileNavLinks } from './mobileNavLinks';
 import { UserContext } from '../../contexts/UserContextProvider'
-import { Logout } from './logout';
 
 import {
   UncontrolledDropdown,
@@ -61,6 +61,24 @@ margin: 0;
 }
 `
 
+const LinkItem = styled.li`
+  width: 100%;
+  color: #222;
+  font-weight: 500;
+  font-size: 16px;
+  display: flex;
+
+  &:hover{
+    color: #eee;
+  }
+
+a {
+  text-decoration: none;
+  color: inherit;
+  font-size: inherit;
+}
+`;
+
 
 export function NavBar() {
   const isMobile = useMediaQuery({ maxWidth: DeviceSize.mobile })
@@ -94,21 +112,25 @@ export function NavBar() {
             </DropdownToggle>
             <DropdownMenu right>
               <DropdownItem>
-                Option 1
-                </DropdownItem>
+                <LinkItem><Link to="#">Rent out</Link></LinkItem>
+              </DropdownItem>
               <DropdownItem>
-                Option 2
-                </DropdownItem>
+                <LinkItem><Link to="#">My pages</Link></LinkItem>
+              </DropdownItem>
+              <DropdownItem>
+                <LinkItem><Link to={"/my-bookings/" + getCurrentUser()._id}>My bookings</Link></LinkItem>
+              </DropdownItem>
               <DropdownItem divider />
               <DropdownItem onClick={logoutHandler}>
                 Logout
               </DropdownItem>
             </DropdownMenu>
           </UncontrolledDropdown>
-        </DropDownWrapper>}
+        </DropDownWrapper>
+      }
 
       {isMobile && <MobileNavLinks />}
 
-    </RightSection>
-  </NavbarContainer>
+    </RightSection >
+  </NavbarContainer >
 }

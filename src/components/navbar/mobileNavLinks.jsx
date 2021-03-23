@@ -59,7 +59,6 @@ export function MobileNavLinks() {
   const [isOpen, setOpen] = useState(false);
   const { getCurrentUser, getBeautifulFirstName } = useContext(UserContext)
 
-
   return (
     <NavLinksContainer>
       <MenuToggle isOpen={isOpen} toggle={() => setOpen(!isOpen)} />
@@ -76,7 +75,7 @@ export function MobileNavLinks() {
             <hr />
             <LinkItem><Link to="#">Rent out</Link></LinkItem>
             <LinkItem><Link to="#">My pages</Link></LinkItem>
-            <LinkItem><Link to={"/my-bookings/" + getCurrentUser()._id}>My pages</Link></LinkItem>
+            <LinkItem><Link to={"/my-bookings/" + getCurrentUser()._id}>My bookings</Link></LinkItem>
             <Logout></Logout>
           </>}
       </LinksWrapper>)}
