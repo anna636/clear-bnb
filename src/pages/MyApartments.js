@@ -41,6 +41,8 @@ export default function MyApartments() {
     return data;
   }
 
+  console.log(bookings);
+
   /* let test = getRenters('604b43fa6b715a316c048f3f');
   console.log(test); */
 
@@ -145,21 +147,21 @@ export default function MyApartments() {
                 </div>
                 <div className="image-gallery">
                   <div className="one-apartment-image">
-                    <img className="image1 images" src={apartment.gallery[0]}/>
+                    <img className="image1" src={apartment.gallery[0]}/>
                   </div>
                   <div className="four-apartment-images">
-                    <img className="image2 images" src={apartment.gallery[1]}/>
-                    <img className="image3 images" src={apartment.gallery[2]}/>
-                    <img className="image4 images" src={apartment.gallery[3]}/>
-                    <img className="image5 images" src={apartment.gallery[4]}/>
+                    <img className="image2" src={apartment.gallery[1]}/>
+                    <img className="image3" src={apartment.gallery[2]}/>
+                    <img className="image4" src={apartment.gallery[3]}/>
+                    <img className="image5" src={apartment.gallery[4]}/>
                   </div>
                 </div>
                 <div className="apartment-information">
                   <div>
                     <h2>Details</h2>
                     <hr/>
-                    {/* <p>{apartment._id}</p>
-                    <p>{apartment.description}</p> */}
+                    <p>{apartment._id}</p>
+                    <p>{apartment.description}</p>
                     <div className="availability-section">
                       <h4>Availability:</h4>
                       <p>{apartment.availableDates.availableStartDate}</p>
@@ -167,7 +169,7 @@ export default function MyApartments() {
                       <p>{apartment.availableDates.availableEndDate}</p>
                     </div>
                     <hr/>
-                    <h2 className="bookings-title">Bookings<span className="booking-amount">({getRenters(apartment._id).length})</span></h2>
+                    <h2 className="bookings-title">Bookings</h2>
                     <div className="bookings-section">
                       {/* <h2>Bookings</h2> */}
                       {getRenters(apartment._id).map(booking => {
