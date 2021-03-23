@@ -134,7 +134,7 @@ export default function Checkin() {
               </p>
             </div>
           </div>
-          {getCurrentUser().fullName && (
+          {getCurrentUser() !== null && (
             <button
               className="reserveButton"
               onClick={createBooking}
