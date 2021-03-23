@@ -1,11 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useMediaQuery } from 'react-responsive';
 import styled from 'styled-components'
-import {Logo} from '../logo'
+import { Logo } from '../logo'
 import { Accessibility } from './accessibility';
 import { NavLinks } from './navLinks';
 import { DeviceSize } from '../responsive'
 import { MobileNavLinks } from './mobileNavLinks';
+import { UserContext } from '../../contexts/UserContextProvider'
 
 const NavbarContainer = styled.div`
 width: 100%;
@@ -36,9 +37,9 @@ display: flex;
 
 
 export function NavBar() {
-
   const isMobile = useMediaQuery({ maxWidth: DeviceSize.mobile })
-  
+  const { getCurrentUser, getBeautifulUsername } = useContext(UserContext)
+
   return <NavbarContainer>
     <LeftSection>
       <Logo />
@@ -49,8 +50,11 @@ export function NavBar() {
     </MiddleSection>
 
     <RightSection>
-      {!isMobile && <Accessibility />}
-      {isMobile && <MobileNavLinks/>}
+      {!isMobile && !getCurrentUser && <Accessibility />}
+      {!isMobile && getCurrentUser() &&
+
+        <span>Welcome back, {getBeautifulUsername()}! <i className="far fa-user-circle"></i></span>}
+      {isMobile && <MobileNavLinks />}
 
     </RightSection>
   </NavbarContainer>

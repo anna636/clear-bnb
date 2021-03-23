@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react'
-import { LoginModal } from './loginModal'
-import { RegisterModal } from './registerModal'
+import { LoginModal } from '../modals/loginModal'
+import { RegisterModal } from '../modals/registerModal'
 import styled from 'styled-components'
 import { UserContext } from '../../contexts/UserContextProvider'
 
