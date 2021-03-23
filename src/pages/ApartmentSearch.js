@@ -28,7 +28,8 @@ export default function ApartmentSearch() {
       }
     }
 
-    // Maybe add a field to apartment, boolean availableToRent? On a timer..?
+    
+
 
 
     console.log('Unavailable apartments:', unavailableApartments)  // Check that booking filter worked
