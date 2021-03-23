@@ -33,9 +33,31 @@ export function SearchTab() {
     locationProp = location.current.value.toLowerCase();
     if (checkLocation(locationProp)) {
       setShowCalendar(true);
-      setShowDynamicSearch(false);
+      setSearchTerm("");
     }
   };
+
+  const searchSuggestedLocation = async (e, loc) => {
+    locationProp = loc.toLowerCase()
+    e.preventDefault();
+    setSearchTerm("");
+    setShowCalendar(true);
+  };
+
+  function getAllLocations() {
+    let locationsArray = []
+    for (const apartment of apartments) {
+      if (!locationsArray.includes(apartment.city)) {
+        locationsArray.push(apartment.city)
+      }
+      if (apartment.city !== apartment.region && !locationsArray.includes(apartment.region)) {
+        locationsArray.push(apartment.region)
+      }
+    }
+
+
+    allLocations = locationsArray
+  }
 
   function checkLocation(location) {
     let tempBool = false;
@@ -51,31 +73,16 @@ export function SearchTab() {
     return tempBool;
   }
 
-  const searchSuggestedLocation = async (e, loc) => {
-    locationProp = loc.toLowerCase()
-    e.preventDefault();
-    setShowDynamicSearch(false);
-    setShowCalendar(true);
-  };
-
-  function getAllLocations() {
-    let locationsArray = []
-    for (const apartment of apartments) {
-      if (!locationsArray.includes(apartment.city)) {
-        locationsArray.push(apartment.city)
-      }
-      if (apartment.city !== apartment.region && !locationsArray.includes(apartment.region)) {
-        locationsArray.push(apartment.region)
-      }
-    }
-    allLocations = locationsArray
-  }
-
-
-
   function hideCalendar() {
     setShowCalendar(false)
-    setShowDynamicSearch(false)
+    setSearchTerm("")
+  }
+
+  function navHome() {
+    setSearchTerm("")
+    setShowDynamicSearch(true)
+    setShowCalendar(false)
+    addCalendarDates([])
   }
 
   const SearchbarContainer = styled.div`
