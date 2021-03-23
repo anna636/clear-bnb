@@ -41,10 +41,13 @@ export function Logout() {
     logout()
   };
 
+  useEffect(() => {
+    getCurrentUser()
+  }, []);
 
   const [registerModal, setRegisterModal] = useState(false);
 
-  const toggleRegister = () => setRegisterModal(!registerModal);
+  // const toggleRegister = () => setRegisterModal(!registerModal);
 
   return <AccessibilityContainer>
     <LogoutButton onClick={logoutHandler}>Logout</LogoutButton>
