@@ -62,11 +62,14 @@ export default function DetailsCalendar({ apartmentId }) {
   }
 
   function convertStringToDate(stringDate) {
-    console.log(apartment.city)
-    console.log(stringDate)
     let dateObject = new Date(stringDate + ' 12:00:00')
-    console.log(dateObject)
     return dateObject
+  }
+
+  const oneYearFromNow = () => {
+    let inAYear = new Date(new Date().setFullYear(new Date().getFullYear() + 1))
+    console.log(inAYear)
+    return inAYear
   }
 
 
@@ -75,6 +78,7 @@ export default function DetailsCalendar({ apartmentId }) {
         <>
           <Calendar
         minDate={apartment.availableDates.length ? convertStringToDate(apartment.availableDates[0].availableStartDate) : new Date()}
+        maxDate={apartment.availableDates.length ? convertStringToDate(apartment.availableDates[0].availableEndDate) : oneYearFromNow() }
             onChange={onChange}
             value={dates}
             selectRange={true}
