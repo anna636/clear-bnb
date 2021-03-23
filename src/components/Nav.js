@@ -1,6 +1,6 @@
 import "../css/Nav.css";
 import LoginModal from './LoginModal'
-import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { useContext, useState, useRef, useEffect } from "react";
 import MyCalendar from "./MyCalendar";
 import { ApartmentContext } from "../contexts/ApartmentContextProvider";
@@ -36,14 +36,14 @@ export default function Nav() {
     locationProp = location.current.value.toLowerCase();
     if (checkLocation(locationProp)) {
       setShowCalendar(true);
-      setShowDynamicSearch(false);
+      setSearchTerm("");
     }
   };
 
   const searchSuggestedLocation = async (e, loc) => {
     locationProp = loc.toLowerCase()
     e.preventDefault();
-    setShowDynamicSearch(false);
+    setSearchTerm("");
     setShowCalendar(true);
   };
 
@@ -78,7 +78,7 @@ export default function Nav() {
 
   function hideCalendar() {
     setShowCalendar(false)
-    setShowDynamicSearch(false)
+    setSearchTerm("")
   }
 
   function navHome() {
@@ -105,7 +105,9 @@ export default function Nav() {
           <Link to="/all-destinations">
             <h3>Destinations</h3>
           </Link>
-          <h3>Get started</h3>
+          <Link to="/getstarted">
+            <h3>Get started</h3>
+          </Link>
         </div>
 
         <div className="nav-center-searchbar">
