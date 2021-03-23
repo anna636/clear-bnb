@@ -111,7 +111,7 @@ export default function MyApartments() {
         </div>
       )}
 
-      {/* {Boolean(apartments && currentUser && myApartments.length) && (
+      {Boolean(apartments && currentUser && myApartments.length) && (
         <div className="apartmentsWrapper">
           <h1 className="apartmentsHeader">Apartments for rent</h1>
 
@@ -137,6 +137,7 @@ export default function MyApartments() {
             ))}
           </div>
         </div>
+<<<<<<< HEAD
       )} */}
 
       {Boolean(apartments && currentUser && myApartments.length) && (
@@ -222,6 +223,8 @@ export default function MyApartments() {
             ))}
           </div>
         </div>
+=======
+>>>>>>> parent of 2c52e2b (beginning redesign)
       )}
     </>
   );

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 * {
   box-sizing: border-box;
   margin: 0;
@@ -8,6 +9,9 @@ p {
 }
 
 /* .apartmentsWrapper {
+=======
+.apartmentsWrapper {
+>>>>>>> parent of 2c52e2b (beginning redesign)
   margin-top: 10vh;
   padding-left: 10vh;
 }
@@ -106,6 +110,7 @@ p {
 .rentOutApartmentButton:hover{
   background: rgba(128, 128, 128, 0.548);
   color: gray;
+<<<<<<< HEAD
 } */
 
 .my-apartments-top {
@@ -316,7 +321,10 @@ hr {
   padding: 5px 10px;
   border-radius: 15px;
   border: 1px solid lightgray;
+=======
+>>>>>>> parent of 2c52e2b (beginning redesign)
 }
+
 
 @media screen and (max-width: 1200px) {
   .apartmentItem {
