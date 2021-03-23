@@ -70,8 +70,12 @@ export function MobileNavLinks() {
         <LinkItem><Link to="/all-destinations">Destinations</Link></LinkItem>
         <LinkItem><Link to="#">Get started</Link></LinkItem>
         {!getCurrentUser() && <Accessibility />}
-        <hr />
-        {getCurrentUser() && <Logout></Logout>}
+
+        {getCurrentUser() &&
+          <>
+            <hr />
+            <Logout></Logout>
+          </>}
       </LinksWrapper>)}
 
     </NavLinksContainer>
