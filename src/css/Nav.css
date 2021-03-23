@@ -76,12 +76,19 @@ transform: scale(1.05);
 }
 
 .nav-center-searchbar > input {
-
+  border: none; 
+  outline: none;
+  width: 100%;
+  padding-left: 10px;
+  font-family: 'Poppins', sans-serif;
 
 }
 
 .nav-center-searchbar input{
-
+ border:none;
+ outline:none;
+ width:60vh;
+ font-size: 15px;
 }
 
 .nav-right {
@@ -121,7 +128,9 @@ transform: scale(1.05);
 }
 
 .selectDates{
-
+  font-size:30px;
+  font-weight: bold;
+  padding:2vh;
 }
 .login-btn {
   border-radius: 999px;
@@ -168,9 +177,12 @@ transform: scale(1.05);
   margin: 10px;
 }
 
-.dynamic-search-value
+.dynamic-search-value:hover {
+  opacity: 0.5;
+  cursor: pointer;
 }
 
-.dynamic-search-value
+.dynamic-search-value:last-child {
+  margin-bottom: 20px;
 }
 
