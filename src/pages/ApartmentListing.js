@@ -1,6 +1,7 @@
 import { useContext } from 'react'
 import { AmenitiesContext } from '../contexts/AmenitiesContextProvider'
 import '../css/ApartmentListing.css'
+import UploadImages from '../pages/UploadImages.js'
 
 
 export default function ApartmentListing() {
@@ -12,7 +13,7 @@ export default function ApartmentListing() {
         <div>
             <form>
                 <div class="listing-div">
-                    <h3>List new Apartment</h3>
+                    <h1>List new Apartment</h1>
                     <div class="apartment-input-wrap"><input placeholder="Title:" /></div>
                     <div class="apartment-input-wrap"><input placeholder="Description:" /></div>
                     <div class="apartment-input-wrap"><input placeholder="Region:" /></div>
@@ -31,6 +32,10 @@ export default function ApartmentListing() {
                             </label>
                         </div>
                     })}
+                </div>
+                <UploadImages/>
+                <div class="publishButton-container">
+                <button class="publishButton">Publish</button>
                 </div>
             </form>
         </div>
