@@ -56,9 +56,10 @@ export default function UserContextProvider(props) {
     return currentUser
   }
 
-  const getBeautifulUsername = () => {
+  const getBeautifulFirstName = () => {
     let length = getCurrentUser().fullName.length;
-    return getCurrentUser().fullName.substring(0, 1).toUpperCase() + getCurrentUser().fullName.substring(1, length).toLowerCase();
+    let name = getCurrentUser().fullName.split(' ')
+    return name[0].substring(0, 1).toUpperCase() + name[0].substring(1, length).toLowerCase();
   }
 
   const logout = async () => {
@@ -78,7 +79,7 @@ export default function UserContextProvider(props) {
     login,
     logout,
     getCurrentUser,
-    getBeautifulUsername,
+    getBeautifulFirstName,
     currentUser,
     users
   };

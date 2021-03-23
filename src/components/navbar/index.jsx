@@ -38,7 +38,7 @@ display: flex;
 
 export function NavBar() {
   const isMobile = useMediaQuery({ maxWidth: DeviceSize.mobile })
-  const { getCurrentUser, getBeautifulUsername } = useContext(UserContext)
+  const { getCurrentUser, getBeautifulFirstName } = useContext(UserContext)
 
   return <NavbarContainer>
     <LeftSection>
@@ -50,10 +50,10 @@ export function NavBar() {
     </MiddleSection>
 
     <RightSection>
-      {!isMobile && !getCurrentUser && <Accessibility />}
+      {!isMobile && !getCurrentUser() && <Accessibility />}
       {!isMobile && getCurrentUser() &&
 
-        <span>Welcome back, {getBeautifulUsername()}! <i className="far fa-user-circle"></i></span>}
+        <span>Welcome back, {getBeautifulFirstName()}! <i className="far fa-user-circle"></i></span>}
       {isMobile && <MobileNavLinks />}
 
     </RightSection>

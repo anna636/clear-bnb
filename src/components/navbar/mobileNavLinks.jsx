@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import { Accessibility } from './accessibility';
 import { MenuToggle } from './menuToggle';
 import { UserContext } from '../../contexts/UserContextProvider'
+import { Logout } from './logout';
 
 
 const NavLinksContainer = styled.div`
@@ -56,19 +57,21 @@ const WelcomeMessage = styled.p`
 
 export function MobileNavLinks() {
   const [isOpen, setOpen] = useState(false);
-  const { getCurrentUser } = useContext(UserContext)
+  const { getCurrentUser, getBeautifulFirstName } = useContext(UserContext)
 
 
   return (
     <NavLinksContainer>
       <MenuToggle isOpen={isOpen} toggle={() => setOpen(!isOpen)} />
       {isOpen && (<LinksWrapper>
-        {getCurrentUser() && <WelcomeMessage>Welcome back, {getCurrentUser().fullName}!</WelcomeMessage>}
+        {getCurrentUser() && <WelcomeMessage>Welcome back, {getBeautifulFirstName()}!</WelcomeMessage>}
         <LinkItem><Link to="/">Home</Link></LinkItem>
         <LinkItem><Link to="/housing-listing">Apartments</Link></LinkItem>
         <LinkItem><Link to="/all-destinations">Destinations</Link></LinkItem>
         <LinkItem><Link to="#">Get started</Link></LinkItem>
         {!getCurrentUser() && <Accessibility />}
+        <hr />
+        {getCurrentUser() && <Logout></Logout>}
       </LinksWrapper>)}
 
     </NavLinksContainer>
