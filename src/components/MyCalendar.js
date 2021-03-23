@@ -5,11 +5,10 @@ import Calendar from "react-calendar"; // npm i react-calendar
 import { useHistory } from "react-router-dom";
 const moment = require("moment"); // npm i moment
 
-export default function ReactCalendar({ userSearch }) {
+export default function MyCalendar({ userSearch }) {
   const history = useHistory();
   const [dates, setDates] = useState(); // dates is array of 2 dates picked
   const { addCalendarDates, addGuests } = useContext(BookingContext);
-
 
   const onChange = (newDate) => {
     setDates(newDate);
@@ -34,10 +33,11 @@ export default function ReactCalendar({ userSearch }) {
     var dateArray = [];
     var currentDate = moment(startDate);
     var stopDate1 = moment(stopDate);
-    while (currentDate <= stopDate) {
+    while (currentDate <= stopDate1) {
       dateArray.push(moment(currentDate).format("YYYY-MM-DD"));
       currentDate = moment(currentDate).add(1, "days");
     }
+    console.log('getDates: ', ...dateArray)
     return dateArray;
   }
 
