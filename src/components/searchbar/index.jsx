@@ -18,6 +18,7 @@ display: flex;
 justify-content: center;
 align-items: center;
 background-color: #f7f7f7;
+
 `;
 
 const SearchbarContainer = styled.div`
@@ -67,7 +68,7 @@ const DynamicSearchValue = styled.div`
   cursor: pointer;
   }
 
-  &::last-child {
+  &:last-child {
   margin-bottom: 20px;
   }
   `
