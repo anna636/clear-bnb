@@ -118,7 +118,7 @@ p {
 }
 
 .upper-info {
-  margin: 2px 4px;
+  margin: 2px 0;
   width: 25%;
   /* border: 1px solid lightgray; */
   border-left: 4px solid rgb(0, 82, 0);
