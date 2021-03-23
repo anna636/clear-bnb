@@ -159,7 +159,6 @@ export default function MyApartments() {
                 <div className="apartment-information">
                   <div>
                     <h2>Details</h2>
-                    <hr/>
                     <p>{apartment._id}</p>
                     <p>{apartment.description}</p>
                     <div className="availability-section">
@@ -168,8 +167,7 @@ export default function MyApartments() {
                       -
                       <p>{apartment.availableDates.availableEndDate}</p>
                     </div>
-                    <hr/>
-                    <h2 className="bookings-title">Bookings</h2>
+                    <h2>Bookings</h2>
                     <div className="bookings-section">
                       {/* <h2>Bookings</h2> */}
                       {getRenters(apartment._id).map(booking => {
