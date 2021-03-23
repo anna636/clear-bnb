@@ -62,6 +62,8 @@ export default function DetailsCalendar({ apartmentId }) {
   }
 
   function convertStringToDate(stringDate) {
+    console.log(apartment.city)
+    console.log(apartment.availableDates[0].availableStartDate)
     console.log(stringDate)
     let dateObject = new Date(stringDate + ' 12:00:00')
     console.log(dateObject)
@@ -70,18 +72,20 @@ export default function DetailsCalendar({ apartmentId }) {
 
 
   return (
-    <>{!calendarDates.length && apartment.bookedDates &&
-      <>
-        <Calendar
-          minDate={apartment.availableDates.length ? convertStringToDate(apartment.availableDates[0].availableStartDate) : new Date()}
-          onChange={onChange}
-          value={dates}
-          selectRange={true}
-          tileClassName={apartment.bookedDates}
-          tileDisabled={disabledTiles}
-        />
-        <button className="calendarNext" disabled={!dates} onClick={goToCheckIn}>Next</button>
-      </>
+    <>{ apartment.availableDates &&
+      <>{!calendarDates.length && apartment.bookedDates &&
+        <>
+          <Calendar
+            minDate={apartment.availableDates.length ? convertStringToDate(apartment.availableDates[0].availableStartDate) : new Date()}
+            onChange={onChange}
+            value={dates}
+            selectRange={true}
+            tileClassName={apartment.bookedDates}
+            tileDisabled={disabledTiles}
+          />
+          <button className="calendarNext" disabled={!dates} onClick={goToCheckIn}>Next</button>
+        </>
+      }</>
     }</>
   );
 }

@@ -67,7 +67,7 @@ app.get("/rest/:model/:id", async (req, res) => {
   if (req.params.model === "apartments") {
     let doc = await model
       .findById(req.params.id)
-      .populate(["amenities", "ownerId"])
+      .populate(["amenities", "ownerId", "availableDates"])
       .exec();
     res.json(doc);
     return;
