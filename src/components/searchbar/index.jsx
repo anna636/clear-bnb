@@ -50,7 +50,7 @@ const InputField = styled.input`
   `
 
 const DynamicSearch = styled.div`
-  background-color: yellow;
+  background-color: white;
   width: 300px;
   font-family: 'Poppins' sans-serif;
   position: fixed;
