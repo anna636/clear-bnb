@@ -1,10 +1,9 @@
 import { useContext, useState } from 'react'
 import { AmenitiesContext } from '../../contexts/AmenitiesContextProvider'
 import '../../css/ApartmentListing.css'
-import { UploadImages } from './uploadImages'
 import { MyCalendar } from './calendar'
 import styled from 'styled-components'
-import CatForm from './form';
+import { UrlForm } from './form';
 
 const Form = styled.form`
 margin: 10px auto;
@@ -92,7 +91,7 @@ export function CreateNewApartment() {
         </div>
 
         <MyCalendar />
-        <CatForm />
+        <UrlForm />
 
 
         <PublishButton>Publish</PublishButton>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import CatInputs from './CatInputs';
+import { UrlInputs } from './urlInputs';
 
-const CatForm = () => {
+export function UrlForm() {
   const blankUrl = { url: '' };
   const [urlState, setUrlState] = useState([{ ...blankUrl }]);
 
@@ -29,10 +29,11 @@ const CatForm = () => {
         onClick={addUrl}
       />
       {
-        urlState.map((val, index) => (
-          <CatInputs
+        urlState.map((url, index) => (
+          <UrlInputs
             key={`url-${index}`}
             index={index}
+            value={url}
             urlState={urlState}
             setUrlState={setUrlState}
             handleUrlChange={handleUrlChange}
@@ -43,5 +44,3 @@ const CatForm = () => {
     </form>
   );
 };
-
-export default CatForm;

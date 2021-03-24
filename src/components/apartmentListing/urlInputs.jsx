@@ -1,8 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const CatInputs = ({ index, urlState, setUrlState, handleUrlChange }) => {
-  const urlId = `name-${index}`;
+UrlInputs.propTypes = {
+  index: PropTypes.number,
+  urlState: PropTypes.array,
+  handleUrlChange: PropTypes.func,
+  setUrlState: PropTypes.func,
+};
+
+export function UrlInputs(props) {
+
+  // const index = props.index;
+  // const urlState = props.urlState;
+  // const setUrlState = props.setUrlState;
+  // const handleUrlChange = props.handleUrlChange;
+
+  const { index, urlState, setUrlState, handleUrlChange } = props
+
+  const urlId = `url-${index}`;
 
   const removeUrl = (e) => {
     e.preventDefault();
@@ -16,7 +31,7 @@ const CatInputs = ({ index, urlState, setUrlState, handleUrlChange }) => {
       <label htmlFor={urlId}>{`Url #${index + 1}`}</label>
       <input
         type="text"
-        name={urlId}
+        url={urlId}
         data-index={index}
         id={urlId}
         className="url"
@@ -29,11 +44,5 @@ const CatInputs = ({ index, urlState, setUrlState, handleUrlChange }) => {
   );
 };
 
-CatInputs.propTypes = {
-  index: PropTypes.number,
-  urlState: PropTypes.array,
-  handleUrlChange: PropTypes.func,
-  setUrlState: PropTypes.func,
-};
 
-export default CatInputs;
+
