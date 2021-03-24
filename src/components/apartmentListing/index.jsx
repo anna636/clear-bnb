@@ -72,6 +72,8 @@ export function CreateNewApartment() {
   const { amenities } = useContext(AmenitiesContext)
   const [values, setValues] = useState(initialValues);
   const { createApartment } = useContext(ApartmentContext)
+  const [amenitiesA, setAminites] = useState([]);
+  
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -81,10 +83,30 @@ export function CreateNewApartment() {
     });
   };
 
+  const handleAmenities =  (e) => {
+    /*
+    setAminites({
+      kanske något sånt här?
+    })
+    */
+  const isChecked = e.target.checked;
+
+  // to get the checked value
+  const checkedValue = e.target.value;
+
+  // to get the checked name
+  const checkedName = e.target.name;
+   
+    console.log(isChecked)
+    console.log(checkedValue)
+    console.log(checkedName)
+  };
+
 
   function createAndPublish(e){
     e.preventDefault();
     let newApartment = values;
+    newApartment.amenities.push()
     console.log(newApartment ,'new apartment ')
    // createApartment(newApartment);
   }
@@ -141,8 +163,8 @@ export function CreateNewApartment() {
                 <label className="checkboxContainer" >
                   <i className={amenitie.icon} ></i> {amenitie.name}
                   <input
-                  value={values.amenities}
-                  onChange={handleInputChange}
+                  value={amenitiesA}
+                  onChange={handleAmenities}
                   name="amenities"
                   label="Amenities"
                   type="checkbox" 
