@@ -101,6 +101,7 @@ p {
 
 .reserveButton {
   margin-top: 3vh;
+  margin-bottom:3vh;
   outline: none;
   border: 0;
   border-radius: 15px;

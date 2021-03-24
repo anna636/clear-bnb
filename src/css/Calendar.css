@@ -168,6 +168,24 @@ abbr[title] {
   color: white;
 }
 
+
+
+.calendarNextDetails{
+  margin-top:2vw;
+  margin-bottom:2vw;
+   border: 1px solid lightgray;
+  background: black;
+  text-align: center;
+  width:20%;
+    font-weight: 900;
+  font-size: 13px;
+  border-radius: 15px;
+  cursor: pointer;
+  outline: none;
+  color: white;
+ 
+}
+
 @media only screen and (max-width: 921px){
  .react-calendar{
    width:80vw;
@@ -175,6 +193,10 @@ abbr[title] {
 
  .calendarNext, .calendarSkip{
    margin-left:0px;
+ }
+
+ .calendarNextDetails{
+   margin-left:0vh;
  }
 }
 
@@ -205,8 +227,8 @@ abbr[title] {
   min-width: 0;
 }
 
-.calendarNext, .calendarSkip{
-  font-size:10px;
+.calendarNext, .calendarSkip, .calendarNextDetails{
+  font-size:10px !important;
 }
 
 }
