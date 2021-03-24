@@ -46,9 +46,7 @@
   margin-bottom: 3em;
 }
 
-.react-calendar__navigation > button.react-calendar__navigation__label > span{
-  
-}
+
 
 .react-calendar__navigation button {
   min-width: 44px;
@@ -198,4 +196,17 @@ abbr[title] {
   height:3vh !important;
   font-size: 8px !important;
 }
+
+.react-calendar button {
+    font-size: 8px;
+}
+
+.react-calendar__navigation button{
+  min-width: 0;
+}
+
+.calendarNext, .calendarSkip{
+  font-size:10px;
+}
+
 }
