@@ -46,6 +46,10 @@
   margin-bottom: 3em;
 }
 
+.react-calendar__navigation > button.react-calendar__navigation__label > span{
+  
+}
+
 .react-calendar__navigation button {
   min-width: 44px;
   border-radius: 20px;
