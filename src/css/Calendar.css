@@ -1,5 +1,5 @@
 .myCalendar {
-  width: 130vh;
+ 
   padding-top: 2em;
   display: grid;
   align-items: center;
@@ -34,6 +34,7 @@
   outline: none;
   cursor: pointer;
   border: none;
+  padding:1vh;
 }
 
 .react-calendar button:enabled:hover {
@@ -163,4 +164,34 @@ abbr[title] {
   cursor: pointer;
   outline: none;
   color: white;
+}
+
+@media only screen and (max-width: 921px){
+ .react-calendar{
+   width:80vw;
+ }
+
+ .calendarNext, .calendarSkip{
+   margin-left:0px;
+ }
+}
+
+@media only screen and (max-width: 680px){
+ .react-calendar{
+   font-size:10px;
+ }
+
+ .react-calendar button{
+
+  font-size: 13px;
+
+
+ }
+}
+
+@media only screen and (max-width: 370px){
+.react-calendar__navigation  {
+  height:3vh !important;
+  font-size: 8px !important;
+}
 }

@@ -74,6 +74,7 @@ const DynamicSearchValue = styled.div`
   `
 
 const CalenderComponent = styled.div`
+  padding:2vh;
   position: fixed;
   top: 120px;
   text-align: center;
@@ -81,7 +82,6 @@ const CalenderComponent = styled.div`
 
   span {
   float: right;
-  padding: 2vh;
   cursor: pointer;
   }
 
