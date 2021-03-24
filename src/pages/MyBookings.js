@@ -54,8 +54,8 @@ export default function MyBookings() {
                   </div>
                   <p className="description-p booked-dates-p">Booked dates:</p>
                   <div className="booking-dates">
-                    <p>Check in: {booking.startDate}</p>
-                    <p>Check out:  {booking.endDate}</p>
+                    <p className="checkinout">Check in: <span className="boldspan">{booking.startDate}</span></p>
+                    <p className="checkinout">Check out: <span className="boldspan">{booking.endDate}</span></p>
                   </div>
                   <i className="fas fa-map-marker-alt"></i>
                   <div className="apartment-info">

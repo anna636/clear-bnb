@@ -72,7 +72,7 @@ img {
   /* box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px; */
   box-shadow: rgba(0, 0, 0, 0.15) 0px 1px 0px, rgba(0, 0, 0, 0.15) 0px 8px 24px, rgba(0, 0, 0, 0.15) 0px 16px 48px;
   display: flex;
-  padding: 4px 2px 0 4px;
+  padding: 4px;
   border-radius: 8px;
 }
 
@@ -89,6 +89,10 @@ img {
 
 .booking-object-details {
   padding: 10px 12px;
+  margin-left: 17px;
+  border-radius: 8px;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px;
+
 }
 
 .ownername-icon {
@@ -108,6 +112,15 @@ img {
   /* border: 1px solid lightgray; */
   border-radius: 8px;
   box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px;
+}
+
+.checkinout {
+  font-size: 11px;
+}
+
+.boldspan {
+  font-weight: 900;
+  font-size: 12px;
 }
 
 .description-p {
@@ -134,7 +147,7 @@ img {
   width: 90%;
   height: 1px;
   background-color: lightgray;
-  margin: 5px auto 1px auto;
+  margin: 10px auto 5px auto;
 }
 
 .show-more-btn {
