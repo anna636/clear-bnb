@@ -65,7 +65,8 @@ const initialValues = {
   gallery: [],
   amenities: [],
   availableDates: [],
-  bookedDates: []
+  bookedDates: [],
+  amenities: []
 };
 
 export function CreateNewApartment() {
@@ -82,11 +83,14 @@ export function CreateNewApartment() {
   };
 
 
-  function createAndPublish(e){
+  function createAndPublish(e) {
     e.preventDefault();
     let newApartment = values;
-    console.log(newApartment ,'new apartment ')
-   // createApartment(newApartment);
+
+    console.log(e.target.checked, 'what we get here')
+
+    console.log(newApartment, 'new apartment ')
+    // createApartment(newApartment);
   }
 
   return (
@@ -95,41 +99,41 @@ export function CreateNewApartment() {
         <ListingDiv>
           <h1>List new Apartment</h1>
           <AptWrap><input
-          value={values.title}
-          onChange={handleInputChange}
-          name="title"
-          label="Title"
-          placeholder="Title:" /></AptWrap>
+            value={values.title}
+            onChange={handleInputChange}
+            name="title"
+            label="Title"
+            placeholder="Title:" /></AptWrap>
           <AptWrap><input
-          value={values.description}
-          onChange={handleInputChange}
-          name="description"
-          label="Description" 
-          placeholder="Description:" /></AptWrap>
+            value={values.description}
+            onChange={handleInputChange}
+            name="description"
+            label="Description"
+            placeholder="Description:" /></AptWrap>
           <AptWrap><input
-          value={values.region}
-          onChange={handleInputChange}
-          name="region"
-          label="Region" 
-          placeholder="Region:" /></AptWrap>
+            value={values.region}
+            onChange={handleInputChange}
+            name="region"
+            label="Region"
+            placeholder="Region:" /></AptWrap>
           <AptWrap><input
-          value={values.City}
-          onChange={handleInputChange}
-          name="city"
-          label="City" 
-          placeholder="City:" /></AptWrap>
-          <AptWrap><input 
-          value={values.maxGuests}
-          onChange={handleInputChange}
-          name="maxGuests"
-          label="MaxGuests"
-          placeholder="Max Guests:" /></AptWrap>
+            value={values.City}
+            onChange={handleInputChange}
+            name="city"
+            label="City"
+            placeholder="City:" /></AptWrap>
           <AptWrap><input
-          value={values.pricePerDay}
-          onChange={handleInputChange}
-          name="pricePerDay"
-          label="PricePerDay" 
-          placeholder="Price/Day:" /></AptWrap>
+            value={values.maxGuests}
+            onChange={handleInputChange}
+            name="maxGuests"
+            label="MaxGuests"
+            placeholder="Max Guests:" /></AptWrap>
+          <AptWrap><input
+            value={values.pricePerDay}
+            onChange={handleInputChange}
+            name="pricePerDay"
+            label="PricePerDay"
+            placeholder="Price/Day:" /></AptWrap>
         </ListingDiv>
 
         <div className="container">
@@ -141,11 +145,11 @@ export function CreateNewApartment() {
                 <label className="checkboxContainer" >
                   <i className={amenitie.icon} ></i> {amenitie.name}
                   <input
-                  value={values.amenities}
-                  onChange={handleInputChange}
-                  name="amenities"
-                  label="Amenities"
-                  type="checkbox" 
+                    value={values.amenities}
+                    onChange={handleInputChange}
+                    name="amenities"
+                    label="Amenities"
+                    type="checkbox"
                   />
                   <span className="checkmark"></span>
                 </label>
