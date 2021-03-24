@@ -1,8 +1,9 @@
 import { useParams, useHistory } from 'react-router-dom'
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 //import homes from '../components/homecomps/homestest.json';
 import { ApartmentContext } from '../contexts/ApartmentContextProvider'
 import '../css/DetailPage.css'
+import Carousel from "react-bootstrap/Carousel";
 import DetailsCalendar from '../components/DetailsCalendar'
 import { BookingContext } from "../contexts/BookingContextProvider";
 
@@ -21,11 +22,20 @@ export default function ApartmentDetails(props) {
   }
 
   return (
-    <>{apartments.length &&
+    <>{Boolean(apartments && apartment) && (
+      <>
       <div className="Details">
         <h2>{apartment.city} </h2>
-        <p> {apartment.region}</p>
-        <img src={apartment.gallery[0]} className="Detail-img" />
+      <p> {apartment.region}</p>
+      <div className="gallery">
+        <Carousel fade>
+          {apartment.gallery.map((picture) => (
+            <Carousel.Item interval={500}>
+              <img src={picture} className="Detail-img" />
+            </Carousel.Item>
+          ))}
+        </Carousel>
+      </div>
         <h3 className="description-text">{apartment.description}</h3>
         <div className="details-icons">
           {apartment.amenities.map((amenity) => (
@@ -48,6 +58,8 @@ export default function ApartmentDetails(props) {
       </>
       }</>
       </div>
-    }</>
+</>
+    )}
+    </>
   )
 }

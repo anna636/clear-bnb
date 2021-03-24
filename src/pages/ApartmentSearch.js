@@ -3,8 +3,10 @@ import { useContext } from 'react'
 import ApartmentList from "../components/ApartmentList";
 import { ApartmentContext } from '../contexts/ApartmentContextProvider'
 import { BookingContext } from '../contexts/BookingContextProvider';
-
 import '../css/ApartmentSearch.css'
+
+const moment = require("moment"); // npm i moment
+
 
 export default function ApartmentSearch() {
   const { city } = useParams()  // Gets location from url
@@ -13,25 +15,52 @@ export default function ApartmentSearch() {
 
   const { calendarDates } = useContext(BookingContext)
 
+  //Function to get array of dates between 2 dates
+  function getDates(startDate, stopDate) {
+    var dateArray = [];
+    var currentDate = moment(startDate);
+    var stopDate1 = moment(stopDate);
+    while (currentDate <= stopDate1) {
+      dateArray.push(moment(currentDate).format("YYYY-MM-DD"));
+      currentDate = moment(currentDate).add(1, "days");
+    }
+
+    return dateArray;
+  }
+
 
   function filterByLocationAndDates(location, allApartments) {
-
     let filteredByLocationArray = allApartments.filter((apartment) => apartment.city.toLowerCase() === location || apartment.region.toLowerCase() === location)
     let unavailableApartments = []
 
+    // First check if picked dates are within apartments available dates
     for (const apartment of filteredByLocationArray) {
-      for (const bookeddate of apartment.bookedDates) {
-        if (calendarDates.includes(bookeddate)) {
-          unavailableApartments.push(apartment)
-          break
+      if (apartment.availableDates.length) {
+        let availableDatesArray = getDates(apartment.availableDates[0].availableStartDate, apartment.availableDates[0].availableEndDate)
+
+        for (const date of calendarDates) {
+          if (!availableDatesArray.includes(date)) {
+            unavailableApartments.push(apartment)
+            break
+          }
         }
       }
     }
 
-    // Maybe add a field to apartment, boolean availableToRent? On a timer..?
-
-
-    console.log('Unavailable apartments:', unavailableApartments)  // Check that booking filter worked
+    // Then check if picked dates are the same as any of the apartments booked dates
+    for (const apartment of filteredByLocationArray) {
+      if (unavailableApartments.includes(apartment)) {
+        continue
+      }
+      else {
+        for (const bookeddate of apartment.bookedDates) {
+          if (calendarDates.includes(bookeddate)) {
+            unavailableApartments.push(apartment)
+            break
+          }
+        }
+      }
+    }
 
     let filteredByLocationAndDateArray = filteredByLocationArray.filter((ap) => !unavailableApartments.includes(ap))
 
