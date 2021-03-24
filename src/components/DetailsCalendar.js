@@ -61,6 +61,18 @@ export default function DetailsCalendar({ apartmentId }) {
     }
   }
 
+  function disableNext() {
+    if (!dates) {
+      return true
+    }
+    else if (moment(dates[0]).format("YYYY-MM-DD") === moment(dates[1]).format("YYYY-MM-DD")) {
+      return true
+    }
+    else {
+      return false
+    }
+  }
+
   return (
     <>{!calendarDates.length && apartment.bookedDates &&
       <>
@@ -72,7 +84,7 @@ export default function DetailsCalendar({ apartmentId }) {
           tileClassName={apartment.bookedDates}
           tileDisabled={disabledTiles}
         />
-        <button className="calendarNext" disabled={!dates} onClick={goToCheckIn}>Next</button>
+      <button className="calendarNext" disabled={disableNext()} onClick={goToCheckIn}>Next</button>
       </>
     }</>
   );
