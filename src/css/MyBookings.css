@@ -6,10 +6,6 @@
   padding-top: 10vh;
 }
 
-img {
-  max-width: 100%;
-  height: auto;
-}
 
 .bookingsComp {
   padding-top: 4vh;
@@ -68,33 +64,27 @@ img {
   .buttonWrapperBooking button {
     height: 4vh;
     width: 30vh;
-   
   }
 }
-
 
 @media screen and (max-width: 798px) {
-
-   img {
+  /* img {
     display:none;
    
-  }
+  } */
 
   .bookingsWrapper {
-    width:40%;
+    width: 40%;
   }
 
-  .bookingItem{
-    font-size:13px;
-    
+  .bookingItem {
+    font-size: 13px;
   }
 }
-
 
 @media screen and (max-width: 640px) {
   .bookingsWrapper {
-    margin-left:10vh;
-     width: 15%;
+    margin-left: 10vh;
+    width: 15%;
   }
-
 }
