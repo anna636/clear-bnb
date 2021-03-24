@@ -87,8 +87,8 @@ export default function DetailsCalendar({ apartmentId }) {
     <>{!calendarDates.length && apartment.bookedDates &&
       <>
         <Calendar
-        minDate={apartment.availableDates.length ? convertStringToDate(apartment.availableDates[0].availableStartDate) : new Date()}
-        maxDate={apartment.availableDates.length ? convertStringToDate(apartment.availableDates[0].availableEndDate) : oneYearFromNow()}
+        minDate={apartment.availableDates ? convertStringToDate(apartment.availableDates.availableStartDate) : new Date()}
+        maxDate={apartment.availableDates ? convertStringToDate(apartment.availableDates.availableEndDate) : oneYearFromNow()}
           onChange={onChange}
           value={dates}
           selectRange={true}
