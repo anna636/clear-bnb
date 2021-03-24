@@ -41,6 +41,18 @@ export default function MyCalendar({ userSearch }) {
     return dateArray;
   }
 
+  function disableNext() {
+    if (!dates) {
+      return true
+    }
+    else if (moment(dates[0]).format("YYYY-MM-DD") === moment(dates[1]).format("YYYY-MM-DD")) {
+      return true
+    }
+    else {
+      return false
+    }
+  }
+
   return (
     <div className="myCalendar">
       <Calendar
@@ -49,7 +61,7 @@ export default function MyCalendar({ userSearch }) {
         value={dates}
         selectRange={true}
       />
-      <button className="calendarNext" disabled={!dates} onClick={next}>Next</button>
+      <button className="calendarNext" disabled={disableNext()} onClick={next}>Next</button>
       <button className="calendarSkip" onClick={skip}>Skip</button>
     </div>
   );
