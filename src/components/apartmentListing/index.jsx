@@ -4,7 +4,7 @@ import '../../css/ApartmentListing.css'
 import { UploadImages } from './uploadImages'
 import { MyCalendar } from './calendar'
 import styled from 'styled-components'
-
+import CatForm from './form';
 
 const Form = styled.form`
 margin: 10px auto;
@@ -92,7 +92,7 @@ export function CreateNewApartment() {
         </div>
 
         <MyCalendar />
-        <UploadImages />
+        <CatForm />
 
 
         <PublishButton>Publish</PublishButton>
