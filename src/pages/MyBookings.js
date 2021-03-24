@@ -33,8 +33,40 @@ export default function MyBookings() {
           <div className="mybookings-top">
             <h1>My bookings</h1>
             <div className="upper-info">
-
+              {myBookings.length > 1 ? <p>You are booking {myBookings.length} objects</p> : <p>You are booking {myBookings.length} objects</p>}
             </div>
+          </div>
+          <div className="mybookings-listing">
+            {myBookings.map((booking) => (
+              <div className="booking">
+                <div className="apartmentImg">
+                  {/* <button className="imgslider-btn-left">väns</button> */}
+                  <img src={booking.apartmentId.gallery[0]}/>
+                  {/* <button className="imgslider-btn-right">höge</button> */}
+                </div>
+                <div className="booking-object-details">
+                  <div className="renter-div ">
+                    <p className="description-p">Owner: </p>
+                    <div className="ownername-icon">
+                      <i class="fas fa-user-circle"></i>
+                      <p>{getOwner(booking.apartmentId.ownerId).fullName}{" "}</p>
+                    </div>
+                  </div>
+                  <p className="description-p booked-dates-p">Booked dates:</p>
+                  <div className="booking-dates">
+                    <p>Check in: {booking.startDate}</p>
+                    <p>Check out:  {booking.endDate}</p>
+                  </div>
+                  <i className="fas fa-map-marker-alt"></i>
+                  <div className="apartment-info">
+                    <p>{booking.apartmentId.city}, {booking.apartmentId.city}</p>
+                    <p>{booking.apartmentId.pricePerDay}€/night</p>
+                  </div>
+                  <hr className="line"/>
+                  <button onClick={() => history.push("/details/" + booking.apartmentId._id)} className="show-more-btn"> Show me this apartment </button>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       )}
