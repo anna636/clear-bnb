@@ -1,7 +1,7 @@
 import { useContext } from 'react'
 import { AmenitiesContext } from '../contexts/AmenitiesContextProvider'
 import '../css/ApartmentListing.css'
-import UploadImages from '../pages/UploadImages.js'
+import UploadImages from '../components/apartmentListing/UploadImages.js'
 
 
 export default function ApartmentListing() {
