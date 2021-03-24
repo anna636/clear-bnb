@@ -2,22 +2,22 @@ import React, { useState } from 'react';
 import CatInputs from './CatInputs';
 
 const CatForm = () => {
-  const blankCat = { name: '' };
-  const [catState, setCatState] = useState([{ ...blankCat }]);
+  const blankUrl = { url: '' };
+  const [urlState, setUrlState] = useState([{ ...blankUrl }]);
 
-  const addCat = () => {
-    setCatState([...catState, { ...blankCat }]);
+  const addUrl = () => {
+    setUrlState([...urlState, { ...blankUrl }]);
   };
 
-  const handleCatChange = (e) => {
-    const updatedCats = [...catState];
-    updatedCats[e.target.dataset.idx][e.target.className] = e.target.value;
-    setCatState(updatedCats);
+  const handleUrlChange = (e) => {
+    const updatedUrls = [...urlState];
+    updatedUrls[e.target.dataset.index][e.target.className] = e.target.value;
+    setUrlState(updatedUrls);
   };
 
   const consoleLog = (e) => {
     e.preventDefault();
-    console.log(catState, 'urls')
+    console.log(urlState, 'urls')
   }
 
 
@@ -25,16 +25,17 @@ const CatForm = () => {
     <form>
       <input
         type="button"
-        value="Add New Cat"
-        onClick={addCat}
+        value="Add New Url"
+        onClick={addUrl}
       />
       {
-        catState.map((val, idx) => (
+        urlState.map((val, index) => (
           <CatInputs
-            key={`cat-${idx}`}
-            idx={idx}
-            catState={catState}
-            handleCatChange={handleCatChange}
+            key={`url-${index}`}
+            index={index}
+            urlState={urlState}
+            setUrlState={setUrlState}
+            handleUrlChange={handleUrlChange}
           />
         ))
       }

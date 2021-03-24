@@ -1,25 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const CatInputs = ({ idx, catState, handleCatChange }) => {
-  const catId = `name-${idx}`;
+const CatInputs = ({ index, urlState, setUrlState, handleUrlChange }) => {
+  const urlId = `name-${index}`;
 
-  const removeUrl = (e, idx) => {
+  const removeUrl = (e) => {
     e.preventDefault();
-    console.log('clicked on', idx)
+    const values = [...urlState]
+    values.splice(index, 1)
+    setUrlState(values)
   }
 
   return (
-    <div key={`cat-${idx}`}>
-      <label htmlFor={catId}>{`Url #${idx + 1}`}</label>
+    <div key={`url-${index}`}>
+      <label htmlFor={urlId}>{`Url #${index + 1}`}</label>
       <input
         type="text"
-        name={catId}
-        data-idx={idx}
-        id={catId}
-        className="name"
-        value={catState[idx].name}
-        onChange={handleCatChange}
+        name={urlId}
+        data-index={index}
+        id={urlId}
+        className="url"
+        value={urlState[index].url}
+        onChange={handleUrlChange}
       />
       <button onClick={(e) => removeUrl(e)}>Remove</button>
 
@@ -28,9 +30,10 @@ const CatInputs = ({ idx, catState, handleCatChange }) => {
 };
 
 CatInputs.propTypes = {
-  idx: PropTypes.number,
-  catState: PropTypes.array,
-  handleCatChange: PropTypes.func,
+  index: PropTypes.number,
+  urlState: PropTypes.array,
+  handleUrlChange: PropTypes.func,
+  setUrlState: PropTypes.func,
 };
 
 export default CatInputs;
