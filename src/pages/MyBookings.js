@@ -29,6 +29,16 @@ export default function MyBookings() {
   return (
     <>
       {bookings && currentUser && users && (
+        <div className="mybookings-container">
+          <div className="mybookings-top">
+            <h1>My bookings</h1>
+            <div className="upper-info">
+
+            </div>
+          </div>
+        </div>
+      )}
+      {/* {bookings && currentUser && users && (
         <div className="bookingsWrapper">
           <h1>My bookings</h1>
           <div className="bookingsComp">
@@ -63,7 +73,7 @@ export default function MyBookings() {
             ))}
           </div>
         </div>
-      )}
+      )} */}
     </>
   );
 }
