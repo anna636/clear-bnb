@@ -37,7 +37,6 @@ a {
   color: inherit;
   font-size: inherit;
 }
-
 `;
 
 export function NavLinks() {

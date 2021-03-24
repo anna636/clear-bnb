@@ -1,11 +1,20 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import { useMediaQuery } from 'react-responsive';
 import styled from 'styled-components'
-import {Logo} from '../logo'
+import { Logo } from '../logo'
 import { Accessibility } from './accessibility';
 import { NavLinks } from './navLinks';
 import { DeviceSize } from '../responsive'
 import { MobileNavLinks } from './mobileNavLinks';
+import { UserContext } from '../../contexts/UserContextProvider'
+
+import {
+  UncontrolledDropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem,
+} from 'reactstrap';
+import { Dropdown } from './dropdown';
 
 const NavbarContainer = styled.div`
 width: 100%;
@@ -34,11 +43,14 @@ const RightSection = styled.div`
 display: flex;
 `
 
-
 export function NavBar() {
-
   const isMobile = useMediaQuery({ maxWidth: DeviceSize.mobile })
-  
+  const { getCurrentUser } = useContext(UserContext)
+
+  useEffect(() => {
+    getCurrentUser()
+  }, []);
+
   return <NavbarContainer>
     <LeftSection>
       <Logo />
@@ -49,9 +61,12 @@ export function NavBar() {
     </MiddleSection>
 
     <RightSection>
-      {!isMobile && <Accessibility />}
-      {isMobile && <MobileNavLinks/>}
+      {!isMobile && !getCurrentUser() && <Accessibility />}
+      {!isMobile && getCurrentUser() &&
+        <Dropdown />
+      }
+      {isMobile && <MobileNavLinks />}
+    </RightSection >
 
-    </RightSection>
-  </NavbarContainer>
+  </NavbarContainer >
 }

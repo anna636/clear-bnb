@@ -1,8 +1,10 @@
-import React, { useState } from 'react'
-import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom'
+import React, { useState, useContext } from 'react'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { Accessibility } from './accessibility';
 import { MenuToggle } from './menuToggle';
+import { UserContext } from '../../contexts/UserContextProvider'
+import { Logout } from './logout';
 
 const NavLinksContainer = styled.div`
   height: 100%;
@@ -45,20 +47,38 @@ a {
 }
 `;
 
-export function MobileNavLinks() { 
+const WelcomeMessage = styled.p`
+  padding: 10px;
+  color: #222;
+  font-weight: 500;
+  font-size: 18px;
+`
+
+export function MobileNavLinks() {
   const [isOpen, setOpen] = useState(false);
+  const { getCurrentUser, getBeautifulFirstName } = useContext(UserContext)
 
   return (
     <NavLinksContainer>
-    <MenuToggle isOpen={isOpen} toggle={() => setOpen(!isOpen)} />
-    {isOpen && (<LinksWrapper>
-      <LinkItem><Link to="/">Home</Link></LinkItem>
-      <LinkItem><Link to="/housing-listing">Apartments</Link></LinkItem>
-      <LinkItem><Link to="/all-destinations">Destinations</Link></LinkItem>
+      <MenuToggle isOpen={isOpen} toggle={() => setOpen(!isOpen)} />
+      {isOpen && (<LinksWrapper>
+        {getCurrentUser() && <WelcomeMessage>Welcome back, {getBeautifulFirstName()}!</WelcomeMessage>}
+        <LinkItem><Link to="/">Home</Link></LinkItem>
+        <LinkItem><Link to="/housing-listing">Apartments</Link></LinkItem>
+        <LinkItem><Link to="/all-destinations">Destinations</Link></LinkItem>
         <LinkItem><Link to="#">Get started</Link></LinkItem>
-          <Accessibility />
+        {!getCurrentUser() && <Accessibility />}
+
+        {getCurrentUser() &&
+          <>
+            <hr />
+            <LinkItem><Link to="#">Rent out</Link></LinkItem>
+            <LinkItem><Link to="#">My pages</Link></LinkItem>
+            <LinkItem><Link to={"/my-bookings/" + getCurrentUser()._id}>My bookings</Link></LinkItem>
+            <Logout></Logout>
+          </>}
       </LinksWrapper>)}
-      
+
     </NavLinksContainer>
   )
 }

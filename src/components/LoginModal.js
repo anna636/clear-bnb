@@ -7,7 +7,7 @@ import { UserContext } from '../contexts/UserContextProvider'
 
 export default function LoginModal() {
   const [login, setLogin] = useState(false);
-    const history = useHistory();
+  const history = useHistory();
   const [register, setRegister] = useState(false);
   const { getCurrentUser, logout } = useContext(UserContext)
 
