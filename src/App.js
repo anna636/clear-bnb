@@ -8,7 +8,6 @@ import Home from "./pages/Home.js";
 import PlusMinusGuests from "./pages/PlusMinusGuests.js";
 import Footer from "./components/Footer";
 import ApartmentDetails from "./pages/ApartmentDetails.js";
-import UploadImages from "./pages/UploadImages.js";
 import ApartmentContextProvider from "./contexts/ApartmentContextProvider";
 import BookingContextProvider from "./contexts/BookingContextProvider";
 import Checkin from "./pages/Checkin";
@@ -28,54 +27,48 @@ function App() {
           <ApartmentContextProvider>
             <UserContextProvider>
               <AmenitiesContextProvider>
-              <Router>
-                <header>
-                  <Nav />
-                </header>
-                <main>
-                  <Switch>
-                    <Route exact path="/" component={Home} />
-                    <Route
-                      exact
-                      path="/search/:city"
-                      component={ApartmentSearch}
-                    />
-                    <Route
-                      exact
-                      path="/plusminus/:id"
-                      component={PlusMinusGuests}
-                    />
-                    <Route
-                      exact
-                      path="/details/:id"
-                      component={ApartmentDetails}
-                    />
-                    <Route exact path="/checkin/:id" component={Checkin} />
+                <Router>
+                  <header>
+                    <Nav />
+                  </header>
+                  <main>
+                    <Switch>
+                      <Route exact path="/" component={Home} />
+                      <Route
+                        exact
+                        path="/search/:city"
+                        component={ApartmentSearch}
+                      />
+                      <Route
+                        exact
+                        path="/plusminus/:id"
+                        component={PlusMinusGuests}
+                      />
+                      <Route
+                        exact
+                        path="/details/:id"
+                        component={ApartmentDetails}
+                      />
+                      <Route exact path="/checkin/:id" component={Checkin} />
 
-                    <Route
-                      exact
-                      path="/confirmation/:id"
-                      component={Confirmation}
-                    />
+                      <Route
+                        exact
+                        path="/confirmation/:id"
+                        component={Confirmation}
+                      />
 
-                    <Route
-                      exact
-                      path="/upload-images"
-                      component={UploadImages}
-                    />
+                      <Route exact path="/housing-listing" component={Housing} />
 
-                    <Route exact path="/housing-listing" component={Housing} />
+                      <Route exact path="/apartment-listing" component={ApartmentListing} />
 
-                    <Route exact path="/apartment-listing" component={ApartmentListing} />
+                      <Route path="*" component={page404} />
+                    </Switch>
+                  </main>
 
-                    <Route path="*" component={page404} />
-                  </Switch>
-                </main>
-
-                <footer>
-                  <Footer />
-                </footer>
-              </Router>
+                  <footer>
+                    <Footer />
+                  </footer>
+                </Router>
               </AmenitiesContextProvider>
             </UserContextProvider>
           </ApartmentContextProvider>
