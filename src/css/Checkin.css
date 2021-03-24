@@ -167,7 +167,7 @@ p {
   position: fixed;
 }
 
-span {
+.mySpan {
   float: right;
   padding-top: 1vh;
   padding-right: 1vh;

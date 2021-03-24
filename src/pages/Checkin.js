@@ -79,13 +79,17 @@ export default function Checkin() {
           <h1>Your trip</h1>
           {openLogin && (
             <div className="loginWrapper">
-              <span onClick={() => setOpenLogin(false)}>x</span>
+              <span className="mySpan" onClick={() => setOpenLogin(false)}>
+                x
+              </span>
               <Login />
             </div>
           )}
           {openRegister && (
             <div className="registerWrapper">
-              <span onClick={() => setOpenRegister(false)}>x</span>
+              <span className="mySpan" onClick={() => setOpenRegister(false)}>
+                x
+              </span>
               <Register />
             </div>
           )}
