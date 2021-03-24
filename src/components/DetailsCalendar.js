@@ -68,7 +68,6 @@ export default function DetailsCalendar({ apartmentId }) {
 
   const oneYearFromNow = () => {
     let inAYear = new Date(new Date().setFullYear(new Date().getFullYear() + 1))
-    console.log(inAYear)
     return inAYear
   }
 
