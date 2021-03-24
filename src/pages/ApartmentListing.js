@@ -10,32 +10,35 @@ export default function ApartmentListing() {
     console.log(amenities)
 
     return (
-        <div>
+        <div className="container">
             <form>
-                <div class="listing-div">
+                <div className="listing-div">
                     <h1>List new Apartment</h1>
-                    <div class="apartment-input-wrap"><input placeholder="Title:" /></div>
-                    <div class="apartment-input-wrap"><input placeholder="Description:" /></div>
-                    <div class="apartment-input-wrap"><input placeholder="Region:" /></div>
-                    <div class="apartment-input-wrap"><input placeholder="City:" /></div>
-                    <div class="apartment-input-wrap"><input placeholder="Max Guests:" /></div>
-                    <div class="apartment-input-wrap"><input placeholder="Price/Night:" /></div>
+                    <div className="apartment-input-wrap"><input placeholder="Title:" /></div>
+                    <div className="apartment-input-wrap"><input placeholder="Description:" /></div>
+                    <div className="apartment-input-wrap"><input placeholder="Region:" /></div>
+                    <div className="apartment-input-wrap"><input placeholder="City:" /></div>
+                    <div className="apartment-input-wrap"><input placeholder="Max Guests:" /></div>
+                    <div className="apartment-input-wrap"><input placeholder="Price/Night:" /></div>
                 </div>
-                <div className="amenities">
+                <div className="container">
                     <h5>Amenities: </h5>
-                    {amenities.map(amenitie => {
-                        return <div class="checkbox-wrapper">
-                            <label class="checkboxContainer">
-                            <i className={amenitie.icon}></i> {amenitie.name}
-                                <input type="checkbox" />
-                                <span class="checkmark"></span>
-                            </label>
-                        </div>
-                    })}
+                    <div className="row">
+
+                        {amenities.map(amenitie => {
+                            return <div className="col-sm-2">
+                                <label className="checkboxContainer">
+                                    <i className={amenitie.icon}></i> {amenitie.name}
+                                    <input type="checkbox" />
+                                    <span className="checkmark"></span>
+                                </label>
+                            </div>
+                        })}
+                    </div>
                 </div>
-                <UploadImages/>
-                <div class="publishButton-container">
-                <button class="publishButton">Publish</button>
+                <UploadImages />
+                <div className="publishButton-container">
+                    <button className="publishButton">Publish</button>
                 </div>
             </form>
         </div>
