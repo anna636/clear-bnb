@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { AmenitiesContext } from '../../contexts/AmenitiesContextProvider'
 import '../../css/ApartmentListing.css'
 import { UploadImages } from './uploadImages'
@@ -45,24 +45,29 @@ height: 10%;
 border: 1px solid lightgray;
 border-radius: 8px;
 
-  input {
-  width: 100%;
-  margin: 5px auto;
-  outline: none;
-  border: none;
-  padding: px;
+input {
+width: 100%;
+margin: 5px auto;
+outline: none;
+border: none;
+padding: px;
     }
 `
 
 export function CreateNewApartment() {
   const { amenities } = useContext(AmenitiesContext)
+  const [title, setTitle] = useState("");
+
 
   return (
     <div className="container">
       <Form>
         <ListingDiv>
           <h1>List new Apartment</h1>
-          <AptWrap><input placeholder="Title:" /></AptWrap>
+          <AptWrap><input
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            placeholder="Title:" /></AptWrap>
           <AptWrap><input placeholder="Description:" /></AptWrap>
           <AptWrap><input placeholder="Region:" /></AptWrap>
           <AptWrap><input placeholder="City:" /></AptWrap>

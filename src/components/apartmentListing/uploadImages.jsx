@@ -46,7 +46,6 @@ button {
   }
   `
 
-
   return (
     <div className="container" id="uploadImages">
       <h1>Add image links</h1>
