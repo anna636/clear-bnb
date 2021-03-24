@@ -4,6 +4,7 @@ import '../../css/ApartmentListing.css'
 import { UploadImages } from './uploadImages'
 import { MyCalendar } from './calendar'
 import styled from 'styled-components'
+import { ApartmentContext } from '../../contexts/ApartmentContextProvider';
 
 
 const Form = styled.form`
@@ -53,7 +54,6 @@ border: none;
 padding: px;
     }
 `
-
 const initialValues = {
   ownerId: "",
   title: "",
@@ -62,15 +62,16 @@ const initialValues = {
   region: "",
   description: "",
   maxGuests: "",
-  gallery: "",
-  amenities: "",
-  availableDates: "",
-  bookedDates: ""
+  gallery: [],
+  amenities: [],
+  availableDates: [],
+  bookedDates: []
 };
 
 export function CreateNewApartment() {
   const { amenities } = useContext(AmenitiesContext)
   const [values, setValues] = useState(initialValues);
+  const { createApartment } = useContext(ApartmentContext)
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -80,6 +81,13 @@ export function CreateNewApartment() {
     });
   };
 
+
+  function createAndPublish(e){
+    e.preventDefault();
+    let newApartment = values;
+    console.log(newApartment ,'new apartment ')
+   // createApartment(newApartment);
+  }
 
   return (
     <div className="container">
@@ -137,7 +145,8 @@ export function CreateNewApartment() {
                   onChange={handleInputChange}
                   name="amenities"
                   label="Amenities"
-                  type="checkbox" />
+                  type="checkbox" 
+                  />
                   <span className="checkmark"></span>
                 </label>
               </div>
@@ -149,7 +158,7 @@ export function CreateNewApartment() {
         <UploadImages />
 
 
-        <PublishButton>Publish</PublishButton>
+        <PublishButton onClick={(e) => createAndPublish(e)}>Publish</PublishButton>
       </Form>
     </div>
   )
