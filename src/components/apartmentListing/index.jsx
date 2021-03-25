@@ -120,6 +120,22 @@ export function CreateNewApartment() {
     return notEmptyStrings;
   }
 
+  const formValidator = (e) => {
+    if (
+      values.title === '' ||
+      values.description === '' ||
+      values.region === '' ||
+      values.city === '' ||
+      (values.maxGuests > 15 || values.maxGuests < 1) ||
+      (values.pricePerDay < 1 || values.pricePerDay > 1000) ||
+      !dates ||
+      (inputFields[0] === '' && inputFields.length === 1) ||
+      values.amenities.length === 0
+    ) {
+      return true;
+    } else return false;
+  }
+
   function createAndPublish(e) {
     e.preventDefault();
     const dateStart = moment(dates[0]).format("YYYY-MM-DD")
@@ -130,7 +146,7 @@ export function CreateNewApartment() {
     values.gallery = handleSubmit();
 
     console.log(values, 'new apartment ')
-    createApartment(values);
+    // createApartment(values);
   }
 
   return (
@@ -165,6 +181,7 @@ export function CreateNewApartment() {
           <AptWrap><input
             value={values.maxGuests}
             onChange={handleInputChange}
+            type="number"
             name="maxGuests"
             label="MaxGuests"
             placeholder="Max Guests:" /></AptWrap>
@@ -172,6 +189,7 @@ export function CreateNewApartment() {
             value={values.pricePerDay}
             onChange={handleInputChange}
             name="pricePerDay"
+            type="number"
             label="PricePerDay"
             placeholder="Price/Day:" /></AptWrap>
         </ListingDiv>
@@ -207,11 +225,10 @@ export function CreateNewApartment() {
 
         <UploadImages handleSubmit={handleSubmit} inputFields={inputFields} setInputFields={setInputFields} />
 
-
-        <PublishButton disabled={!dates} onClick={(e) => {
+        <button disabled={formValidator()} onClick={(e) => {
           handleSubmit();
           createAndPublish(e);
-        }}>Publish</PublishButton>
+        }}>Publish</button>
       </Form>
     </div>
   )
