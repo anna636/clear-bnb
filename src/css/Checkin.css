@@ -167,7 +167,14 @@ p {
   position: fixed;
 }
 
-span {
+.registerWrapper > span {
+  float: right;
+  padding-top: 1vh;
+  padding-right: 1vh;
+  cursor: pointer;
+}
+
+.loginWrapper > span {
   float: right;
   padding-top: 1vh;
   padding-right: 1vh;

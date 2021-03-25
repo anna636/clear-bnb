@@ -74,6 +74,7 @@ img {
   display: flex;
   padding: 4px;
   border-radius: 8px;
+  position: relative;
 }
 
 .apartmentImg {
@@ -89,10 +90,10 @@ img {
 
 .booking-object-details {
   padding: 10px 12px;
-  margin-left: 17px;
-  border-radius: 8px;
-  box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px;
-
+  width: 40%;
+  /* border-radius: 8px;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px; */
+  /* margin: auto 2px; */
 }
 
 .ownername-icon {
@@ -104,6 +105,15 @@ img {
   border-radius: 8px;
   margin-bottom: 10px;
   border-top: 1px solid white;
+}
+
+.ownername {
+  font-size: 12px;
+}
+
+.ownername-icon > .fa-user-circle {
+  font-size: 30px;
+  margin-right: 5px;
 }
 
 .booking-dates {
@@ -162,6 +172,25 @@ img {
   /* margin-top: 13px; */
   font-size: 12px;
   font-weight: 900;
+}
+
+.imgslider-btns {
+  width: 350px;
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  top: 120px;
+  padding: 0 11px 0 5px;
+}
+
+.imgslider-btns > button {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  outline: none;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  background-color: transparent;
 }
 
 @media screen and (max-width: 1080px) {
