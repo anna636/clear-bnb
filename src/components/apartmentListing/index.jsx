@@ -6,6 +6,8 @@ import Calendar from "react-calendar"; // npm i react-calendar
 import styled from 'styled-components'
 import { UploadImages } from './uploadImages'
 import { ApartmentContext } from '../../contexts/ApartmentContextProvider';
+import { UserContext } from '../../contexts/UserContextProvider'
+
 const moment = require("moment"); // npm i moment
 
 const Form = styled.form`
@@ -63,9 +65,7 @@ const initialValues = {
   region: "",
   description: "",
   maxGuests: "",
-  gallery: [],
   amenities: [],
-  availableDates: [],
   bookedDates: [],
 };
 
@@ -76,18 +76,12 @@ export function CreateNewApartment() {
   const [amenitiesState, setAmenites] = useState([]);
   const [inputFields, setInputFields] = useState([''])
   const [dates, setDates] = useState();
+  const { getCurrentUser } = useContext(UserContext)
+
 
   const onChange = (newDate) => {
     setDates(newDate);
   };
-
-  function save(e) {
-    e.preventDefault();
-    const dateStart = moment(dates[0]).format("YYYY-MM-DD")
-    const dateEnd = moment(dates[1]).format("YYYY-MM-DD")
-
-    console.log(dateEnd, dateStart, 'start dates')
-  }
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -115,8 +109,7 @@ export function CreateNewApartment() {
     }
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = () => {
     const notEmptyStrings = []
     inputFields.forEach(item => {
       if (!notEmptyStrings.includes(item) && item !== '') {
@@ -129,9 +122,15 @@ export function CreateNewApartment() {
 
   function createAndPublish(e) {
     e.preventDefault();
-    let newApartment = values;
-    console.log(newApartment, 'new apartment ')
-    // createApartment(newApartment);
+    const dateStart = moment(dates[0]).format("YYYY-MM-DD")
+    const dateEnd = moment(dates[1]).format("YYYY-MM-DD")
+
+    values.availableDates = { availableStartDate: dateStart, availableEndDate: dateEnd }
+    values.ownerId = getCurrentUser()._id;
+    values.gallery = handleSubmit();
+
+    console.log(values, 'new apartment ')
+    createApartment(values);
   }
 
   return (
@@ -205,12 +204,14 @@ export function CreateNewApartment() {
           value={dates}
           selectRange={true}
         />
-        <button className="calendarNext" disabled={!dates} onClick={(e) => save(e)}>Save</button>
 
         <UploadImages handleSubmit={handleSubmit} inputFields={inputFields} setInputFields={setInputFields} />
 
 
-        <PublishButton onClick={(e) => createAndPublish(e)}>Publish</PublishButton>
+        <PublishButton disabled={!dates} onClick={(e) => {
+          handleSubmit();
+          createAndPublish(e);
+        }}>Publish</PublishButton>
       </Form>
     </div>
   )

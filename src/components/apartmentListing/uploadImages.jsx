@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 export function UploadImages(props) {
-  const { handleSubmit, inputFields, setInputFields } = props
+  const { inputFields, setInputFields } = props
 
   const handleChangeInput = (index, event) => {
     const values = [...inputFields]
@@ -46,16 +46,6 @@ export function UploadImages(props) {
         <button className="btn btn-outline-secondary" onClick={event => handleAddFields(event)}>
           <i className="fas fa-plus"></i>
         </button>
-        <button
-          className="btn btn-outline-secondary"
-          onClick={handleSubmit}
-          type="submit">Submit</button>
-        <button
-          className="btn btn-outline-secondary"
-          onClick={(e) => {
-            console.log(handleSubmit(e))
-          }
-          }>console log</button>
       </span>
     </div >
   )
