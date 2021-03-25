@@ -7,8 +7,7 @@ export default function Housing() {
   const [filterToUse, setFilterToUse] = useState('')
   
   const setFilterFromChild = (filter) => {
-    console.log('From parent: ', filter)
-    setFilterToUse(filter)
+    setFilterToUse(filter.toLowerCase())
   }
 
   return (

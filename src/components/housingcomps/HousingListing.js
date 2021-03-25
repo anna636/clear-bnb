@@ -1,27 +1,34 @@
-import {ApartmentContext} from '../../contexts/ApartmentContextProvider'
+import { ApartmentContext } from '../../contexts/ApartmentContextProvider'
 import { useContext } from 'react'
 import '../../css/HousingListing.css'
 
 export default function HousingListing({ filterValue }) {
   const { apartments } = useContext(ApartmentContext)
-  
 
   function truncate(str, length = 200) {
-    if(typeof(str) === 'string') {
+    if (typeof (str) === 'string') {
       let trimmed = str.length > length ? str.substring(0, length - 3) + '...' : str;
       return trimmed;
     }
-    
+
     return '';
   };
+
+  const filterApartments = () => {
+    if (filterValue) {
+      return apartments.filter((a) => a.region.toLowerCase() === filterValue || a.city.toLowerCase() === filterValue)
+    }
+    else { return apartments }
+   }
+
 
   // subcomponent
   const housingObj = housing => (
     <div key={housing._id} className="housing-object">
       <div className="housing-img-container">
-        <img className="housing-img" 
-             src={housing.gallery[1]} 
-             alt=""
+        <img className="housing-img"
+          src={housing.gallery[1]}
+          alt=""
         />
       </div>
       <div className="housing-info">
@@ -36,10 +43,10 @@ export default function HousingListing({ filterValue }) {
           </div>
         </div>
         <div className="amenities">
-              {housing.amenities.map(amenitie => {
-                return <h6><i className={amenitie.icon}></i> {amenitie.name}</h6>
-              })}
-            </div>
+          {housing.amenities.map(amenitie => {
+            return <h6><i className={amenitie.icon}></i> {amenitie.name}</h6>
+          })}
+        </div>
         <div className="housing-info-bottom">
           <h6>Max guests: {housing.maxGuests}</h6>
           <div className="housing-description">
@@ -53,7 +60,7 @@ export default function HousingListing({ filterValue }) {
 
   return (
     <div className="housing-listing-container">
-      {apartments.map(housing => {
+      {filterApartments().map(housing => {
         return housingObj(housing);
       })}
     </div>
