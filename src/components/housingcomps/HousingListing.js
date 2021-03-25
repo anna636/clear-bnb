@@ -2,7 +2,7 @@ import {HousingContext} from '../../contexts/HousingContextProvider'
 import { useContext } from 'react'
 import '../../css/HousingListing.css'
 
-export default function HousingListing() {
+export default function HousingListing({ filterValue }) {
   const {apartments} = useContext(HousingContext);
 
   function truncate(str, length = 200) {
