@@ -23,18 +23,6 @@ export default function ApartmentContextProvider(props) {
     res = await res.json();
   };
 
-  const createAvailableDate = async (date) => {
-    let res = await fetch("/rest/availableDates", {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify(date),
-    });
-    console.log(res)
-    res = await res.json();
-  };
-
-
-
   useEffect(() => {
 
     fetchApartments();
