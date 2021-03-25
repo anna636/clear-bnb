@@ -19,11 +19,16 @@ export default function HousingListing({ filterValue, priceFilter }) {
   const filterApartments = () => {
     console.log('filterValue: ', filterValue)
     console.log('priceValue:', priceFilter)
-    if (filterValue) {
+
+    if (filterValue && priceFilter) {
+      return apartments.filter((a) => (a.region.toLowerCase() === filterValue || a.city.toLowerCase() === filterValue)
+        && a.pricePerDay < priceFilter)
+    }
+    else if (filterValue) {
       return apartments.filter((a) => a.region.toLowerCase() === filterValue || a.city.toLowerCase() === filterValue)
     }
     else if (priceFilter) {
-      return apartments.filter((a) => a.pricePerDay < parseInt(priceFilter))
+      return apartments.filter((a) => a.pricePerDay < priceFilter)
     }
     else { return apartments }
    }

@@ -25,7 +25,7 @@ export default function UpperHousingView(props) {
   function displayNumber(event) {
     
     setPrice(event.target.value)
-    props.emittedPrice(event.target.value)
+    props.emittedPrice(parseInt(event.target.value))
 
   }
 
