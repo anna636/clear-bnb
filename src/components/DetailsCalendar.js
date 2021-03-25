@@ -83,12 +83,22 @@ export default function DetailsCalendar({ apartmentId }) {
     }
   }
 
+  const awaitLoad = () => {
+    console.log(apartment.availableDates)
+    if (!calendarDates.length && apartment.bookedDates && apartment.availableDates) {
+      return true
+    }
+    else {
+      return false
+    }
+  }
+
   return (
-    <>{!calendarDates.length && apartment.bookedDates &&
+    <>{awaitLoad() &&
       <>
         <Calendar
-        minDate={apartment.availableDates ? convertStringToDate(apartment.availableDates.availableStartDate) : new Date()}
-        maxDate={apartment.availableDates ? convertStringToDate(apartment.availableDates.availableEndDate) : oneYearFromNow()}
+        minDate={apartment.availableDates.availableStartDate ? convertStringToDate(apartment.availableDates.availableStartDate) : new Date()}
+        maxDate={apartment.availableDates.availableEndDate ? convertStringToDate(apartment.availableDates.availableEndDate) : oneYearFromNow()}
           onChange={onChange}
           value={dates}
           selectRange={true}
