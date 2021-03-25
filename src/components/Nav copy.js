@@ -166,7 +166,7 @@ export default function Nav() {
       <>
         {showCalendar && (
           <div className="calendar-component">
-            <div className="mySpan"><span onClick={hideCalendar}>X</span></div>
+            <div className="mySpan"><p onClick={hideCalendar}>X</p></div>
             <p className="selectDates">Select dates</p>
 
             <MyCalendar userSearch={locationProp} />

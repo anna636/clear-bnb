@@ -16,7 +16,6 @@ import AllDestinations from "./pages/AllDestinations.js";
 import HousingContextProvider from './contexts/HousingContextProvider' //Use apartment context instead
 import MyBookings from './pages/MyBookings.js'
 import GetStarted from "./pages/GetStarted";
-
 import { NavBar } from "./components/navbar";
 import { SearchBar } from "./components/searchbar";
 
