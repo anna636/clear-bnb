@@ -1,9 +1,10 @@
-import {HousingContext} from '../../contexts/HousingContextProvider'
+import {ApartmentContext} from '../../contexts/ApartmentContextProvider'
 import { useContext } from 'react'
 import '../../css/HousingListing.css'
 
 export default function HousingListing({ filterValue }) {
-  const {apartments} = useContext(HousingContext);
+  const { apartments } = useContext(ApartmentContext)
+  
 
   function truncate(str, length = 200) {
     if(typeof(str) === 'string') {
