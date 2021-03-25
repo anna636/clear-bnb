@@ -7,12 +7,12 @@ export default function UserContextProvider(props) {
   const [currentUser, setCurrentUser] = useState(null);
   const [users, setUsers] = useState([]);
 
-  
+
   const fetchUsers = async () => {
     let res = await fetch("/rest/users");
     res = await res.json();
     setUsers(res);
-    
+
   };
 
   useEffect(() => {
@@ -56,6 +56,12 @@ export default function UserContextProvider(props) {
     return currentUser
   }
 
+  const getBeautifulFirstName = () => {
+    let length = getCurrentUser().fullName.length;
+    let name = getCurrentUser().fullName.split(' ')
+    return name[0].substring(0, 1).toUpperCase() + name[0].substring(1, length).toLowerCase();
+  }
+
   const logout = async () => {
     let res = await fetch("/api/logout", {
       method: "DELETE",
@@ -73,6 +79,7 @@ export default function UserContextProvider(props) {
     login,
     logout,
     getCurrentUser,
+    getBeautifulFirstName,
     currentUser,
     users
   };
