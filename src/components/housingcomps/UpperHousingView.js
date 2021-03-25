@@ -40,7 +40,12 @@ export default function UpperHousingView(props) {
   
   const cityInput = (
     <div className="filterButtonsDiv">
-      <input className="cityInput" placeholder="Search city..."></input>
+      <form onSubmit={emit}>
+      <input className="cityInput"
+        placeholder="Search city..."
+        ref={searchInput}
+        ></input>
+      </form>
     </div>
   );
 
