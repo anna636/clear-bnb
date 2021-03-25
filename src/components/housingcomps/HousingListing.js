@@ -3,7 +3,7 @@ import { useContext } from 'react'
 import { useHistory } from 'react-router-dom'
 import '../../css/HousingListing.css'
 
-export default function HousingListing({ filterValue }) {
+export default function HousingListing({ filterValue, priceFilter }) {
   const { apartments } = useContext(ApartmentContext)
   const history = useHistory();
 
@@ -17,8 +17,13 @@ export default function HousingListing({ filterValue }) {
   };
 
   const filterApartments = () => {
+    console.log('filterValue: ', filterValue)
+    console.log('priceValue:', priceFilter)
     if (filterValue) {
       return apartments.filter((a) => a.region.toLowerCase() === filterValue || a.city.toLowerCase() === filterValue)
+    }
+    else if (priceFilter) {
+      return apartments.filter((a) => a.pricePerDay < parseInt(priceFilter))
     }
     else { return apartments }
    }

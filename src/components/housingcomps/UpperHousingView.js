@@ -11,7 +11,7 @@ export default function UpperHousingView(props) {
   let lowestPrice = lowestPriced();
   const searchInput = useRef();
 
-  const[price, setPrice] = useState("20")
+  const[price, setPrice] = useState("200")
 
   function highestPriced() {
     let res = apartments.map(apartment => apartment.pricePerDay);
@@ -26,14 +26,15 @@ export default function UpperHousingView(props) {
   function displayNumber(event) {
     
     setPrice(event.target.value)
+    props.emittedPrice(event.target.value)
 
-    console.log(price)
   }
 
   const emit = (e) => {
     e.preventDefault();
     props.emittedFilter(searchInput.current.value)
   }
+
 
   const regionInput = (
     <div className="filterButtonsDiv">
@@ -60,14 +61,14 @@ export default function UpperHousingView(props) {
 
   const priceInput = (
     <div className="filterButtonsDiv">
-      <input className="priceInput"
-        type="range"
-        min={lowestPrice}
-        max={highestPrice}
-        defaultValue={ price }
-        onChange={ displayNumber }
+        <input className="priceInput"
+          type="range"
+          min={lowestPrice}
+          max={highestPrice}
+          defaultValue={price}
+          onChange={ displayNumber }
       ></input>
-      <label> {price}€</label>
+        <label> {price}€</label>
     </div>
   );
 
