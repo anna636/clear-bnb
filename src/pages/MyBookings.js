@@ -53,10 +53,12 @@ export default function MyBookings() {
     return (
       <div className="apartmentImg">
         <div className="imgslider-btns">
-          {/* <button onClick={() => setCurrentImg(currentImg - 1)} className="imgslider-btn-left"></button> */}
-          <button onClick={() => prevImg(booking.apartmentId.gallery)} className="imgslider-btn-left"></button>
-          {/* <button onClick={() => setCurrentImg(currentImg + 1)} className="imgslider-btn-right"></button> */}
-          <button onClick={() => nextImg(booking.apartmentId.gallery)} className="imgslider-btn-right"></button>
+          <button onClick={() => prevImg(booking.apartmentId.gallery)} className="imgslider-btn-left">
+            <i class="fas fa-angle-left"></i>
+          </button>
+          <button onClick={() => nextImg(booking.apartmentId.gallery)} className="imgslider-btn-right">
+            <i class="fas fa-angle-right"></i>
+          </button>
         </div>
         <img src={booking.apartmentId.gallery[currentImg]}></img>
       </div>

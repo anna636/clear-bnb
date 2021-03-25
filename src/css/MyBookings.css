@@ -188,10 +188,28 @@ img {
   width: 30px;
   border-radius: 50%;
   outline: none;
-  border: 1px solid rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(0, 0, 0, 0.2);
   cursor: pointer;
-  background-color: transparent;
+  background-color: rgba(238, 238, 238, 0.473);
 }
+
+.imgslider-btns > button:hover {
+  background-color: rgba(238, 238, 238, 0.486);
+  border: 1px solid rgba(211, 211, 211, 0.5);
+}
+
+.imgslider-btn-left {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.imgslider-btn-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 
 @media screen and (max-width: 1080px) {
   .buttonWrapperBooking {
