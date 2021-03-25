@@ -5,6 +5,8 @@ import { MyCalendar } from './calendar'
 import styled from 'styled-components'
 // import { UrlForm } from './form';
 import { UploadImages } from './uploadImages'
+import { ApartmentContext } from '../../contexts/ApartmentContextProvider';
+
 
 const Form = styled.form`
 margin: 10px auto;
@@ -53,10 +55,34 @@ border: none;
 padding: px;
     }
 `
+const initialValues = {
+  ownerId: "",
+  title: "",
+  pricePerDay: "",
+  city: "",
+  region: "",
+  description: "",
+  maxGuests: "",
+  gallery: [],
+  amenities: [],
+  availableDates: [],
+  bookedDates: [],
+};
+
 export function CreateNewApartment() {
   const { amenities } = useContext(AmenitiesContext)
-  const [title, setTitle] = useState("");
+  const [values, setValues] = useState(initialValues);
+  const { createApartment } = useContext(ApartmentContext)
+  const [amenitiesState, setAmenites] = useState([]);
   const [inputFields, setInputFields] = useState([''])
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setValues({
+      ...values,
+      [name]: value,
+    });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -70,6 +96,32 @@ export function CreateNewApartment() {
     return notEmptyStrings;
   }
 
+  const handleAmenities = (e) => {
+    const { name, value } = e.target;
+    let array = values.amenities;
+    setAmenites({
+      [name]: value
+    })
+    if (e.target.checked) {
+      array.push(value)
+    }
+    else {
+      for (let i = array.length - 1; i >= 0; i--) {
+        if (array[i] == e.target.value) {
+          array.splice(i, 1)
+        }
+      }
+    }
+  };
+
+
+  function createAndPublish(e) {
+    e.preventDefault();
+    let newApartment = values;
+    console.log(e.target.checked, 'what we get here')
+    console.log(newApartment, 'new apartment ')
+    // createApartment(newApartment);
+  }
 
   return (
     <div className="container">
@@ -77,14 +129,41 @@ export function CreateNewApartment() {
         <ListingDiv>
           <h1>List new Apartment</h1>
           <AptWrap><input
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
+            value={values.title}
+            onChange={handleInputChange}
+            name="title"
+            label="Title"
             placeholder="Title:" /></AptWrap>
-          <AptWrap><input placeholder="Description:" /></AptWrap>
-          <AptWrap><input placeholder="Region:" /></AptWrap>
-          <AptWrap><input placeholder="City:" /></AptWrap>
-          <AptWrap><input placeholder="Max Guests:" /></AptWrap>
-          <AptWrap><input placeholder="Price/Night:" /></AptWrap>
+          <AptWrap><input
+            value={values.description}
+            onChange={handleInputChange}
+            name="description"
+            label="Description"
+            placeholder="Description:" /></AptWrap>
+          <AptWrap><input
+            value={values.region}
+            onChange={handleInputChange}
+            name="region"
+            label="Region"
+            placeholder="Region:" /></AptWrap>
+          <AptWrap><input
+            value={values.City}
+            onChange={handleInputChange}
+            name="city"
+            label="City"
+            placeholder="City:" /></AptWrap>
+          <AptWrap><input
+            value={values.maxGuests}
+            onChange={handleInputChange}
+            name="maxGuests"
+            label="MaxGuests"
+            placeholder="Max Guests:" /></AptWrap>
+          <AptWrap><input
+            value={values.pricePerDay}
+            onChange={handleInputChange}
+            name="pricePerDay"
+            label="PricePerDay"
+            placeholder="Price/Day:" /></AptWrap>
         </ListingDiv>
 
         <div className="container">
@@ -95,7 +174,13 @@ export function CreateNewApartment() {
               return <div className="col-sm-2" key={amenitie._id}>
                 <label className="checkboxContainer" >
                   <i className={amenitie.icon} ></i> {amenitie.name}
-                  <input type="checkbox" />
+                  <input
+                    value={amenitie._id}
+                    onChange={handleAmenities}
+                    name="amenities"
+                    label="Amenities"
+                    type="checkbox"
+                  />
                   <span className="checkmark"></span>
                 </label>
               </div>
@@ -107,7 +192,7 @@ export function CreateNewApartment() {
         <UploadImages handleSubmit={handleSubmit} inputFields={inputFields} setInputFields={setInputFields} />
 
 
-        <PublishButton>Publish</PublishButton>
+        <PublishButton onClick={(e) => createAndPublish(e)}>Publish</PublishButton>
       </Form>
     </div>
   )
