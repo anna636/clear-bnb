@@ -129,8 +129,8 @@ export function CreateNewApartment() {
       (values.maxGuests > 15 || values.maxGuests < 1) ||
       (values.pricePerDay < 1 || values.pricePerDay > 1000) ||
       !dates ||
-      (inputFields[0] === '' && inputFields.length === 1) ||
-      values.amenities.length === 0
+      values.amenities.length === 0 ||
+      (inputFields[0] === '' && inputFields.length === 1) || inputFields.length === 0
     ) {
       return true;
     } else return false;
@@ -138,6 +138,7 @@ export function CreateNewApartment() {
 
   function createAndPublish(e) {
     e.preventDefault();
+    handleSubmit();
     const dateStart = moment(dates[0]).format("YYYY-MM-DD")
     const dateEnd = moment(dates[1]).format("YYYY-MM-DD")
 
@@ -225,10 +226,7 @@ export function CreateNewApartment() {
 
         <UploadImages handleSubmit={handleSubmit} inputFields={inputFields} setInputFields={setInputFields} />
 
-        <button disabled={formValidator()} onClick={(e) => {
-          handleSubmit();
-          createAndPublish(e);
-        }}>Publish</button>
+        <button disabled={formValidator()} onClick={(e) => createAndPublish(e)}>Publish</button>
       </Form>
     </div>
   )
