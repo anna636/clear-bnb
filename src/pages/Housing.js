@@ -18,7 +18,7 @@ export default function Housing() {
 
   return (
     <div className="housing-page">
-      <UpperHousingViews emittedFilter={setFilterFromChild} emittedPrice={ setPriceFilterFromChild }/>
+      <UpperHousingViews emittedCityRegion={setFilterFromChild} emittedPrice={ setPriceFilterFromChild }/>
       <div className="vertical-line"></div>
       <HousingListing filterValue={filterToUse} priceFilter={ priceFilter }/>
     </div>

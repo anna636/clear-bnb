@@ -22,22 +22,22 @@ export default function UpperHousingView(props) {
     return (Math.min(...res));
   };
 
-  function displayNumber(event) {
+  function displayNumberEmit(event) {
     
     setPrice(event.target.value)
     props.emittedPrice(parseInt(event.target.value))
 
   }
 
-  const emit = (e) => {
+  const emitCityRegion = (e) => {
     e.preventDefault();
-    props.emittedFilter(searchInput.current.value)
+    props.emittedCityRegion(searchInput.current.value)
   }
 
 
   const regionInput = (
     <div className="filterButtonsDiv">
-      <form onSubmit={ emit }>
+      <form onSubmit={ emitCityRegion }>
         <input className="regionInput"
           placeholder="Search city or region..."
           ref={ searchInput }
@@ -54,7 +54,7 @@ export default function UpperHousingView(props) {
           min={lowestPrice}
           max={highestPrice}
           defaultValue={price}
-          onChange={ displayNumber }
+          onChange={ displayNumberEmit }
       ></input>
         <label> {price}€</label>
     </div>
