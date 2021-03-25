@@ -15,7 +15,8 @@ export function UploadImages(props) {
     setInputFields(values)
   }
 
-  const handleRemoveFields = (index) => {
+  const handleRemoveFields = (e, index) => {
+    e.preventDefault()
     const values = [...inputFields]
     values.splice(index, 1)
     setInputFields(values)
@@ -36,7 +37,7 @@ export function UploadImages(props) {
                 value={inputField}
                 onChange={event => handleChangeInput(index, event)}
               />
-              <button className="btn btn-outline-secondary" onClick={() => handleRemoveFields(index)}>
+              <button className="btn btn-outline-secondary" onClick={(e) => handleRemoveFields(e, index)}>
                 <i className="fas fa-minus"></i>
               </button>
             </div>
