@@ -73,7 +73,7 @@ export function CreateNewApartment() {
   const [values, setValues] = useState(initialValues);
   const { createApartment } = useContext(ApartmentContext)
   const [amenitiesState, setAmenites] = useState([]);
-  
+
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -83,34 +83,22 @@ export function CreateNewApartment() {
     });
   };
 
-  const handleAmenities =  (e) => {
+  const handleAmenities = (e) => {
     const { name, value } = e.target;
     let array = values.amenities;
     setAmenites({
       [name]: value
     })
-    if(e.target.checked){
+    if (e.target.checked) {
       array.push(value)
     }
     else {
-
-      for(let i = array.length - 1; i == 0; i--){
-        if(array[i] == e.target.value){
-          array.splice(i , 1)
+      for (let i = array.length - 1; i >= 0; i--) {
+        if (array[i] == e.target.value) {
+          array.splice(i, 1)
         }
       }
-    //setAmenites(prevState => ({ array: prevState.array.filter(amenitie => amenitie !== e.target.value) }));
     }
-   
-    
-  console.log(values.amenities)  
-  const isChecked = e.target.checked;
-  // to get the checked value
-  const checkedValue = e.target.value;
-  // to get the checked name
-    console.log(isChecked , 'is checked')
-    console.log(checkedValue, 'the value')
-    
   };
 
 
@@ -174,11 +162,11 @@ export function CreateNewApartment() {
                 <label className="checkboxContainer" >
                   <i className={amenitie.icon} ></i> {amenitie.name}
                   <input
-                  value={amenitie._id}
-                  onChange={handleAmenities}
-                  name="amenities"
-                  label="Amenities"
-                  type="checkbox" 
+                    value={amenitie._id}
+                    onChange={handleAmenities}
+                    name="amenities"
+                    label="Amenities"
+                    type="checkbox"
                   />
                   <span className="checkmark"></span>
                 </label>
