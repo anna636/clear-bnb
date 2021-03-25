@@ -56,7 +56,7 @@ export default function HousingListing({ filterValue }) {
           <div className="housing-description">
             <p>{truncate(housing.description)}</p>
           </div>
-          <h5 className="housing-price">Price: {housing.pricePerDay}SEK</h5>
+          <h5 className="housing-price">Price: {housing.pricePerDay}€</h5>
         </div>
       </div>
     </div>
