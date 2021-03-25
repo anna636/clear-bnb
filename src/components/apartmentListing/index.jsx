@@ -1,12 +1,12 @@
 import { useContext, useState } from 'react'
 import { AmenitiesContext } from '../../contexts/AmenitiesContextProvider'
 import '../../css/ApartmentListing.css'
-import { MyCalendar } from './calendar'
+import "../../css/Calendar.css";
+import Calendar from "react-calendar"; // npm i react-calendar
 import styled from 'styled-components'
-// import { UrlForm } from './form';
 import { UploadImages } from './uploadImages'
 import { ApartmentContext } from '../../contexts/ApartmentContextProvider';
-
+const moment = require("moment"); // npm i moment
 
 const Form = styled.form`
 margin: 10px auto;
@@ -75,6 +75,19 @@ export function CreateNewApartment() {
   const { createApartment } = useContext(ApartmentContext)
   const [amenitiesState, setAmenites] = useState([]);
   const [inputFields, setInputFields] = useState([''])
+  const [dates, setDates] = useState();
+
+  const onChange = (newDate) => {
+    setDates(newDate);
+  };
+
+  function save(e) {
+    e.preventDefault();
+    const dateStart = moment(dates[0]).format("YYYY-MM-DD")
+    const dateEnd = moment(dates[1]).format("YYYY-MM-DD")
+
+    console.log(dateEnd, dateStart, 'start dates')
+  }
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -83,18 +96,6 @@ export function CreateNewApartment() {
       [name]: value,
     });
   };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const notEmptyStrings = []
-    inputFields.forEach(item => {
-      if (!notEmptyStrings.includes(item) && item !== '') {
-        notEmptyStrings.push(item)
-      }
-      return notEmptyStrings;
-    })
-    return notEmptyStrings;
-  }
 
   const handleAmenities = (e) => {
     const { name, value } = e.target;
@@ -114,11 +115,21 @@ export function CreateNewApartment() {
     }
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const notEmptyStrings = []
+    inputFields.forEach(item => {
+      if (!notEmptyStrings.includes(item) && item !== '') {
+        notEmptyStrings.push(item)
+      }
+      return notEmptyStrings;
+    })
+    return notEmptyStrings;
+  }
 
   function createAndPublish(e) {
     e.preventDefault();
     let newApartment = values;
-    console.log(e.target.checked, 'what we get here')
     console.log(newApartment, 'new apartment ')
     // createApartment(newApartment);
   }
@@ -188,7 +199,14 @@ export function CreateNewApartment() {
           </div>
         </div>
 
-        <MyCalendar />
+        <Calendar
+          minDate={new Date()}
+          onChange={onChange}
+          value={dates}
+          selectRange={true}
+        />
+        <button className="calendarNext" disabled={!dates} onClick={(e) => save(e)}>Save</button>
+
         <UploadImages handleSubmit={handleSubmit} inputFields={inputFields} setInputFields={setInputFields} />
 
 
