@@ -53,10 +53,22 @@ border: none;
 padding: px;
     }
 `
-
 export function CreateNewApartment() {
   const { amenities } = useContext(AmenitiesContext)
   const [title, setTitle] = useState("");
+  const [inputFields, setInputFields] = useState([''])
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const notEmptyStrings = []
+    inputFields.forEach(item => {
+      if (!notEmptyStrings.includes(item) && item !== '') {
+        notEmptyStrings.push(item)
+      }
+      return notEmptyStrings;
+    })
+    return notEmptyStrings;
+  }
 
 
   return (
@@ -92,7 +104,7 @@ export function CreateNewApartment() {
         </div>
 
         <MyCalendar />
-        <UploadImages />
+        <UploadImages handleSubmit={handleSubmit} inputFields={inputFields} setInputFields={setInputFields} />
 
 
         <PublishButton>Publish</PublishButton>

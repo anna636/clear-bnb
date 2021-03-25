@@ -1,26 +1,12 @@
 import React, { useState } from 'react'
-import styled from 'styled-components'
 
-export function UploadImages() {
-  const blankUrl = { url: '' };
-  const [inputFields, setInputFields] = useState([''])
+export function UploadImages(props) {
+  const { handleSubmit, inputFields, setInputFields } = props
 
   const handleChangeInput = (index, event) => {
     const values = [...inputFields]
     values[index] = event.target.value
     setInputFields(values)
-  }
-
-  const handleSubmit = (e) => {
-    const notEmptyStrings = []
-    e.preventDefault();
-    inputFields.forEach(item => {
-      if (!notEmptyStrings.includes(item) && item !== '') {
-        notEmptyStrings.push(item)
-      }
-      return notEmptyStrings;
-    })
-    return notEmptyStrings;
   }
 
   const handleAddFields = event => {
@@ -34,10 +20,11 @@ export function UploadImages() {
     values.splice(index, 1)
     setInputFields(values)
   }
+
   return (
     <div className="container" id="uploadImages">
       <h1>Add image links</h1>
-      <form>
+      <span>
         {
           inputFields.map((inputField, index) => (
             <div key={index} className="input-group flex-nowrap">
@@ -45,7 +32,6 @@ export function UploadImages() {
                 type="text"
                 className="form-control"
                 id="basic-url"
-                aria-describedby="basic-addon3"
                 placeholder={`www.example.com/image${index + 1}.jpg`}
                 value={inputField}
                 onChange={event => handleChangeInput(index, event)}
@@ -66,11 +52,10 @@ export function UploadImages() {
         <button
           className="btn btn-outline-secondary"
           onClick={(e) => {
-            e.preventDefault();
             console.log(handleSubmit(e))
           }
-          }>console log result</button>
-      </form>
+          }>console log</button>
+      </span>
     </div >
   )
 }
