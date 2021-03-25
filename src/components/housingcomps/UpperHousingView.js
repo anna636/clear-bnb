@@ -23,8 +23,8 @@ export default function UpperHousingView(props) {
 
   const emit = (e) => {
     e.preventDefault();
-    props.emittedFilter(searchInput)
-    console.log('From emit')
+    props.emittedFilter(searchInput.current.value)
+    console.log('From emit: ', searchInput.current.value)
   }
 
   const regionInput = (
