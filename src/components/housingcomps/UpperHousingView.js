@@ -1,12 +1,12 @@
 import '../../css/UpperHousingView.css'
-import {HousingContext} from '../../contexts/HousingContextProvider'
+import { ApartmentContext } from '../../contexts/ApartmentContextProvider'
 import {useContext, useState, useRef} from 'react'
 
 export default function UpperHousingView(props) {
   const [showRegionInput, setRegionDisplay] = useState(false);
   const [showCityInput, setCityDisplay] = useState(false);
   const [showPriceInput, setPriceDisplay] = useState(false);
-  const {apartments} = useContext(HousingContext);
+  const {apartments} = useContext(ApartmentContext);
   let highestPrice = highestPriced();
   let lowestPrice = lowestPriced();
   const searchInput = useRef();

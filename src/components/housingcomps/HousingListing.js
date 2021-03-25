@@ -1,9 +1,11 @@
 import { ApartmentContext } from '../../contexts/ApartmentContextProvider'
 import { useContext } from 'react'
+import { useHistory } from 'react-router-dom'
 import '../../css/HousingListing.css'
 
 export default function HousingListing({ filterValue }) {
   const { apartments } = useContext(ApartmentContext)
+  const history = useHistory();
 
   function truncate(str, length = 200) {
     if (typeof (str) === 'string') {
@@ -24,7 +26,9 @@ export default function HousingListing({ filterValue }) {
 
   // subcomponent
   const housingObj = housing => (
-    <div key={housing._id} className="housing-object">
+    <div key={housing._id}
+      className="housing-object"
+      onClick={() => history.push('/details/' + housing._id)} >
       <div className="housing-img-container">
         <img className="housing-img"
           src={housing.gallery[1]}
