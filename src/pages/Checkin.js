@@ -76,7 +76,7 @@ export default function Checkin() {
     <>
       {apartment && (
         <div className="checkin">
-          <h1>Your trip</h1>
+          <h1 className="yourTrip">Your trip</h1>
           {openLogin && (
             <div className="loginWrapper">
               <span onClick={() => setOpenLogin(false)}>x</span>
