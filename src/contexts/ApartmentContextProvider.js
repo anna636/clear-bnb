@@ -5,7 +5,7 @@ export const ApartmentContext = createContext()
 export default function ApartmentContextProvider(props) {
 
   const [apartments, setApartments] = useState([]);
-  
+
 
   const fetchApartments = async () => {
     let res = await fetch("/rest/apartments");
@@ -14,10 +14,20 @@ export default function ApartmentContextProvider(props) {
   };
 
   const createApartment = async (apartment) => {
-      let res = await fetch("/rest/apartments", {
+    let res = await fetch("/rest/apartments", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(apartment),
+    });
+    console.log(res)
+    res = await res.json();
+  };
+
+  const createAvailableDate = async (date) => {
+    let res = await fetch("/rest/availableDates", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(date),
     });
     console.log(res)
     res = await res.json();

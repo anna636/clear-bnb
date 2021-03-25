@@ -4,9 +4,7 @@ import Calendar from "react-calendar"; // npm i react-calendar
 const moment = require("moment"); // npm i moment
 
 export function MyCalendar() {
-  const [dates, setDates] = useState(); // dates is array of 2 dates picked
-  // const { addCalendarDates, addGuests } = useContext(BookingContext);
-
+  const [dates, setDates] = useState();
 
   const onChange = (newDate) => {
     setDates(newDate);
@@ -14,9 +12,10 @@ export function MyCalendar() {
 
   function save(e) {
     e.preventDefault();
+    const dateStart = moment(dates[0]).format("YYYY-MM-DD")
+    const dateEnd = moment(dates[1]).format("YYYY-MM-DD")
 
-    console.log(dates[0], 'start date')
-    console.log(dates[1], 'end date')
+    console.log(dateEnd, dateStart, 'start dates')
   }
 
   return (

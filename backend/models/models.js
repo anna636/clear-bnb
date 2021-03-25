@@ -49,6 +49,7 @@ const Apartment = mongoose.model("Apartment", {
   gallery: [
     {
       type: String,
+      required: true
     },
   ],
   amenities: [
@@ -59,9 +60,15 @@ const Apartment = mongoose.model("Apartment", {
   ],
   availableDates: [
     {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "AvailableDates",
-    },
+      availableStartDate: {
+        type: String,
+        required: true,
+      },
+      availableEndDate: {
+        type: String,
+        required: true,
+      }
+    }
   ],
 
   bookedDates: [
