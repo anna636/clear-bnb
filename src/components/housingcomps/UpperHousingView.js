@@ -27,11 +27,19 @@ export default function UpperHousingView(props) {
     setPrice(event.target.value)
     props.emittedPrice(parseInt(event.target.value))
 
+    if (searchInput) {
+      props.emittedCityRegion(searchInput.current.value)
+    }
+
   }
 
   const emitCityRegion = (e) => {
     e.preventDefault();
     props.emittedCityRegion(searchInput.current.value)
+
+    if (price) {
+      props.emittedPrice(parseInt(price))
+    }
   }
 
 

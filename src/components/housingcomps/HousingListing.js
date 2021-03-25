@@ -17,9 +17,6 @@ export default function HousingListing({ filterValue, priceFilter }) {
   };
 
   const filterApartments = () => {
-    console.log('filterValue: ', filterValue)
-    console.log('priceValue:', priceFilter)
-
     if (filterValue && priceFilter) {
       return apartments.filter((a) => (a.region.toLowerCase() === filterValue || a.city.toLowerCase() === filterValue)
         && a.pricePerDay < priceFilter)
