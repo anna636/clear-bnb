@@ -59,7 +59,7 @@ const Apartment = mongoose.model("Apartment", {
   ],
   availableDates:
     {
-      type: mongoose.Schema.Types.ObjectId,
+      type: Object,
       ref: "AvailableDates",
     },
 
@@ -93,11 +93,11 @@ const Booking = mongoose.model("Booking", {
 });
 
 const AvailableDates = mongoose.model("AvailableDates", {
-  apartmentId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Apartment",
-    required: true,
-  },
+  // apartmentId: {
+  //   type: mongoose.Schema.Types.ObjectId,
+  //   ref: "Apartment",
+  //   required: true,
+  // },
   availableStartDate: {
     type: String,
     required: true,
