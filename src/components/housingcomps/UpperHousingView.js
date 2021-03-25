@@ -4,7 +4,6 @@ import {useContext, useState, useRef} from 'react'
 
 export default function UpperHousingView(props) {
   const [showRegionInput, setRegionDisplay] = useState(false);
-  const [showCityInput, setCityDisplay] = useState(false);
   const [showPriceInput, setPriceDisplay] = useState(false);
   const {apartments} = useContext(ApartmentContext);
   let highestPrice = highestPriced();
@@ -40,21 +39,10 @@ export default function UpperHousingView(props) {
     <div className="filterButtonsDiv">
       <form onSubmit={ emit }>
         <input className="regionInput"
-          placeholder="Search region..."
+          placeholder="Search city or region..."
           ref={ searchInput }
       >
         </input>
-      </form>
-    </div>
-  );
-  
-  const cityInput = (
-    <div className="filterButtonsDiv">
-      <form onSubmit={emit}>
-      <input className="cityInput"
-        placeholder="Search city..."
-        ref={searchInput}
-        ></input>
       </form>
     </div>
   );
@@ -82,12 +70,7 @@ export default function UpperHousingView(props) {
         <button
           onClick={() => {setRegionDisplay(!showRegionInput)}}
           className="upper-housing-view-btn">
-          Region
-        </button>
-        <button
-          onClick={() => {setCityDisplay(!showCityInput)}}
-          className="upper-housing-view-btn">
-          City
+          City | Region
         </button>
         <button
           onClick={() => {setPriceDisplay(!showPriceInput)}} 
@@ -95,7 +78,6 @@ export default function UpperHousingView(props) {
           Price
         </button>
         {showRegionInput && regionInput}
-        {showCityInput && cityInput}
         {showPriceInput && priceInput}
       </div>
     </div>
