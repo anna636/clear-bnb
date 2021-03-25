@@ -26,7 +26,7 @@ export default function MyApartments() {
           <p>Would you like to post a new apartment?</p>
           <button
             className="rentOutApartmentButton"
-            onClick={() => history.push("/rest/postNewApartment")}
+            onClick={() => history.push("/apartment-listing")}
           >
             Yes let's begin!
           </button>
