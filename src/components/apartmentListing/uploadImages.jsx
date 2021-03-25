@@ -1,9 +1,8 @@
-import '../../css/UploadImages.css'
 import React, { useState } from 'react'
 import styled from 'styled-components'
 
-
 export function UploadImages() {
+  const blankUrl = { url: '' };
   const [inputFields, setInputFields] = useState([''])
 
   const handleChangeInput = (index, event) => {
@@ -35,21 +34,10 @@ export function UploadImages() {
     values.splice(index, 1)
     setInputFields(values)
   }
-
-  const UploadForm = styled.span`
-  width: 100%;
-input {
-    margin: 5px;
-  }
-button {
-    margin: 5px;
-  }
-  `
-
   return (
     <div className="container" id="uploadImages">
       <h1>Add image links</h1>
-      <UploadForm>
+      <form>
         {
           inputFields.map((inputField, index) => (
             <div key={index} className="input-group flex-nowrap">
@@ -58,7 +46,7 @@ button {
                 className="form-control"
                 id="basic-url"
                 aria-describedby="basic-addon3"
-                placeholder="Enter image url"
+                placeholder={`www.example.com/image${index + 1}.jpg`}
                 value={inputField}
                 onChange={event => handleChangeInput(index, event)}
               />
@@ -82,7 +70,7 @@ button {
             console.log(handleSubmit(e))
           }
           }>console log result</button>
-      </UploadForm>
+      </form>
     </div >
   )
 }

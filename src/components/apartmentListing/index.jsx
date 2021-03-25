@@ -3,7 +3,8 @@ import { AmenitiesContext } from '../../contexts/AmenitiesContextProvider'
 import '../../css/ApartmentListing.css'
 import { MyCalendar } from './calendar'
 import styled from 'styled-components'
-import { UrlForm } from './form';
+// import { UrlForm } from './form';
+import { UploadImages } from './uploadImages'
 
 const Form = styled.form`
 margin: 10px auto;
@@ -91,7 +92,7 @@ export function CreateNewApartment() {
         </div>
 
         <MyCalendar />
-        <UrlForm />
+        <UploadImages />
 
 
         <PublishButton>Publish</PublishButton>
