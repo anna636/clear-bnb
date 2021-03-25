@@ -66,14 +66,13 @@ const initialValues = {
   amenities: [],
   availableDates: [],
   bookedDates: [],
-  amenities: []
 };
 
 export function CreateNewApartment() {
   const { amenities } = useContext(AmenitiesContext)
   const [values, setValues] = useState(initialValues);
   const { createApartment } = useContext(ApartmentContext)
-  const [amenitiesA, setAminites] = useState([]);
+  const [amenitiesState, setAmenites] = useState([]);
   
 
   const handleInputChange = (e) => {
@@ -85,31 +84,40 @@ export function CreateNewApartment() {
   };
 
   const handleAmenities =  (e) => {
-    /*
-    setAminites({
-      kanske något sånt här?
+    const { name, value } = e.target;
+    let array = values.amenities;
+    setAmenites({
+      [name]: value
     })
-    */
-  const isChecked = e.target.checked;
+    if(e.target.checked){
+      array.push(value)
+    }
+    else {
 
+      for(let i = array.length - 1; i == 0; i--){
+        if(array[i] == e.target.value){
+          array.splice(i , 1)
+        }
+      }
+    //setAmenites(prevState => ({ array: prevState.array.filter(amenitie => amenitie !== e.target.value) }));
+    }
+   
+    
+  console.log(values.amenities)  
+  const isChecked = e.target.checked;
   // to get the checked value
   const checkedValue = e.target.value;
-
   // to get the checked name
-  const checkedName = e.target.name;
-   
-    console.log(isChecked)
-    console.log(checkedValue)
-    console.log(checkedName)
+    console.log(isChecked , 'is checked')
+    console.log(checkedValue, 'the value')
+    
   };
 
 
   function createAndPublish(e) {
     e.preventDefault();
     let newApartment = values;
-
     console.log(e.target.checked, 'what we get here')
-
     console.log(newApartment, 'new apartment ')
     // createApartment(newApartment);
   }
@@ -166,7 +174,7 @@ export function CreateNewApartment() {
                 <label className="checkboxContainer" >
                   <i className={amenitie.icon} ></i> {amenitie.name}
                   <input
-                  value={amenitiesA}
+                  value={amenitie._id}
                   onChange={handleAmenities}
                   name="amenities"
                   label="Amenities"
