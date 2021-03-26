@@ -35,8 +35,8 @@ export default function ApartmentSearch() {
 
     // First check if picked dates are within apartments available dates
     for (const apartment of filteredByLocationArray) {
-      if (apartment.availableDates) {
-        let availableDatesArray = getDates(apartment.availableDates.availableStartDate, apartment.availableDates.availableEndDate)
+      if (apartment.availableDates.length) {
+        let availableDatesArray = getDates(apartment.availableDates[0].availableStartDate, apartment.availableDates[0].availableEndDate)
 
         for (const date of calendarDates) {
           if (!availableDatesArray.includes(date)) {

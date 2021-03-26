@@ -105,7 +105,7 @@ export default function DetailsCalendar({ apartmentId }) {
           tileClassName={apartment.bookedDates}
           tileDisabled={disabledTiles}
         />
-      <button className="calendarNext" disabled={disableNext()} onClick={goToCheckIn}>Next</button>
+      <button className="calendarNextDetails" disabled={disableNext()} onClick={goToCheckIn}>Next</button>
       </>
     }</>
   );

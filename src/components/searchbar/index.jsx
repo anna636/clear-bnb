@@ -74,24 +74,23 @@ const DynamicSearchValue = styled.div`
   `
 
 const CalenderComponent = styled.div`
+  padding: 2vh;
   position: fixed;
   top: 120px;
   text-align: center;
   background-color: white;
 
-  span {
-  float: right;
-  padding: 2vh;
-  cursor: pointer;
+  .mySpanCloseCalendar {
+    float: right;
+    cursor: pointer;
   }
 
   p {
-  font-size:30px;
-  font-weight: bold;
-  padding:2vh;
+    font-size: 30px;
+    font-weight: bold;
+    padding: 2vh;
   }
-
-  `
+`;
 
 export function SearchBar(props) {
   const { addCalendarDates } = useContext(BookingContext);
@@ -202,7 +201,7 @@ export function SearchBar(props) {
     <>
       {showCalendar && (
         <CalenderComponent>
-          <span onClick={hideCalendar}>X</span>
+          <span onClick={hideCalendar} className="mySpanCloseCalendar">X</span>
           <p>Select dates</p>
 
           <MyCalendar userSearch={locationProp} />

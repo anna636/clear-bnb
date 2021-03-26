@@ -17,9 +17,10 @@ import HousingContextProvider from './contexts/HousingContextProvider' //Use apa
 import ApartmentListing from './pages/ApartmentListing.js';
 import AmenitiesContextProvider from "./contexts/AmenitiesContextProvider";
 import MyBookings from './pages/MyBookings.js'
+import GetStarted from "./pages/GetStarted";
 import { NavBar } from "./components/navbar";
 import { SearchBar } from "./components/searchbar";
-import GetStarted from "./pages/GetStarted";
+import MyPage from "./pages/MyPage";
 
 function App() {
   const page404 = () => <h1>Page not found: {window.location.pathname}</h1>;
@@ -44,6 +45,11 @@ function App() {
                         path="/search/:city"
                         component={ApartmentSearch}
                       />
+                      <Route
+                        exact
+                        path="/plusminus/:id"
+                        component={PlusMinusGuests}
+                      />
 
                       <Route
                         exact
@@ -67,7 +73,9 @@ function App() {
                         exact
                         path="/housing-listing"
                         component={Housing}
-                      />
+                    />
+                    
+                     <Route exact path="/all-destinations" component={AllDestinations} />
 
                       <Route
                         exact
@@ -82,6 +90,8 @@ function App() {
                       />
 
                       <Route exact path="/getstarted" component={GetStarted} />
+
+                      <Route exact path="/my-page" component={MyPage} />
 
                       <Route path="*" component={page404} />
                     </Switch>
