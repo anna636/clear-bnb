@@ -8,7 +8,6 @@ import { useParams } from "react-router-dom";
 import { useContext, useState } from "react";
 
 export default function MyBookings() {
-  /* const [currentImg, setCurrentImg] = useState(0); */
   const { apartments } = useContext(ApartmentContext);
   const { currentUser, users } = useContext(UserContext);
   const { bookings } = useContext(BookingContext);
@@ -73,37 +72,6 @@ export default function MyBookings() {
     return owner
   }
 
-  /* function prevImg(imgGallery) {
-    let size = imgGallery.length - 1;
-    let currentIndex = currentImg;
-    currentIndex--;
-    let nextImgIndex = currentIndex;
-
-    if(nextImgIndex < 0) {
-      setCurrentImg(size);
-      return;
-    }
-
-    setCurrentImg(nextImgIndex);
-    console.log("current img index: " + currentImg);
-  }
-
-  function nextImg(imgGallery) {
-    let size = imgGallery.length - 1;
-    let currentIndex = currentImg;
-    currentIndex++;
-    let nextImgIndex = currentIndex;
-
-    if(nextImgIndex > size) {
-      setCurrentImg(0);
-      return;
-    }
-
-    setCurrentImg(nextImgIndex);
-    console.log(imgGallery);
-    console.log("current img index: " + currentImg);
-  } */
-
 
   return (
     <>
@@ -118,13 +86,6 @@ export default function MyBookings() {
           <div className="mybookings-listing">
             {myBookings.map((booking) => (
               <div className="booking">
-                {/* <div className="apartmentImg">
-                  <div className="imgslider-btns">
-                    <button onClick={() => prevImg(booking.apartmentId.gallery)} className="imgslider-btn-left"></button>
-                    <button onClick={() => nextImg(booking.apartmentId.gallery)} className="imgslider-btn-right"></button>
-                  </div>
-                  <img src={booking.apartmentId.gallery[currentImg]}></img>
-                </div> */}
                 <Slider booking={booking}/>
                 <div className="booking-object-details">
                   <div className="renter-div infodiv">
@@ -152,42 +113,6 @@ export default function MyBookings() {
           </div>
         </div>
       )}
-      {/* {bookings && currentUser && users && (
-        <div className="bookingsWrapper">
-          <h1>My bookings</h1>
-          <div className="bookingsComp">
-            {myBookings.map((booking) => (
-              <div className="bookingItem">
-                <div className="apartmentImg">
-                  <img src={booking.apartmentId.gallery[0]} />
-                </div>
-
-                <div className="info">
-                  <div className="apartmentInfo">
-                    <p>City: {booking.apartmentId.city} </p>
-                    <p>
-                      Price per night: {booking.apartmentId.pricePerDay} eur
-                    </p>
-
-                    <p>
-                      Owner: {getOwner(booking.apartmentId.ownerId).fullName}{" "}
-                    </p>
-                  </div>
-                  <div className="dateInfo">
-                    <p>Check-in date: {booking.startDate}</p>
-                    <p>Check-out date: {booking.endDate}</p>
-                    <div className="buttonWrapperBooking">
-                    <button onClick={() => history.push("/details/" + booking.apartmentId._id)}>
-                        Show me this apartment
-                    </button>
-                      </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      )} */}
     </>
   );
 }
