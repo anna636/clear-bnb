@@ -44,6 +44,11 @@ function App() {
                         path="/search/:city"
                         component={ApartmentSearch}
                       />
+                      <Route
+                        exact
+                        path="/plusminus/:id"
+                        component={PlusMinusGuests}
+                      />
 
                       <Route
                         exact
