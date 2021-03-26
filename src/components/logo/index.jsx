@@ -1,7 +1,7 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom'
 import styled from 'styled-components'
-import ClearbnbLogoImg from '../../imgs/logo_clearbnb.jpg'
+import ClearbnbLogoImg from '../../imgs/logo_clearbnb.svg'
 
 const LogoWrapper = styled.div`
 display: flex;
