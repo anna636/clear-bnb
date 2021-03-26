@@ -1,18 +1,12 @@
-import Banner from '../components/homecomps/Banner'
-import CategoryCards from '../components/homecomps/CategoryCards'
-import HomesHomepageDisplay from '../components/homecomps/HomesHomepageDisplay'
-import LocationCards from '../components/homecomps/LocationsCards'
-
-
+import Banner from "../components/homecomps/Banner";
+import HomesHomepageDisplay from "../components/homecomps/HomesHomepageDisplay";
+import LocationCards from "../components/homecomps/LocationsCards";
 
 export default function Home() {
   return (
     <div className="home">
       <Banner />
       <LocationCards />
-      <div className="homepage-vertical-line" style={verticalLine}/>
-      <CategoryCards />
-      <div className="homepage-vertical-line" style={verticalLine}/>
       <HomesHomepageDisplay />
       <div className="homepage-vertical-line" style={verticalLine}/>
     </div>

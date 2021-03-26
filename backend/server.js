@@ -38,15 +38,24 @@ app.get("/rest/:model", async (req, res) => {
   if (req.params.model === "apartments") {
     let docs = await model
       .find()
-      .populate(["amenities", "ownerId", "availableDates"])
-      .exec(); // merge wanted to trash populate "ownerId"
+      .populate(["amenities", "ownerId"])
+      .exec();
     res.json(docs);
     return;
   }
-  // if (req.params.model === "users") {
-  //   res.json("No such request is found");
-  //   return;
-  // }
+  if (req.params.model === "bookings") {
+    let docs = await model
+      .find()
+      .populate(["userId", "apartmentId"])
+      .exec(); 
+    res.json(docs);
+    return;
+  }
+  
+/* if (req.params.model === "users") {
+    res.json("No such request is found");
+    return;
+  }*/
 
   let docs = await model.find();
   res.json(docs);
