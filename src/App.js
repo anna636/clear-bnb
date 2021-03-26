@@ -14,9 +14,12 @@ import UserContextProvider from "./contexts/UserContextProvider";
 import Confirmation from "./pages/Confirmation.js";
 import AllDestinations from "./pages/AllDestinations.js";
 import HousingContextProvider from './contexts/HousingContextProvider' //Use apartment context instead
+import ApartmentListing from './pages/ApartmentListing.js';
+import AmenitiesContextProvider from "./contexts/AmenitiesContextProvider";
 import MyBookings from './pages/MyBookings.js'
 import { NavBar } from "./components/navbar";
 import { SearchBar } from "./components/searchbar";
+import GetStarted from "./pages/GetStarted";
 
 function App() {
   const page404 = () => <h1>Page not found: {window.location.pathname}</h1>;
@@ -27,54 +30,68 @@ function App() {
         <HousingContextProvider>
           <ApartmentContextProvider>
             <UserContextProvider>
-              <Router>
-                <header>
+              <AmenitiesContextProvider>
+                <Router>
+                  <header>
                   <NavBar />
                   <SearchBar />
-                </header>
-                <main>
-                  <Switch>
-                    <Route exact path="/" component={Home} />
-                    <Route
-                      exact
-                      path="/search/:city"
-                      component={ApartmentSearch}
-                    />
-                    <Route
-                      exact
-                      path="/plusminus/:id"
-                      component={PlusMinusGuests}
-                    />
-                    <Route
-                      exact
-                      path="/details/:id"
-                      component={ApartmentDetails}
-                    />
-                    <Route exact path="/checkin/:id" component={Checkin} />
+                  </header>
+                  <main>
+                    <Switch>
+                      <Route exact path="/" component={Home} />
+                      <Route
+                        exact
+                        path="/search/:city"
+                        component={ApartmentSearch}
+                      />
 
-                    <Route
-                      exact
-                      path="/confirmation/:id"
-                      component={Confirmation}
-                    />
+                      <Route
+                        exact
+                        path="/details/:id"
+                        component={ApartmentDetails}
+                      />
+                      <Route exact path="/checkin/:id" component={Checkin} />
 
-                    <Route
-                      exact
-                      path="/my-bookings/:id"
-                      component={MyBookings}
-                    />
+                      <Route
+                        exact
+                        path="/confirmation/:id"
+                        component={Confirmation}
+                      />
 
-                    <Route exact path="/housing-listing" component={Housing} />
-                    <Route exact path="/all-destinations" component={AllDestinations} />
+                      <Route
+                        exact
+                        path="/my-bookings/:id"
+                        component={MyBookings}
+                      />
+                      <Route
+                        exact
+                        path="/housing-listing"
+                        component={Housing}
+                      />
 
-                    <Route path="*" component={page404} />
-                  </Switch>
-                </main>
+                      <Route
+                        exact
+                        path="/apartment-listing"
+                        component={ApartmentListing}
+                      />
 
-                <footer>
-                  <Footer />
-                </footer>
-              </Router>
+                      <Route
+                        exact
+                        path="/all-destinations"
+                        component={AllDestinations}
+                      />
+
+                      <Route exact path="/getstarted" component={GetStarted} />
+
+                      <Route path="*" component={page404} />
+                    </Switch>
+                  </main>
+
+                  <footer>
+                    <Footer />
+                  </footer>
+                </Router>
+              </AmenitiesContextProvider>
             </UserContextProvider>
           </ApartmentContextProvider>
         </HousingContextProvider>

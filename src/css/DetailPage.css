@@ -40,3 +40,16 @@ p{
 .btn-div-details{
     padding: 40px;
 }
+
+.details-icons {
+    margin: 4vh;
+    display: grid;
+    justify-content: center;
+}
+
+.details-calendar {
+    margin-top: 10vh;
+      display: grid;
+  align-items: center;
+  justify-content: center;
+}
