@@ -7,10 +7,21 @@ export default function ApartmentContextProvider(props) {
   const [apartments, setApartments] = useState([]);
   const [apartment, setApartment] = useState({});
 
+
   const fetchApartments = async () => {
     let res = await fetch("/rest/apartments");
     res = await res.json();
     setApartments(res);
+  };
+
+  const createApartment = async (apartment) => {
+    let res = await fetch("/rest/apartments", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(apartment),
+    });
+    console.log(res)
+    res = await res.json();
   };
 
   useEffect(() => {
@@ -33,6 +44,7 @@ export default function ApartmentContextProvider(props) {
 
   const values = {
     apartments,
+    createApartment,
     getApartmentById,
     apartment
   }

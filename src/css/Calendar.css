@@ -137,9 +137,8 @@ abbr[title] {
 .calendarNext {
   justify-self: end;
   width: 20%;
-  margin: 10px 5px 5px 5px;
-   border: 1px solid lightgray;
-     margin-left:90vh;
+  margin-left:90vh;
+  border: 1px solid lightgray;
   background: black;
   text-align: center;
   font-weight: 900;
