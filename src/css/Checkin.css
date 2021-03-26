@@ -183,7 +183,7 @@ p {
   position: fixed;
 }
 
-span {
+.loginWrapper span, .registerWrapper span {
   float: right;
   padding-top: 1vh;
   padding-right: 1vh;
