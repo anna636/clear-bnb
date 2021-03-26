@@ -5,6 +5,7 @@ export const ApartmentContext = createContext()
 export default function ApartmentContextProvider(props) {
 
   const [apartments, setApartments] = useState([]);
+  const [apartment, setApartment] = useState({});
 
 
   const fetchApartments = async () => {
@@ -29,10 +30,23 @@ export default function ApartmentContextProvider(props) {
 
   }, []);
 
+  const fetchApartment = async (apartmentId) => {
+    let res = await fetch("/rest/apartments/" + apartmentId);
+    res = await res.json();
+    setApartment(res);
+  };
+
+  const getApartmentById = async (apartmentId) => {
+    await fetchApartment(apartmentId)
+   }
+
+
 
   const values = {
     apartments,
-    createApartment
+    createApartment,
+    getApartmentById,
+    apartment
   }
 
 

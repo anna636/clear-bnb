@@ -173,3 +173,21 @@ span {
   padding-right: 1vh;
   cursor: pointer;
 }
+
+.apartmentWarning{
+  color: black;
+    animation: createBox .25s;
+    
+}
+
+@keyframes createBox {
+  from {
+    transform: scale(0);
+  
+  }
+  to {
+    transform: scale(1);
+ 
+  }
+}
+

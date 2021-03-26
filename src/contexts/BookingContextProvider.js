@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 
 // create a reference to this context (to be used with the useContext hook in components)
 export const BookingContext = createContext();
@@ -22,6 +22,21 @@ export default function BookingContextProvider(props) {
   function addGuests(guests) {
     setAmountOfGuests(guests);
   }
+
+
+  
+  const fetchBookings = async () => {
+    let res = await fetch("/rest/bookings");
+    res = await res.json();
+    setBookings(res);
+ 
+  };
+
+  useEffect(() => {
+    fetchBookings();
+  }, []);
+
+
 
   const updateApartmentDates = async (bookingInfo) => {
     let res = await fetch("/api/update-dates/", {
