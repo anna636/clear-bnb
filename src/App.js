@@ -29,53 +29,67 @@ function App() {
         <HousingContextProvider>
           <ApartmentContextProvider>
             <UserContextProvider>
-              <Router>
-                <header>
-                  <Nav />
-                </header>
-                <main>
-                  <Switch>
-                    <Route exact path="/" component={Home} />
-                    <Route
-                      exact
-                      path="/search/:city"
-                      component={ApartmentSearch}
-                    />
-                  
-                    <Route
-                      exact
-                      path="/details/:id"
-                      component={ApartmentDetails}
-                    />
-                    <Route exact path="/checkin/:id" component={Checkin} />
+              <AmenitiesContextProvider>
+                <Router>
+                  <header>
+                    <Nav />
+                  </header>
+                  <main>
+                    <Switch>
+                      <Route exact path="/" component={Home} />
+                      <Route
+                        exact
+                        path="/search/:city"
+                        component={ApartmentSearch}
+                      />
 
-                  <Route
-                    exact
-                    path="/confirmation/:id"
-                    component={Confirmation}
-                    />
-                    
-                  <Route
-                    exact
-                    path="/my-bookings/:id"
-                    component={MyBookings}
-                  />
-                    <Route exact path="/housing-listing" component={Housing} />
+                      <Route
+                        exact
+                        path="/details/:id"
+                        component={ApartmentDetails}
+                      />
+                      <Route exact path="/checkin/:id" component={Checkin} />
 
-                  <Route exact path="/apartment-listing" component={ApartmentListing} />
-                  
-                    <Route exact path="/all-destinations" component={AllDestinations} />
+                      <Route
+                        exact
+                        path="/confirmation/:id"
+                        component={Confirmation}
+                      />
 
-                    <Route exact path="/getstarted" component={ GetStarted } />
+                      <Route
+                        exact
+                        path="/my-bookings/:id"
+                        component={MyBookings}
+                      />
+                      <Route
+                        exact
+                        path="/housing-listing"
+                        component={Housing}
+                      />
 
-                    <Route path="*" component={page404} />
-                  </Switch>
-                </main>
+                      <Route
+                        exact
+                        path="/apartment-listing"
+                        component={ApartmentListing}
+                      />
 
-                <footer>
-                  <Footer />
-                </footer>
-              </Router>
+                      <Route
+                        exact
+                        path="/all-destinations"
+                        component={AllDestinations}
+                      />
+
+                      <Route exact path="/getstarted" component={GetStarted} />
+
+                      <Route path="*" component={page404} />
+                    </Switch>
+                  </main>
+
+                  <footer>
+                    <Footer />
+                  </footer>
+                </Router>
+              </AmenitiesContextProvider>
             </UserContextProvider>
           </ApartmentContextProvider>
         </HousingContextProvider>
