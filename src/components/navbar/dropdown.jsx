@@ -62,10 +62,10 @@ export function Dropdown() {
 
         <DropdownMenu right>
           <DropdownItem>
-            <LinkItem><Link to="#">Rent out</Link></LinkItem>
+            <LinkItem><Link to="apartment-listing">Rent out</Link></LinkItem>
           </DropdownItem>
           <DropdownItem>
-            <LinkItem><Link to="#">My pages</Link></LinkItem>
+            <LinkItem><Link to="/my-page">My pages</Link></LinkItem>
           </DropdownItem>
           <DropdownItem>
             <LinkItem><Link to={"/my-bookings/" + getCurrentUser()._id}>My bookings</Link></LinkItem>

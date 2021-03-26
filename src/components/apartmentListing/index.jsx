@@ -7,6 +7,7 @@ import styled from 'styled-components'
 import { UploadImages } from './uploadImages'
 import { ApartmentContext } from '../../contexts/ApartmentContextProvider';
 import { UserContext } from '../../contexts/UserContextProvider'
+import { useHistory } from 'react-router-dom'
 
 const moment = require("moment"); // npm i moment
 
@@ -16,26 +17,7 @@ text-align: center;
 padding: 10px;
 `
 
-const PublishButton = styled.button`
-background-color: #2e2b31;
-border-radius: 10px;
-border: 4px double #cccccc;
-color: #eeeeee;
-text-align: center;
-font-size: 28px;
-padding: 20px;
-width: 200px;
--webkit-transition: all 0.4s;
--moz-transition: all 0.4s;
--o-transition: all 0.4s;
-transition: all 0.4s;
-cursor: pointer;
-margin: 5px;
-justify-content: center;
-&:hover {
-background-color: rgb(90, 90, 90);
-}
-`
+
 
 const ListingDiv = styled.div`
 margin-left: 10px;
@@ -77,6 +59,7 @@ export function CreateNewApartment() {
   const [inputFields, setInputFields] = useState([''])
   const [dates, setDates] = useState();
   const { getCurrentUser } = useContext(UserContext)
+  const history = useHistory();
 
 
   const onChange = (newDate) => {
@@ -148,6 +131,7 @@ export function CreateNewApartment() {
 
     console.log(values, 'new apartment ')
     // createApartment(values);
+    history.push("/my-page");
   }
 
   return (
@@ -226,7 +210,7 @@ export function CreateNewApartment() {
 
         <UploadImages handleSubmit={handleSubmit} inputFields={inputFields} setInputFields={setInputFields} />
 
-        <button disabled={formValidator()} onClick={(e) => createAndPublish(e)}>Publish</button>
+        <button className="publishButton" disabled={formValidator()} onClick={(e) => createAndPublish(e)}>Publish</button>
       </Form>
     </div>
   )
