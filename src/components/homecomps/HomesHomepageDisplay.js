@@ -1,11 +1,11 @@
 import '../../css/HomesHomepageDisplay.css'
 import homes from './homestest.json'
-import {useContext} from 'react'
-import {HousingContext} from '../../contexts/HousingContextProvider'
-import {Link} from 'react-router-dom'
+import { useContext } from 'react'
+import { HousingContext } from '../../contexts/HousingContextProvider'
+import { Link } from 'react-router-dom'
 
 export default function HomesHomepageDisplay() {
-  const {apartments} = useContext(HousingContext);
+  const { apartments } = useContext(HousingContext);
 
   const card = home => (
     <div className="home-comp-wrapper" key={Math.random()}>
@@ -33,7 +33,7 @@ export default function HomesHomepageDisplay() {
   );
 
   return (
-    <div className="homes-display">
+    <div className="container homes-display">
       <div className="homes-top-container">
         <h1>Discover apartments</h1>
         <Link to="/housing-listing">
@@ -42,12 +42,11 @@ export default function HomesHomepageDisplay() {
       </div>
       <div className="home-elements">
         {apartments.map((home, i) => {
-          while(i < 8) {
-            return card(home);  
+          while (i < 8) {
+            return card(home);
           }
         })}
       </div>
-
     </div>
   )
 }

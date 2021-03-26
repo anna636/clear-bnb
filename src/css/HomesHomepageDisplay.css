@@ -6,9 +6,8 @@
 }
 
 .homes-display {
-  margin: 100px auto 100px auto;
+  margin: 50px auto 50px auto;
   /* padding: 0 20px; */
-  width: 80%;
   cursor: pointer;
 }
 
@@ -32,16 +31,9 @@
 
 .home-elements {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   /* grid-template-rows: 275px 275px; */
   grid-gap: 20px;
-}
-
-.home-comp-img > img{
-  width: 100%;
-  height: 200px;
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
 }
 
 .home-comp-wrapper{
@@ -49,6 +41,13 @@
   border-radius: 15px;
   padding-bottom: 10px;
   box-shadow: rgb(38, 57, 77, 0.5) 0px 20px 30px -10px;
+}
+
+.home-comp-img > img{
+  width: 100%;
+  height: 200px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
 }
 
 .housing-price-div {
@@ -83,4 +82,42 @@
 
 .fa-map-marker-alt {
   margin-right: 2px;
+}
+
+@media (min-width: 770px) and (max-width: 1200px) { 
+  .home-elements {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  /* grid-template-rows: 275px 275px; */
+  grid-gap: 20px;
+}
+}
+
+@media (min-width: 150px) and (max-width: 769.9px) { 
+  .homes-display {
+    margin: 0 auto;
+  }
+
+.home-attr {
+  display: block;
+  padding: 0 5px;
+}
+
+.home-attr h2, h4, h5, h6, p {
+  font-size: 1rem;
+
+}
+
+  .home-comp-img > img{
+  width: 100%;
+  height: auto;
+
+}
+
+  .home-elements {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-gap: 20px;
+}
+
 }
