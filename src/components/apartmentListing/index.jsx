@@ -131,7 +131,7 @@ export function CreateNewApartment() {
 
     console.log(values, 'new apartment ')
     // createApartment(values);
-    history.push("/my-page");
+    history.push("/");
   }
 
   return (
