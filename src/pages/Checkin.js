@@ -68,7 +68,7 @@ export default function Checkin() {
         notMyApartment = false;
       }
     }
-    console.log('this is not my apartment?',notMyApartment);
+    console.log("this is not my apartment?", notMyApartment);
     return notMyApartment;
   }
 
@@ -76,20 +76,16 @@ export default function Checkin() {
     <>
       {apartment && (
         <div className="checkin">
-          <h1>Your trip</h1>
+          <h1 className="yourTrip">Your trip</h1>
           {openLogin && (
             <div className="loginWrapper">
-              <span className="mySpan" onClick={() => setOpenLogin(false)}>
-                x
-              </span>
+              <span onClick={() => setOpenLogin(false)}>x</span>
               <Login />
             </div>
           )}
           {openRegister && (
             <div className="registerWrapper">
-              <span className="mySpan" onClick={() => setOpenRegister(false)}>
-                x
-              </span>
+              <span onClick={() => setOpenRegister(false)}>x</span>
               <Register />
             </div>
           )}
@@ -98,11 +94,11 @@ export default function Checkin() {
             <div className="datesAndGuests">
               <div className="dates">
                 <div className="startDate">
-                  <h4>CHECK-IN</h4>
+                  <h4 className="check in">CHECK-IN</h4>
                   <p>{calendarDates[0]}</p>
                 </div>
                 <div className="endDate">
-                  <h4>CHECK-OUT</h4>
+                  <h4 className="check out">CHECK-OUT</h4>
                   <p>{calendarDates[calendarDates.length - 1]}</p>
                 </div>
               </div>
@@ -130,7 +126,7 @@ export default function Checkin() {
             </div>
             <div className="totalPrice">
               <h4>Total</h4>
-              <p>
+              <p className="totalPriceCount">
                 {amountOfGuests * 5 +
                   apartment.pricePerDay * calendarDates.length * 0.15 +
                   apartment.pricePerDay * calendarDates.length}{" "}
@@ -182,7 +178,6 @@ const styles = {
   notAllowed: {
     cursor: "not-allowed",
     opacity: "40%",
-    
   },
   regular: {
     cursor: "pointer",
