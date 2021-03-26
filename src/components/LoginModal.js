@@ -59,7 +59,7 @@ export default function LoginModal() {
         <>
           <div className="login-popup-div">
             <p className="login-popup-content bli-värd-boende">Rent out</p>
-            <p className="login-popup-content bli-värd-boende">My pages</p>
+            <p className="login-popup-content bli-värd-boende" onClick={()=> history.push("/my-apartments/" + getCurrentUser()._id)}>My apartments</p>
             <p onClick={()=> history.push("/my-bookings/" + getCurrentUser()._id)}>My bookings</p>
             <p
               className="login-popup-content bli-värd-boende"

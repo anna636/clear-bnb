@@ -11,7 +11,7 @@ export default function MyBookings() {
 
 
   const { apartments } = useContext(ApartmentContext);
-   const { currentUser, users } = useContext(UserContext);
+  const { currentUser, users } = useContext(UserContext);
   const { bookings } = useContext(BookingContext);
   const myBookings = bookings.filter(function(booking){
   return booking.userId._id===currentUser._id;

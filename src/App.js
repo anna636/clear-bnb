@@ -20,7 +20,7 @@ import MyBookings from './pages/MyBookings.js'
 import GetStarted from "./pages/GetStarted";
 import { NavBar } from "./components/navbar";
 import { SearchBar } from "./components/searchbar";
-import MyPage from "./pages/MyPage";
+import MyApartments from './pages/MyApartments.js'
 
 function App() {
   const page404 = () => <h1>Page not found: {window.location.pathname}</h1>;
@@ -75,23 +75,19 @@ function App() {
                         component={Housing}
                     />
                     
-                     <Route exact path="/all-destinations" component={AllDestinations} />
-
-                      <Route
-                        exact
-                        path="/apartment-listing"
-                        component={ApartmentListing}
-                      />
-
-                      <Route
-                        exact
-                        path="/all-destinations"
-                        component={AllDestinations}
-                      />
-
-                      <Route exact path="/getstarted" component={GetStarted} />
-
-                      <Route exact path="/my-page" component={MyPage} />
+                  <Route
+                    exact
+                    path="/my-bookings/:id"
+                    component={MyBookings}
+                  />
+                  <Route
+                    exact
+                    path="/my-apartments/:id"
+                    component={MyApartments}
+                  />
+  
+                    <Route exact path="/housing-listing" component={Housing} />
+                    <Route exact path="/all-destinations" component={AllDestinations} />
 
                       <Route path="*" component={page404} />
                     </Switch>
