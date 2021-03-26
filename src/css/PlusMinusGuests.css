@@ -39,7 +39,7 @@ grid-template-columns: repeat(2, auto);
   background: #fff;
   border: 0;
   text-decoration: underline;
-  margin-top: 20px;
+  margin-bottom: 20px;
   cursor: pointer;
 }
 
@@ -48,6 +48,7 @@ grid-template-columns: repeat(2, auto);
   color: #fff;
   border: 1px solid grey;
   border-radius: 10px;
+  margin-bottom: 20px;
   cursor: pointer;
 }
 
