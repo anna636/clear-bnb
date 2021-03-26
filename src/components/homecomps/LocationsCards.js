@@ -28,7 +28,7 @@ export default function LocationCards() {
   );
 
   return (
-    <div className="locations">
+    <div className="container locations">
       <h1>Popular destinations</h1>
       <div className="location-cards">
         {locations.map(location => {
