@@ -138,6 +138,7 @@ abbr[title] {
   justify-self: end;
   width: 20%;
   margin-left:90vh;
+  margin-top:2vw;
   border: 1px solid lightgray;
   background: black;
   text-align: center;
@@ -151,7 +152,7 @@ abbr[title] {
 
 .calendarSkip {
   justify-self: end;
-  margin: 5px;
+  margin-top: 5px;
   width: 20%;
    border: 1px solid lightgray;
   background: black;
@@ -174,6 +175,7 @@ abbr[title] {
   text-align: center;
   width:20%;
     font-weight: 900;
+    justify-self: end;
   font-size: 13px;
   border-radius: 15px;
   cursor: pointer;
