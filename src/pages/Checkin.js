@@ -25,7 +25,6 @@ export default function Checkin() {
   useEffect(() => {
     return () => {
       backButtonClick() 
-      console.log('Unmounted')
     }
   }, []);
 

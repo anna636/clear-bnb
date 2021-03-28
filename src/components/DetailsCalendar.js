@@ -84,8 +84,17 @@ export default function DetailsCalendar({ apartmentId }) {
   }
 
   const awaitLoad = () => {
-    console.log(apartment.availableDates)
     if (!calendarDates.length && apartment.bookedDates && apartment.availableDates) {
+      return true
+    }
+    else {
+      return false
+    }
+  }
+
+  function checkAvailableStartDate() {
+    const today = new Date()
+    if (apartment.availableDates.availableStartDate && convertStringToDate(apartment.availableDates.availableStartDate) > today) {
       return true
     }
     else {
@@ -97,15 +106,15 @@ export default function DetailsCalendar({ apartmentId }) {
     <>{awaitLoad() &&
       <>
         <Calendar
-        minDate={apartment.availableDates.availableStartDate ? convertStringToDate(apartment.availableDates.availableStartDate) : new Date()}
-        maxDate={apartment.availableDates.availableEndDate ? convertStringToDate(apartment.availableDates.availableEndDate) : oneYearFromNow()}
+          minDate={ checkAvailableStartDate() ? convertStringToDate(apartment.availableDates.availableStartDate) : new Date()}
+          maxDate={apartment.availableDates.availableEndDate ? convertStringToDate(apartment.availableDates.availableEndDate) : oneYearFromNow()}
           onChange={onChange}
           value={dates}
           selectRange={true}
           tileClassName={apartment.bookedDates}
           tileDisabled={disabledTiles}
         />
-      <button className="calendarNextDetails" disabled={disableNext()} onClick={goToCheckIn}>Next</button>
+        <button className="calendarNextDetails" disabled={disableNext()} onClick={goToCheckIn}>Next</button>
       </>
     }</>
   );
