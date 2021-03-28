@@ -10,7 +10,7 @@ export default function UpperHousingView(props) {
   let lowestPrice = lowestPriced();
   const searchInput = useRef();
 
-  const[price, setPrice] = useState("200")
+  const [price, setPrice] = useState("1500")
 
   function highestPriced() {
     let res = apartments.map(apartment => apartment.pricePerDay);
@@ -24,13 +24,14 @@ export default function UpperHousingView(props) {
 
   function displayNumberEmit(event) {
     
-    setPrice(event.target.value)
-    props.emittedPrice(parseInt(event.target.value))
+    try {
+      setPrice(event.target.value)
+      props.emittedPrice(parseInt(event.target.value))
 
-    if (searchInput) {
-      props.emittedCityRegion(searchInput.current.value)
-    }
-
+      if (searchInput) {
+        props.emittedCityRegion(searchInput.current.value)
+      }
+    } catch (e) {}
   }
 
   const emitCityRegion = (e) => {
