@@ -1,6 +1,6 @@
 import "../css/Checkin.css";
 import { useParams } from "react-router-dom";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { ApartmentContext } from "../contexts/ApartmentContextProvider";
 import { BookingContext } from "../contexts/BookingContextProvider";
 import { UserContext } from "../contexts/UserContextProvider";
@@ -8,6 +8,7 @@ import { useHistory } from "react-router-dom";
 import Login from "../components/Login.js";
 import Register from "../components/Register.js";
 import styled from "styled-components";
+
 
 export default function Checkin() {
   const history = useHistory();
@@ -17,6 +18,43 @@ export default function Checkin() {
   const { getCurrentUser, currentUser } = useContext(UserContext);
   const [openLogin, setOpenLogin] = useState(false);
   const [openRegister, setOpenRegister] = useState(false);
+  const { addCalendarDates } = useContext(BookingContext);
+  
+
+
+  useEffect(() => {
+    return () => {
+      backButtonClick() 
+      console.log('Unmounted')
+    }
+  }, []);
+
+  function backButtonClick() {
+    if (history.action === 'POP') {
+       addCalendarDates([])
+        console.log('Back button pressed')
+        return true
+      }
+      else {
+        console.log('Not pressed')
+        return false
+      } 
+  }
+
+  // function backButtonClick() {
+  //   console.log('Here')
+  //   history.listen((action) => {
+  //     if (action === 'POP') {
+  //       console.log('Back button pressed')
+  //       return true
+  //     }
+  //     else {
+  //       console.log('Not pressed')
+  //       return false
+  //     }
+  //   })
+  // }
+
 
   //Taking choosen dates from calendar
   //service fee is 15% of total price + 5 euros for every new guest
