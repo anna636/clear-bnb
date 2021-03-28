@@ -65,5 +65,37 @@
 @media only screen and (max-width: 680px){
  .text-container{
    font-size:10px;
+   margin: auto;
+  grid-template-areas:
+    "c c c c c"
+    "a a a a a"
+    "d d d d d"
+    "b b b b b";
  }
+ .rentout-wrapper {
+  align-self: center;
+  text-align: center;
+}
+.search-wrapper {
+  align-self: center;
+  text-align: center;
+}
+.img-container {
+  grid-area: c;
+  align-self: center;
+  opacity: 0.8;
+    width: 80vw;
+  height: auto;
+  margin: 10px;
+   padding: 5px;
+}
+.img-container2 {
+    grid-area: d;
+  align-self: center;
+  opacity: 0.8;
+    width: 80vw;
+  height: auto;
+  margin: 10px;
+   padding: 5px;
+}
 }
