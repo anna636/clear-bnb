@@ -199,25 +199,27 @@ export function CreateNewApartment() {
           </AptWrap>
         </ListingDiv>
 
-        <div className="amenities-container">
+        <div className="amenities-wrapper">
           <h5>Amenities: </h5>
-          {amenities.map((amenitie) => {
-            return (
-              <div className="form-check amenities-element" key={amenitie._id}>
-                <label className="checkboxContainer">
-                  <i className={amenitie.icon}></i> {amenitie.name}
-                  <input
-                    value={amenitie._id}
-                    onChange={handleAmenities}
-                    name="amenities"
-                    label="Amenities"
-                    type="checkbox"
-                    className="form-check-input"
-                  />
-                </label>
-              </div>
-            );
-          })}
+          <div className="amenities-container">
+            {amenities.map((amenitie) => {
+              return (
+                <div className="form-check amenities-element" key={amenitie._id}>
+                  <label className="checkboxContainer">
+                    <input
+                      value={amenitie._id}
+                      onChange={handleAmenities}
+                      name="amenities"
+                      label="Amenities"
+                      type="checkbox"
+                      className="form-check-input"
+                    />
+                    <span> {amenitie.name} <i className={amenitie.icon}></i></span>
+                  </label>
+                </div>
+              );
+            })}
+          </div>
         </div>
 
         <div className="listing-calendar">
