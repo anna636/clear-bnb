@@ -11,7 +11,7 @@ export default function LocationCards() {
   { place: 'Paris', url: 'https://luxebeatmag.com/wp-content/uploads/2018/02/Tour-Eiffel-illuminee-depuis-Champs-de-Mars-%C2%A9-E.Li_.jpeg' },
   { place: 'New York', url: 'https://www.nyhabitat.com/blog/wp-content/uploads/2019/09/NYC-fall-season-event-guide-2019-Chelsea-autumn-sunset.jpg' },
   { place: 'Moskva', url: 'https://www.planete-energies.com/sites/default/files/thumbnails/image/moscou.jpg' },
-  { place: 'Stockholm', url: 'https://passport-cdn.kiwicollection.com/blog/drive/uploads/2018/04/Stockholm_feature.jpg' },
+  { place: 'Stockholm', url: 'https://st2.depositphotos.com/1033600/12327/i/950/depositphotos_123279018-stock-photo-stockholm-city-view.jpg' },
   { place: 'Lund', url: 'https://i1.wp.com/www.mymorningtravelguide.com/wp-content/uploads/2016/11/NIK_9178-2.jpg?fit=4297%2C2846' }];
 
   function search(place) {
