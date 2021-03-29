@@ -1,9 +1,8 @@
 import React from 'react'
-import styled from 'styled-components'
 import { Modal, ModalBody, ModalFooter, Button } from 'reactstrap';
-import { useHistory } from "react-router-dom";
 import { useState, useContext, useEffect } from 'react'
 import { UserContext } from '../../contexts/UserContextProvider'
+import '../../css/LoginRegister.css'
 
 export function LoginModal(props) {
   const {
@@ -22,8 +21,6 @@ export function LoginModal(props) {
     login(user)
   }
 
-
-
   return (
     <Modal isOpen={modal} toggle={toggle}>
       <div className="modal-header">
@@ -37,29 +34,28 @@ export function LoginModal(props) {
         ></button>
       </div>
       <ModalBody>
-        <div>
-          <div className="input-login-div-wrap">
-            <div className="input-login-div line">
-              <input
-                type="text"
-                required
-                placeholder="Email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </div>
-            <div className="input-login-div">
-              <input
-                type="password"
-                required
-                placeholder="Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </div>
+        <div className="input-login-div-wrap">
+          <div className="input-login-div line">
+            <input
+              className="myModalInput"
+              type="text"
+              required
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
+          <div className="input-login-div">
+            <input
+              className="myModalInput"
+              type="password"
+              required
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
           </div>
         </div>
-
       </ModalBody>
       <ModalFooter>
         <Button color="primary" onClick={logIn}>Login</Button>{' '}

@@ -6,6 +6,7 @@ export default function ApartmentContextProvider(props) {
 
   const [apartments, setApartments] = useState([]);
   const [apartment, setApartment] = useState({});
+  const [apartmentId, setApartmentId] = useState("");
 
 
   const fetchApartments = async () => {
@@ -13,6 +14,19 @@ export default function ApartmentContextProvider(props) {
     res = await res.json();
     setApartments(res);
   };
+
+    function setCurrentApartmentId(id) {
+      setApartmentId(id);
+  }
+  
+
+   const deleteApartment = async () => {
+     let res = await fetch("/rest/apartments/" + apartmentId, {
+       method: "DELETE",
+     });
+     res = await res.json();
+     console.log(`apartment with id ${apartmentId} has been deleted`);
+   };
 
   const createApartment = async (apartment) => {
     let res = await fetch("/rest/apartments", {
@@ -47,8 +61,10 @@ export default function ApartmentContextProvider(props) {
     createApartment,
     getApartmentById,
     apartment,
-    fetchApartments
-  }
+    fetchApartments,
+    setCurrentApartmentId,
+    deleteApartment,
+  };
 
 
   return (
