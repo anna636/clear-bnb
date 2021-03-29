@@ -2,7 +2,7 @@ import '../css/MyApartments.css'
 import { ApartmentContext } from "../contexts/ApartmentContextProvider";
 import { BookingContext } from "../contexts/BookingContextProvider";
 import { UserContext } from "../contexts/UserContextProvider";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 
 import { useContext } from "react";
@@ -154,10 +154,10 @@ export default function MyApartments() {
                 <div className="apartment-top-container">
                   <h1>{apartment.city} - {apartment.region}</h1>
                   <div className="options-btns">
-                    <p>edit:</p>
-                    <i class="far fa-edit"></i>
-                    <p>details: </p>
-                    <i class="far fa-arrow-alt-circle-right"></i>  
+                    <Link to={"/details/" + apartment._id}>
+                      <p>details: </p>
+                      <i class="far fa-arrow-alt-circle-right"></i>
+                    </Link>  
                   </div>
                 </div>
                 <div className="image-gallery">

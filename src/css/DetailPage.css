@@ -7,8 +7,11 @@ p{
 }
 .Detail-img{
     display: inline;
-    width: 800px;
-    height: 600px;
+    /*width: 800px;
+    height: 600px;*/
+
+     width: 60vw;
+    height: 35vw;
     border-radius: 15px;
     cursor: pointer;
     transition: 0.2s ease-in-out;
@@ -39,4 +42,48 @@ p{
 }
 .btn-div-details{
     padding: 40px;
+}
+
+.details-icons {
+    margin: 4vh;
+    display: grid;
+    justify-content: center;
+}
+
+.details-calendar {
+    margin-top: 10vh;
+      display: grid;
+  align-items: center;
+  justify-content: center;
+}
+
+@media only screen and (max-width:830px) {
+    .description-text{
+        margin-left:0px;
+        width:100%;
+        font-size: 1.3rem;
+        padding-left:2vw;
+        padding-right:2vw;
+
+    }
+
+    .Detail-img{
+        width:80vw;
+        height:50vw;
+    }
+}
+@media only screen and (max-width:630px) {
+    .description-text{
+      
+        font-size: .8rem;
+    }
+
+    .additionalInfo{
+        font-size: .9rem !important;
+    }
+
+    .amenities{
+        font-size: .9rem !important;
+    }
+   
 }

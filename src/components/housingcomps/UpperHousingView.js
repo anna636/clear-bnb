@@ -1,15 +1,16 @@
 import '../../css/UpperHousingView.css'
-import {HousingContext} from '../../contexts/HousingContextProvider'
-import {useContext, useState} from 'react'
+import { ApartmentContext } from '../../contexts/ApartmentContextProvider'
+import {useContext, useState, useRef} from 'react'
 
-export default function UpperHousingView() {
+export default function UpperHousingView(props) {
   const [showRegionInput, setRegionDisplay] = useState(false);
-  const [showCityInput, setCityDisplay] = useState(false);
   const [showPriceInput, setPriceDisplay] = useState(false);
-  const [showTypeInput, setTypeDisplay] = useState(false);
-  const {apartments} = useContext(HousingContext);
+  const {apartments} = useContext(ApartmentContext);
   let highestPrice = highestPriced();
   let lowestPrice = lowestPriced();
+  const searchInput = useRef();
+
+  const [price, setPrice] = useState("1500")
 
   function highestPriced() {
     let res = apartments.map(apartment => apartment.pricePerDay);
@@ -21,68 +22,72 @@ export default function UpperHousingView() {
     return (Math.min(...res));
   };
 
-  /* Subcomponents
-     Region input
-     City input
-     Price input
-     Type input
-  */
+  function displayNumberEmit(event) {
+    
+    try {
+      setPrice(event.target.value)
+      props.emittedPrice(parseInt(event.target.value))
+
+      if (searchInput) {
+        props.emittedCityRegion(searchInput.current.value)
+      }
+    } catch (e) {}
+  }
+
+  const emitCityRegion = (e) => {
+    e.preventDefault();
+    props.emittedCityRegion(searchInput.current.value)
+
+    if (price) {
+      props.emittedPrice(parseInt(price))
+    }
+  }
+
 
   const regionInput = (
     <div className="filterButtonsDiv">
-      <input className="regionInput" placeholder="Search region..."></input>
-    </div>
-  );
-  
-  const cityInput = (
-    <div className="filterButtonsDiv">
-      <input className="cityInput" placeholder="Search city..."></input>
+      <form onSubmit={ emitCityRegion }>
+        <input className="regionInput"
+          placeholder="Search city or region..."
+          ref={ searchInput }
+      >
+        </input>
+      </form>
     </div>
   );
 
   const priceInput = (
     <div className="filterButtonsDiv">
-      <input className="priceInput" type="range" min={lowestPrice} max={highestPrice}></input>
+        <input className="priceInput"
+          type="range"
+          min={lowestPrice}
+          max={highestPrice}
+          defaultValue={price}
+          onChange={ displayNumberEmit }
+      ></input>
+        <label> {price}€</label>
     </div>
   );
 
-  const typeInput = (
-    <div className="filterButtonsDiv">
-      <input className="typeInput" placeholder="Search type..."></input>
-    </div>
-  );
   
   return (
     <div className="upper-housing-container">
       <div>
-        <p className="upper-housing-view-amount">{apartments.length} boenden</p>
-        <h1 className="upper-housing-view-title">Housings</h1>
+        <h1 className="upper-housing-view-title">All Apartments</h1>
       </div>
       <div>
         <button
           onClick={() => {setRegionDisplay(!showRegionInput)}}
           className="upper-housing-view-btn">
-          Region
-        </button>
-        <button
-          onClick={() => {setCityDisplay(!showCityInput)}}
-          className="upper-housing-view-btn">
-          City
+          City | Region
         </button>
         <button
           onClick={() => {setPriceDisplay(!showPriceInput)}} 
           className="upper-housing-view-btn">
           Price
         </button>
-        <button
-          onClick={() => {setTypeDisplay(!showTypeInput)}} 
-          className="upper-housing-view-btn">
-          Type
-        </button>
         {showRegionInput && regionInput}
-        {showCityInput && cityInput}
         {showPriceInput && priceInput}
-        {showTypeInput && typeInput}
       </div>
     </div>
   )

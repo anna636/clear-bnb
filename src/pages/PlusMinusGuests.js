@@ -19,17 +19,17 @@ export default function PlusMinusGuests() {
     { id: 2, currentValue: 0, maxValue: 5, minValue: 0 },
   ]);
 
-    
- 
 
-   
+
+
+
   function saveGuests() {
-      const amount =
+    const amount =
       guests[0].currentValue + guests[1].currentValue + guests[2].currentValue;
     console.log("amount in plusminus is", amount);
 
     addGuests(amount)
-    
+
     history.push("/checkin/" + apartment._id);
   }
 
@@ -61,9 +61,9 @@ export default function PlusMinusGuests() {
     <>
       {
         apartment && (
-          <div className="container">
+          <div className="plusMinusContainer">
             <h3>Choose amount of guests.</h3>
-            <div className="wrapper">
+            <div className="plusMinusWrapper">
               <div className="content-left">Adults: </div>
               <div className="buttons-right">
                 <button

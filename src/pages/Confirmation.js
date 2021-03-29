@@ -13,14 +13,14 @@ export default function Confirmation() {
 
   return (
     <div className="confirmation">
-      <h1> Confirmation</h1>
+      <h1 className="confConfirmation"> Confirmation</h1>
 
       <div className="bookingInformation">
         <div className="infoHeader">
-          <h3>Booking information</h3>
+          <h3 className="bookingInfoConf">Booking information</h3>
         </div>
 
-        <p>Total price: {totalPrice} €</p>
+        <p className="totalPriceConf">Total price: {totalPrice} €</p>
         <p>Registered amount of guests: {amountOfGuests}</p>
         <p>Check in:   {calendarDates[0]}</p>
         <p>Check out:   {calendarDates[calendarDates.length - 1]}</p>

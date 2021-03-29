@@ -1,17 +1,25 @@
 .confirmation {
   width: 50%;
   display: grid;
-  margin-left: 25%;
+  margin-left: 25vw;
   margin-top: 4%;
   text-align: center;
   align-content: center;
   justify-items: center;
 }
 
+.bookingInfoConf {
+  font-size: 1.5rem;
+}
+
+.totalPriceConf {
+  padding-top: 2vw;
+}
+
 .bookingInformation {
   padding: 2vh;
   margin-top: 8vh;
-  width: 60%;
+  width: 40vw;
   height: auto;
   border: 1px solid black;
   border-radius: 20px;
@@ -32,6 +40,7 @@
   font-size: 15px;
   font-weight: bold;
   cursor: pointer;
+  margin-bottom: 3vw;
 }
 .buttonWrapper button:hover {
   background: rgba(128, 128, 128, 0.548);
@@ -40,4 +49,55 @@
 
 .infoHeader {
   border-bottom: 1px solid black;
+}
+
+@media only screen and (max-width: 810px) {
+  .bookingInformation {
+    width: 60vw;
+  }
+
+  .confirmation {
+    margin-left: 20vw;
+  }
+}
+@media only screen and (max-width: 470px) {
+  .bookingInfoConf {
+    font-size: 1rem;
+  }
+
+  .confirmation {
+    font-size: 0.8rem;
+  }
+
+  .buttonWrapper button {
+    font-size: 0.6rem !important;
+    width: 40vw;
+  }
+
+  .confConfirmation {
+    font-size: 1.5rem !important;
+  }
+}
+
+@media only screen and (max-width: 290px) {
+  .bookingInfoConf {
+    font-size: 0.8rem;
+  }
+
+  .confirmation {
+    font-size: 0.6rem;
+  }
+
+  .buttonWrapper button {
+    font-size: 0.3rem !important;
+    width: 40vw;
+  }
+
+  .confConfirmation {
+    font-size: 1.1rem !important;
+  }
+
+  .confirmation {
+    margin-left: 20vw;
+  }
 }

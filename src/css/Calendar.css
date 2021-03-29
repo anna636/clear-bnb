@@ -1,15 +1,16 @@
 .myCalendar {
-  width: 130vh;
+ 
   padding-top: 2em;
   display: grid;
   align-items: center;
   justify-content: center;
-
+  
   background-color: white;
+  grid-template-columns: 1fr;
 }
 
 .react-calendar {
-  width: 120vh;
+  width: 100vh;
   background: white;
 
   font-family: Arial, Helvetica, sans-serif;
@@ -34,6 +35,7 @@
   outline: none;
   cursor: pointer;
   border: none;
+  padding:1vh;
 }
 
 .react-calendar button:enabled:hover {
@@ -44,6 +46,8 @@
   height: 5vh;
   margin-bottom: 3em;
 }
+
+
 
 .react-calendar__navigation button {
   min-width: 44px;
@@ -131,16 +135,13 @@ abbr[title] {
 }
 
 .calendarNext {
-  margin-top: 8vh;
+  justify-self: end;
   width: 20%;
   margin-left:90vh;
-   border: 1px solid lightgray;
+  margin-top:2vw;
+  border: 1px solid lightgray;
   background: black;
-  
-
   text-align: center;
- 
-  margin-right: 3vh;
   font-weight: 900;
   font-size: 13px;
   border-radius: 15px;
@@ -150,17 +151,82 @@ abbr[title] {
 }
 
 .calendarSkip {
-  margin-top: 2vh;
+  justify-self: end;
+  margin-top: 5px;
   width: 20%;
-  margin-left:90vh;
    border: 1px solid lightgray;
   background: black;
   text-align: center;
-  margin-right: 3vh;
   font-weight: 900;
   font-size: 13px;
   border-radius: 15px;
   cursor: pointer;
   outline: none;
   color: white;
+}
+
+
+
+.calendarNextDetails{
+  margin-top:2vw;
+  margin-bottom:2vw;
+   border: 1px solid lightgray;
+  background: black;
+  text-align: center;
+  width:20%;
+    font-weight: 900;
+    justify-self: end;
+  font-size: 13px;
+  border-radius: 15px;
+  cursor: pointer;
+  outline: none;
+  color: white;
+ 
+}
+
+@media only screen and (max-width: 921px){
+ .react-calendar{
+   width:80vw;
+ }
+
+ .calendarNext, .calendarSkip{
+   margin-left:0px;
+ }
+
+ .calendarNextDetails{
+   margin-left:0vh;
+ }
+}
+
+@media only screen and (max-width: 680px){
+ .react-calendar{
+   font-size:10px;
+ }
+
+ .react-calendar button{
+
+  font-size: 13px;
+
+
+ }
+}
+
+@media only screen and (max-width: 370px){
+.react-calendar__navigation  {
+  height:3vh !important;
+  font-size: 8px !important;
+}
+
+.react-calendar button {
+    font-size: 8px;
+}
+
+.react-calendar__navigation button{
+  min-width: 0;
+}
+
+.calendarNext, .calendarSkip, .calendarNextDetails{
+  font-size:10px !important;
+}
+
 }

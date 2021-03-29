@@ -38,8 +38,8 @@ app.get("/rest/:model", async (req, res) => {
   if (req.params.model === "apartments") {
     let docs = await model
       .find()
-      .populate(["amenities", "ownerId", "availableDates"])
-      .exec(); // merge wanted to trash populate "ownerId"
+      .populate(["amenities", "ownerId"])
+      .exec();
     res.json(docs);
     return;
   }
