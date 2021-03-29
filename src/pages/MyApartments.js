@@ -1,3 +1,6 @@
+import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
+import { useContext, useEffect, useState } from "react";
 import "../css/MyApartments.css";
 import { ApartmentContext } from "../contexts/ApartmentContextProvider";
 import { BookingContext } from "../contexts/BookingContextProvider";
@@ -5,14 +8,18 @@ import { UserContext } from "../contexts/UserContextProvider";
 import { useHistory, Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 
-import Modal from "react-bootstrap/Modal";
-import Button from "react-bootstrap/Button";
+const moment = require("moment"); // npm i moment
 
-import { useContext, useEffect, useState } from "react";
 
 export default function MyApartments() {
+  const history = useHistory();
+  const { id } = useParams();
 
-
+  const [show, setShow] = useState(false);
+  const [apartmentId, setApartmentId] = useState("");
+  const handleClose = () => setShow(false);
+  const { currentUser } = useContext(UserContext);
+  const { bookings } = useContext(BookingContext);
 
   const {
     apartments,
@@ -28,30 +35,13 @@ export default function MyApartments() {
      setShow(true);
    };
 
-  
-  
-  const [show, setShow] = useState(false);
-  const [apartmentId, setApartmentId] = useState("");
-  
-
-  const handleClose = () => setShow(false);
-
-
-  const { currentUser } = useContext(UserContext);
-  const { bookings } = useContext(BookingContext);
-
 
   const myApartments = apartments.filter(function (apartment) {
-
     return apartment.ownerId._id === currentUser._id;
   });
 
-  useEffect(() => {
-    fetchApartments();
-  }, []);
 
   const apartmentAmount = apartments.filter(function (apartment) {
-   
     return apartment.ownerId._id === currentUser._id;
   });
 
@@ -59,50 +49,60 @@ export default function MyApartments() {
     let data = bookings.filter((booking) => {
       return booking.apartmentId.ownerId === currentUser._id;
     });
-
     data = data.filter((booking) => {
       return booking.apartmentId._id === housingId;
     });
-
     return data;
   };
 
-  const rentersAmount = bookings.filter((booking) => {
-   
+  const rentersAmount = async () => await bookings.filter((booking) => {
     return booking.apartmentId.ownerId === currentUser._id;
   });
 
   const removeApartment = () => {
+    let checkBookings = []
+    let today = moment(new Date()).format("YYYY-MM-DD")
+    console.log(today)
+    showDeleteMessage = false;
 
     bookings.map((booking) => {
+      // If there is a booking for this apartment, put booking in checkBookings
       if (booking.apartmentId._id === apartmentId) {
+        showDeleteMessage = true
         console.log('wrong alternative');
-        return
-      }
-      else {
-        console.log(apartmentId);
-    
-    deleteApartment(apartmentId);
-    handleClose();
+        checkBookings.push(booking)
+        return;
       }
     })
+
+    // If checkBookings is empty, ok to remove
+    if (!checkBookings.length) {
+        console.log(apartmentId);
+        deleteApartment(apartmentId);
+        handleClose();
+        // fetchApartments();  // check!!
+    }
     
   };
-  
 
-  const history = useHistory();
-  const { id } = useParams();
+  let showDeleteMessage = false;
+
+  useEffect(() => {
+    fetchApartments();
+  }, []);
+
+
 
   return (
     <>
      
       {Boolean(apartments && !myApartments.length) && (
         <div className="noApartmentsFound">
-          <h1>You do not have any apartment for rent</h1>
+          <h1>You do not have any apartments for rent</h1>
           <p>Would you like to post a new apartment?</p>
           <button
             className="rentOutApartmentButton"
-            onClick={() => history.push("/rest/postNewApartment")}
+            onClick={() => history.push("/apartment-listing")}
           >
             Yes let's begin!
           </button>
@@ -137,8 +137,11 @@ export default function MyApartments() {
 
                   <Modal.Footer>
                     <Button variant="dark" onClick={removeApartment}>
-                      Delete
+                      Yes, delete
                     </Button>
+                    <>{showDeleteMessage &&
+                      <label>You can't delete an apartment with active bookings</label>
+                    }</>
                   </Modal.Footer>
                 </Modal>
 
@@ -149,6 +152,7 @@ export default function MyApartments() {
                   <div className="options-btns">
                     <div className="deleteApartment">
                       <span
+                        className="trash-icon"
                         onClick={() => {
                           handleShow(apartment._id);
                         }}
