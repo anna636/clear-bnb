@@ -130,7 +130,7 @@ export function CreateNewApartment() {
     values.gallery = handleSubmit();
 
     console.log(values, 'new apartment ')
-    // createApartment(values);
+    createApartment(values);
     history.push("/");
   }
 

@@ -62,7 +62,7 @@ export function Dropdown() {
 
         <DropdownMenu right>
           <DropdownItem>
-            <LinkItem><Link to="apartment-listing">Rent out</Link></LinkItem>
+            <LinkItem><Link to="/apartment-listing">Rent out</Link></LinkItem>
           </DropdownItem>
           <DropdownItem>
             <LinkItem><Link to="/my-page">My pages</Link></LinkItem>
