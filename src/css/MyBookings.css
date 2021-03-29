@@ -1,15 +1,22 @@
+
+
+
+
+
 .bookingsWrapper {
-  width: 70%;
-  margin-left: 30vh;
+ 
+  width: 70vw;
+  margin-left: 18vw;
   display: grid;
   grid-template-rows: repeat(1fr);
-  padding-top: 10vh;
+  padding-top: 5vw;
+  padding-bottom:5vw;
 }
 
-img {
-  max-width: 100%;
-  height: auto;
+.bookingsWrapper button{
+  text-align: center;
 }
+
 
 .bookingsComp {
   padding-top: 4vh;
@@ -23,11 +30,15 @@ img {
 }
 
 .bookingItem {
+
   display: flex;
   flex-direction: row;
   border: 1px solid black;
+  align-items: center;
+  justify-content: center;
   border-radius: 20px;
   padding: 4vh;
+  margin-left:-6vw;
 }
 
 .info {
@@ -53,9 +64,19 @@ img {
   color: gray;
 }
 
+.apartmentImgBookings{
+  width:40vw;
+}
+
 @media screen and (max-width: 1080px) {
   .buttonWrapperBooking {
     margin-top: 0%;
+ 
+  }
+  .buttonWrapperBooking  button{
+    margin-top: 0%;
+    padding:1vw;
+ 
   }
 
   .bookingsWrapper {
@@ -64,37 +85,82 @@ img {
   }
 }
 
-@media screen and (max-width: 980px) {
-  .buttonWrapperBooking button {
+@media screen and (max-width: 800px) {
+    .buttonWrapperBooking button {
     height: 4vh;
-    width: 30vh;
-   
+    width: 24vw;
+    font-size:.7rem;
   }
+
+  
+  .bookingsWrapper{
+    margin-left:14vw;
+  }
+
 }
+
 
 
 @media screen and (max-width: 798px) {
 
-   img {
-    display:none;
-   
-  }
 
   .bookingsWrapper {
-    width:40%;
+    width: 40%;
   }
 
-  .bookingItem{
-    font-size:13px;
-    
+  .bookingItem {
+    font-size: 13px;
   }
 }
 
 
-@media screen and (max-width: 640px) {
+
+
+@media screen and (max-width: 650px) {
   .bookingsWrapper {
-    margin-left:10vh;
-     width: 15%;
+    margin-left: 10vw;
+  
   }
 
+   .buttonWrapperBooking button {
+    
+    font-size:.5rem;
+  }
+
+  .bookingItem{
+    font-size: 10px;
+  }
+
+  .myBookingsHeader{
+    font-size: 1.8rem;
+  }
+}
+
+@media screen and (max-width: 460px) {
+  .bookingsWrapper {
+    margin-left: 7vw;
+  
+  }
+
+  .apartmentInfo{
+    padding-top:1vw;
+  }
+
+   .buttonWrapperBooking button {
+    
+    font-size:.4rem;
+  }
+
+  .bookingItem{
+    font-size: 8px;
+    padding:1vw;
+  }
+
+
+  .apartmentImgBookings{
+  height:40vw;
+}
+
+
+  
 }

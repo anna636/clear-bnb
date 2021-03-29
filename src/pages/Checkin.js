@@ -1,6 +1,6 @@
 import "../css/Checkin.css";
 import { useParams } from "react-router-dom";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { ApartmentContext } from "../contexts/ApartmentContextProvider";
 import { BookingContext } from "../contexts/BookingContextProvider";
 import { UserContext } from "../contexts/UserContextProvider";
@@ -8,6 +8,7 @@ import { useHistory } from "react-router-dom";
 import Login from "../components/Login.js";
 import Register from "../components/Register.js";
 import styled from "styled-components";
+
 
 export default function Checkin() {
   const history = useHistory();
@@ -17,6 +18,42 @@ export default function Checkin() {
   const { getCurrentUser, currentUser } = useContext(UserContext);
   const [openLogin, setOpenLogin] = useState(false);
   const [openRegister, setOpenRegister] = useState(false);
+  const { addCalendarDates } = useContext(BookingContext);
+  
+
+
+  useEffect(() => {
+    return () => {
+      backButtonClick() 
+    }
+  }, []);
+
+  function backButtonClick() {
+    if (history.action === 'POP') {
+       addCalendarDates([])
+        console.log('Back button pressed')
+        return true
+      }
+      else {
+        console.log('Not pressed')
+        return false
+      } 
+  }
+
+  // function backButtonClick() {
+  //   console.log('Here')
+  //   history.listen((action) => {
+  //     if (action === 'POP') {
+  //       console.log('Back button pressed')
+  //       return true
+  //     }
+  //     else {
+  //       console.log('Not pressed')
+  //       return false
+  //     }
+  //   })
+  // }
+
 
   //Taking choosen dates from calendar
   //service fee is 15% of total price + 5 euros for every new guest
@@ -68,7 +105,7 @@ export default function Checkin() {
         notMyApartment = false;
       }
     }
-    console.log('this is not my apartment?',notMyApartment);
+    console.log("this is not my apartment?", notMyApartment);
     return notMyApartment;
   }
 
@@ -76,7 +113,7 @@ export default function Checkin() {
     <>
       {apartment && (
         <div className="checkin">
-          <h1>Your trip</h1>
+          <h1 className="yourTrip">Your trip</h1>
           {openLogin && (
             <div className="loginWrapper">
               <span onClick={() => setOpenLogin(false)}>x</span>
@@ -94,11 +131,11 @@ export default function Checkin() {
             <div className="datesAndGuests">
               <div className="dates">
                 <div className="startDate">
-                  <h4>CHECK-IN</h4>
+                  <h4 className="check in">CHECK-IN</h4>
                   <p>{calendarDates[0]}</p>
                 </div>
                 <div className="endDate">
-                  <h4>CHECK-OUT</h4>
+                  <h4 className="check out">CHECK-OUT</h4>
                   <p>{calendarDates[calendarDates.length - 1]}</p>
                 </div>
               </div>
@@ -126,7 +163,7 @@ export default function Checkin() {
             </div>
             <div className="totalPrice">
               <h4>Total</h4>
-              <p>
+              <p className="totalPriceCount">
                 {amountOfGuests * 5 +
                   apartment.pricePerDay * calendarDates.length * 0.15 +
                   apartment.pricePerDay * calendarDates.length}{" "}
@@ -178,7 +215,6 @@ const styles = {
   notAllowed: {
     cursor: "not-allowed",
     opacity: "40%",
-    
   },
   regular: {
     cursor: "pointer",
