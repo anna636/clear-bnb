@@ -20,6 +20,28 @@ export default function MyApartments() {
     fetchApartments();
   }, []);
 
+  const apartmentAmount = apartments.filter(function (apartment) {
+    return apartment.ownerId._id === currentUser._id;
+  });
+
+  const getRenters = (housingId) => {
+    let data = bookings.filter((booking) => {
+      return booking.apartmentId.ownerId === currentUser._id;
+    });
+
+    data = data.filter((booking) => {
+      return booking.apartmentId._id === housingId;
+    });
+
+    return data;
+  };
+
+  const rentersAmount = bookings.filter((booking) => {
+    return booking.apartmentId.ownerId === currentUser._id;
+  });
+
+  
+
   const history = useHistory();
   const { id } = useParams();
 
