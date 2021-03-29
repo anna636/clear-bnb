@@ -1,5 +1,5 @@
 .createNewAptWrapper {
-  max-width: 60%;
+  max-width: 65%;
   margin: 0 auto;
 }
 
@@ -46,6 +46,12 @@ transition: all 0.4s;
 cursor: pointer;
 margin: 5px;
 justify-content: center;
+}
+
+
+.publishButton:disabled {
+  opacity: 10%;
+  cursor: not-allowed;
 }
 
 .publishButton:hover{
