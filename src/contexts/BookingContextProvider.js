@@ -68,6 +68,7 @@ export default function BookingContextProvider(props) {
     updateApartmentDates,
     updateTotalPrice,
     totalPrice,
+    fetchBookings
   };
 
   return (
