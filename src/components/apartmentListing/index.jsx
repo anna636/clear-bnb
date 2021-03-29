@@ -19,7 +19,6 @@ const Form = styled.form`
 
 const ListingDiv = styled.div`
   margin: 0 auto;
-  max-width: 60%;
 `;
 
 const AptWrap = styled.div`
