@@ -63,7 +63,7 @@ export default function PlusMinusGuests() {
         apartment && (
           <div className="container">
             <h3>Choose amount of guests.</h3>
-            <div className="wrapper">
+            <div className="plusMinusWrapper">
               <div className="content-left">Adults: </div>
               <div className="buttons-right">
                 <button
