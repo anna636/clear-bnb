@@ -184,7 +184,15 @@ p {
   position: fixed;
 }
 
-.loginWrapper span, .registerWrapper span {
+/* .loginWrapper span, .registerWrapper span {
+.registerWrapper > span {
+  float: right;
+  padding-top: 1vh;
+  padding-right: 1vh;
+  cursor: pointer;
+} */
+
+.loginWrapper > span {
   float: right;
   padding-top: 1vh;
   padding-right: 1vh;

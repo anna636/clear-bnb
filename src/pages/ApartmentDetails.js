@@ -52,7 +52,7 @@ export default function ApartmentDetails(props) {
 
             <div className="additionalInfo">
               <p>Property has a capacity of: {apartment.maxGuests} guests</p>
-              <p>Price: {apartment.pricePerDay}kr / 24 hours</p>
+              <p>Price: {apartment.pricePerDay}€ / 24 hours</p>
               <p>The landlord's name: {apartment.ownerId.fullName}</p>
             </div>
             <div className="details-calendar">
