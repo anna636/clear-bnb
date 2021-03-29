@@ -5,9 +5,6 @@ import { ApartmentContext } from "../contexts/ApartmentContextProvider";
 import { BookingContext } from "../contexts/BookingContextProvider";
 import { UserContext } from "../contexts/UserContextProvider";
 import { useHistory } from "react-router-dom";
-import Login from "../components/Login.js";
-import Register from "../components/Register.js";
-import styled from "styled-components";
 import { Accessibility } from "../components/navbar/accessibility";
 
 
@@ -17,8 +14,6 @@ export default function Checkin() {
   const { apartments } = useContext(ApartmentContext);
   const apartment = apartments.find((el) => el._id === id);
   const { getCurrentUser, currentUser } = useContext(UserContext);
-  const [openLogin, setOpenLogin] = useState(false);
-  const [openRegister, setOpenRegister] = useState(false);
   const { addCalendarDates } = useContext(BookingContext);
 
 
@@ -115,19 +110,6 @@ export default function Checkin() {
       {apartment && (
         <div className="checkin">
           <h1 className="yourTrip">Your trip</h1>
-          {openLogin && (
-            <div className="loginWrapper">
-              <span onClick={() => setOpenLogin(false)}>x</span>
-              <Login />
-            </div>
-          )}
-          {openRegister && (
-            <div className="registerWrapper">
-              <span onClick={() => setOpenRegister(false)}>x</span>
-              <Register />
-            </div>
-          )}
-
           <div className="tripInformation">
             <div className="datesAndGuests">
               <div className="dates">
@@ -190,7 +172,7 @@ export default function Checkin() {
 
           {!getCurrentUser() && (
             <div className="buttonsWrapper">
-              <Accessibility></Accessibility>
+              <Accessibility />
             </div>
           )}
         </div>

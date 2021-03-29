@@ -18,7 +18,7 @@ export default function HomesHomepageDisplay() {
       <div className="home-attr">
         <div className="housing-location-div">
           <h2>{home.city}</h2>
-          <h4 className="region"><i class="fas fa-map-marker-alt"></i>{home.region}</h4>
+          <h4 className="region"><i className="fas fa-map-marker-alt"></i>{home.region}</h4>
         </div>
         <div className="renter-div">
           <h5>{home.ownerId.fullName}</h5>
