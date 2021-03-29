@@ -5,9 +5,20 @@ import { UserContext } from "../contexts/UserContextProvider";
 import { useHistory, Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 
-import { useContext, useEffect } from "react";
+import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
+
+import { useContext, useEffect, useState } from "react";
 
 export default function MyApartments() {
+
+    const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+
+
   const { apartments, fetchApartments } = useContext(ApartmentContext);
   const { currentUser } = useContext(UserContext);
   const { bookings } = useContext(BookingContext);
@@ -40,6 +51,14 @@ export default function MyApartments() {
     return booking.apartmentId.ownerId === currentUser._id;
   });
 
+
+  function deleteApartment(e) {
+    e.preventDefault()
+    console.log('clicked');
+    handleClose()
+
+    
+  }
   
 
   const history = useHistory();
@@ -47,6 +66,24 @@ export default function MyApartments() {
 
   return (
     <>
+      {
+        <Modal show={show} onHide={handleClose}>
+          <Modal.Header>
+            <Modal.Title>
+              Are you sure you want to delete this apartment?
+            </Modal.Title>
+          </Modal.Header>
+
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleClose}>
+              Close
+            </Button>
+            <Button variant="dark" onClick={deleteApartment}>
+              Delete
+            </Button>
+          </Modal.Footer>
+        </Modal>
+      }
       {apartments && !myApartments.length && (
         <div className="noApartmentsFound">
           <h1>You do not have any apartment for rent</h1>
@@ -59,35 +96,6 @@ export default function MyApartments() {
           </button>
         </div>
       )}
-
-      {/* {Boolean(apartments && currentUser && myApartments.length) && (
-        <div className="apartmentsWrapper">
-          <h1 className="apartmentsHeader">Apartments for rent</h1>
-
-          <div className="apartmentsComp">
-            {myApartments.map((apartment) => (
-              <div
-                className="apartmentItem"
-                onClick={() => history.push("/details/" + apartment._id)}
-              >
-                <img className="rentOutImage" src={apartment.gallery[0]} />
-
-                <div className="apartmentInfoRent">
-                  <p>Dates: </p>
-                  <p>From {apartment.availableDates.availableStartDate}</p>
-                  <p>To {apartment.availableDates.availableEndDate}</p>
-                  <p>City: {apartment.city}</p>
-                  <p>
-                    Amount of guests allowed: {apartment.maxGuests}{" "}
-                    {apartment.maxGuests > 1 ? "people" : "person"}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      )} */}
-
       {Boolean(apartments && currentUser && myApartments.length) && (
         <div className="my-apartments-container">
           <div className="my-apartments-top">
@@ -113,10 +121,21 @@ export default function MyApartments() {
                     {apartment.city} - {apartment.region}
                   </h1>
                   <div className="options-btns">
-                    <Link to={"/details/" + apartment._id}>
-                      <p>details: </p>
-                      <i class="far fa-arrow-alt-circle-right"></i>
-                    </Link>
+                    <div className="deleteApartment">
+                      <label>
+                        <i
+                          class="fas fa-trash-alt myTrash"
+                          onClick={handleShow}
+                        ></i>
+                      </label>
+                    </div>
+
+                    <div className="detailedInfo">
+                      <Link to={"/details/" + apartment._id}>
+                        <label>details: </label>
+                        <i class="far fa-arrow-alt-circle-right myArrow"></i>
+                      </Link>
+                    </div>
                   </div>
                 </div>
                 <div className="image-gallery">
@@ -124,9 +143,7 @@ export default function MyApartments() {
                     <img className="image1 images" src={apartment.gallery[0]} />
                   </div>
                   <div className="four-apartment-images">
-
-              
-                   <img className="image2 images" src={apartment.gallery[1]} />
+                    <img className="image2 images" src={apartment.gallery[1]} />
                     <img className="image3 images" src={apartment.gallery[2]} />
                     <img className="image4 images" src={apartment.gallery[3]} />
                     <img className="image5 images" src={apartment.gallery[4]} />
