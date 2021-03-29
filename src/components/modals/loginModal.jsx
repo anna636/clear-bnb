@@ -37,7 +37,7 @@ export function LoginModal(props) {
         <div className="input-login-div-wrap">
           <div className="input-login-div line">
             <input
-              className="loginModalInput"
+              className="myModalInput"
               type="text"
               required
               placeholder="Email"
@@ -47,7 +47,7 @@ export function LoginModal(props) {
           </div>
           <div className="input-login-div">
             <input
-              className="loginModalInput"
+              className="myModalInput"
               type="password"
               required
               placeholder="Password"

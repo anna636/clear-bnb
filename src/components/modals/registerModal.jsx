@@ -52,6 +52,7 @@ export function RegisterModal(props) {
             <div className="name-username">
               <div className="input-wrap-div line">
                 <input
+                  className="myModalInput"
                   type="text"
                   required
                   placeholder="Full name:"
@@ -64,6 +65,7 @@ export function RegisterModal(props) {
             <div className="epost-input-wrap">
               <input
                 required
+                className="myModalInput"
                 placeholder="Email:"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -74,6 +76,8 @@ export function RegisterModal(props) {
               <input
                 required
                 placeholder="Password:"
+                className="myModalInput"
+                type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
@@ -81,6 +85,8 @@ export function RegisterModal(props) {
             <div className="epost-input-wrap">
               <input
                 required
+                className="myModalInput"
+                type="password"
                 placeholder="Confirm password:"
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
