@@ -23,11 +23,16 @@
   color: #333;
 }
 
+.popularDestinations{
+  margin-bottom:3vw;
+}
+
 .location-cards {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 20px;  
-  align-items: center;
+ 
+  justify-items: center !important;
   margin-top: 20px;
 }
 
@@ -38,6 +43,7 @@
   overflow: hidden;
   cursor: pointer;
  object-fit: fill;
+ align-self: center !important;
 
   /* box-shadow: 0 0 20px 2px rgba(51, 51, 51, 0.5); */
   box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
@@ -45,11 +51,10 @@
 }
 
 .location-img {
-   
- 
   border-radius: 15px;
   width: 100%;
   height: 100%;
+ 
   
 
   opacity: 0.8;
@@ -59,4 +64,16 @@
 .location-img:hover {
   transform: scale(1.1);
   opacity: 0.6;
+}
+
+
+@media only screen and  (max-width: 680px){
+   .card-title{
+     font-size: 1.2rem;
+   }
+}
+@media only screen and  (max-width: 490px){
+   .card-title{
+     font-size: .7rem;
+   }
 }
