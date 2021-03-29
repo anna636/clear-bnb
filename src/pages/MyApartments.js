@@ -40,7 +40,9 @@ export default function MyApartments() {
   const { currentUser } = useContext(UserContext);
   const { bookings } = useContext(BookingContext);
 
+
   const myApartments = apartments.filter(function (apartment) {
+
     return apartment.ownerId._id === currentUser._id;
   });
 
@@ -49,6 +51,7 @@ export default function MyApartments() {
   }, []);
 
   const apartmentAmount = apartments.filter(function (apartment) {
+   
     return apartment.ownerId._id === currentUser._id;
   });
 
@@ -65,14 +68,25 @@ export default function MyApartments() {
   };
 
   const rentersAmount = bookings.filter((booking) => {
+   
     return booking.apartmentId.ownerId === currentUser._id;
   });
 
   const removeApartment = () => {
-    console.log(apartmentId);
+
+    bookings.map((booking) => {
+      if (booking.apartmentId._id === apartmentId) {
+        console.log('wrong alternative');
+        return
+      }
+      else {
+        console.log(apartmentId);
     
     deleteApartment(apartmentId);
     handleClose();
+      }
+    })
+    
   };
   
 
@@ -81,8 +95,8 @@ export default function MyApartments() {
 
   return (
     <>
-      {}
-      {apartments && !myApartments.length && (
+     
+      {Boolean(apartments && !myApartments.length) && (
         <div className="noApartmentsFound">
           <h1>You do not have any apartment for rent</h1>
           <p>Would you like to post a new apartment?</p>
@@ -94,7 +108,7 @@ export default function MyApartments() {
           </button>
         </div>
       )}
-      {Boolean(apartments && currentUser && myApartments.length) && (
+      {Boolean(apartments && currentUser && myApartments !== null && bookings !== null  ) && (
         <div className="my-apartments-container">
           <div className="my-apartments-top">
             <h1>My apartments</h1>
