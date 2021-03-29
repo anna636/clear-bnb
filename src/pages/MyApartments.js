@@ -172,7 +172,7 @@ export default function MyApartments() {
                   <div className="options-btns">
                     <Link to={"/details/" + apartment._id}>
                       <p>details: </p>
-                      <i class="far fa-arrow-alt-circle-right"></i>
+                      <i className="far fa-arrow-alt-circle-right"></i>
                     </Link>
                   </div>
                 </div>
@@ -182,8 +182,8 @@ export default function MyApartments() {
                   </div>
                   <div className="four-apartment-images">
 
-              
-                   <img className="image2 images" src={apartment.gallery[1]} />
+
+                    <img className="image2 images" src={apartment.gallery[1]} />
                     <img className="image3 images" src={apartment.gallery[2]} />
                     <img className="image4 images" src={apartment.gallery[3]} />
                     <img className="image5 images" src={apartment.gallery[4]} />
@@ -230,7 +230,7 @@ export default function MyApartments() {
                                   Renter:{" "}
                                 </h6>
                                 <div className="renter-container">
-                                  <i class="fas fa-user-circle"></i>
+                                  <i className="fas fa-user-circle"></i>
                                   <p className="inline username-renter">
                                     {booking.userId.fullName}
                                   </p>
