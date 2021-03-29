@@ -109,9 +109,7 @@ export function CreateNewApartment() {
       values.pricePerDay < 1 ||
       values.pricePerDay > 1000 ||
       !dates ||
-      //values.amenities.length === 0 ||
-      (inputFields[0] === "" && inputFields.length === 1) ||
-      inputFields.length === 0
+      (handleSubmit().length < 5)
     ) {
       return true;
     } else return false;
@@ -132,7 +130,7 @@ export function CreateNewApartment() {
 
     console.log(values, "new apartment ");
     createApartment(values);
-    history.push("/my-apartments/" + getCurrentUser()._id);
+    // history.push("/my-apartments/" + getCurrentUser()._id);
   }
 
   return (

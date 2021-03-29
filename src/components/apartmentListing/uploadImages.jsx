@@ -25,6 +25,7 @@ export function UploadImages(props) {
   return (
     <div className="container" id="uploadImages">
       <h1>Add image links</h1>
+      <p>(Minimum 5 images)</p>
       <span>
         {
           inputFields.map((inputField, index) => (
