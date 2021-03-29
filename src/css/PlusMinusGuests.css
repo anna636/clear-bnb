@@ -1,15 +1,15 @@
 /* to remove border around button after clicking on it */
 *:focus {
-    outline: none;
+  outline: none;
 }
 
-.container {
+.container-plusminus {
   width: 500px;
 }
 
 .plusMinusWrapper {
-display: grid;
-grid-template-columns: repeat(2, auto);
+  display: grid;
+  grid-template-columns: repeat(2, auto);
 }
 
 .content-left {
@@ -30,10 +30,8 @@ grid-template-columns: repeat(2, auto);
   align-items: center;
   justify-content: center;
   background: #fff;
-  font-size: 20px
+  font-size: 20px;
 }
-
-
 
 #cancel {
   background: #fff;
@@ -51,4 +49,3 @@ grid-template-columns: repeat(2, auto);
   margin-bottom: 20px;
   cursor: pointer;
 }
-
