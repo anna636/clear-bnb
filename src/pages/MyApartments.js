@@ -12,14 +12,31 @@ import { useContext, useEffect, useState } from "react";
 
 export default function MyApartments() {
 
-    const [show, setShow] = useState(false);
+
+
+  const {
+    apartments,
+    fetchApartments,
+    deleteApartment,
+    setCurrentApartmentId,
+  } = useContext(ApartmentContext);
+
+  const handleShow = function (id) {
+     console.log('apartment id is', id);
+     setApartmentId(id);
+    setCurrentApartmentId(id);
+     setShow(true);
+   };
+
+  
+  
+  const [show, setShow] = useState(false);
+  const [apartmentId, setApartmentId] = useState("");
+  
 
   const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
 
 
-
-  const { apartments, fetchApartments } = useContext(ApartmentContext);
   const { currentUser } = useContext(UserContext);
   const { bookings } = useContext(BookingContext);
 
@@ -51,14 +68,12 @@ export default function MyApartments() {
     return booking.apartmentId.ownerId === currentUser._id;
   });
 
-
-  function deleteApartment(e) {
-    e.preventDefault()
-    console.log('clicked');
-    handleClose()
-
+  const removeApartment = () => {
+    console.log(apartmentId);
     
-  }
+    deleteApartment(apartmentId);
+    handleClose();
+  };
   
 
   const history = useHistory();
@@ -66,24 +81,7 @@ export default function MyApartments() {
 
   return (
     <>
-      {
-        <Modal show={show} onHide={handleClose}>
-          <Modal.Header>
-            <Modal.Title>
-              Are you sure you want to delete this apartment?
-            </Modal.Title>
-          </Modal.Header>
-
-          <Modal.Footer>
-            <Button variant="secondary" onClick={handleClose}>
-              Close
-            </Button>
-            <Button variant="dark" onClick={deleteApartment}>
-              Delete
-            </Button>
-          </Modal.Footer>
-        </Modal>
-      }
+      {}
       {apartments && !myApartments.length && (
         <div className="noApartmentsFound">
           <h1>You do not have any apartment for rent</h1>
@@ -116,18 +114,33 @@ export default function MyApartments() {
           <div className="apartment-listing-container">
             {myApartments.map((apartment) => (
               <div className="apartment-container">
+                <Modal show={show} onHide={handleClose}>
+                  <Modal.Header closeButton>
+                    <Modal.Title>
+                      Are you sure you want to delete this apartment?
+                    </Modal.Title>
+                  </Modal.Header>
+
+                  <Modal.Footer>
+                    <Button variant="dark" onClick={removeApartment}>
+                      Delete
+                    </Button>
+                  </Modal.Footer>
+                </Modal>
+
                 <div className="apartment-top-container">
                   <h1>
                     {apartment.city} - {apartment.region}
                   </h1>
                   <div className="options-btns">
                     <div className="deleteApartment">
-                      <label>
-                        <i
-                          class="fas fa-trash-alt myTrash"
-                          onClick={handleShow}
-                        ></i>
-                      </label>
+                      <span
+                        onClick={() => {
+                          handleShow(apartment._id);
+                        }}
+                      >
+                        🗑️
+                      </span>
                     </div>
 
                     <div className="detailedInfo">
