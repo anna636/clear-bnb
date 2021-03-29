@@ -30,12 +30,12 @@ export default function MyBookings() {
     <>
       {bookings && currentUser && users && (
         <div className="bookingsWrapper">
-          <h1>My bookings</h1>
+          <h1 className="myBookingsHeader">My bookings</h1>
           <div className="bookingsComp">
             {myBookings.map((booking) => (
               <div className="bookingItem">
                 <div className="apartmentImg">
-                  <img src={booking.apartmentId.gallery[0]} />
+                  <img className="apartmentImgBookings" src={booking.apartmentId.gallery[0]} />
                 </div>
 
                 <div className="info">

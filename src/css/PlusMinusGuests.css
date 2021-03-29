@@ -7,13 +7,13 @@
   width: 500px;
 }
 
-.wrapper {
+.plusMinusWrapper {
 display: grid;
 grid-template-columns: repeat(2, auto);
 }
 
 .content-left {
-  margin: 10px;
+  margin: 0;
 }
 .buttons-right {
   margin: 0 auto;
@@ -33,15 +33,13 @@ grid-template-columns: repeat(2, auto);
   font-size: 20px
 }
 
-.content-under{
-padding: 10px;
-}
+
 
 #cancel {
   background: #fff;
   border: 0;
   text-decoration: underline;
-  margin: 20px;
+  margin-bottom: 20px;
   cursor: pointer;
 }
 
@@ -50,6 +48,7 @@ padding: 10px;
   color: #fff;
   border: 1px solid grey;
   border-radius: 10px;
+  margin-bottom: 20px;
   cursor: pointer;
 }
 
