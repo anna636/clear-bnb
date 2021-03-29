@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import React, { useContext, useEffect } from 'react'
 import { UserContext } from '../../contexts/UserContextProvider'
+import { useHistory } from "react-router-dom";
 
 import {
   UncontrolledDropdown,
@@ -47,38 +48,55 @@ a {
 `;
 
 export function Dropdown() {
+  const history = useHistory();
   const { getCurrentUser, getBeautifulFirstName, logout } = useContext(UserContext)
 
   const logoutHandler = () => {
     logout()
+    history.push("/")
+
   };
 
   return (
     <DropDownWrapper>
       <UncontrolledDropdown nav inNavbar>
         <DropdownToggle nav caret>
-          Welcome back, {getBeautifulFirstName()}!<i className="far fa-user-circle p-1"></i>
+          Welcome back, {getBeautifulFirstName()}!
+          <i className="far fa-user-circle p-1"></i>
         </DropdownToggle>
 
         <DropdownMenu right>
           <DropdownItem>
-            <LinkItem><Link to="/apartment-listing">Rent out</Link></LinkItem>
-          </DropdownItem>
-        
-          <DropdownItem>
-            <LinkItem><Link to={"/my-bookings/" + getCurrentUser()._id}>My bookings</Link></LinkItem>
+            <LinkItem>
+              <Link to="/apartment-listing">Rent out</Link>
+            </LinkItem>
           </DropdownItem>
 
           <DropdownItem>
-            <LinkItem><Link to={"/my-apartments/" + getCurrentUser()._id}>My apartments</Link></LinkItem>
+            <LinkItem>
+              <Link to={"/my-bookings/" + getCurrentUser()._id}>
+                My bookings
+              </Link>
+            </LinkItem>
+          </DropdownItem>
+
+          <DropdownItem>
+            <LinkItem>
+              <Link to={"/my-apartments/" + getCurrentUser()._id}>
+                My apartments
+              </Link>
+            </LinkItem>
           </DropdownItem>
 
           <DropdownItem divider />
           <DropdownItem onClick={logoutHandler}>
-            Logout
-              </DropdownItem>
+          
+               Logout
+            
+           
+          </DropdownItem>
         </DropdownMenu>
       </UncontrolledDropdown>
     </DropDownWrapper>
-  )
+  );
 }

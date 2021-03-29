@@ -5,6 +5,7 @@ import styled from 'styled-components'
 import { UserContext } from '../../contexts/UserContextProvider'
 
 
+
 const AccessibilityContainer = styled.div`
 display: flex;
 margin-left: 10px;
@@ -35,10 +36,14 @@ transition: all 240ms ease-in-out;
 `
 
 export function Logout() {
+
   const { getCurrentUser, logout } = useContext(UserContext)
 
   const logoutHandler = () => {
+   
     logout()
+   
+
   };
 
   useEffect(() => {

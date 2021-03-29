@@ -44,6 +44,7 @@ display: flex;
 `
 
 export function NavBar() {
+    
   const isMobile = useMediaQuery({ maxWidth: DeviceSize.mobile })
   const { getCurrentUser } = useContext(UserContext)
 
