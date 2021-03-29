@@ -1,7 +1,7 @@
 // import and rename to Router
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
-import Housing from './pages/Housing.js'
+import Housing from "./pages/Housing.js";
 import ApartmentSearch from "./pages/ApartmentSearch";
 import Home from "./pages/Home.js";
 import PlusMinusGuests from "./pages/PlusMinusGuests.js";
@@ -13,15 +13,14 @@ import Checkin from "./pages/Checkin";
 import UserContextProvider from "./contexts/UserContextProvider";
 import Confirmation from "./pages/Confirmation.js";
 import AllDestinations from "./pages/AllDestinations.js";
-import HousingContextProvider from './contexts/HousingContextProvider' //Use apartment context instead
-import ApartmentListing from './pages/ApartmentListing.js';
+import HousingContextProvider from "./contexts/HousingContextProvider"; //Use apartment context instead
+import ApartmentListing from "./pages/ApartmentListing.js";
 import AmenitiesContextProvider from "./contexts/AmenitiesContextProvider";
-import MyBookings from './pages/MyBookings.js'
-import MyApartments from './pages/MyApartments.js'
+import MyBookings from "./pages/MyBookings.js";
+import MyApartments from "./pages/MyApartments.js";
 import GetStarted from "./pages/GetStarted";
 import { NavBar } from "./components/navbar";
 import { SearchBar } from "./components/searchbar";
-// import MyPage from "./pages/MyPage";
 
 function App() {
   const page404 = () => <h1>Page not found: {window.location.pathname}</h1>;
@@ -35,8 +34,8 @@ function App() {
               <AmenitiesContextProvider>
                 <Router>
                   <header>
-                  <NavBar />
-                  <SearchBar />
+                    <NavBar />
+                    <SearchBar />
                   </header>
                   <main>
                     <Switch>
@@ -74,9 +73,13 @@ function App() {
                         exact
                         path="/housing-listing"
                         component={Housing}
-                    />
-                    
-                     <Route exact path="/all-destinations" component={AllDestinations} />
+                      />
+
+                      <Route
+                        exact
+                        path="/all-destinations"
+                        component={AllDestinations}
+                      />
 
                       <Route
                         exact
@@ -95,8 +98,6 @@ function App() {
                         component={MyApartments}
                       />
                       <Route exact path="/getstarted" component={GetStarted} />
-
-                      {/* <Route exact path="/my-page" component={MyPage} /> */}
 
                       <Route path="*" component={page404} />
                     </Switch>
