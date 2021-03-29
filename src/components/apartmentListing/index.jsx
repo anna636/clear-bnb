@@ -18,8 +18,8 @@ const Form = styled.form`
 `;
 
 const ListingDiv = styled.div`
-  margin-left: 10px;
-  width: 50%;
+  margin: 0 auto;
+  max-width: 60%;
 `;
 
 const AptWrap = styled.div`
@@ -199,35 +199,35 @@ export function CreateNewApartment() {
           </AptWrap>
         </ListingDiv>
 
-        <div className="container">
+        <div className="amenities-container">
           <h5>Amenities: </h5>
-          <div className="row">
-            {amenities.map((amenitie) => {
-              return (
-                <div className="col-sm-2" key={amenitie._id}>
-                  <label className="checkboxContainer">
-                    <i className={amenitie.icon}></i> {amenitie.name}
-                    <input
-                      value={amenitie._id}
-                      onChange={handleAmenities}
-                      name="amenities"
-                      label="Amenities"
-                      type="checkbox"
-                    />
-                    <span className="checkmark"></span>
-                  </label>
-                </div>
-              );
-            })}
-          </div>
+          {amenities.map((amenitie) => {
+            return (
+              <div className="form-check amenities-element" key={amenitie._id}>
+                <label className="checkboxContainer">
+                  <i className={amenitie.icon}></i> {amenitie.name}
+                  <input
+                    value={amenitie._id}
+                    onChange={handleAmenities}
+                    name="amenities"
+                    label="Amenities"
+                    type="checkbox"
+                    className="form-check-input"
+                  />
+                </label>
+              </div>
+            );
+          })}
         </div>
 
-        <Calendar
-          minDate={new Date()}
-          onChange={onChange}
-          value={dates}
-          selectRange={true}
-        />
+        <div className="listing-calendar">
+          <Calendar
+            minDate={new Date()}
+            onChange={onChange}
+            value={dates}
+            selectRange={true}
+          />
+        </div>
 
         <UploadImages
           handleSubmit={handleSubmit}
