@@ -8,12 +8,6 @@ import { DeviceSize } from '../responsive'
 import { MobileNavLinks } from './mobileNavLinks';
 import { UserContext } from '../../contexts/UserContextProvider'
 
-import {
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-} from 'reactstrap';
 import { Dropdown } from './dropdown';
 
 const NavbarContainer = styled.div`
@@ -44,7 +38,7 @@ display: flex;
 `
 
 export function NavBar() {
-    
+
   const isMobile = useMediaQuery({ maxWidth: DeviceSize.mobile })
   const { getCurrentUser } = useContext(UserContext)
 
