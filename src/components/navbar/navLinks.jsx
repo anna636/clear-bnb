@@ -45,7 +45,7 @@ export function NavLinks() {
       <LinkItem><Link to="/">Home</Link></LinkItem>
       <LinkItem><Link to="/housing-listing">Apartments</Link></LinkItem>
       <LinkItem><Link to="/all-destinations">Destinations</Link></LinkItem>
-      <LinkItem><Link to="#">Get started</Link></LinkItem>
+      <LinkItem><Link to="/getstarted">Get started</Link></LinkItem>
     </LinksWrapper>
   </NavLinksContainer>
 }
