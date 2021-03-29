@@ -8,6 +8,7 @@ import { useHistory } from "react-router-dom";
 import Login from "../components/Login.js";
 import Register from "../components/Register.js";
 import styled from "styled-components";
+import { Accessibility } from "../components/navbar/accessibility";
 
 
 export default function Checkin() {
@@ -19,25 +20,25 @@ export default function Checkin() {
   const [openLogin, setOpenLogin] = useState(false);
   const [openRegister, setOpenRegister] = useState(false);
   const { addCalendarDates } = useContext(BookingContext);
-  
+
 
 
   useEffect(() => {
     return () => {
-      backButtonClick() 
+      backButtonClick()
     }
   }, []);
 
   function backButtonClick() {
     if (history.action === 'POP') {
-       addCalendarDates([])
-        console.log('Back button pressed')
-        return true
-      }
-      else {
-        console.log('Not pressed')
-        return false
-      } 
+      addCalendarDates([])
+      console.log('Back button pressed')
+      return true
+    }
+    else {
+      console.log('Not pressed')
+      return false
+    }
   }
 
   // function backButtonClick() {
@@ -187,22 +188,9 @@ export default function Checkin() {
             <p className="apartmentWarning">This is your apartment</p>
           )}
 
-          {getCurrentUser() === null && (
+          {!getCurrentUser() && (
             <div className="buttonsWrapper">
-              <button
-                onClick={() =>
-                  openRegister === false ? setOpenLogin(true) : ""
-                }
-              >
-                Log in
-              </button>
-              <button
-                onClick={() =>
-                  openLogin === false ? setOpenRegister(true) : ""
-                }
-              >
-                Register
-              </button>
+              <Accessibility></Accessibility>
             </div>
           )}
         </div>
