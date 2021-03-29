@@ -46,7 +46,8 @@ export default function ApartmentContextProvider(props) {
     apartments,
     createApartment,
     getApartmentById,
-    apartment
+    apartment,
+    fetchApartments
   }
 
 
