@@ -12,37 +12,25 @@ import { useContext, useEffect, useState } from "react";
 
 export default function MyApartments() {
 
+  const history = useHistory();
+  const { id } = useParams();
 
-
-  const {
-    apartments,
-    fetchApartments,
-    deleteApartment,
-    setCurrentApartmentId,
-  } = useContext(ApartmentContext);
-
-  const handleShow = function (id) {
-     console.log('apartment id is', id);
-     setApartmentId(id);
-    setCurrentApartmentId(id);
-     setShow(true);
-   };
-
-  
-  
   const [show, setShow] = useState(false);
   const [apartmentId, setApartmentId] = useState("");
-  
-
   const handleClose = () => setShow(false);
-
-
   const { currentUser } = useContext(UserContext);
-  const { bookings } = useContext(BookingContext);
+  const { bookings, deleteBooking } = useContext(BookingContext);
+  const [showDeleteMessage, setShowDeleteMessage] = useState(false);
+  const { apartments, fetchApartments, deleteApartment, setCurrentApartmentId } = useContext(ApartmentContext);
 
+  const handleShow = function (id) {
+    setShowDeleteMessage(false)
+    setApartmentId(id);
+    setCurrentApartmentId(id);
+    setShow(true);
+  };
 
   const myApartments = apartments.filter(function (apartment) {
-
     return apartment.ownerId._id === currentUser._id;
   });
 
@@ -51,7 +39,6 @@ export default function MyApartments() {
   }, []);
 
   const apartmentAmount = apartments.filter(function (apartment) {
-   
     return apartment.ownerId._id === currentUser._id;
   });
 
@@ -67,31 +54,60 @@ export default function MyApartments() {
     return data;
   };
 
-  const rentersAmount = bookings.filter((booking) => {
-   
-    return booking.apartmentId.ownerId === currentUser._id;
-  });
-
   const removeApartment = () => {
+    let activeBookings = []
+    let oldBookings = []
+    let today = new Date()
+    const thisApartmentsBookings = bookings.filter((booking) => booking.apartmentId._id === apartmentId)
+    console.log('thisApartmentsBookings: ', thisApartmentsBookings)
 
-    bookings.map((booking) => {
-      if (booking.apartmentId._id === apartmentId) {
-        console.log('wrong alternative');
-        return
+    // If the apartment has any bookings
+    if (thisApartmentsBookings.length) {
+      thisApartmentsBookings.map((booking) => {
+        // If the booking is for a future date, put booking in activeBookings
+        if (convertStringToDate(booking.endDate) > today) {
+          setShowDeleteMessage(true)
+          console.log('wrong alternative');
+          activeBookings.push(booking)
+        }
+        // If the booking date is in the past, put in oldBookings
+        else if (convertStringToDate(booking.endDate) < today) {
+          oldBookings.push(booking)
+        }
+      })
+  }
+
+    console.log('oldBookings: ', oldBookings)
+
+    // If activeBookings is empty, ok to remove
+    if (!activeBookings.length) {
+      // If any old bookings on apartment, remove them first
+      if (oldBookings.length) {
+        for (const booking of oldBookings) {
+          deleteBooking(booking._id)
+        }
       }
-      else {
-        console.log(apartmentId);
-    
-    deleteApartment(apartmentId);
-    handleClose();
-      }
-    })
-    
+      console.log('Apartment deleted: ', apartmentId);
+      // deleteApartment(apartmentId);  // uncomment after testing
+      handleClose();
+      setShowDeleteMessage(false);
+      // refreshPage();
+    }
   };
   
 
-  const history = useHistory();
-  const { id } = useParams();
+  function refreshPage() {
+    window.location.reload();
+  }
+
+  function convertStringToDate(stringDate) {
+    let dateObject = new Date(stringDate + ' 12:00:00')
+    return dateObject
+  }
+
+  useEffect(() => {
+    fetchApartments();
+  }, []);
 
   return (
     <>
@@ -118,11 +134,6 @@ export default function MyApartments() {
                 <p>You have {apartmentAmount.length} apartments uploaded</p>
               ) : (
                 <p>You have {apartmentAmount.length} apartment uploaded</p>
-              )}
-              {rentersAmount.length > 1 ? (
-                <p>You have {rentersAmount.length} bookings</p>
-              ) : (
-                <p>You have {rentersAmount.length} booking</p>
               )}
             </div>
           </div>
@@ -196,7 +207,6 @@ export default function MyApartments() {
                       </span>
                     </h2>
                     <div className="bookings-section">
-                      {/* <h2>Bookings</h2> */}
                       {getRenters(apartment._id).map((booking) => {
                         return (
                           <div className="booking-container">
