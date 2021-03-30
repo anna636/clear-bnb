@@ -299,17 +299,15 @@
 }
 
 @media screen and (max-width: 460px) {
-  .bookingsWrapper {
+  /* .bookingsWrapper {
     margin-left: 7vw;
-  
   }
 
   .apartmentInfo{
     padding-top:1vw;
   }
 
-   .buttonWrapperBooking button {
-    
+  .buttonWrapperBooking button {
     font-size:.4rem;
   }
 
@@ -318,11 +316,12 @@
     padding:1vw;
   }
 
-
   .apartmentImgBookings{
   height:40vw;
-}
+  } */
 
+  .mybookings-top {
+    padding: 15px;
+  }
 
-  
 }
