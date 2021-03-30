@@ -36,6 +36,7 @@ export function RegisterModal(props) {
     e.preventDefault();
     if (password === '' || confirmPassword !== password) {
       setpasswordError(true);
+      return;
     } else { setpasswordError(false) }
     let newUser = {
       fullName: fullName,
