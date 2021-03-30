@@ -42,13 +42,24 @@ app.get("/rest/:model", async (req, res) => {
       .populate(["amenities", "ownerId"])
       .exec();
     
-    let availableApartments = docs.filter((apartment) => {
-      //console.log('apartment end date is', apartment.availableDates.availableEndDate);
-     // console.log("today date is", moment(new Date()).format("YYYY-MM-DD"));
-      return apartment.availableDates.availableEndDate > moment(new Date()).format("YYYY-MM-DD")
+    
+    //Finding apartment which end date is less than today date
+    let unavailableApartments = docs.filter((apartment) => {
+      return apartment.availableDates.availableEndDate < moment(new Date()).format("YYYY-MM-DD")
     })
-    console.log(availableApartments.length);
-    res.json(availableApartments);
+      
+    //Deleting these apartments from database
+    for (apartment of unavailableApartments) {
+      await model.findByIdAndDelete(apartment.id);
+      console.log('deleted apartment is', apartment);
+    }
+     
+    //Fetching updated apartments from database
+     let docs2 = await model.find().populate(["amenities", "ownerId"]).exec();
+    
+    //Sending updated apartments array to frontend
+    console.log('amount of deleted apartments is', unavailableApartments);
+    res.json(docs2);
     return;
   }
 
