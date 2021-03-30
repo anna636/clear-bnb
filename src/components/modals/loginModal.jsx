@@ -45,7 +45,7 @@ export function LoginModal(props) {
       setErrorMessage(false)
       setSuccessMsg(true)
 
-      var delayInMilliseconds = 2000; //1 second
+      var delayInMilliseconds = 1000; //1 second
 
       setTimeout(function () {
         whoAmI()
