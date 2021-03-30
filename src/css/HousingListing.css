@@ -5,12 +5,14 @@
 
 .housing-listing-container {
   display: grid;
-  grid-template-columns: auto auto auto;
+
+  grid-template-columns: repeat(3, 1fr);
   gap: 4em;
   padding: 15px;
 }
 
 .housing-object {
+  
   cursor: pointer;
   border-radius: 15px;
   box-shadow: 0 0 20px 5px rgba(179, 179, 179, 0.3);
@@ -26,6 +28,8 @@
 
 .housing-info-upper {
   display: flex;
+  flex-direction: column;
+  text-align: center;
   justify-content: space-between;
   align-items: center;
   padding: 10px;
@@ -34,9 +38,11 @@
 
 .renter {
   display: flex;
+  margin-top:2vw;
   align-items: center;
   gap: .5em;
   margin-bottom: .5em;
+ 
 }
 
 .housing-info-bottom {
@@ -62,8 +68,45 @@
   margin: 0.5rem 0 0.5rem 0;
 }
 
+
+
 .amenities {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: 1em;
+  margin-top:3vw;
+  margin-bottom:2vw;
+  align-self: center;
+ 
   padding: 2px 10px 0 10px;
+}
+
+@media screen and (max-width:1115px){
+  .housing-listing-container {
+  grid-template-columns: repeat(2, 1fr);
+ 
+}
+.amenities{
+  margin-top: 5vw;
+    margin-bottom: 4vw;
+}
+}
+@media screen and (max-width:650px){
+  .housing-listing-container {
+  grid-template-columns: repeat(1, 1fr);
+ 
+}
+
+.amenities h6{
+  font-size:.8rem;
+}
+
+
+
+}
+@media screen and (max-width:370px){
+  .housing-listing-container {
+  
+ 
+}
 }
