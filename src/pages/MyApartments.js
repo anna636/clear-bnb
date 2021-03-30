@@ -47,9 +47,11 @@ export default function MyApartments() {
 
   const getRenters = (housingId) => {
     let data = bookings.filter((booking) => {
+      console.log(booking.apartmentId);
       return booking.apartmentId.ownerId === currentUser._id;
     });
     data = data.filter((booking) => {
+      
       return booking.apartmentId._id === housingId;
     });
     return data;
@@ -96,7 +98,7 @@ export default function MyApartments() {
   return (
     <>
      
-      {Boolean(apartments && !myApartments.length) && (
+      {Boolean(apartments && !myApartments.length && currentUser) && (
         <div className="noApartmentsFound">
           <h1>You do not have any apartments for rent</h1>
           <p>Would you like to post a new apartment?</p>
@@ -108,7 +110,7 @@ export default function MyApartments() {
           </button>
         </div>
       )}
-      {Boolean(apartments && currentUser && myApartments !== null && bookings !== null  ) && (
+      {Boolean(apartments && currentUser && myApartments.length !== 0 && bookings !== null  ) && (
         <div className="my-apartments-container">
           <div className="my-apartments-top">
             <h1>My apartments</h1>

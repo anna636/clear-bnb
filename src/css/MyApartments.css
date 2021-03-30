@@ -24,6 +24,29 @@ p {
   font-weight: 900;
 }
 
+.noApartmentsFound{
+  text-align: center;
+  margin-top:3vw;
+}
+
+.rentOutApartmentButton{
+  margin-top:2vw;
+   outline: none;
+  border: 0;
+  border-radius: 15px;
+  background: black;
+  color: white;
+  padding: 1vh 3vh;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.rentOutApartmentButton:hover{
+    background: rgba(128, 128, 128, 0.548);
+  color: gray;
+}
+
 .apartment-listing-container {
   width: 75%;
   margin: 20px auto;
