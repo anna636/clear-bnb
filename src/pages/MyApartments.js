@@ -28,13 +28,17 @@ export default function MyApartments() {
     setCurrentApartmentId,
   } = useContext(ApartmentContext);
 
-  const handleShow = function (id) {
-     console.log('apartment id is', id);
-     setApartmentId(id);
-    setCurrentApartmentId(id);
-     setShow(true);
-   };
+  useEffect(() => {
+    fetchApartments();
+  }, []);
 
+
+  const handleShow = function (id) {
+    console.log('apartment id is', id);
+    setApartmentId(id);
+    setCurrentApartmentId(id);
+    setShow(true);
+  };
 
   const myApartments = apartments.filter(function (apartment) {
     return apartment.ownerId._id === currentUser._id;
@@ -47,11 +51,10 @@ export default function MyApartments() {
 
   const getRenters = (housingId) => {
     let data = bookings.filter((booking) => {
-      console.log(booking.apartmentId);
       return booking.apartmentId.ownerId === currentUser._id;
     });
     data = data.filter((booking) => {
-      
+
       return booking.apartmentId._id === housingId;
     });
     return data;
@@ -79,25 +82,18 @@ export default function MyApartments() {
 
     // If checkBookings is empty, ok to remove
     if (!checkBookings.length) {
-        console.log(apartmentId);
-        deleteApartment(apartmentId);
-        handleClose();
-        // fetchApartments();  // check!!
+      console.log(apartmentId);
+      deleteApartment(apartmentId);
+      handleClose();
+      // fetchApartments();  // check!!
     }
-    
+
   };
 
   let showDeleteMessage = false;
-
-  useEffect(() => {
-    fetchApartments();
-  }, []);
-
-
-
   return (
     <>
-     
+
       {Boolean(apartments && !myApartments.length && currentUser) && (
         <div className="noApartmentsFound">
           <h1>You do not have any apartments for rent</h1>
@@ -110,7 +106,7 @@ export default function MyApartments() {
           </button>
         </div>
       )}
-      {Boolean(apartments && currentUser && myApartments.length !== 0 && bookings !== null  ) && (
+      {Boolean(apartments && currentUser && myApartments.length !== 0 && bookings !== null) && (
         <div className="my-apartments-container">
           <div className="my-apartments-top">
             <h1>My apartments</h1>
@@ -166,7 +162,7 @@ export default function MyApartments() {
                     <div className="detailedInfo">
                       <Link to={"/details/" + apartment._id}>
                         <label>details: </label>
-                        <i class="far fa-arrow-alt-circle-right myArrow"></i>
+                        <i className="far fa-arrow-alt-circle-right myArrow"></i>
                       </Link>
                     </div>
                   </div>

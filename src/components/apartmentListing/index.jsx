@@ -130,7 +130,7 @@ export function CreateNewApartment() {
 
     console.log(values, "new apartment ");
     createApartment(values);
-    // history.push("/my-apartments/" + getCurrentUser()._id);
+    history.push("/my-apartments/" + getCurrentUser()._id);
   }
 
   return (
@@ -191,7 +191,7 @@ export function CreateNewApartment() {
               name="pricePerDay"
               type="number"
               label="PricePerDay"
-              placeholder="Price/Day:"
+              placeholder="Price/Day (EUR):"
             />
           </AptWrap>
         </ListingDiv>
