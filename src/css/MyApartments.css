@@ -338,10 +338,7 @@ hr {
 }
 
 @media screen and (max-width: 1200px) {
-  /* .apartmentItem {
-    width: 40vh;
-    height: 60vh;
-  } */
+ 
 
   .apartment-listing-container {
     width: 100%;
@@ -370,12 +367,7 @@ hr {
  
 }
 @media screen and (max-width: 1000px) {
-  /* .apartmentItem {
-  width: 30vh;
-  height: 40vh;
-  font-size:10px;
-  } */
-
+  
   .apartment-listing-container {
     width: 100%;
     padding: 30px;
@@ -384,6 +376,14 @@ hr {
 
   .image-gallery {
     height: 325px;
+  }
+
+  .my-apartments-container  p{
+    font-size: .7rem !important;
+  }
+
+  .apartmentsDetails{
+font-size: .7rem !important;
   }
 
   .availability-section > p {
@@ -404,24 +404,7 @@ hr {
   
 }
 @media screen and (max-width: 800px) {
-  /* .apartmentItem {
-    display: flex;
-    flex-direction: column;
-    width: 60vh;
-    height: 60vh;
-    font-size:15px;
- 
-  }
-
-  .apartmentsComp{
-    display: flex;
-    flex-direction: column;
-  }
-
-  .rentOutImage {
-    width:30vh;
-  } */
-
+  
   .upper-info {
     width: 100%;
   }
@@ -456,18 +439,8 @@ hr {
 }
 
 
-@media screen and (max-width: 530px) {
-  /*  .apartmentItem {
-  width: 20vh;
-  height: 40vh;
-  font-size:12px;
- 
-  }
+@media screen and (max-width: 680px) {
 
-  .apartmentsHeader{
-    width:70%;
-    font-size: 15px;
-  } */
 
   .my-apartments-top {
     padding: 20px 20px 0px 20px;
@@ -483,24 +456,43 @@ hr {
   }
 
   .image-gallery {
-    height: 250px;
+    height: 30vw;
+    width:80vw;
   }
 
+ 
   .availability-section > p {
     margin-bottom: 8px;
   }
 
   .bookings-section {
     grid-template-columns: 1fr;
+     width: 80%;  
   }
 
-  .booking-information {
-    width: 100%;
-  }
+
+
+.booking-image{
+  display:none;
+}
 
   .wrap {
     padding: 6px;
 
+  }
+
+  .myApartmentsHeader{
+    font-size:1.3rem;
+  }
+}
+
+@media screen and  (max-width: 375px){
+  .myApartmentsHeader{
+    font-size:.8rem;
+  }
+
+  .detailedInfo{
+    margin-left:45vw;
   }
 }
 

@@ -95,7 +95,6 @@ export default function MyApartments() {
 
   return (
     <>
-     
       {Boolean(apartments && !myApartments.length) && (
         <div className="noApartmentsFound">
           <h1>You do not have any apartment for rent</h1>
@@ -108,10 +107,12 @@ export default function MyApartments() {
           </button>
         </div>
       )}
-      {Boolean(apartments && currentUser && myApartments !== null && bookings !== null  ) && (
+      {Boolean(
+        apartments && currentUser && myApartments !== null && bookings !== null
+      ) && (
         <div className="my-apartments-container">
           <div className="my-apartments-top">
-            <h1>My apartments</h1>
+            <h1 className="myApartmentsHeader">My apartments</h1>
             <div className="upper-info">
               {apartmentAmount.length > 1 ? (
                 <p>You have {apartmentAmount.length} apartments uploaded</p>
@@ -143,7 +144,7 @@ export default function MyApartments() {
                 </Modal>
 
                 <div className="apartment-top-container">
-                  <h1>
+                  <h1 className="myApartmentsHeader">
                     {apartment.city} - {apartment.region}
                   </h1>
                   <div className="options-btns">
@@ -159,7 +160,7 @@ export default function MyApartments() {
 
                     <div className="detailedInfo">
                       <Link to={"/details/" + apartment._id}>
-                        <label>details: </label>
+                        <label  className="apartmentsDetails">details: </label>
                         <i class="far fa-arrow-alt-circle-right myArrow"></i>
                       </Link>
                     </div>
@@ -178,7 +179,7 @@ export default function MyApartments() {
                 </div>
                 <div className="apartment-information">
                   <div>
-                    <h2>Details</h2>
+                    <h2  className="myApartmentsHeader">Details</h2>
                     <hr />
                     {/* <p>{apartment._id}</p>
                     <p>{apartment.description}</p> */}
@@ -188,7 +189,7 @@ export default function MyApartments() {
                       <p>{apartment.availableDates.availableEndDate}</p>
                     </div>
                     <hr />
-                    <h2 className="bookings-title">
+                    <h2 className="bookings-title   myApartmentsHeader">
                       Bookings
                       <span className="booking-amount">
                         ({getRenters(apartment._id).length})
