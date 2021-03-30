@@ -58,7 +58,7 @@ app.get("/rest/:model", async (req, res) => {
      let docs2 = await model.find().populate(["amenities", "ownerId"]).exec();
     
     //Sending updated apartments array to frontend
-    console.log('amount of deleted apartments is', unavailableApartments);
+    console.log('amount of deleted apartments is', unavailableApartments.length);
     res.json(docs2);
     return;
   }
