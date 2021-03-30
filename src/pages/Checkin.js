@@ -27,29 +27,12 @@ export default function Checkin() {
   function backButtonClick() {
     if (history.action === 'POP') {
       addCalendarDates([])
-      console.log('Back button pressed')
       return true
     }
     else {
-      console.log('Not pressed')
       return false
     }
   }
-
-  // function backButtonClick() {
-  //   console.log('Here')
-  //   history.listen((action) => {
-  //     if (action === 'POP') {
-  //       console.log('Back button pressed')
-  //       return true
-  //     }
-  //     else {
-  //       console.log('Not pressed')
-  //       return false
-  //     }
-  //   })
-  // }
-
 
   //Taking choosen dates from calendar
   //service fee is 15% of total price + 5 euros for every new guest
@@ -87,7 +70,6 @@ export default function Checkin() {
     updateTotalPrice(totalPrice);
     addBooking(newBooking);
     updateApartmentDates(bookingInfo);
-    console.log("new booking is", newBooking);
 
     history.push("/confirmation/" + apartment._id);
   }
