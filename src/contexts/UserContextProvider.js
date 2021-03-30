@@ -26,8 +26,8 @@ export default function UserContextProvider(props) {
       headers: { "content-type": "application/json" },
       body: JSON.stringify(user),
     });
-
     res = await res.json();
+    return res;
   };
 
   const login = async (user) => {

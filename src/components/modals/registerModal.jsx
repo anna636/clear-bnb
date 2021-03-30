@@ -15,7 +15,7 @@ export function RegisterModal(props) {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
-  function createNewUser(e) {
+  async function createNewUser(e) {
     e.preventDefault();
 
     if (confirmPassword !== password) {
@@ -26,9 +26,8 @@ export function RegisterModal(props) {
         email: email,
         password: password,
       };
-      console.log(newUser);
-      registerUser(newUser)
-
+      let response = await registerUser(newUser)
+      console.log(response)
     }
   }
 
