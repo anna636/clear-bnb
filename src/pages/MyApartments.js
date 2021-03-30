@@ -162,7 +162,7 @@ export default function MyApartments() {
                   </h1>
                   <div className="options-btns">
                     <div className="deleteApartment">
-                      <span
+                      <span className="apartmentTrash"
                         onClick={() => {
                           handleShow(apartment._id);
                         }}
