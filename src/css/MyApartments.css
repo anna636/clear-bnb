@@ -28,6 +28,22 @@ p {
   text-align: center;
   margin-top:3vw;
 }
+.custom-modal-btn{
+outline: none;
+  border: 0;
+  border-radius: 15px;
+  background: black;
+  color: white;
+  padding: 1vh 3vh;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.custom-modal-btn:hover{
+  background: rgba(128, 128, 128, 0.548);
+  color: gray;
+}
 
 .rentOutApartmentButton{
   margin-top:2vw;

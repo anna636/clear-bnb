@@ -131,14 +131,14 @@ export default function MyApartments() {
             {myApartments.map((apartment) => (
               <div className="apartment-container">
                 <Modal show={show} onHide={handleClose}>
-                  <Modal.Header closeButton>
+                  <Modal.Header closeButton >
                     <Modal.Title>
                       Are you sure you want to delete this apartment?
                     </Modal.Title>
                   </Modal.Header>
 
                   <Modal.Footer>
-                    <Button variant="dark" onClick={removeApartment}>
+                    <Button className="custom-modal-btn" variant="dark" onClick={removeApartment}>
                       Yes, delete
                     </Button>
                     <>{showDeleteMessage &&
