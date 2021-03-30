@@ -1,11 +1,10 @@
 import '../../css/HomesHomepageDisplay.css'
-import homes from './homestest.json'
 import { useContext } from 'react'
-import { HousingContext } from '../../contexts/HousingContextProvider'
+import { ApartmentContext } from '../../contexts/ApartmentContextProvider'
 import { Link } from 'react-router-dom'
 
 export default function HomesHomepageDisplay() {
-  const { apartments } = useContext(HousingContext);
+  const { apartments } = useContext(ApartmentContext);
 
   const card = home => (
     <div className="home-comp-wrapper" key={Math.random()}>
