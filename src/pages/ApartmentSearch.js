@@ -35,9 +35,10 @@ export default function ApartmentSearch() {
 
     // First check if picked dates are within apartments available dates
     for (const apartment of filteredByLocationArray) {
-      if (apartment.availableDates.length) {
-        let availableDatesArray = getDates(apartment.availableDates[0].availableStartDate, apartment.availableDates[0].availableEndDate)
+      if (apartment.availableDates) {
 
+        let availableDatesArray = getDates(apartment.availableDates.availableStartDate, apartment.availableDates.availableEndDate)
+        console.log('availableDatesArray: ', availableDatesArray)
         for (const date of calendarDates) {
           if (!availableDatesArray.includes(date)) {
             unavailableApartments.push(apartment)
@@ -45,6 +46,7 @@ export default function ApartmentSearch() {
           }
         }
       }
+      else { unavailableApartments.push(apartment) }
     }
 
     // Then check if picked dates are the same as any of the apartments booked dates
