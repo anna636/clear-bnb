@@ -3,6 +3,14 @@ import { Modal, ModalBody, ModalFooter, Button } from 'reactstrap';
 import { useHistory } from "react-router-dom";
 import { useState, useContext, useEffect } from 'react'
 import { UserContext } from '../../contexts/UserContextProvider'
+import '../../css/Modals.css'
+
+const ErrorMessage = styled.span`
+  display: flex;
+  justify-content: center;
+  background: red;
+  color: white;
+  `
 
 export function RegisterModal(props) {
   const {
@@ -14,27 +22,41 @@ export function RegisterModal(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [passwordError, setpasswordError] = useState(false)
+  const [errorMsg, setErrorMsg] = useState(false)
+
+
+
 
   async function createNewUser(e) {
     e.preventDefault();
-
-    if (confirmPassword !== password) {
-      alert("Password is not matching");
+    if (password === '' || confirmPassword !== password) {
+      setpasswordError(true);
+    }
+    let newUser = {
+      fullName: fullName,
+      email: email,
+      password: password,
+    };
+    let response = await registerUser(newUser)
+    if (response === 'error!') {
+      setErrorMsg(true)
     } else {
-      let newUser = {
-        fullName: fullName,
-        email: email,
-        password: password,
-      };
-      let response = await registerUser(newUser)
-      console.log(response)
+      return;
+    }
+  }
+
+
+  const formValidator = () => {
+    if (password === '' || email === '' || fullName === '' || confirmPassword === '') {
+      return true;
+    } else {
+      return false;
     }
   }
 
   return (
     <Modal isOpen={modal} toggle={toggle}>
-
-
       <div className="modal-header">
         <h5 className="modal-title">Register a new user</h5>
         <button
@@ -92,11 +114,12 @@ export function RegisterModal(props) {
               />
             </div>
           </form>
+          {passwordError && <ErrorMessage>Please enter correct password</ErrorMessage>}
+          {errorMsg && <ErrorMessage>Choose another email.</ErrorMessage>}
         </div>
-
       </ModalBody>
       <ModalFooter>
-        <Button color="primary" onClick={createNewUser}>Register</Button>{' '}
+        <button onClick={(e) => createNewUser(e)} disabled={formValidator()} className="registerButton">Register</button>
         <Button color="secondary" onClick={toggle}>Cancel</Button>
       </ModalFooter>
     </Modal>
