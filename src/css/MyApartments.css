@@ -18,12 +18,8 @@ p {
 .upper-info {
   margin: 2px 4px;
   width: 25%;
-  /* border: 1px solid lightgray; */
   border-left: 4px solid rgb(0, 82, 0);
-  /* border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px; */
   padding: 5px 10px;
-  /* font-weight: 100; */
   font-size: 12px;
 }
 
@@ -163,7 +159,6 @@ hr {
   display: flex;
   padding: 5px;
   margin: 5px;
-  /* border: 1px solid lightgray; */
   box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px;
   border-radius: 15px;
   cursor: pointer;
