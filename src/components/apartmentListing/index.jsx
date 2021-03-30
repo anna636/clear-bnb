@@ -211,7 +211,7 @@ export function CreateNewApartment() {
                       type="checkbox"
                       className="form-check-input"
                     />
-                    <span> <i className={amenitie.icon}></i> {amenitie.name} </span>
+                    <span> {amenitie.name} <i className={amenitie.icon}></i></span>
                   </label>
                 </div>
               );

@@ -128,13 +128,6 @@ p {
   color: gray;
 }
 
-.close{
-  border:0;
-  outline:none;
-  background-color: white;
-  margin-bottom:10vw;
-}
-
 .nightsAndPrice {
   width: 60vh;
 }

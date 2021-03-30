@@ -21,7 +21,7 @@ export default function LocationCards() {
   }
 
   let card = location => (
-    <div className="singleCard" key={location.place}>
+    <div className="card" key={location.place}>
       <img src={location.url}
         alt=""
         className="location-img"
