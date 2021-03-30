@@ -88,10 +88,10 @@ export default function MyApartments() {
         }
       }
       console.log('Apartment deleted: ', apartmentId);
-      // deleteApartment(apartmentId);  // uncomment after testing
+      deleteApartment(apartmentId);
       handleClose();
       setShowDeleteMessage(false);
-      // refreshPage();
+      refreshPage();
     }
   };
   
