@@ -64,7 +64,7 @@ export function RegisterModal(props) {
   }
 
   const formValidator = () => {
-    if (password === '' || email === '' || fullName === '' || confirmPassword === '') {
+    if (password === '' || email === '' || fullName === '' || confirmPassword === '' || !email.includes('@') || password !== confirmPassword) {
       return true;
     } else {
       return false;
