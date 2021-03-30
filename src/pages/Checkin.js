@@ -1,6 +1,6 @@
 import "../css/Checkin.css";
 import { useParams } from "react-router-dom";
-import { useContext, useState, useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { ApartmentContext } from "../contexts/ApartmentContextProvider";
 import { BookingContext } from "../contexts/BookingContextProvider";
 import { UserContext } from "../contexts/UserContextProvider";
