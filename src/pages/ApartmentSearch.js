@@ -28,17 +28,20 @@ export default function ApartmentSearch() {
     return dateArray;
   }
 
+  function convertStringToDate(stringDate) {
+    let dateObject = new Date(stringDate + ' 12:00:00')
+    return dateObject
+  }
 
   function filterByLocationAndDates(location, allApartments) {
     let filteredByLocationArray = allApartments.filter((apartment) => apartment.city.toLowerCase() === location || apartment.region.toLowerCase() === location)
     let unavailableApartments = []
+    let today = new Date()
 
-    // First check if picked dates are within apartments available dates
+    // First check if picked dates are within apartments available dates and that they're not from the past
     for (const apartment of filteredByLocationArray) {
-      if (apartment.availableDates) {
-
+      if ((apartment.availableDates) && (convertStringToDate(apartment.availableDates.availableEndDate) > today)) {
         let availableDatesArray = getDates(apartment.availableDates.availableStartDate, apartment.availableDates.availableEndDate)
-        console.log('availableDatesArray: ', availableDatesArray)
         for (const date of calendarDates) {
           if (!availableDatesArray.includes(date)) {
             unavailableApartments.push(apartment)
