@@ -60,7 +60,6 @@ export default function BookingContextProvider(props) {
       method: "DELETE",
     });
     res = await res.json();
-    console.log('booking with id ${bookingId} has been deleted');
   };
 
   const values = {

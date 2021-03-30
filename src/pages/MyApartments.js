@@ -59,7 +59,6 @@ export default function MyApartments() {
     let oldBookings = []
     let today = new Date()
     const thisApartmentsBookings = bookings.filter((booking) => booking.apartmentId._id === apartmentId)
-    console.log('thisApartmentsBookings: ', thisApartmentsBookings)
 
     // If the apartment has any bookings
     if (thisApartmentsBookings.length) {
@@ -67,7 +66,6 @@ export default function MyApartments() {
         // If the booking is for a future date, put booking in activeBookings
         if (convertStringToDate(booking.endDate) > today) {
           setShowDeleteMessage(true)
-          console.log('wrong alternative');
           activeBookings.push(booking)
         }
         // If the booking date is in the past, put in oldBookings
@@ -77,8 +75,6 @@ export default function MyApartments() {
       })
   }
 
-    console.log('oldBookings: ', oldBookings)
-
     // If activeBookings is empty, ok to remove
     if (!activeBookings.length) {
       // If any old bookings on apartment, remove them first
@@ -87,7 +83,6 @@ export default function MyApartments() {
           deleteBooking(booking._id)
         }
       }
-      console.log('Apartment deleted: ', apartmentId);
       deleteApartment(apartmentId);
       handleClose();
       setShowDeleteMessage(false);
