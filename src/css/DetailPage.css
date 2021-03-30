@@ -1,89 +1,139 @@
-.Details{
-    margin-top: 50px;
-    text-align: center;
+.Details {
+  margin-top: 50px;
+  text-align: center;
 }
-p{
-    margin-top: 20px;
+p {
+  margin-top: 20px;
 }
-.Detail-img{
-    display: inline;
-    /*width: 800px;
+.Detail-img {
+  display: inline;
+  /*width: 800px;
     height: 600px;*/
 
-     width: 60vw;
-    height: 35vw;
-    border-radius: 15px;
-    cursor: pointer;
-    transition: 0.2s ease-in-out;
+  width: 60vw;
+  height: 35vw;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
 }
-.description-text{
-    margin-top: 50px;
-    width: 45vw;
-    margin-left: 27vw;
+.description-text {
+  margin-top: 50px;
+  width: 45vw;
+  margin-left: 27vw;
 }
-.next-btn-details{
-    width: 180px;
-    height: 45px;
-    padding: 4px 0;
-    border-radius: 3px;
-    margin-top: 3vh;
-    outline: none;
-    border: 0;
-    background: black;
-    color: white;
-    padding: 1vh 3vh;
-    font-size: 15px;
-    font-weight: bold;
+.next-btn-details {
+  width: 180px;
+  height: 45px;
+  padding: 4px 0;
+  border-radius: 3px;
+  margin-top: 3vh;
+  outline: none;
+  border: 0;
+  background: black;
+  color: white;
+  padding: 1vh 3vh;
+  font-size: 15px;
+  font-weight: bold;
 }
 .next-btn-details:hover {
-    cursor: pointer;
-    background: #3e3f41;
-    transition: all 0.2s ease 0s;
+  cursor: pointer;
+  background: #3e3f41;
+  transition: all 0.2s ease 0s;
 }
-.btn-div-details{
-    padding: 40px;
+.btn-div-details {
+  padding: 40px;
 }
 
 .details-icons {
-    margin: 4vh;
-    display: grid;
-    justify-content: center;
+  margin: 4vh;
+  display: grid;
+  justify-content: center;
 }
 
+.carousel-control-next-icon {
+  background-image: url("../imgs/arrow-next.png");
+}
+.carousel-control-prev-icon {
+  background-image: url("../imgs/arrow-previous.png");
+}
+.carousel-control-next, .carousel-control-prev{
+ height:8vw;
+ width:20%;
+ margin-top:15vw;
+}
+
+
 .details-calendar {
-    margin-top: 10vh;
-      display: grid;
+  margin-top: 10vh;
+  display: grid;
   align-items: center;
   justify-content: center;
 }
 
-@media only screen and (max-width:830px) {
-    .description-text{
-        margin-left:0px;
-        width:100%;
-        font-size: 1.3rem;
-        padding-left:2vw;
-        padding-right:2vw;
+@media only screen and (max-width: 830px) {
+  .description-text {
+    margin-left: 0px;
+    width: 100%;
+    font-size: 1.3rem;
+    padding-left: 2vw;
+    padding-right: 2vw;
+  }
 
-    }
+  .Detail-img {
+    width: 80vw;
+    height: 50vw;
+  }
 
-    .Detail-img{
-        width:80vw;
-        height:50vw;
-    }
+  .carousel-control-next, .carousel-control-prev{
+
+ width:13%;
+ margin-top:20vw;
 }
-@media only screen and (max-width:630px) {
-    .description-text{
-      
-        font-size: .8rem;
-    }
 
-    .additionalInfo{
-        font-size: .9rem !important;
-    }
+.carousel-control-next-icon, .carousel-control-prev-icon{
+    width:1.5rem;
+    height:1.5rem;
+}
 
-    .amenities{
-        font-size: .9rem !important;
-    }
-   
+
+}
+@media only screen and (max-width: 630px) {
+  .description-text {
+    font-size: 0.8rem;
+  }
+
+  .additionalInfo {
+    font-size: 0.9rem !important;
+  }
+
+  .amenities {
+    font-size: 0.9rem !important;
+  }
+
+  
+  .carousel-control-next, .carousel-control-prev{
+
+ width:10%;
+ margin-top:25vw;
+}
+
+.carousel-control-next-icon, .carousel-control-prev-icon{
+    width:1rem;
+    height:1rem;
+}
+
+}
+
+@media only screen and (max-width: 310px) {
+ .carousel-control-next, .carousel-control-prev{
+
+ width:5%;
+ margin-top:25vw;
+}
+
+.carousel-control-next-icon, .carousel-control-prev-icon{
+    width:.6rem;
+    height:.6rem;
+}
+
 }
