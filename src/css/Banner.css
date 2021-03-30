@@ -38,6 +38,7 @@ h2, h4, button {
   border-radius: 15px;
   padding: 4px 10px;
   cursor: pointer;
+  margin-top:2vw;
 }
 
 .banner-info-btn:hover {

@@ -32,7 +32,7 @@ export default function AllDestinations() {
 
   let card = location => (
     <div className="destinationsCard" key={location}>
-      <p onClick={() => search(location.toLowerCase())}>{location}</p>
+      <p className="locationAllDestinations" onClick={() => search(location.toLowerCase())}>{location}</p>
     </div>
   );
 
