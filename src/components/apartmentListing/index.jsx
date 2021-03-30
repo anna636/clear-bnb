@@ -107,7 +107,7 @@ export function CreateNewApartment() {
       values.maxGuests > 15 ||
       values.maxGuests < 1 ||
       values.pricePerDay < 1 ||
-      values.pricePerDay > 1000 ||
+      values.pricePerDay > 1500 ||
       !dates ||
       (handleSubmit().length < 5)
     ) {
@@ -191,7 +191,7 @@ export function CreateNewApartment() {
               name="pricePerDay"
               type="number"
               label="PricePerDay"
-              placeholder="Price/Day (EUR):"
+              placeholder="Price/Day (1-1500 EUR):"
             />
           </AptWrap>
         </ListingDiv>

@@ -26,16 +26,12 @@ export function RegisterModal(props) {
         email: email,
         password: password,
       };
-      console.log(newUser);
       registerUser(newUser)
-
     }
   }
 
   return (
     <Modal isOpen={modal} toggle={toggle}>
-
-
       <div className="modal-header">
         <h5 className="modal-title">Register a new user</h5>
         <button
