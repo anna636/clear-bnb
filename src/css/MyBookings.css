@@ -229,23 +229,42 @@
   align-items: center;
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1600px) {
   .mybookings-listing {
     grid-template-columns: 1fr 1fr;
     padding: 10px;
   }
 }
 
-
-@media screen and (max-width: 1080px) {
+@media screen and (max-width: 1200px) {
   .mybookings-listing {
     grid-template-columns: 1fr 1fr;
     padding: 10px;
   }
 
   .imgslider-btns {
-    width: 325px;
+    width: 350px;
+    padding: 0 15px 0 5px;
   }
+}
+
+@media screen and (max-width: 1080px) {
+  .mybookings-listing {
+    grid-template-columns: 1fr;
+    padding: 10px 50px;
+  }
+
+  .upper-info {
+    width: 100%;
+  }
+
+  .booking-object-details {
+    width: 50%;
+  }
+
+  /* .imgslider-btns {
+    width: 50%;
+  } */
 }
 
 @media screen and (max-width: 800px) {
@@ -311,7 +330,8 @@
   }
 
   .imgslider-btns {
-    padding: 0 5px 0 5px;
+    width: 100%;
+    padding: 0 13px 0 5px;
   }
 }
 
@@ -344,6 +364,7 @@
 
   .imgslider-btns {
     width: 100%;
+    padding-right: 13px;
   }
 
 }
