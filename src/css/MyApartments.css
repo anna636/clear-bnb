@@ -235,7 +235,6 @@ p {
   height: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 250px;
   gap: 0.25em;
 }
 
@@ -339,30 +338,78 @@ hr {
 }
 
 @media screen and (max-width: 1200px) {
-  .apartmentItem {
-  width: 40vh;
-  height: 60vh;
- 
+  /* .apartmentItem {
+    width: 40vh;
+    height: 60vh;
+  } */
+
+  .apartment-listing-container {
+    width: 100%;
+    padding: 35px;
+    margin: 0;
   }
 
+  .image-gallery {
+    height: 400px;
+  }
+
+  .availability-section > h4 {
+    font-size: 16px;
+    font-weight: 900;
+    margin-left: 4px;
+  }
+
+  .availability-section > p {
+    margin-bottom: 7px;
+  }
+
+  .bookings-section {
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0.5em;
+  }
  
 }
 @media screen and (max-width: 1000px) {
-  .apartmentItem {
+  /* .apartmentItem {
   width: 30vh;
   height: 40vh;
   font-size:10px;
+  } */
+
+  .apartment-listing-container {
+    width: 100%;
+    padding: 30px;
+    margin: 0;
   }
 
+  .image-gallery {
+    height: 325px;
+  }
+
+  .availability-section > p {
+    margin-bottom: 7px;
+  }
+
+  .booking-container {
+    margin: 0;
+  }
+
+  .booking-information {
+    width: 100%;
+  }
+
+  .bookings-section {
+    grid-template-columns: 1fr 1fr;
+  }
   
 }
 @media screen and (max-width: 800px) {
-  .apartmentItem {
+  /* .apartmentItem {
     display: flex;
     flex-direction: column;
-  width: 60vh;
-  height: 60vh;
-  font-size:15px;
+    width: 60vh;
+    height: 60vh;
+    font-size:15px;
  
   }
 
@@ -372,14 +419,45 @@ hr {
   }
 
   .rentOutImage {
-    
     width:30vh;
+  } */
+
+  .upper-info {
+    width: 100%;
+  }
+
+  .apartment-listing-container {
+    width: 100%;
+    padding: 25px;
+  }
+
+  .image-gallery {
+    margin-bottom: 5px;
+    height: 275px;
+  }
+  
+  .availability-section > p {
+    margin-bottom: 7px;
+  }
+
+  .dates-container > h6 {
+    font-size: 11px;
+    font-weight: 900;
+  }
+
+  .wrap {
+    padding: 4px 2px;
+    border-radius: 8px;
+  }
+
+  .bookings-section {
+    grid-template-columns: 1fr 1fr;
   }
 }
 
 
 @media screen and (max-width: 530px) {
-   .apartmentItem {
+  /*  .apartmentItem {
   width: 20vh;
   height: 40vh;
   font-size:12px;
@@ -389,6 +467,40 @@ hr {
   .apartmentsHeader{
     width:70%;
     font-size: 15px;
+  } */
+
+  .my-apartments-top {
+    padding: 20px 20px 0px 20px;
+  }
+
+  .upper-info {
+    width: 100%;
+  }
+
+  .apartment-listing-container {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .image-gallery {
+    height: 250px;
+  }
+
+  .availability-section > p {
+    margin-bottom: 8px;
+  }
+
+  .bookings-section {
+    grid-template-columns: 1fr;
+  }
+
+  .booking-information {
+    width: 100%;
+  }
+
+  .wrap {
+    padding: 6px;
+
   }
 }
 
