@@ -149,8 +149,10 @@ export default function MyApartments() {
 
                   <Modal.Footer>
                     <Button variant="dark" onClick={removeApartment}>
-                      Delete
+                      Yes, Delete
                     </Button>
+                    { showDeleteMessage &&
+                      <label>You can't delete an apartment with active bookings</label>}
                   </Modal.Footer>
                 </Modal>
 
@@ -192,8 +194,6 @@ export default function MyApartments() {
                   <div>
                     <h2  className="myApartmentsHeader">Details</h2>
                     <hr />
-                    {/* <p>{apartment._id}</p>
-                    <p>{apartment.description}</p> */}
                     <div className="availability-section">
                       <h4>Availability:</h4>
                       <p>{apartment.availableDates.availableStartDate}</p>-
