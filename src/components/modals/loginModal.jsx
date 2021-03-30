@@ -3,6 +3,22 @@ import { Modal, ModalBody, ModalFooter, Button } from 'reactstrap';
 import { useState, useContext, useEffect } from 'react'
 import { UserContext } from '../../contexts/UserContextProvider'
 import '../../css/LoginRegister.css'
+import styled from 'styled-components'
+
+
+const ErrorMessage = styled.span`
+  display: flex;
+  justify-content: center;
+  background: red;
+  color: white;
+  `
+
+const SuccessMessage = styled.span`
+  display: flex;
+  justify-content: center;
+  background: green;
+  color: white;
+`
 
 export function LoginModal(props) {
   const {
@@ -10,16 +26,35 @@ export function LoginModal(props) {
   } = props;
 
   const { login } = useContext(UserContext);
+
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [errorMessage, setErrorMessage] = useState(false)
+  const [successMsg, setSuccessMsg] = useState(false)
 
-  function logIn() {
+  async function logIn() {
     let user = {
       email: email,
       password: password
     }
-    login(user)
+    const response = await login(user)
+    if (response.error) {
+      setErrorMessage(true);
+    } else if (response.success) {
+      console.log(response.user, 'see if we get here')
+      setErrorMessage(false)
+      setSuccessMsg(true)
+
+      var delayInMilliseconds = 2000; //1 second
+
+      setTimeout(function () {
+
+        toggle()
+      }, delayInMilliseconds);
+    }
   }
+
+
 
   return (
     <Modal isOpen={modal} toggle={toggle}>
@@ -55,6 +90,8 @@ export function LoginModal(props) {
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
+          {errorMessage && <ErrorMessage>Bad credentials</ErrorMessage>}
+          {successMsg && <SuccessMessage>Login successfull</SuccessMessage>}
         </div>
       </ModalBody>
       <ModalFooter>

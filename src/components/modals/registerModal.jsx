@@ -3,7 +3,6 @@ import { Modal, ModalBody, ModalFooter, Button } from 'reactstrap';
 import { useHistory } from "react-router-dom";
 import { useState, useContext, useEffect } from 'react'
 import { UserContext } from '../../contexts/UserContextProvider'
-import '../../css/Modals.css'
 
 const ErrorMessage = styled.span`
   display: flex;

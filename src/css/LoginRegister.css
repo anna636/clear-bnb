@@ -10,3 +10,24 @@
 .myModalInput:focus::placeholder {
   color: transparent;
 }
+
+.registerButton{
+  display: inline-block;
+    font-weight: 400;
+    line-height: 1.5;
+  color: #fff;
+  background-color: #6c757d;
+  border-color: #6c757d;
+      text-align: center;
+      border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.registerButton:disabled {
+  opacity: 50%;
+  cursor: not-allowed;
+
+}

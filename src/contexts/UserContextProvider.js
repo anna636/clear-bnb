@@ -38,10 +38,11 @@ export default function UserContextProvider(props) {
     });
     res = await res.json();
     if (res.success) {
+
       setCurrentUser({ ...res.user })
-    } else {
-      return;
-    }
+      return res;
+    } else
+      return res;
   };
 
   const whoAmI = async () => {
