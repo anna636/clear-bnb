@@ -25,14 +25,15 @@ export function LoginModal(props) {
     modal, toggle
   } = props;
 
-  const { login } = useContext(UserContext);
+  const { login, whoAmI } = useContext(UserContext);
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [errorMessage, setErrorMessage] = useState(false)
   const [successMsg, setSuccessMsg] = useState(false)
 
-  async function logIn() {
+  async function logIn(e) {
+    e.preventDefault()
     let user = {
       email: email,
       password: password
@@ -41,16 +42,16 @@ export function LoginModal(props) {
     if (response.error) {
       setErrorMessage(true);
     } else if (response.success) {
-      console.log(response.user, 'see if we get here')
       setErrorMessage(false)
       setSuccessMsg(true)
 
       var delayInMilliseconds = 2000; //1 second
 
       setTimeout(function () {
-
+        whoAmI()
         toggle()
       }, delayInMilliseconds);
+
     }
   }
 
@@ -95,7 +96,7 @@ export function LoginModal(props) {
         </div>
       </ModalBody>
       <ModalFooter>
-        <Button color="primary" onClick={logIn}>Login</Button>{' '}
+        <Button color="primary" onClick={(e) => logIn(e)}>Login</Button>{' '}
         <Button color="secondary" onClick={toggle}>Cancel</Button>
       </ModalFooter>
     </Modal>

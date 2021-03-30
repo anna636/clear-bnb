@@ -37,12 +37,8 @@ export default function UserContextProvider(props) {
       body: JSON.stringify(user),
     });
     res = await res.json();
-    if (res.success) {
 
-      setCurrentUser({ ...res.user })
-      return res;
-    } else
-      return res;
+    return res;
   };
 
   const whoAmI = async () => {
@@ -81,6 +77,7 @@ export default function UserContextProvider(props) {
     logout,
     getCurrentUser,
     getBeautifulFirstName,
+    whoAmI,
     currentUser,
     users
   };
