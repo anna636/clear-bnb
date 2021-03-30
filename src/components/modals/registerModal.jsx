@@ -12,6 +12,13 @@ const ErrorMessage = styled.span`
   color: white;
   `
 
+const SuccessMessage = styled.span`
+  display: flex;
+  justify-content: center;
+  background: green;
+  color: white;
+`
+
 export function RegisterModal(props) {
   const {
     modal, toggle
@@ -24,15 +31,13 @@ export function RegisterModal(props) {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [passwordError, setpasswordError] = useState(false)
   const [errorMsg, setErrorMsg] = useState(false)
-
-
-
+  const [successMsg, setSuccessMsg] = useState(false)
 
   async function createNewUser(e) {
     e.preventDefault();
     if (password === '' || confirmPassword !== password) {
       setpasswordError(true);
-    }
+    } else { setpasswordError(false) }
     let newUser = {
       fullName: fullName,
       email: email,
@@ -41,11 +46,22 @@ export function RegisterModal(props) {
     let response = await registerUser(newUser)
     if (response === 'error!') {
       setErrorMsg(true)
-    } else {
-      return;
+    } else if (response.success) {
+      setErrorMsg(false)
+      setSuccessMsg(true)
+
+      var delayInMilliseconds = 1000; //1 second
+
+      setTimeout(function () {
+        toggle()
+        setSuccessMsg(false)
+        setFullName('')
+        setEmail('')
+        setPassword('')
+        setConfirmPassword('')
+      }, delayInMilliseconds);
     }
   }
-
 
   const formValidator = () => {
     if (password === '' || email === '' || fullName === '' || confirmPassword === '') {
@@ -116,6 +132,7 @@ export function RegisterModal(props) {
           </form>
           {passwordError && <ErrorMessage>Please enter correct password</ErrorMessage>}
           {errorMsg && <ErrorMessage>Choose another email.</ErrorMessage>}
+          {successMsg && <SuccessMessage>Successfully registered a new user!</SuccessMessage>}
         </div>
       </ModalBody>
       <ModalFooter>
