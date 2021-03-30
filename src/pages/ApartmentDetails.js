@@ -31,7 +31,7 @@ export default function ApartmentDetails(props) {
             <div className="gallery">
               <Carousel fade>
                 {apartment.gallery.map((picture) => (
-                  <Carousel.Item interval={1000}>
+                  <Carousel.Item >
                     <img src={picture} className="Detail-img" />
                   </Carousel.Item>
                 ))}
