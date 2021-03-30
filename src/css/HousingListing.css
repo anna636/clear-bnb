@@ -70,7 +70,7 @@
 
 
 
-.amenities {
+.amenities-housing-listing {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1em;
@@ -86,7 +86,7 @@
   grid-template-columns: repeat(2, 1fr);
  
 }
-.amenities{
+.amenities-housing-listing{
   margin-top: 5vw;
     margin-bottom: 4vw;
 }
@@ -97,16 +97,11 @@
  
 }
 
-.amenities h6{
+.amenities-housing-listing h6{
   font-size:.8rem;
 }
 
 
 
 }
-@media screen and (max-width:370px){
-  .housing-listing-container {
-  
- 
-}
-}
+
