@@ -32,30 +32,38 @@ function getDates(startDate, stopDate) {
   return dateArray;
 }
 
-//Getter for all models except for users
+
 app.get("/rest/:model", async (req, res) => {
+  
   let model = models[req.params.model];
   if (req.params.model === "apartments") {
     let docs = await model
       .find()
       .populate(["amenities", "ownerId"])
       .exec();
-    res.json(docs);
+    
+    let availableApartments = docs.filter((apartment) => {
+      //console.log('apartment end date is', apartment.availableDates.availableEndDate);
+     // console.log("today date is", moment(new Date()).format("YYYY-MM-DD"));
+      return apartment.availableDates.availableEndDate > moment(new Date()).format("YYYY-MM-DD")
+    })
+    console.log(availableApartments.length);
+    res.json(availableApartments);
     return;
   }
+
+  
   if (req.params.model === "bookings") {
     let docs = await model
       .find()
       .populate(["userId", "apartmentId"])
-      .exec(); 
+      .exec();
+
+    
+    
     res.json(docs);
     return;
   }
-  
-/* if (req.params.model === "users") {
-    res.json("No such request is found");
-    return;
-  }*/
 
   let docs = await model.find();
   res.json(docs);
