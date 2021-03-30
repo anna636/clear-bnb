@@ -20,6 +20,7 @@ export default function MyApartments() {
   const handleClose = () => setShow(false);
   const { currentUser } = useContext(UserContext);
   const { bookings } = useContext(BookingContext);
+  const [showDeleteMessage, setShowDeleteMessage] = useState(false);
 
   const {
     apartments,
@@ -29,7 +30,6 @@ export default function MyApartments() {
   } = useContext(ApartmentContext);
 
   const handleShow = function (id) {
-     console.log('apartment id is', id);
      setApartmentId(id);
     setCurrentApartmentId(id);
      setShow(true);
@@ -47,7 +47,6 @@ export default function MyApartments() {
 
   const getRenters = (housingId) => {
     let data = bookings.filter((booking) => {
-      console.log(booking.apartmentId);
       return booking.apartmentId.ownerId === currentUser._id;
     });
     data = data.filter((booking) => {
@@ -63,14 +62,13 @@ export default function MyApartments() {
 
   const removeApartment = () => {
     let checkBookings = []
-    let today = moment(new Date()).format("YYYY-MM-DD")
-    console.log(today)
-    showDeleteMessage = false;
+    let today = new Date()
+    setShowDeleteMessage(false)
 
     bookings.map((booking) => {
-      // If there is a booking for this apartment, put booking in checkBookings
-      if (booking.apartmentId._id === apartmentId) {
-        showDeleteMessage = true
+      // If there is a booking for this apartment and the booking is for a future date, put booking in checkBookings
+      if ((booking.apartmentId._id === apartmentId) && (convertStringToDate(booking.endDate) > today)) {
+        setShowDeleteMessage(true)
         console.log('wrong alternative');
         checkBookings.push(booking)
         return;
@@ -79,21 +77,22 @@ export default function MyApartments() {
 
     // If checkBookings is empty, ok to remove
     if (!checkBookings.length) {
-        console.log(apartmentId);
-        deleteApartment(apartmentId);
+        console.log('Apartment deleted: ', apartmentId);
+        // deleteApartment(apartmentId);  // uncomment after testing
         handleClose();
         // fetchApartments();  // check!!
     }
     
   };
 
-  let showDeleteMessage = false;
+  function convertStringToDate(stringDate) {
+    let dateObject = new Date(stringDate + ' 12:00:00')
+    return dateObject
+  }
 
   useEffect(() => {
     fetchApartments();
   }, []);
-
-
 
   return (
     <>
