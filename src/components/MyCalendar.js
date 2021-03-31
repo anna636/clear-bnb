@@ -37,7 +37,6 @@ export default function MyCalendar({ userSearch }) {
       dateArray.push(moment(currentDate).format("YYYY-MM-DD"));
       currentDate = moment(currentDate).add(1, "days");
     }
-    console.log('getDates: ', ...dateArray)
     return dateArray;
   }
 

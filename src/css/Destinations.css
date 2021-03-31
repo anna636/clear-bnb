@@ -9,6 +9,7 @@ margin: 20px 0;
 
 .allDestWrapper {
   display: grid;
+  grid-gap:2vw;
   grid-template-columns: repeat(5, 1fr);
   text-align: center;
 }
@@ -16,4 +17,39 @@ margin: 20px 0;
 .destinationsCard > p {
   width: auto;
   cursor: pointer;
+}
+
+@media screen and (max-width: 530px){
+  .locationAllDestinations {
+    font-size:.8rem !important;
+  }
+
+  .allDestinations > h3 {
+  font-size:1.2rem;
+}
+
+
+.allDestWrapper {
+ 
+  grid-template-columns: repeat(3, 1fr);
+  
+}
+
+
+}
+
+@media screen and (max-width: 310px){
+ 
+
+.allDestWrapper {
+ 
+  grid-template-columns: repeat(2, 1fr);
+  
+}
+
+.card > h3 {
+  font-size: .6rem;
+}
+
+
 }

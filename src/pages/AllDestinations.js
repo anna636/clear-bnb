@@ -10,7 +10,6 @@ export default function AllDestinations() {
 
   function getAllLocations() {
     let locationsArray = []
-    console.log(apartments)
     for (const apartment of apartments) {
       if (!locationsArray.includes(apartment.city)) {
         locationsArray.push(apartment.city)
@@ -18,8 +17,6 @@ export default function AllDestinations() {
     }
     return locationsArray;
   }
-
-
 
   useEffect(() => {
     getAllLocations()
@@ -32,11 +29,9 @@ export default function AllDestinations() {
 
   let card = location => (
     <div className="destinationsCard" key={location}>
-      <p onClick={() => search(location.toLowerCase())}>{location}</p>
+      <p className="locationAllDestinations" onClick={() => search(location.toLowerCase())}>{location}</p>
     </div>
   );
-
-
 
   return (
     <>

@@ -229,34 +229,64 @@
   align-items: center;
 }
 
-
-@media screen and (max-width: 1080px) {
-  .buttonWrapperBooking {
-    margin-top: 0%;
- 
-  }
-  .buttonWrapperBooking  button{
-    margin-top: 0%;
-    padding:1vw;
- 
-  }
-
-  .bookingsWrapper {
-    align-items: center;
-    justify-items: center;
+@media screen and (max-width: 1600px) {
+  .mybookings-listing {
+    grid-template-columns: 1fr 1fr;
+    padding: 10px;
   }
 }
 
-@media screen and (max-width: 800px) {
-    .buttonWrapperBooking button {
-    height: 4vh;
-    width: 24vw;
-    font-size:.7rem;
+@media screen and (max-width: 1200px) {
+  .mybookings-listing {
+    grid-template-columns: 1fr 1fr;
+    padding: 10px;
   }
 
-  
-  .bookingsWrapper{
-    margin-left:14vw;
+  .imgslider-btns {
+    width: 350px;
+    padding: 0 15px 0 5px;
+  }
+}
+
+@media screen and (max-width: 1080px) {
+  .mybookings-listing {
+    grid-template-columns: 1fr;
+    padding: 10px 50px;
+  }
+
+  .upper-info {
+    width: 100%;
+  }
+
+  .booking-object-details {
+    width: 50%;
+  }
+
+  /* .imgslider-btns {
+    width: 50%;
+  } */
+}
+
+@media screen and (max-width: 800px) {
+  .mybookings-listing {
+    grid-template-columns: 1fr 1fr;
+    padding: 10px;
+  }
+
+  .booking {
+    display: block;
+  }
+
+  .apartmentImg {
+    width: 100%;
+  }
+
+  .booking-object-details {
+    width: 100%;
+  }
+
+  .imgslider-btns {
+    width: 100%;
   }
 
 }
@@ -264,14 +294,25 @@
 
 
 @media screen and (max-width: 798px) {
-
-
-  .bookingsWrapper {
-    width: 40%;
+  .mybookings-listing {
+    grid-template-columns: 1fr 1fr;
+    padding: 10px;
   }
 
-  .bookingItem {
-    font-size: 13px;
+  .booking {
+    display: block;
+  }
+
+  .apartmentImg {
+    width: 100%;
+  }
+
+  .booking-object-details {
+    width: 100%;
+  }
+
+  .imgslider-btns {
+    width: 100%;
   }
 }
 
@@ -279,50 +320,51 @@
 
 
 @media screen and (max-width: 650px) {
-  .bookingsWrapper {
-    margin-left: 10vw;
-  
+  .mybookings-listing {
+    grid-template-columns: 1fr;
+    padding: 20px;
   }
 
-   .buttonWrapperBooking button {
-    
-    font-size:.5rem;
+  .apartment-info > p {
+    font-size: 12px;
   }
 
-  .bookingItem{
-    font-size: 10px;
-  }
-
-  .myBookingsHeader{
-    font-size: 1.8rem;
+  .imgslider-btns {
+    width: 100%;
+    padding: 0 13px 0 5px;
   }
 }
 
 @media screen and (max-width: 460px) {
-  .bookingsWrapper {
-    margin-left: 7vw;
-  
+  .mybookings-top {
+    padding: 15px;
   }
 
-  .apartmentInfo{
-    padding-top:1vw;
+  .booking {
+    display: block;
+    margin: 4px 4px 10px 4px;
   }
 
-   .buttonWrapperBooking button {
-    
-    font-size:.4rem;
+  .mybookings-listing {
+    padding: 10px;
+    display: block;
   }
 
-  .bookingItem{
-    font-size: 8px;
-    padding:1vw;
+  .apartmentImg {
+    width: 100%;
   }
 
+  .booking-object-details {
+    width: 100%;
+  }
 
-  .apartmentImgBookings{
-  height:40vw;
-}
+  .apartment-info > p {
+    font-size: 12px;
+  }
 
+  .imgslider-btns {
+    width: 100%;
+    padding-right: 13px;
+  }
 
-  
 }
