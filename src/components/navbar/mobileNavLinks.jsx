@@ -86,7 +86,7 @@ export function MobileNavLinks() {
             <>
               <hr />
               <LinkItem>
-                <Link to="#">Rent out</Link>
+                <Link to="/apartment-listing">Rent out</Link>
               </LinkItem>
               <LinkItem>
                 <Link to={"/my-apartments/" + getCurrentUser()._id}>
