@@ -12,37 +12,25 @@ import { useContext, useEffect, useState } from "react";
 
 export default function MyApartments() {
 
+  const history = useHistory();
+  const { id } = useParams();
 
-
-  const {
-    apartments,
-    fetchApartments,
-    deleteApartment,
-    setCurrentApartmentId,
-  } = useContext(ApartmentContext);
-
-  const handleShow = function (id) {
-     console.log('apartment id is', id);
-     setApartmentId(id);
-    setCurrentApartmentId(id);
-     setShow(true);
-   };
-
-  
-  
   const [show, setShow] = useState(false);
   const [apartmentId, setApartmentId] = useState("");
-  
-
   const handleClose = () => setShow(false);
-
-
   const { currentUser } = useContext(UserContext);
-  const { bookings } = useContext(BookingContext);
+  const { bookings, deleteBooking } = useContext(BookingContext);
+  const [showDeleteMessage, setShowDeleteMessage] = useState(false);
+  const { apartments, fetchApartments, deleteApartment, setCurrentApartmentId } = useContext(ApartmentContext);
 
+  const handleShow = function (id) {
+    setShowDeleteMessage(false)
+    setApartmentId(id);
+    setCurrentApartmentId(id);
+    setShow(true);
+  };
 
   const myApartments = apartments.filter(function (apartment) {
-
     return apartment.ownerId._id === currentUser._id;
   });
 
@@ -51,7 +39,6 @@ export default function MyApartments() {
   }, []);
 
   const apartmentAmount = apartments.filter(function (apartment) {
-   
     return apartment.ownerId._id === currentUser._id;
   });
 
@@ -67,31 +54,55 @@ export default function MyApartments() {
     return data;
   };
 
-  const rentersAmount = bookings.filter((booking) => {
-   
-    return booking.apartmentId.ownerId === currentUser._id;
-  });
-
   const removeApartment = () => {
+    let activeBookings = []
+    let oldBookings = []
+    let today = new Date()
+    const thisApartmentsBookings = bookings.filter((booking) => booking.apartmentId._id === apartmentId)
 
-    bookings.map((booking) => {
-      if (booking.apartmentId._id === apartmentId) {
-        console.log('wrong alternative');
-        return
+    // If the apartment has any bookings
+    if (thisApartmentsBookings.length) {
+      thisApartmentsBookings.map((booking) => {
+        // If the booking is for a future date, put booking in activeBookings
+        if (convertStringToDate(booking.endDate) > today) {
+          setShowDeleteMessage(true)
+          activeBookings.push(booking)
+        }
+        // If the booking date is in the past, put in oldBookings
+        else if (convertStringToDate(booking.endDate) < today) {
+          oldBookings.push(booking)
+        }
+      })
+  }
+
+    // If activeBookings is empty, ok to remove
+    if (!activeBookings.length) {
+      // If any old bookings on apartment, remove them first
+      if (oldBookings.length) {
+        for (const booking of oldBookings) {
+          deleteBooking(booking._id)
+        }
       }
-      else {
-        console.log(apartmentId);
-    
-    deleteApartment(apartmentId);
-    handleClose();
-      }
-    })
-    
+      deleteApartment(apartmentId);
+      handleClose();
+      setShowDeleteMessage(false);
+      refreshPage();
+    }
   };
   
 
-  const history = useHistory();
-  const { id } = useParams();
+  function refreshPage() {
+    window.location.reload();
+  }
+
+  function convertStringToDate(stringDate) {
+    let dateObject = new Date(stringDate + ' 12:00:00')
+    return dateObject
+  }
+
+  useEffect(() => {
+    fetchApartments();
+  }, []);
 
   return (
     <>
@@ -119,11 +130,6 @@ export default function MyApartments() {
               ) : (
                 <p>You have {apartmentAmount.length} apartment uploaded</p>
               )}
-              {rentersAmount.length > 1 ? (
-                <p>You have {rentersAmount.length} bookings</p>
-              ) : (
-                <p>You have {rentersAmount.length} booking</p>
-              )}
             </div>
           </div>
           <div className="apartment-listing-container">
@@ -138,8 +144,10 @@ export default function MyApartments() {
 
                   <Modal.Footer>
                     <Button variant="dark" onClick={removeApartment}>
-                      Delete
+                      Yes, Delete
                     </Button>
+                    { showDeleteMessage &&
+                      <label>You can't delete an apartment with active bookings</label>}
                   </Modal.Footer>
                 </Modal>
 
@@ -149,7 +157,7 @@ export default function MyApartments() {
                   </h1>
                   <div className="options-btns">
                     <div className="deleteApartment">
-                      <span
+                      <span className="apartmentTrash"
                         onClick={() => {
                           handleShow(apartment._id);
                         }}
@@ -181,8 +189,6 @@ export default function MyApartments() {
                   <div>
                     <h2  className="myApartmentsHeader">Details</h2>
                     <hr />
-                    {/* <p>{apartment._id}</p>
-                    <p>{apartment.description}</p> */}
                     <div className="availability-section">
                       <h4>Availability:</h4>
                       <p>{apartment.availableDates.availableStartDate}</p>-
@@ -196,7 +202,6 @@ export default function MyApartments() {
                       </span>
                     </h2>
                     <div className="bookings-section">
-                      {/* <h2>Bookings</h2> */}
                       {getRenters(apartment._id).map((booking) => {
                         return (
                           <div className="booking-container">

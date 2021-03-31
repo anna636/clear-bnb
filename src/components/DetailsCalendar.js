@@ -22,7 +22,6 @@ export default function DetailsCalendar({ apartmentId }) {
 
   const onChange = (newDate) => {
     setDates(newDate);
-    console.log(newDate)
   };
 
   function goToCheckIn() {
@@ -49,9 +48,6 @@ export default function DetailsCalendar({ apartmentId }) {
         datesArray.push(d)
       }
     }
-
-    console.log(datesArray)
-
     return datesArray;
   }
 

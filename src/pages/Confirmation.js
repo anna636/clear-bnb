@@ -1,6 +1,6 @@
 import "../css/Confirmation.css";
 import { useParams } from "react-router-dom";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { BookingContext } from "../contexts/BookingContextProvider";
 

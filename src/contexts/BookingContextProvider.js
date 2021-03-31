@@ -22,8 +22,6 @@ export default function BookingContextProvider(props) {
   function addGuests(guests) {
     setAmountOfGuests(guests);
   }
-
-
   
   const fetchBookings = async () => {
     let res = await fetch("/rest/bookings");
@@ -35,7 +33,6 @@ export default function BookingContextProvider(props) {
   useEffect(() => {
     fetchBookings();
   }, []);
-
 
 
   const updateApartmentDates = async (bookingInfo) => {
@@ -58,6 +55,13 @@ export default function BookingContextProvider(props) {
     res = await res.json();
   };
 
+  const deleteBooking = async (bookingId) => {
+    let res = await fetch("/rest/bookings/" + bookingId, {
+      method: "DELETE",
+    });
+    res = await res.json();
+  };
+
   const values = {
     bookings,
     calendarDates,
@@ -68,7 +72,8 @@ export default function BookingContextProvider(props) {
     updateApartmentDates,
     updateTotalPrice,
     totalPrice,
-    fetchBookings
+    fetchBookings,
+    deleteBooking
   };
 
   return (

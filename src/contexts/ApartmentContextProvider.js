@@ -25,7 +25,6 @@ export default function ApartmentContextProvider(props) {
        method: "DELETE",
      });
      res = await res.json();
-     console.log(`apartment with id ${apartmentId} has been deleted`);
    };
 
   const createApartment = async (apartment) => {

@@ -1,11 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 
 .apartment-search {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
-.dates-title{
-margin: 10px 10px 10px 35px;
+.dates-title {
+  margin: 10px 10px 10px 35px;
 }
 
 .dates-title h3 {
@@ -17,12 +17,14 @@ margin: 10px 10px 10px 35px;
   display: grid;
   grid-template-columns: auto auto;
   grid-auto-rows: 100px;
-    grid-template-areas:
-    "a b";
+  grid-template-areas: "a b";
   align-items: start;
-    min-height: 100vh;
+  min-height: 100vh;
 }
 
+.amenitiesWrapper {
+  margin-top: 3vw;
+}
 
 .apartment-preview {
   border-radius: 15px;
@@ -31,33 +33,28 @@ margin: 10px 10px 10px 35px;
   cursor: pointer;
   padding: 10px;
   margin: 5px;
-    display: grid;
-  grid-template-columns: auto auto;
-    grid-template-areas:
-    "a b";
+
   align-items: start;
 }
 
-
 .apartment-preview > h3 {
-  position: relative; 
+  position: relative;
   bottom: 40px;
   left: 10px;
 }
 
-.img-container {
-  grid-area: a;
-  width: 25vw;
-  height: 30vh;
+.img-containerApartmentSearch {
+  width: 30vw;
+  height: 20vw;
   margin: 10px;
-   padding: 5px;
+  padding: 5px;
 }
 
-.img-container > img {
-     border-radius: 15px;
+.img-containerApartmentSearch > img {
+  border-radius: 15px;
   width: 100%;
   height: 100%;
-     object-fit: cover;
+  object-fit: cover;
 }
 
 .apartment-description {
@@ -68,4 +65,46 @@ margin: 10px 10px 10px 35px;
 .apartment-img:hover {
   transform: scale(1.05);
   opacity: 0.6;
+}
+
+@media only screen and (max-width: 650px) {
+
+  .img-containerApartmentSearch {
+
+    width: 70vw ;
+    height: 65vw;
+    align-self: center;
+  }
+
+  .apartment-preview{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .apartmentDisc{
+    font-size:.8rem;
+    align-self: center;
+  }
+
+ 
+}
+@media only screen and (max-width: 330px) {
+
+  .img-containerApartmentSearch {
+
+    width: 70vw ;
+    height: 65vw;
+    align-self: center;
+  }
+
+ 
+  .apartmentDisc, .amenitiesWrapper{
+    font-size:.6rem;
+    
+  }
+
+  .apartment-description h3{
+    font-size:.8rem;
+  }
+ 
 }
