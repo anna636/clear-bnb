@@ -41,7 +41,7 @@ export default function HomesHomepageDisplay() {
       </div>
       <div className="home-elements">
         {apartments.map((home, i) => {
-          while (i < 8) {
+          while (i < 6) {
             return card(home);
           }
         })}
