@@ -169,7 +169,7 @@ export default function MyApartments() {
                     <div className="detailedInfo">
                       <Link to={"/details/" + apartment._id}>
                         <label  className="apartmentsDetails">details: </label>
-                        <i class="far fa-arrow-alt-circle-right myArrow"></i>
+                        <i className="far fa-arrow-alt-circle-right myArrow"></i>
                       </Link>
                     </div>
                   </div>
