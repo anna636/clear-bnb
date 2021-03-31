@@ -107,7 +107,7 @@ export function CreateNewApartment() {
       values.maxGuests > 15 ||
       values.maxGuests < 1 ||
       values.pricePerDay < 1 ||
-      values.pricePerDay > 1000 ||
+      values.pricePerDay > 1500 ||
       !dates ||
       (handleSubmit().length < 5)
     ) {
@@ -130,7 +130,7 @@ export function CreateNewApartment() {
 
     console.log(values, "new apartment ");
     createApartment(values);
-    // history.push("/my-apartments/" + getCurrentUser()._id);
+    history.push("/my-apartments/" + getCurrentUser()._id);
   }
 
   return (
@@ -191,7 +191,7 @@ export function CreateNewApartment() {
               name="pricePerDay"
               type="number"
               label="PricePerDay"
-              placeholder="Price/Day:"
+              placeholder="Price/Day (1-1500 EUR):"
             />
           </AptWrap>
         </ListingDiv>
@@ -211,7 +211,7 @@ export function CreateNewApartment() {
                       type="checkbox"
                       className="form-check-input"
                     />
-                    <span> {amenitie.name} <i className={amenitie.icon}></i></span>
+                    <span><i className={amenitie.icon}></i> {amenitie.name}</span>
                   </label>
                 </div>
               );

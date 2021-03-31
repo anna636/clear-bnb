@@ -61,24 +61,48 @@ export function MobileNavLinks() {
   return (
     <NavLinksContainer>
       <MenuToggle isOpen={isOpen} toggle={() => setOpen(!isOpen)} />
-      {isOpen && (<LinksWrapper>
-        {getCurrentUser() && <WelcomeMessage>Welcome back, {getBeautifulFirstName()}!</WelcomeMessage>}
-        <LinkItem><Link to="/">Home</Link></LinkItem>
-        <LinkItem><Link to="/housing-listing">Apartments</Link></LinkItem>
-        <LinkItem><Link to="/all-destinations">Destinations</Link></LinkItem>
-        <LinkItem><Link to="/getstarted">Get started</Link></LinkItem>
-        {!getCurrentUser() && <Accessibility />}
+      {isOpen && (
+        <LinksWrapper>
+          {getCurrentUser() && (
+            <WelcomeMessage>
+              Welcome back, {getBeautifulFirstName()}!
+            </WelcomeMessage>
+          )}
+          <LinkItem>
+            <Link to="/">Home</Link>
+          </LinkItem>
+          <LinkItem>
+            <Link to="/housing-listing">Apartments</Link>
+          </LinkItem>
+          <LinkItem>
+            <Link to="/all-destinations">Destinations</Link>
+          </LinkItem>
+          <LinkItem>
+            <Link to="/getstarted">Get started</Link>
+          </LinkItem>
+          {!getCurrentUser() && <Accessibility />}
 
-        {getCurrentUser() &&
-          <>
-            <hr />
-            <LinkItem><Link to="#">Rent out</Link></LinkItem>
-            <LinkItem><Link to="#">My pages</Link></LinkItem>
-            <LinkItem><Link to={"/my-bookings/" + getCurrentUser()._id}>My bookings</Link></LinkItem>
-            <Logout></Logout>
-          </>}
-      </LinksWrapper>)}
-
+          {getCurrentUser() && (
+            <>
+              <hr />
+              <LinkItem>
+                <Link to="#">Rent out</Link>
+              </LinkItem>
+              <LinkItem>
+                <Link to={"/my-apartments/" + getCurrentUser()._id}>
+                  My Apartments
+                </Link>
+              </LinkItem>
+              <LinkItem>
+                <Link to={"/my-bookings/" + getCurrentUser()._id}>
+                  My bookings
+                </Link>
+              </LinkItem>
+              <Logout></Logout>
+            </>
+          )}
+        </LinksWrapper>
+      )}
     </NavLinksContainer>
-  )
+  );
 }

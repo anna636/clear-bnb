@@ -13,7 +13,6 @@ import Checkin from "./pages/Checkin";
 import UserContextProvider from "./contexts/UserContextProvider";
 import Confirmation from "./pages/Confirmation.js";
 import AllDestinations from "./pages/AllDestinations.js";
-import HousingContextProvider from "./contexts/HousingContextProvider"; //Use apartment context instead
 import ApartmentListing from "./pages/ApartmentListing.js";
 import AmenitiesContextProvider from "./contexts/AmenitiesContextProvider";
 import MyBookings from "./pages/MyBookings.js";
@@ -28,7 +27,6 @@ function App() {
   return (
     <div className="App">
       <BookingContextProvider>
-        <HousingContextProvider>
           <ApartmentContextProvider>
             <UserContextProvider>
               <AmenitiesContextProvider>
@@ -110,7 +108,6 @@ function App() {
               </AmenitiesContextProvider>
             </UserContextProvider>
           </ApartmentContextProvider>
-        </HousingContextProvider>
       </BookingContextProvider>
     </div>
   );

@@ -1,6 +1,5 @@
 import { useParams, useHistory } from 'react-router-dom'
 import { useContext, useState } from 'react'
-//import homes from '../components/homecomps/homestest.json';
 import { ApartmentContext } from '../contexts/ApartmentContextProvider'
 import '../css/DetailPage.css'
 import Carousel from "react-bootstrap/Carousel";
@@ -31,7 +30,7 @@ export default function ApartmentDetails(props) {
             <div className="gallery">
               <Carousel fade>
                 {apartment.gallery.map((picture) => (
-                  <Carousel.Item interval={1000}>
+                  <Carousel.Item>
                     <img src={picture} className="Detail-img" />
                   </Carousel.Item>
                 ))}

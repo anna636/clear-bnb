@@ -53,7 +53,7 @@ export default function HousingListing({ filterValue, priceFilter }) {
             <i className="fas fa-user-circle"></i>
           </div>
         </div>
-        <div className="amenities">
+        <div className="amenities-housing-listing">
           {housing.amenities.map(amenitie => {
             return <h6><i className={amenitie.icon}></i> {amenitie.name}</h6>
           })}
