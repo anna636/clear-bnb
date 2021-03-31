@@ -63,7 +63,7 @@ export default function Checkin() {
       dates: [calendarDates[0], calendarDates[calendarDates.length - 1]],
     };
     const totalPrice =
-      amountOfGuests * 5 +
+     
       apartment.pricePerDay * calendarDates.length * 0.15 +
       apartment.pricePerDay * calendarDates.length;
 
@@ -121,7 +121,8 @@ export default function Checkin() {
               </p>
               <p>Service fee</p>
               <p className="change">
-                {amountOfGuests * 5 +
+                {
+
                   apartment.pricePerDay * calendarDates.length * 0.15}{" "}
                 €
               </p>
@@ -129,7 +130,7 @@ export default function Checkin() {
             <div className="totalPrice">
               <h4>Total</h4>
               <p className="totalPriceCount">
-                {amountOfGuests * 5 +
+                {
                   apartment.pricePerDay * calendarDates.length * 0.15 +
                   apartment.pricePerDay * calendarDates.length}{" "}
                 €
