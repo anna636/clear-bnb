@@ -111,18 +111,7 @@ export default function MyApartments() {
 
   return (
     <>
-      {Boolean(apartments && !myApartments.length) && (
-        <div className="noApartmentsFound">
-          <h1>You do not have any apartment for rent</h1>
-          <p>Would you like to post a new apartment?</p>
-          <button
-            className="rentOutApartmentButton"
-            onClick={() => history.push("/rest/postNewApartment")}
-          >
-            Yes let's begin!
-          </button>
-        </div>
-      )}
+    
       {Boolean(
         apartments && currentUser && myApartments !== null && bookings !== null
       ) && (
